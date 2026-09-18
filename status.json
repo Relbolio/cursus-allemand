@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "misAJour": "2026-09-18",
+  "niveau": "A1",
+  "semaine": 3,
+  "positionActuelle": "A1 · semaine 3 — nombres, alphabet, haben (leçon 0002 à venir)",
+  "gates": {
+    "A1": "en-cours",
+    "A2": "verrouille",
+    "B1": "verrouille",
+    "B2": "verrouille"
+  },
+  "prochaineEtape": "Leçon 0002 — nombres, alphabet, haben",
+  "lecons": [
+    {
+      "numero": 1,
+      "titre": "Prononciation et se présenter",
+      "fichier": "lessons/0001-prononciation-et-se-presenter.html",
+      "etat": "faite",
+      "date": "2026-09-03",
+      "niveau": "A1"
+    }
+  ],
+  "references": [
+    { "titre": "Feuille de route A1 → B2", "fichier": "reference/parcours.html" },
+    { "titre": "Prononciation", "fichier": "reference/prononciation.html" }
+  ],
+  "records": [
+    {
+      "numero": 1,
+      "titre": "Point de départ",
+      "fichier": "learning-records/0001-point-de-depart.md",
+      "date": "2026-09-03"
+    }
+  ],
+  "anki": { "cartes": 12 },
+  "compteurs": { "leconsFaites": 1, "leconsGenerees": 1 }
+}

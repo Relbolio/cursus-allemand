@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cursus allemand</title>
+<style>
+:root {
+  --ink:#111; --muted:#666; --rule:#ddd; --accent:#a52a2a;
+  --paper:#fffff8; --soft:#f6f4ea;
+  --a1:#7a9e7e; --a2:#5b8fa8; --b1:#c9973a; --b2:#a52a2a;
+  --ok:#2e7d32; --ko:#c62828;
+}
+html { background:var(--paper) }
+body {
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  color:var(--ink); margin:0; line-height:1.55; font-size:1rem;
+}
+header {
+  position:sticky; top:0; z-index:10; background:var(--paper);
+  border-bottom:1px solid var(--rule);
+}
+.wrap { max-width:50rem; margin:0 auto; padding:0 1.25rem }
+.brand { display:flex; align-items:baseline; gap:.6rem; padding:.7rem 0 0 }
+.brand h1 { font-size:1.15rem; margin:0; font-weight:600; letter-spacing:-.01em }
+.brand .sub { color:var(--muted); font-style:italic; font-size:.85rem }
+.brand .phone { margin-left:auto; white-space:nowrap; overflow:hidden;
+  min-width:0; text-overflow:ellipsis }
+@media (max-width:640px) { .brand .phone { display:none } }
+nav { display:flex; gap:.25rem; padding:.55rem 0 .5rem; overflow-x:auto;
+  scrollbar-width:none; }
+nav::-webkit-scrollbar { display:none }
+nav button {
+  font:inherit; font-size:.92rem; padding:.38rem .8rem; border-radius:999px;
+  border:1px solid var(--rule); background:transparent; color:var(--muted);
+  cursor:pointer; white-space:nowrap;
+}
+nav button.on { color:#fff; background:var(--accent); border-color:var(--accent) }
+main section { display:none; padding:1.4rem 0 5rem }
+main section.on { display:block }
+main.wide { max-width:100% }
+/* --- cumul commun --- */
+.lvl { display:inline-block; font-weight:700; color:#fff; padding:.05rem .55rem;
+  border-radius:3px; font-size:.85rem }
+.A1 { background:var(--a1) } .A2 { background:var(--a2) }
+.B1 { background:var(--b1) } .B2 { background:var(--b2) }
+.chip { display:inline-block; font-size:.75rem; padding:.1rem .5rem; border-radius:999px;
+  border:1px solid var(--rule); color:var(--muted); vertical-align:middle }
+.chip.ok { color:var(--ok); border-color:var(--ok) }
+.chip.ko { color:var(--ko); border-color:var(--ko) }
+.chip.accent { color:var(--accent); border-color:var(--accent) }
+h2 { font-weight:400; font-size:1.4rem; margin:0 0 .8rem; border-bottom:1px solid var(--rule);
+  padding-bottom:.25rem }
+h3 { font-weight:600; font-size:1.05rem; margin:1.4rem 0 .4rem }
+p.note { color:var(--muted); font-size:.85rem; font-style:italic }
+/* --- dashboard --- */
+.card { background:var(--soft); border-left:3px solid var(--accent);
+  padding:.8rem 1.1rem; margin:.8rem 0 }
+.kv { display:flex; gap:.8rem; flex-wrap:wrap; align-items:baseline }
+.kv .k { color:var(--muted); font-size:.8rem; text-transform:uppercase; letter-spacing:.06em }
+.counts { display:grid; grid-template-columns:repeat(auto-fit,minmax(9rem,1fr));
+  gap:.6rem; margin:.8rem 0 }
+.count { border:1px solid var(--rule); background:#fff; padding:.55rem .7rem }
+.count .n { font-size:1.5rem; font-weight:600 }
+.count .l { color:var(--muted); font-size:.78rem; text-transform:uppercase; letter-spacing:.05em }
+.timeline { list-style:none; padding:0; margin:1rem 0; border-left:3px solid var(--rule) }
+.timeline li { position:relative; padding:.35rem 0 .7rem 1.4rem }
+.timeline li::before { content:""; position:absolute; left:-.5rem; top:.75rem;
+  width:.7rem; height:.7rem; border-radius:50%; background:var(--muted) }
+.timeline li.en-cours::before { background:var(--accent);
+  box-shadow:0 0 0 .25rem rgba(165,42,42,.18) }
+.timeline li.reussi::before { background:var(--ok) }
+.timeline li .gate { float:right; font-size:.75rem; color:var(--muted) }
+.timeline li.en-cours .gate { color:var(--accent); font-weight:600 }
+.timeline li.reussi .gate { color:var(--ok); font-weight:600 }
+/* --- listes leçons --- */
+.item { background:#fff; border:1px solid var(--rule); padding:.5rem .75rem;
+  margin:.35rem 0; cursor:pointer; display:flex; gap:.6rem; align-items:baseline; flex-wrap:wrap }
+.item.on { border-color:var(--accent); box-shadow:inset 2px 0 0 var(--accent) }
+.item .num { font-weight:700; color:var(--muted); font-size:.8rem }
+.item .t { flex:1; min-width:60% }
+.item .d { color:var(--muted); font-size:.78rem }
+/* --- leçons : sidebar --- */
+.split { display:flex; gap:1rem; align-items:stretch }
+.side { flex:0 0 12.5rem; min-width:0 }
+.side h4 { margin:.2rem 0 .25rem; font-size:.85rem; color:var(--muted);
+  text-transform:uppercase; letter-spacing:.05em }
+.viewer { flex:1; min-width:0 }
+iframe { width:100%; height:calc(100vh - 10rem); min-height:24rem;
+  border:1px solid var(--rule); background:#fff }
+@media (max-width:900px) {
+  .split { flex-direction:column }
+  .side { flex:0 0 auto; display:flex; gap:.35rem; overflow-x:auto;
+    padding-bottom:.25rem; scrollbar-width:none }
+  .side::-webkit-scrollbar { display:none }
+  .side h4 { flex:0 0 auto; align-self:center; margin:0 }
+  .side .item { flex:0 0 auto }
+  iframe { height:70vh }
+}
+.openext { font-size:.8rem; color:var(--accent) }
+/* --- journal / ressources --- */
+.md h3 { margin:1.2rem 0 .3rem }
+.md h4 { margin:.8rem 0 .2rem; font-size:.95rem }
+.md ul { margin:.3rem 0 .6rem; padding-left:1.4rem }
+.md p { margin:.4rem 0 }
+.record { border-left:2px solid var(--rule); padding:.2rem 0 .3rem 1rem; margin:1rem 0 }
+.record .meta { font-size:.75rem; color:var(--muted) }
+.group { margin:1.2rem 0 }
+.group h3 { margin:0 0 .6rem }
+.subgroup h4 { color:var(--muted); font-weight:600; font-size:.85rem;
+  text-transform:uppercase; letter-spacing:.05em; margin:1rem 0 .3rem }
+.cards { display:grid; grid-template-columns:1fr; gap:.45rem }
+.cardlink { background:#fff; border:1px solid var(--rule); padding:.5rem .7rem }
+.cardlink a { color:var(--accent); text-decoration:none; font-weight:600 }
+.cardlink a:hover { text-decoration:underline }
+.cardlink .ann { color:var(--muted); font-size:.85rem; margin-top:.15rem }
+.cardlink .usefor { display:inline-block; margin-top:.25rem; font-size:.72rem;
+  color:var(--b2); border:1px solid var(--b2); border-radius:3px; padding:.05rem .4rem }
+.search { width:100%; box-sizing:border-box; font:inherit; font-size:.95rem;
+  padding:.45rem .7rem; border:1px solid var(--rule); border-radius:4px;
+  background:#fff; margin:.4rem 0 .8rem }
+footer { color:var(--muted); font-size:.75rem; padding:1rem 0 2rem; border-top:1px solid var(--rule) }
+@media print { header, .openext { display:none } iframe { display:none } section { display:block !important } }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap brand"><h1>Cursus allemand</h1><span class="sub">zéro → Goethe B2</span><span class="sub phone" id="phoneHint"></span></div>
+  <div class="wrap"><nav id="nav"></nav></div>
+</header>
+<main class="wrap">
+<section id="tableau"></section>
+<section id="lecons"></section>
+<section id="journal"></section>
+<section id="ressources"></section>
+<footer>Source : status.json · mis — <span id="maj">…</span></footer>
+</main>
+<script>
+"use strict";
+const TABS = [
+  ["tableau", "Tableau"],
+  ["lecons", "Leçons"],
+  ["journal", "Journal"],
+  ["ressources", "Ressources"],
+];
+const GATE_LABEL = { "verrouille":"verrouillé", "en-cours":"en cours", "reussi":"réussi" };
+const ETAT_LABEL = { "generee":"générée", "faite":"faite" };
+let STATUS = {};
+
+const nav = document.getElementById("nav");
+TABS.forEach(([id, label]) => {
+  const b = document.createElement("button");
+  b.textContent = label; b.dataset.tab = id;
+  b.onclick = () => show(id);
+  nav.appendChild(b);
+});
+function show(id) {
+  document.querySelectorAll("main section").forEach(s => s.classList.toggle("on", s.id === id));
+  document.querySelectorAll("nav button").forEach(b => b.classList.toggle("on", b.dataset.tab === id));
+  const main = document.querySelector("main");
+  main.classList.toggle("wide", id === "lecons");
+  try { history.replaceState(null, "", "#" + id); } catch(e) {}
+}
+function currentTab() { return (location.hash || "#tableau").slice(1); }
+
+const esc = s => s.replace(/[&<>"]/g, c => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;" }[c]));
+const inline = s => esc(s)
+  .replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, (m, t, u) =>
+      `<a href="${u}" target="_blank" rel="noopener">${t}</a>`)
+  .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
+  .replace(/`([^`]+)`/g, "<code>$1</code>");
+
+// mini rendu markdown : titres, puces, paragraphes, liens, gras, code — rien d'autre
+function md(src) {
+  const out = [];
+  for (const raw of src.split(/\r?\n/)) {
+    const line = raw.trimEnd();
+    if (!line.trim()) { out.push("</ul>"); continue; }
+    const h = line.match(/^(#{1,4})\s+(.*)/);
+    if (h) { out.push(`<h${h[1].length + 2}>${inline(h[2])}</h${h[1].length + 2}>`); continue; }
+    const li = line.match(/^\s*-\s+(.*)/);
+    if (li) { out.push(`<li>${inline(li[1])}</li>`); continue; }
+    out.push(`<p>${inline(line)}</p>`);
+  }
+  return out.join("\n").replace(/(<\/ul>\s*)+/g, "</ul>")
+           .replace(/<\/ul>(\s*<\/ul>)+/g, "</ul>")
+           .replace(/((?:<li>.*?<\/li>\s*)+)/gs, "<ul>$1</ul>");
+}
+
+async function get(url) {
+  const r = await fetch(url);
+  if (!r.ok) throw new Error(url + " → " + r.status);
+  return r.text();
+}
+
+function renderDashboard(s) {
+  const lvlClass = (s.niveau || "A1").replace(/^([ABC][12])$/, "$1");
+  const gates = ["A1","A2","B1","B2"].map(g => {
+    const st = (s.gates && s.gates[g]) || "verrouille";
+    return `<li class="${st}"><span class="lvl ${g}">${g}</span> <span class="gate">${GATE_LABEL[st] || st}</span></li>`;
+  }).join("");
+  document.getElementById("tableau").innerHTML = `
+    <div class="card kv">
+      <span class="lvl ${lvlClass}">${esc(s.niveau || "?")}</span>
+      <span><span class="k">semaine</span> ${esc(String(s.semaine ?? "—"))}</span>
+      <span>${esc(s.positionActuelle || "")}</span>
+    </div>
+    <h3>Portes de passage</h3>
+    <ul class="timeline">${gates}</ul>
+    <div class="card"><strong>Prochaine étape</strong><br>${esc(s.prochaineEtape || "—")}</div>
+    <div class="counts">
+      <div class="count"><div class="n">${s.anki?.cartes ?? 0}</div><div class="l">cartes Anki</div></div>
+      <div class="count"><div class="n">${s.compteurs?.leconsFaites ?? 0}</div><div class="l">leçons faites</div></div>
+      <div class="count"><div class="n">${s.compteurs?.leconsGenerees ?? 0}</div><div class="l">leçons générées</div></div>
+      <div class="count"><div class="n">${s.records?.length ?? 0}</div><div class="l">learning-records</div></div>
+    </div>`;
+  document.getElementById("maj").textContent = s.misAJour || "—";
+}
+
+function renderLecons(s) {
+  const itemHTML = (it, i, isLesson) => `
+    <div class="item" data-i="${i}" data-t="${isLesson ? "l" : "r"}">
+      ${isLesson ? `<span class="num">${String(it.numero).padStart(4,"0")}</span>` : `<span class="num">réf.</span>`}
+      <span class="t">${esc(it.titre)}</span>
+      ${isLesson ? `<span class="chip ${it.etat === "faite" ? "ok" : ""}">${ETAT_LABEL[it.etat] || esc(it.etat)}</span>` : ""}
+      ${it.date ? `<span class="d">${esc(it.date)}</span>` : ""}
+    </div>`;
+  const items = [...(s.lecons||[]), ...(s.references||[])];
+  const el = document.getElementById("lecons");
+  el.innerHTML = `
+    <div class="split">
+      <div class="side">
+        <h4>Leçons</h4>
+        ${(s.lecons||[]).map((it, i) => itemHTML(it, i, true)).join("")}
+        <h4>Références</h4>
+        ${(s.references||[]).map((it, i) => itemHTML(it, i, false)).join("")}
+      </div>
+      <div class="viewer">
+        <p class="note">Sélectionnez une entrée dans la colonne —
+          <a class="openext" id="ext" href="#" target="_blank" rel="noopener">ouvrir dans un nouvel onglet ›</a></p>
+        <iframe id="fr" title="lecteur"></iframe>
+      </div>
+    </div>`;
+  const fr = el.querySelector("#fr"), ext = el.querySelector("#ext");
+  let cur = null;
+  const pick = btn => {
+    el.querySelectorAll(".item").forEach(x => x.classList.remove("on"));
+    btn.classList.add("on");
+    const t = btn.dataset.t, i = +btn.dataset.i;
+    cur = t === "l" ? (s.lecons||[])[i] : (s.references||[])[i];
+    if (cur) { fr.src = "../" + cur.fichier; ext.href = "../" + cur.fichier; }
+  };
+  el.querySelectorAll(".item").forEach(b => b.onclick = () => pick(b));
+  const first = el.querySelector(".item"); if (first) pick(first);
+}
+
+async function renderJournal(s) {
+  const el = document.getElementById("journal");
+  try {
+    const notes = await get("../NOTES.md");
+    let body = `<h3>Notes de travail (professeur)</h3><div class="md">${md(notes)}</div>`;
+    const recs = (s.records || []).slice().reverse();
+    if (recs.length) {
+      body += `<h3>Learning-records</h3>`;
+      const texts = await Promise.all(recs.map(r => get("../" + r.fichier).catch(() => null)));
+      body += recs.map((r, i) => `
+        <div class="record">
+          <div class="meta">#${String(r.numero).padStart(4,"0")} · ${esc(r.titre)}${r.date ? " · " + esc(r.date) : ""}</div>
+          <div class="md">${texts[i] ? md(texts[i]) : "<p class='note'>fichier introuvable : " + esc(r.fichier) + "</p>"}</div>
+        </div>`).join("");
+    }
+    el.innerHTML = body;
+  } catch (e) {
+    el.innerHTML = `<p class="note">Journal indisponible (${esc(e.message)}).</p>`;
+  }
+}
+
+async function renderRessources() {
+  const el = document.getElementById("ressources");
+  try {
+    const src = await get("../RESOURCES.md");
+    const cards = [];
+    let group = "", subgroup = "";
+    for (const raw of src.split(/\r?\n/)) {
+      const line = raw.trimEnd();
+      const g2 = line.match(/^##\s+(.*)/), g3 = line.match(/^###\s+(.*)/);
+      if (g2) { group = g2[1].trim(); subgroup = ""; continue; }
+      if (g3) { subgroup = g3[1].trim(); continue; }
+      const bullet = line.match(/^\s*-\s+(.*)/);
+      if (!bullet) {
+        /* ligne d'annotation : rattachée à la dernière carte du groupe en cours */
+        const t = line.trim();
+        if (t && cards.length) {
+          const last = cards[cards.length - 1];
+          const m = t.match(/^(.*?)(Use for\s*:.*)$/);
+          if (m) { last.ann = m[1].trim(); last.usefor = m[2].trim(); }
+          else { last.ann = (last.ann ? last.ann + " " : "") + t; }
+        }
+        continue;
+      }
+      /* une puce peut contentir plusieurs liens séparés par « · » */
+      for (const part of bullet[1].split(/\s*·\s*/)) {
+        const links = [];
+        const re = /\[([^\]]+)\]\(([^)\s]+)\)/g;
+        let m;
+        while ((m = re.exec(part))) links.push(m);
+        cards.push({
+          group, subgroup, ann: "", usefor: "",
+          html: links.length
+            ? links.map(l => `<a href="${l[2]}" target="_blank" rel="noopener">${esc(l[1])}</a>`)
+                    .join(" · ")
+            : esc(part),
+          txt: part.toLowerCase(),
+        });
+      }
+    }
+    const frag = document.createDocumentFragment();
+    let curG = null, curS = null, groupEl = null, subEl = null;
+    for (const c of cards) {
+      if (c.group !== curG) {
+        curG = c.group;
+        groupEl = document.createElement("div"); groupEl.className = "group";
+        const h = document.createElement("h3"); h.textContent = c.group ?? "";
+        groupEl.appendChild(h);
+        subEl = null; curS = null;
+        frag.appendChild(groupEl);
+      }
+      if (c.subgroup && c.subgroup !== curS) {
+        curS = c.subgroup;
+        subEl = document.createElement("div"); subEl.className = "subgroup";
+        const h = document.createElement("h4"); h.textContent = c.subgroup;
+        subEl.appendChild(h);
+        (groupEl || frag).appendChild(subEl);
+      }
+      const card = document.createElement("div");
+      card.className = "cardlink";
+      card.dataset.txt = (c.txt + " " + c.ann + " " + c.usefor).toLowerCase();
+      card.innerHTML = `<div>${c.html}</div>`
+        + (c.ann ? `<div class="ann">${inline(c.ann)}</div>` : "")
+        + (c.usefor ? `<div class="usefor">${inline(c.usefor)}</div>` : "");
+      (subEl || groupEl || frag).appendChild(card);
+    }
+    const search = document.createElement("input");
+    search.className = "search"; search.type = "search";
+    search.placeholder = "Rechercher une ressource…";
+    el.innerHTML = "";
+    el.appendChild(search);
+    el.appendChild(frag);
+    search.oninput = () => {
+      const q = search.value.toLowerCase();
+      el.querySelectorAll(".cardlink").forEach(c =>
+        c.style.display = (c.dataset.txt || "").includes(q) ? "" : "none");
+    };
+  } catch (e) {
+    el.innerHTML = `<p class="note">Ressources indisponibles (${esc(e.message)}).</p>`;
+  }
+}
+
+async function boot() {
+  try {
+    STATUS = JSON.parse(await get("../status.json"));
+  } catch (e) {
+    document.getElementById("tableau").innerHTML =
+      `<p class="note">status.json illisible (${esc(e.message)}). Le serveur tourne-t-il depuis la racine du workspace ?</p>`;
+  }
+  get("../config.json").then(c => {
+    const cfg = JSON.parse(c);
+    const hint = document.getElementById("phoneHint");
+    if (hint && cfg.urlTelephone) hint.innerHTML =
+      `📱 <a href="${cfg.urlTelephone}" style="color:inherit">${esc(cfg.urlTelephone)}</a>`;
+  }).catch(() => { /* http.server brut : pas d'affichage téléphone */ });
+  renderDashboard(STATUS);
+  renderLecons(STATUS);
+  renderJournal(STATUS);
+  renderRessources();
+  show(TABS.some(([id]) => id === currentTab()) ? currentTab() : "tableau");
+}
+boot();
+</script>
+</body>
+</html>

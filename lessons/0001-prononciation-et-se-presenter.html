@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leçon 1 — Les sons de l'allemand et se présenter</title>
+<style>
+  :root { --ink:#111; --muted:#666; --rule:#ddd; --accent:#a52a2a; --paper:#fffff8; --ok:#2e7d32; --ko:#c62828; --soft:#f6f4ea; }
+  html { background:var(--paper); }
+  body { font-family: "Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif; color:var(--ink); max-width:44rem; margin:0 auto; padding:2.5rem 1.25rem 5rem; line-height:1.6; font-size:1.06rem; }
+  header { margin-bottom:2.5rem; }
+  .kicker { color:var(--muted); font-size:.85rem; text-transform:uppercase; letter-spacing:.12em; }
+  h1 { font-weight:400; font-size:2.2rem; margin:.2rem 0 .4rem; letter-spacing:-.01em; line-height:1.15; }
+  h2 { font-weight:400; font-size:1.45rem; margin:2.6rem 0 .8rem; border-bottom:1px solid var(--rule); padding-bottom:.25rem; }
+  h3 { font-weight:600; font-size:1.05rem; margin:1.6rem 0 .5rem; }
+  .lead { font-size:1.15rem; color:#333; }
+  .meta { color:var(--muted); font-size:.92rem; }
+  .goal { background:var(--soft); border-left:3px solid var(--accent); padding:.8rem 1.1rem; margin:1.4rem 0; }
+  .de { font-weight:600; }
+  .say { color:var(--accent); font-style:italic; }
+  .fr { color:var(--muted); }
+  table { border-collapse:collapse; width:100%; margin:.8rem 0 1.2rem; font-size:1rem; }
+  th, td { text-align:left; padding:.42rem .5rem; border-bottom:1px solid var(--rule); vertical-align:top; }
+  th { font-weight:600; color:var(--muted); font-size:.82rem; text-transform:uppercase; letter-spacing:.06em; }
+  .dialogue p { margin:.35rem 0; }
+  .dialogue .who { display:inline-block; min-width:4.5rem; color:var(--muted); font-size:.9rem; }
+  .aside { font-size:.95rem; color:#444; border-top:1px dotted var(--rule); border-bottom:1px dotted var(--rule); padding:.6rem 0; margin:1.2rem 0; }
+  .step { counter-increment:s; position:relative; padding-left:2.3rem; margin:1.1rem 0; }
+  .step::before { content: counter(s); position:absolute; left:0; top:.1rem; width:1.55rem; height:1.55rem; border-radius:50%; background:var(--ink); color:var(--paper); font-size:.85rem; display:flex; align-items:center; justify-content:center; }
+  /* quiz */
+  .q { border:1px solid var(--rule); border-radius:6px; padding:.9rem 1rem; margin:1rem 0; background:#fff; }
+  .q legend, .q .stem { font-weight:600; margin-bottom:.4rem; }
+  .q label { display:block; padding:.35rem .5rem; border-radius:4px; cursor:pointer; }
+  .q label:hover { background:var(--soft); }
+  .q input { margin-right:.5rem; }
+  .fb { margin-top:.5rem; font-size:.95rem; display:none; padding:.5rem .7rem; border-radius:4px; }
+  .fb.ok { display:block; background:#e8f5e9; color:var(--ok); }
+  .fb.ko { display:block; background:#ffebee; color:var(--ko); }
+  .score { font-size:1.1rem; margin:1.2rem 0; padding:.8rem 1rem; background:var(--soft); border-radius:6px; display:none; }
+  textarea { width:100%; min-height:6.5rem; font:inherit; font-size:1rem; padding:.6rem; border:1px solid #bbb; border-radius:4px; box-sizing:border-box; }
+  button { font:inherit; font-size:.95rem; padding:.45rem 1rem; border:1px solid var(--ink); background:var(--ink); color:var(--paper); border-radius:4px; cursor:pointer; margin-top:.5rem; }
+  button.ghost { background:transparent; color:var(--ink); }
+  pre { background:#f3f3ee; padding:.8rem 1rem; overflow-x:auto; font-size:.9rem; border-radius:4px; }
+  ul.checks { list-style:none; padding:0; }
+  ul.checks li { padding:.2rem 0 .2rem 1.6rem; position:relative; }
+  ul.checks li::before { content:"○"; position:absolute; left:.2rem; color:var(--muted); }
+  ul.checks li.ok::before { content:"●"; color:var(--ok); }
+  a { color:var(--accent); }
+  footer { margin-top:3.5rem; color:var(--muted); font-size:.92rem; border-top:1px solid var(--rule); padding-top:1rem; }
+  .ask { background:#eef3f8; border-left:3px solid #35618e; padding:.8rem 1.1rem; margin:2rem 0; }
+  @media print { .q input, button { display:none; } body { max-width:none; padding:0; } }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="kicker">Leçon 1 · Niveau A1 · Semaine 1 · ≈ 30 minutes</div>
+  <h1>Les sons de l'allemand et se présenter</h1>
+  <p class="lead">Aujourd'hui tu apprends à lire l'allemand à voix haute sans le trahir, et à dire qui tu es en quatre phrases : ton nom, ton pays, ta ville, ton métier.</p>
+  <p class="meta">Pré-requis : aucun. Mission : <a href="../MISSION.md">emploi de développeur en Allemagne, Goethe B2</a>. Ces quatre phrases sont exactement le début de l'épreuve orale Goethe A1, et le début de tout entretien d'embauche.</p>
+</header>
+
+<div class="goal">
+<b>Le gain concret de cette leçon :</b> à la fin, tu peux dire et prononcer correctement<br>
+<span class="de">« Hallo, ich heiße …, ich komme aus …, ich wohne in … und ich bin Softwareentwickler. »</span>
+</div>
+
+<h2>1. Écoute d'abord (5 min)</h2>
+<p>Avant toute règle, entends la langue. Regarde le premier épisode de <b>Nicos Weg A1</b> de la Deutsche Welle (source primaire de ce cours, gratuite, sous-titrable) : <a href="https://learngerman.dw.com/fr/nicos-weg/c-36519687" target="_blank" rel="noopener">Nicos Weg A1, épisode 1 « Hallo! »</a>. Ne cherche pas à tout comprendre. Repère seulement : <span class="de">Hallo</span>, <span class="de">ich</span>, <span class="de">heiße</span>, <span class="de">Wie heißt du?</span></p>
+
+<h2>2. Quatre règles de prononciation pour aujourd'hui (7 min)</h2>
+<p>L'allemand se prononce comme il s'écrit. Il y a dix règles en tout, dans l'<a href="../reference/prononciation.html">aide-mémoire de prononciation</a>. Pour cette leçon, quatre suffisent :</p>
+
+<table>
+<thead><tr><th>Règle</th><th>Exemple</th><th>Se dit</th></tr></thead>
+<tbody>
+<tr><td><b>W</b> se prononce <b>[v]</b></td><td class="de">wohnen, wie, wo</td><td class="say">vo-nen, vi, vo</td></tr>
+<tr><td><b>EI</b> = <b>« aï »</b>, <b>IE</b> = <b>« i » long</b> (on dit la 2<sup>e</sup> lettre)</td><td class="de">heißen · Sie, wie</td><td class="say">haï-sen · zi, vi</td></tr>
+<tr><td><b>S</b> devant voyelle = <b>[z]</b> ; <b>ß</b> = [s]</td><td class="de">Sie, sind, heiße</td><td class="say">zi, zint, haï-se</td></tr>
+<tr><td><b>Accent sur la 1<sup>re</sup> syllabe</b>, et toutes les lettres se prononcent</td><td class="de">KOM-me, WOH-ne, NA-me</td><td class="say">le -e final se dit toujours</td></tr>
+</tbody>
+</table>
+
+<p class="aside"><b>Pourquoi c'est important pour le Goethe :</b> à l'épreuve <i>Sprechen</i>, un examinateur qui entend « ich <u>ouone</u> in Paris » (au lieu de <span class="say">vo-ne</span>) note un problème de prononciation dès la première phrase. Les habitudes se fixent maintenant, en semaine 1.</p>
+
+<h2>3. Le dialogue modèle (8 min)</h2>
+<p>Lis-le à voix haute trois fois. La première fois lentement, en suivant la colonne « se dit ».</p>
+
+<div class="dialogue">
+<p><span class="who">Anna</span> <span class="de">Hallo! Ich heiße Anna. Wie heißen Sie?</span><br><span class="who"></span> <span class="say">ha-lo ! ich haï-se a-na. vi haï-sen zi ?</span> <span class="fr">— Bonjour ! Je m'appelle Anna. Comment vous appelez-vous ?</span></p>
+<p><span class="who">Toi</span> <span class="de">Ich heiße Samuel. Ich komme aus Kamerun.</span><br><span class="who"></span> <span class="say">ich haï-se za-mou-él. ich ko-me aous ka-me-roun.</span> <span class="fr">— Je m'appelle Samuel. Je viens du Cameroun.</span></p>
+<p><span class="who">Anna</span> <span class="de">Und wo wohnen Sie?</span><br><span class="who"></span> <span class="say">ount vo vo-nen zi ?</span> <span class="fr">— Et où habitez-vous ?</span></p>
+<p><span class="who">Toi</span> <span class="de">Ich wohne in Lyon. Ich bin Softwareentwickler.</span><br><span class="who"></span> <span class="say">ich vo-ne in lyon. ich bin soft-vèr-ent-vik-la.</span> <span class="fr">— J'habite à Lyon. Je suis développeur logiciel.</span></p>
+<p><span class="who">Anna</span> <span class="de">Freut mich!</span> <span class="say">froït mich !</span> <span class="fr">— Enchantée !</span></p>
+</div>
+
+<p class="aside">Remplace le pays et la ville par les tiens : <span class="de">aus Frankreich</span> (France), <span class="de">aus Belgien</span> (Belgique), <span class="de">aus Kanada</span>, <span class="de">aus Marokko</span>, <span class="de">aus Senegal</span>, <span class="de">aus der Elfenbeinküste</span> (Côte d'Ivoire), <span class="de">aus Kamerun</span>. Si tu es une femme : <span class="de">Softwareentwickler<b>in</b></span>. Comme en français, <b>pas d'article devant le métier</b> : « je suis développeur » = <span class="de">ich bin Entwickler</span>.</p>
+
+<h2>4. La grammaire derrière ces phrases (7 min)</h2>
+
+<h3>Trois pronoms pour commencer</h3>
+<table>
+<thead><tr><th>Allemand</th><th>Français</th><th>Remarque</th></tr></thead>
+<tbody>
+<tr><td class="de">ich</td><td>je</td><td>Pas de majuscule (contrairement à l'anglais <i>I</i>).</td></tr>
+<tr><td class="de">du</td><td>tu</td><td>Amis, famille, collègues proches, enfants.</td></tr>
+<tr><td class="de">Sie</td><td>vous (politesse)</td><td><b>Toujours avec majuscule.</b> Inconnus, employeurs, entretiens. Le verbe prend la forme de l'infinitif : <span class="de">Sie heißen, Sie kommen, Sie wohnen</span>.</td></tr>
+</tbody>
+</table>
+
+<h3>Quatre verbes au présent</h3>
+<table>
+<thead><tr><th></th><th class="de">heißen</th><th class="de">kommen</th><th class="de">wohnen</th><th class="de">sein</th></tr></thead>
+<tbody>
+<tr><td class="fr">s'appeler / venir / habiter / être</td><td></td><td></td><td></td><td></td></tr>
+<tr><td class="de">ich</td><td>heiß<b>e</b></td><td>komm<b>e</b></td><td>wohn<b>e</b></td><td><b>bin</b></td></tr>
+<tr><td class="de">du</td><td>heiß<b>t</b></td><td>komm<b>st</b></td><td>wohn<b>st</b></td><td><b>bist</b></td></tr>
+<tr><td class="de">er / sie (il / elle)</td><td>heiß<b>t</b></td><td>komm<b>t</b></td><td>wohn<b>t</b></td><td><b>ist</b></td></tr>
+<tr><td class="de">Sie (vous)</td><td>heiß<b>en</b></td><td>komm<b>en</b></td><td>wohn<b>en</b></td><td><b>sind</b></td></tr>
+</tbody>
+</table>
+<p>La règle, comme en français : on prend le <b>radical</b> (l'infinitif sans <span class="de">-en</span> : <span class="de">komm-</span>) et on ajoute la terminaison <b>-e / -st / -t / -en</b>. <span class="de">sein</span> (être) est irrégulier, exactement comme « être » en français. Tu l'apprends par cœur.</p>
+<p class="aside">Pourquoi <span class="de">du heißt</span> et pas <span class="de">du heißst</span> ? Le radical se termine déjà par un son [s] (<span class="de">heiß-</span>), donc le <b>-st</b> se réduit à <b>-t</b>. Détail à connaître, pas à retenir aujourd'hui.</p>
+
+<h3>La règle d'or : le verbe est en 2<sup>e</sup> position</h3>
+<p>Dans une phrase déclarative, le verbe conjugué occupe <b>toujours la deuxième place</b>. Dans les phrases d'aujourd'hui, c'est naturel : <span class="de"><u>Ich</u> <b>heiße</b> Anna.</span> Dans une question avec un mot interrogatif, pareil : <span class="de"><u>Wie</u> <b>heißen</b> Sie?</span> · <span class="de"><u>Woher</u> <b>kommen</b> Sie?</span> · <span class="de"><u>Wo</u> <b>wohnen</b> Sie?</span> Cette règle va structurer tout ton allemand jusqu'au C1. On y reviendra à chaque leçon.</p>
+
+<h2>5. Pratique : quiz à correction immédiate (5 min)</h2>
+<p>Réponds sans regarder plus haut. Se tromper ici, c'est apprendre. Chaque question te donne la correction tout de suite.</p>
+
+<div id="quiz"></div>
+<div class="score" id="score"></div>
+
+<h2>6. Pratique : ta présentation</h2>
+<p>Écris ta propre présentation en quatre phrases (nom, pays, ville, métier). Le vérificateur ne juge que la structure, pas l'orthographe des noms propres.</p>
+<textarea id="intro" placeholder="Hallo! Ich heiße … Ich komme aus … Ich wohne in … Ich bin …"></textarea>
+<button id="checkIntro">Vérifier</button>
+<ul class="checks" id="introChecks">
+  <li data-k="heisse">Ich heiße + prénom</li>
+  <li data-k="komme">Ich komme aus + pays</li>
+  <li data-k="wohne">Ich wohne in + ville</li>
+  <li data-k="bin">Ich bin + métier (sans article)</li>
+  <li data-k="ich">« ich » écrit sans majuscule à l'intérieur de la phrase</li>
+</ul>
+
+<h2>7. Enregistre-toi (3 min)</h2>
+<p class="step">Ouvre le dictaphone de ton téléphone. Lis ta présentation à voix haute, puis les trois questions : <span class="de">Wie heißen Sie? Woher kommen Sie? Wo wohnen Sie?</span></p>
+<p class="step">Réécoute-toi et coche mentalement : W dit [v] ? <span class="de">Sie</span> dit « zi » ? <span class="de">heiße</span> dit « haï-se » ? -e final prononcé ?</p>
+<p class="step">Compare avec un natif : tape <span class="de">heißen</span>, <span class="de">wohnen</span>, <span class="de">Sie</span> sur <a href="https://forvo.com/languages/de/" target="_blank" rel="noopener">Forvo</a> et répète jusqu'à ce que ta version ressemble à la leur.</p>
+
+<h2>8. Mémoire à long terme : tes 12 premières cartes Anki</h2>
+<p>Ce cours repose sur la <b>répétition espacée</b> : quelques minutes par jour, tous les jours, valent plus que deux heures le dimanche. Installe <a href="https://apps.ankiweb.net/" target="_blank" rel="noopener">Anki</a> (gratuit sur PC ; sur Android l'appli AnkiDroid est gratuite). Crée un paquet « Allemand A1 » et importe ce fichier (copie-le dans un fichier <code>lecon01.txt</code>, puis dans Anki : Fichier → Importer, séparateur point-virgule) :</p>
+<pre>Hallo!;Bonjour ! / Salut !
+Ich heiße …;Je m'appelle …
+Wie heißen Sie?;Comment vous appelez-vous ? (politesse)
+Wie heißt du?;Comment tu t'appelles ?
+Ich komme aus …;Je viens de … (pays)
+Woher kommen Sie?;D'où venez-vous ?
+Ich wohne in …;J'habite à … (ville)
+Wo wohnen Sie?;Où habitez-vous ?
+Ich bin Softwareentwickler.;Je suis développeur logiciel.
+Freut mich!;Enchanté(e) !
+und;et
+sein : ich bin, du bist, er ist, Sie sind;être : je suis, tu es, il est, vous êtes</pre>
+<p>Règle du cours : <b>10 minutes d'Anki par jour</b>, dès demain. Réviser du français vers l'allemand (production), pas seulement l'inverse.</p>
+
+<h2>Ce que tu dois retenir</h2>
+<ul>
+  <li>W = [v], EI = « aï », IE = « i », S + voyelle = [z], accent sur la première syllabe, tout se prononce.</li>
+  <li><span class="de">ich / du / Sie</span> ; terminaisons <b>-e / -st / -t / -en</b> ; <span class="de">sein</span> = <span class="de">bin, bist, ist, sind</span>.</li>
+  <li>Le verbe conjugué est en <b>deuxième position</b>.</li>
+  <li><span class="de">Sie</span> de politesse prend une majuscule ; pas d'article devant le métier.</li>
+</ul>
+
+<div class="ask">
+<b>Ton professeur est disponible.</b> Quelque chose n'est pas clair (le son « ch », pourquoi <span class="de">Sie</span> a une majuscule, comment dire ton pays) ? Pose la question directement dans le terminal, en français. Colle aussi ta présentation écrite : je la corrige et je t'explique chaque correction.
+</div>
+
+<footer>
+<p><b>Source primaire recommandée :</b> <a href="https://learngerman.dw.com/fr/nicos-weg/c-36519687" target="_blank" rel="noopener">Deutsche Welle, Nicos Weg A1</a>, épisodes 1 à 3 (« Hallo! », « Woher kommst du? », « Wie geht's? »). Refais les exercices du site après cette leçon.<br>
+<b>Références du workspace :</b> <a href="../reference/prononciation.html">Aide-mémoire prononciation</a> · <a href="../reference/parcours.html">Feuille de route A1 → B2</a>.<br>
+<b>Prochaine leçon :</b> les nombres de 0 à 100, l'alphabet pour épeler son nom, et <span class="de">haben</span>. Objectif : donner son âge, son numéro de téléphone et épeler son nom, exactement comme dans la partie 1 du Sprechen A1.</p>
+<p>Leçon créée le 3 septembre 2026.</p>
+</footer>
+
+<script>
+(function () {
+  var questions = [
+    { stem: "Comment se prononce le W de « wohnen » ?",
+      opts: ["comme le V français", "comme le W anglais", "comme le F français"], ans: 0,
+      why: "W allemand = [v]. « wohnen » se dit « vo-nen »." },
+    { stem: "Dans « Sie », le groupe IE se dit :",
+      opts: ["un i long", "un ié bref", "un aï net"], ans: 0,
+      why: "IE = « i » long : on prononce la deuxième lettre. « Sie » = « zi »." },
+    { stem: "Dans « heißen », le groupe EI se dit :",
+      opts: ["aï", "é", "i"], ans: 0,
+      why: "EI = « aï ». « heißen » = « haï-sen »." },
+    { stem: "Le S initial de « Sie » et « sind » se prononce :",
+      opts: ["[z] comme zoo", "[s] comme sel", "[ch] comme chat"], ans: 0,
+      why: "S devant une voyelle = [z]. « sind » = « zint »." },
+    { stem: "Où tombe l'accent dans « arbeiten » (travailler) ?",
+      opts: ["première syllabe", "dernière syllabe", "deuxième syllabe"], ans: 0,
+      why: "Règle générale : AR-bei-ten. Le français accentue la fin, l'allemand le début." },
+    { stem: "Ich ___ aus Kamerun.",
+      opts: ["komme", "kommst", "kommen"], ans: 0,
+      why: "ich → terminaison -e : ich komme." },
+    { stem: "Woher ___ Sie?",
+      opts: ["kommen", "kommst", "kommt"], ans: 0,
+      why: "Sie (vous de politesse) → forme en -en : Sie kommen." },
+    { stem: "Ich ___ Entwickler.",
+      opts: ["bin", "ist", "sind"], ans: 0,
+      why: "sein est irrégulier : ich bin, du bist, er ist, Sie sind." },
+    { stem: "Wie ___ du?",
+      opts: ["heißt", "heiße", "heißen"], ans: 0,
+      why: "du → -st, mais après un radical en -ß on écrit seulement -t : du heißt." },
+    { stem: "Quelle phrase respecte la règle « verbe en 2e position » ?",
+      opts: ["Ich wohne in Lyon.", "Ich in Lyon wohne.", "Wohne ich in Lyon."], ans: 0,
+      why: "Ich (1) wohne (2) in Lyon. La troisième est une question fermée (verbe en 1re position), pas une déclaration." }
+  ];
+
+  // Mélange les options pour ne pas toujours avoir la bonne réponse en premier.
+  function shuffle(q) {
+    var idx = q.opts.map(function (_, i) { return i; });
+    for (var i = idx.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = idx[i]; idx[i] = idx[j]; idx[j] = t; }
+    return { stem: q.stem, why: q.why, opts: idx.map(function (i) { return q.opts[i]; }), ans: idx.indexOf(q.ans) };
+  }
+
+  var root = document.getElementById("quiz"), answered = 0, correct = 0;
+  questions.map(shuffle).forEach(function (q, n) {
+    var box = document.createElement("div"); box.className = "q";
+    var stem = document.createElement("div"); stem.className = "stem"; stem.textContent = (n + 1) + ". " + q.stem; box.appendChild(stem);
+    var fb = document.createElement("div"); fb.className = "fb";
+    q.opts.forEach(function (o, i) {
+      var lab = document.createElement("label"), inp = document.createElement("input");
+      inp.type = "radio"; inp.name = "q" + n; inp.value = i;
+      inp.addEventListener("change", function () {
+        box.querySelectorAll("input").forEach(function (x) { x.disabled = true; });
+        answered++;
+        if (i === q.ans) { correct++; fb.className = "fb ok"; fb.textContent = "Juste. " + q.why; }
+        else { fb.className = "fb ko"; fb.textContent = "Non : la bonne réponse est « " + q.opts[q.ans] + " ». " + q.why; }
+        if (answered === questions.length) {
+          var s = document.getElementById("score"); s.style.display = "block";
+          var msg = correct >= 9 ? "Excellent. Tu peux passer à la partie 6." : correct >= 7 ? "Bien. Relis les deux ou trois points ratés dans la partie 2 ou 4, puis continue." : "Reprends calmement les parties 2 et 4, puis recharge la page pour refaire le quiz (l'ordre des réponses change).";
+          s.textContent = "Score : " + correct + " / " + questions.length + ". " + msg;
+        }
+      });
+      lab.appendChild(inp); lab.appendChild(document.createTextNode(o)); box.appendChild(lab);
+    });
+    box.appendChild(fb); root.appendChild(box);
+  });
+
+  document.getElementById("checkIntro").addEventListener("click", function () {
+    var t = document.getElementById("intro").value;
+    var low = t.toLowerCase().replace(/ss/g, "ß");
+    var checks = {
+      heisse: /ich heiße\s+\S+/.test(low),
+      komme: /ich komme aus\s+\S+/.test(low),
+      wohne: /ich wohne in\s+\S+/.test(low),
+      bin: /ich bin\s+(?!ein\b|eine\b|der\b|die\b)\S+/.test(low),
+      ich: !/[a-zäöüß,]\s+Ich\b/.test(t)
+    };
+    document.querySelectorAll("#introChecks li").forEach(function (li) { li.className = checks[li.getAttribute("data-k")] ? "ok" : ""; });
+  });
+})();
+</script>
+</body>
+</html>
