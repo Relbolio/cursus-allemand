@@ -2,6 +2,13 @@
 
 L'interface web du cursus se lance depuis cette racine du workspace.
 
+## Accès en ligne (GitHub Pages)
+
+Une fois le repo public et Pages activé (branche `main`, racine), l'interface est aussi accessible sans serveur local :
+
+- **En ligne** : https://relbolio.github.io/cursus-allemand/site/
+- Différences : l'icône 📱 (IP locale) est masquée — normal, `/config.json` n'existe qu'avec `serveur.py` ; l'onglet Leçons, le journal et les ressources fonctionnent à l'identique.
+
 ## Démarrer
 
 Double-cliquez sur **`serveur.bat`** depuis l'Explorateur Windows, ou en ligne de commande :
