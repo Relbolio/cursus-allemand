@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leçon 2 — Épeler, compter, dire son âge</title>
+<style>
+  :root { --ink:#111; --muted:#666; --rule:#ddd; --accent:#a52a2a; --paper:#fffff8; --ok:#2e7d32; --ko:#c62828; --soft:#f6f4ea; }
+  html { background:var(--paper); }
+  body { font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif; color:var(--ink); max-width:44rem; margin:0 auto; padding:2.5rem 1.25rem 5rem; line-height:1.6; font-size:1.06rem; }
+  header { margin-bottom:2.5rem; }
+  .kicker { color:var(--muted); font-size:.85rem; text-transform:uppercase; letter-spacing:.12em; }
+  h1 { font-weight:400; font-size:2.2rem; margin:.2rem 0 .4rem; letter-spacing:-.01em; line-height:1.15; }
+  h2 { font-weight:400; font-size:1.45rem; margin:2.6rem 0 .8rem; border-bottom:1px solid var(--rule); padding-bottom:.25rem; }
+  h3 { font-weight:600; font-size:1.05rem; margin:1.6rem 0 .5rem; }
+  .lead { font-size:1.15rem; color:#333; }
+  .meta { color:var(--muted); font-size:.92rem; }
+  .goal { background:var(--soft); border-left:3px solid var(--accent); padding:.8rem 1.1rem; margin:1.4rem 0; }
+  .de { font-weight:600; }
+  .say { color:var(--accent); font-style:italic; }
+  .fr { color:var(--muted); }
+  table { border-collapse:collapse; width:100%; margin:.8rem 0 1.2rem; font-size:1rem; }
+  th, td { text-align:left; padding:.42rem .5rem; border-bottom:1px solid var(--rule); vertical-align:top; }
+  th { font-weight:600; color:var(--muted); font-size:.82rem; text-transform:uppercase; letter-spacing:.06em; }
+  .aside { font-size:.95rem; color:#444; border-top:1px dotted var(--rule); border-bottom:1px dotted var(--rule); padding:.6rem 0; margin:1.2rem 0; }
+  .corr { border:1px solid var(--rule); border-radius:6px; padding:.9rem 1.1rem; background:#fff; margin:1rem 0; }
+  .corr .bad { color:var(--ko); text-decoration:line-through; }
+  .corr .good { color:var(--ok); font-weight:600; }
+  .letters { display:flex; flex-wrap:wrap; gap:.35rem; margin:.6rem 0 1rem; }
+  .letters button { margin:0; padding:.35rem .6rem; font-size:1rem; background:#fff; color:var(--ink); border:1px solid #bbb; min-width:2.6rem; }
+  .letters button small { display:block; font-size:.7rem; color:var(--accent); font-style:italic; }
+  .drill { border:1px solid var(--rule); border-radius:6px; padding:.9rem 1rem; margin:1rem 0; background:#fff; }
+  .drill .prompt { font-size:1.6rem; font-weight:600; margin:.3rem 0; }
+  .drill input[type=text] { font:inherit; font-size:1.05rem; padding:.45rem .6rem; border:1px solid #bbb; border-radius:4px; width:16rem; max-width:100%; }
+  .q { border:1px solid var(--rule); border-radius:6px; padding:.9rem 1rem; margin:1rem 0; background:#fff; }
+  .q .stem { font-weight:600; margin-bottom:.4rem; }
+  .q label { display:block; padding:.35rem .5rem; border-radius:4px; cursor:pointer; }
+  .q label:hover { background:var(--soft); }
+  .q input { margin-right:.5rem; }
+  .fb { margin-top:.5rem; font-size:.95rem; display:none; padding:.5rem .7rem; border-radius:4px; }
+  .fb.ok { display:block; background:#e8f5e9; color:var(--ok); }
+  .fb.ko { display:block; background:#ffebee; color:var(--ko); }
+  .score { font-size:1.1rem; margin:1.2rem 0; padding:.8rem 1rem; background:var(--soft); border-radius:6px; display:none; }
+  textarea { width:100%; min-height:7rem; font:inherit; font-size:1rem; padding:.6rem; border:1px solid #bbb; border-radius:4px; box-sizing:border-box; }
+  button { font:inherit; font-size:.95rem; padding:.45rem 1rem; border:1px solid var(--ink); background:var(--ink); color:var(--paper); border-radius:4px; cursor:pointer; margin-top:.5rem; }
+  button.ghost { background:transparent; color:var(--ink); }
+  ul.checks { list-style:none; padding:0; }
+  ul.checks li { padding:.2rem 0 .2rem 1.6rem; position:relative; }
+  ul.checks li::before { content:"○"; position:absolute; left:.2rem; color:var(--muted); }
+  ul.checks li.ok::before { content:"●"; color:var(--ok); }
+  code { background:#f3f3ee; padding:.1rem .3rem; border-radius:3px; font-size:.92rem; }
+  a { color:var(--accent); }
+  footer { margin-top:3.5rem; color:var(--muted); font-size:.92rem; border-top:1px solid var(--rule); padding-top:1rem; }
+  .ask { background:#eef3f8; border-left:3px solid #35618e; padding:.8rem 1.1rem; margin:2rem 0; }
+  .novoice { display:none; font-size:.9rem; color:var(--ko); }
+  @media print { button, .drill, .q input { display:none; } body { max-width:none; padding:0; } }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="kicker">Leçon 2 · Niveau A1 · ≈ 35 minutes</div>
+  <h1>Épeler son nom, compter jusqu'à 100, dire son âge</h1>
+  <p class="lead">À l'oral du Goethe A1, après « Wie heißen Sie? », l'examinateur demande toujours d'épeler quelque chose et de dicter un numéro. Aujourd'hui tu apprends exactement ça, plus le verbe <span class="de">haben</span>.</p>
+  <p class="meta">Pré-requis : <a href="0001-prononciation-et-se-presenter.html">leçon 1</a>. Fiche à garder ouverte : <a href="../reference/nombres-alphabet.html">nombres, alphabet, sein et haben</a>.</p>
+</header>
+
+<h2>0. Correction de ta présentation</h2>
+<p>Tu as écrit : <i>« ich heibe Borel Tene, ich komme aus Kamerun, ich wohne in Douala, ich bin softwarentwickler »</i>. La structure est juste dans les quatre phrases : sujet, verbe en deuxième position, complément, et les terminaisons en <b>-e</b> sont correctes. Trois corrections d'orthographe :</p>
+<div class="corr">
+<p><span class="bad">ich heibe</span> → <span class="good">Ich heiße</span>. La lettre <span class="de">ß</span> n'est pas un b : c'est l'<b>Eszett</b>, une lettre à part qui se prononce [s]. Pour la taper : <code>Alt + 0223</code>. Si tu ne peux vraiment pas, <span class="de">heisse</span> est lisible, mais à l'examen on attend <span class="de">heiße</span>.</p>
+<p><span class="bad">softwarentwickler</span> → <span class="good">Softwareentwickler</span>. Deux règles : <b>tout nom commun prend une majuscule en allemand</b> (<span class="de">Softwareentwickler, Kamerun, Douala, Name, Telefonnummer</span>), et le mot est composé de <span class="de">Software</span> + <span class="de">Entwickler</span>, donc <b>deux e</b> se suivent.</p>
+<p><span class="bad">ich … , ich … , ich …</span> → <span class="good">Ich … . Ich … . Ich … .</span> Chaque phrase commence par une majuscule et se termine par un point. <span class="de">ich</span> reste en minuscule seulement au milieu d'une phrase.</p>
+<p><b>Version finale :</b> <span class="de">Hallo! Ich heiße Borel Tene. Ich komme aus Kamerun. Ich wohne in Douala. Ich bin Softwareentwickler.</span></p>
+</div>
+<p class="aside">La majuscule des noms est la faute n° 1 des francophones à l'écrit jusqu'au B2. Prends l'habitude dès maintenant : dans chaque phrase que tu écris, cherche les noms et vérifie leur majuscule.</p>
+
+<div class="goal">
+<b>Le gain concret de cette leçon :</b> à la fin, tu peux dire<br>
+<span class="de">« Ich bin 30 Jahre alt. Ich buchstabiere: B-O-R-E-L. Meine Telefonnummer ist null sechs sieben … »</span>
+</div>
+
+<h2>1. Écoute d'abord (10 min)</h2>
+<p>Trois leçons courtes de Nicos Weg A1 sur la Deutsche Welle, dans l'ordre. Fais aussi leurs exercices en ligne, c'est là que le vocabulaire se fixe :</p>
+<ol>
+  <li><a href="https://learngerman.dw.com/fr/von-a-bis-z/l-49566478" target="_blank" rel="noopener">Leçon 4 « Von A bis Z »</a> : l'alphabet et épeler.</li>
+  <li><a href="https://learngerman.dw.com/fr/zahlen-von-1-bis-100/l-49594581" target="_blank" rel="noopener">Leçon 9 « Zahlen von 1 bis 100 »</a> : les nombres.</li>
+  <li><a href="https://learngerman.dw.com/fr/wichtige-nummern/l-49606319" target="_blank" rel="noopener">Leçon 10 « Wichtige Nummern »</a> : téléphone et numéros importants.</li>
+</ol>
+<p class="aside">Si tu ne l'as pas encore fait, les leçons DW 2 à 8 (<span class="de">Kein Problem!</span> à <span class="de">Nico hat ein Problem</span>) complètent la leçon 1 : salutations, <span class="de">Wie geht's?</span>, nationalités. L'index complet est dans la <a href="../reference/nicos-weg-a1.html">fiche Nicos Weg A1</a>.</p>
+
+<h2>2. L'alphabet : les 30 lettres (6 min)</h2>
+<p>Clique sur une lettre pour l'entendre prononcée par la voix allemande de ton ordinateur, puis répète. Les pièges sont en rouge sous la lettre.</p>
+<p class="novoice" id="novoice">Aucune voix allemande n'est installée sur ce navigateur. Utilise la colonne « se dit » de la <a href="../reference/nombres-alphabet.html">fiche</a> et vérifie sur <a href="https://forvo.com/languages/de/" target="_blank" rel="noopener">Forvo</a>. Sur Windows : Paramètres → Heure et langue → Langue → ajouter « Deutsch » avec le pack de voix.</p>
+<div class="letters" id="letters"></div>
+<table>
+<thead><tr><th>Pour épeler, tu as besoin de</th><th>Allemand</th></tr></thead>
+<tbody>
+<tr><td>Comment ça s'écrit ?</td><td class="de">Wie schreibt man das?</td></tr>
+<tr><td>Épelez, s'il vous plaît.</td><td class="de">Buchstabieren Sie bitte.</td></tr>
+<tr><td>J'épelle : …</td><td class="de">Ich buchstabiere: …</td></tr>
+<tr><td>lettre double (LL, EE, NN)</td><td class="de">Doppel-L, Doppel-E, Doppel-N</td></tr>
+<tr><td>trait d'union · point · arobase · tiret bas</td><td class="de">Bindestrich · Punkt · at · Unterstrich</td></tr>
+<tr><td>Pouvez-vous répéter ? Plus lentement.</td><td class="de">Können Sie das bitte wiederholen? Langsamer, bitte.</td></tr>
+</tbody>
+</table>
+<p>Ton nom épelé : <span class="de">B-O-R-E-L</span> = <span class="say">bé, o, èr, é, èl</span> · <span class="de">T-E-N-E</span> = <span class="say">té, é, èn, é</span>. Attention au <b>E</b> : « é », pas « eu ». C'est la lettre que les francophones ratent le plus.</p>
+
+<h2>3. Les nombres : trois blocs et une règle (7 min)</h2>
+<table>
+<thead><tr><th>Bloc</th><th>Contenu</th><th>À retenir</th></tr></thead>
+<tbody>
+<tr><td><b>0 à 12</b></td><td class="de">null, eins, zwei, drei, vier, fünf, sechs, sieben, acht, neun, zehn, elf, zwölf</td><td>Par cœur, comme en français.</td></tr>
+<tr><td><b>13 à 19</b></td><td class="de">dreizehn, vierzehn, fünfzehn, <u>sech</u>zehn, <u>sieb</u>zehn, achtzehn, neunzehn</td><td>Unité + <span class="de">zehn</span>. 16 et 17 sont raccourcis : <span class="de">sechs</span> perd son s, <span class="de">sieben</span> perd <i>-en</i>.</td></tr>
+<tr><td><b>Dizaines</b></td><td class="de">zwanzig, drei<u>ßig</u>, vierzig, fünfzig, <u>sech</u>zig, <u>sieb</u>zig, achtzig, neunzig, hundert</td><td>Terminaison <span class="de">-zig</span> (dit « tsich »), sauf <span class="de">dreißig</span>.</td></tr>
+</tbody>
+</table>
+<div class="goal"><b>La règle de 21 à 99 :</b> unité + <span class="de">und</span> + dizaine, en un seul mot, dans l'ordre inverse du français.<br>
+24 = <span class="de">vierundzwanzig</span> (« quatre-et-vingt ») · 31 = <span class="de"><u>ein</u>unddreißig</span> (<span class="de">eins</span> perd son s devant <span class="de">und</span>) · 58 = <span class="de">achtundfünfzig</span> · 99 = <span class="de">neunundneunzig</span>.</div>
+<p class="aside">Pour un développeur c'est un simple algorithme : <code>unité + "und" + dizaine</code>, avec trois cas particuliers (1 → <i>ein</i>, 16/17 et 60/70 raccourcis, 30 en <i>-ßig</i>). Le piège à l'écoute : quand tu entends <span class="say">« vier-und-zwanzig »</span>, tu dois écrire 2 puis 4, pas 4 puis 2. Le drill ci-dessous entraîne exactement ça.</p>
+
+<h3>Drill A : du chiffre au mot</h3>
+<div class="drill">
+  <div>Écris ce nombre en toutes lettres (ß ou ss acceptés) :</div>
+  <div class="prompt" id="dA-num">—</div>
+  <input type="text" id="dA-in" autocomplete="off" spellcheck="false" placeholder="ex. vierundzwanzig">
+  <button id="dA-check">Vérifier</button> <button class="ghost" id="dA-next">Suivant</button>
+  <div class="fb" id="dA-fb"></div>
+  <div class="meta" id="dA-score"></div>
+</div>
+
+<h3>Drill B : dictée de nombres (écoute)</h3>
+<div class="drill">
+  <div>Clique sur « Écouter », puis tape le nombre en chiffres. Objectif : 8 sur 10 sans réécouter.</div>
+  <button id="dB-play">Écouter</button> <button class="ghost" id="dB-again">Réécouter</button>
+  <div style="margin-top:.5rem"><input type="text" id="dB-in" inputmode="numeric" autocomplete="off" placeholder="ex. 42"> <button id="dB-check">Vérifier</button></div>
+  <div class="fb" id="dB-fb"></div>
+  <div class="meta" id="dB-score"></div>
+</div>
+
+<h3>Drill C : dictée de lettres (écoute)</h3>
+<div class="drill">
+  <div>On t'épelle un mot allemand lettre par lettre. Tape le mot. Objectif : 6 sur 8.</div>
+  <button id="dC-play">Écouter</button> <button class="ghost" id="dC-again">Réécouter</button>
+  <div style="margin-top:.5rem"><input type="text" id="dC-in" autocomplete="off" spellcheck="false" placeholder="ex. Douala"> <button id="dC-check">Vérifier</button></div>
+  <div class="fb" id="dC-fb"></div>
+  <div class="meta" id="dC-score"></div>
+</div>
+
+<h2>4. <i>haben</i>, et le tableau complet des pronoms (5 min)</h2>
+<p>La leçon 1 t'a donné <span class="de">ich, du, er/sie, Sie</span>. Voici le reste, avec les deux verbes les plus fréquents de la langue :</p>
+<table>
+<thead><tr><th>Pronom</th><th>Français</th><th class="de">sein</th><th class="de">haben</th><th>Régulier : <i>kommen</i></th></tr></thead>
+<tbody>
+<tr><td class="de">ich</td><td>je</td><td class="de">bin</td><td class="de">habe</td><td>komm<b>e</b></td></tr>
+<tr><td class="de">du</td><td>tu</td><td class="de">bist</td><td class="de">ha<b>st</b></td><td>komm<b>st</b></td></tr>
+<tr><td class="de">er / sie / es</td><td>il / elle / neutre</td><td class="de">ist</td><td class="de">ha<b>t</b></td><td>komm<b>t</b></td></tr>
+<tr><td class="de">wir</td><td>nous</td><td class="de">sind</td><td class="de">haben</td><td>komm<b>en</b></td></tr>
+<tr><td class="de">ihr</td><td>vous (groupe tutoyé)</td><td class="de">seid</td><td class="de">habt</td><td>komm<b>t</b></td></tr>
+<tr><td class="de">sie</td><td>ils / elles</td><td class="de">sind</td><td class="de">haben</td><td>komm<b>en</b></td></tr>
+<tr><td class="de">Sie</td><td>vous (politesse)</td><td class="de">sind</td><td class="de">haben</td><td>komm<b>en</b></td></tr>
+</tbody>
+</table>
+<p><span class="de">haben</span> est presque régulier : seules les formes <span class="de">du hast</span> et <span class="de">er hat</span> perdent le <b>b</b>. Remarque le motif qui vaut pour <b>tous</b> les verbes : <span class="de">wir</span>, <span class="de">sie</span> (pluriel) et <span class="de">Sie</span> prennent toujours la forme de l'infinitif.</p>
+<p class="aside"><b>Piège majeur pour un francophone :</b> l'âge se dit avec <span class="de">sein</span>, pas avec <span class="de">haben</span>. <span class="de">Ich <b>bin</b> 30 Jahre alt</span> (« je suis 30 ans vieux »), jamais <span class="bad">ich habe 30 Jahre</span>. En revanche : <span class="de">Ich habe eine Frage</span>, <span class="de">Ich habe Zeit</span>, <span class="de">Hast du ein Handy?</span></p>
+
+<h2>5. Quiz (5 min)</h2>
+<p>Sans regarder plus haut. La correction est immédiate, l'ordre des réponses change à chaque rechargement.</p>
+<div id="quiz"></div>
+<div class="score" id="score"></div>
+
+<h2>6. Ta présentation, version 2</h2>
+<p>Réécris ta présentation avec les nouveaux éléments : nom, âge, pays, ville, métier, langues, et ton numéro de téléphone en toutes lettres (invente-le si tu préfères). Le vérificateur contrôle la structure et les majuscules.</p>
+<textarea id="intro" placeholder="Hallo! Ich heiße Borel Tene. Ich bin … Jahre alt. Ich komme aus Kamerun. Ich wohne in Douala. Ich bin Softwareentwickler. Ich spreche Französisch und ein bisschen Englisch. Meine Telefonnummer ist …"></textarea>
+<button id="checkIntro">Vérifier</button>
+<ul class="checks" id="introChecks">
+  <li data-k="heisse">Ich heiße + nom (avec ß ou ss)</li>
+  <li data-k="alt">Ich bin + nombre + Jahre alt (avec <i>bin</i>, pas <i>habe</i>)</li>
+  <li data-k="komme">Ich komme aus + pays</li>
+  <li data-k="wohne">Ich wohne in + ville</li>
+  <li data-k="beruf">Ich bin + métier avec majuscule</li>
+  <li data-k="sprache">Ich spreche + langue(s)</li>
+  <li data-k="tel">Meine Telefonnummer ist + nombres en lettres</li>
+  <li data-k="caps">Chaque phrase commence par une majuscule</li>
+</ul>
+
+<h2>7. Enregistre-toi (3 min)</h2>
+<p>Dictaphone : lis ta présentation, puis épelle ton nom et ton prénom, puis dicte ton numéro. Réécoute : les <b>E</b> épelés sonnent-ils « é » ? Les nombres à deux chiffres sont-ils à l'envers du français ? Le <span class="de">-zig</span> fait-il « tsich » ?</p>
+
+<h2>8. Anki : 49 cartes générales + 20 cartes IT</h2>
+<p>Deux fichiers prêts à importer sont dans le dossier <code>anki/</code> du workspace : <code>lecon02-general.txt</code> (nombres, âge, téléphone, épellation, <i>haben</i>) et <code>lecon02-it.txt</code> (ton premier vocabulaire informatique : <span class="de">der Rechner, die Datei, der Fehler, das Passwort, die Version</span>…). Mode d'emploi dans <code>anki/README.md</code>. Le fichier de la leçon 1 y est aussi, complété avec tes propres données.</p>
+<p class="aside">Les noms sont donnés avec leur article et leur pluriel. En allemand, on n'apprend jamais « Datei », on apprend « <span class="de">die Datei, die Dateien</span> ». La leçon 3 t'expliquera pourquoi le genre est vital.</p>
+
+<h2>Ce que tu dois retenir</h2>
+<ul>
+  <li>E = « é », I = « i », J = « yott », V = « faou », W = « vé », Z = « tsètt », ß = « èss-tsètt ».</li>
+  <li>21 à 99 : unité + <span class="de">und</span> + dizaine, en un mot. 16, 17, 60, 70 raccourcis ; 30 = <span class="de">dreißig</span>.</li>
+  <li><span class="de">haben</span> : <span class="de">habe, hast, hat, haben, habt, haben</span>. L'âge se dit avec <span class="de">sein</span>.</li>
+  <li>Tout nom prend une majuscule. Chaque phrase commence par une majuscule et finit par un point.</li>
+</ul>
+
+<div class="ask">
+<b>Ton professeur est disponible.</b> Colle ta présentation version 2 dans le terminal : je la corrige. Questions fréquentes à ce stade : « pourquoi <span class="de">ihr</span> et <span class="de">Sie</span> », « comment dire 101 ou 2026 », « comment dire mon indicatif +237 » (<span class="de">plus zwei drei sieben</span>). Demande.
+</div>
+
+<footer>
+<p><b>Source primaire :</b> Deutsche Welle, Nicos Weg A1, leçons <a href="https://learngerman.dw.com/fr/von-a-bis-z/l-49566478" target="_blank" rel="noopener">4</a>, <a href="https://learngerman.dw.com/fr/zahlen-von-1-bis-100/l-49594581" target="_blank" rel="noopener">9</a> et <a href="https://learngerman.dw.com/fr/wichtige-nummern/l-49606319" target="_blank" rel="noopener">10</a>. Pour la conjugaison de <i>haben</i> et <i>sein</i> en français : <a href="https://deutsch.lingolia.com/fr/grammaire/les-temps" target="_blank" rel="noopener">Lingolia, les temps (présent)</a>.<br>
+<b>Références :</b> <a href="../reference/nombres-alphabet.html">nombres, alphabet, sein et haben</a> · <a href="../reference/prononciation.html">prononciation</a> · <a href="../reference/nicos-weg-a1.html">index Nicos Weg A1</a> · <a href="../reference/parcours.html">feuille de route</a>.<br>
+<b>Prochaine leçon :</b> <span class="de">der, die, das</span> : le genre des noms, le pluriel, <span class="de">Was ist das?</span> et <span class="de">kein</span>. Objectif : nommer les objets de ton bureau et de ton ordinateur.</p>
+<p>Leçon créée le 21 septembre 2026.</p>
+</footer>
+
+<script>
+(function () {
+  /* ---------- Voix allemande ---------- */
+  var voice = null, haveVoice = false;
+  function pickVoice() {
+    if (!("speechSynthesis" in window)) return;
+    var vs = speechSynthesis.getVoices();
+    voice = vs.filter(function (v) { return /^de/i.test(v.lang); })[0] || null;
+    haveVoice = !!voice;
+    document.getElementById("novoice").style.display = haveVoice ? "none" : "block";
+  }
+  pickVoice();
+  if ("speechSynthesis" in window) speechSynthesis.onvoiceschanged = pickVoice;
+  function speak(text, rate) {
+    if (!haveVoice) { alert("Pas de voix allemande disponible : texte à lire toi-même : " + text); return; }
+    speechSynthesis.cancel();
+    var u = new SpeechSynthesisUtterance(text); u.voice = voice; u.lang = voice.lang; u.rate = rate || 0.85;
+    speechSynthesis.speak(u);
+  }
+
+  /* ---------- Alphabet ---------- */
+  var letters = [["A","a"],["B","bé"],["C","tsé"],["D","dé"],["E","é !"],["F","èf"],["G","gué"],["H","ha"],["I","i !"],["J","yott !"],["K","ka"],["L","èl"],["M","èm"],["N","èn"],["O","o"],["P","pé"],["Q","kou"],["R","èr"],["S","èss"],["T","té"],["U","ou"],["V","faou !"],["W","vé !"],["X","iks"],["Y","upsilonn !"],["Z","tsètt !"],["Ä","è"],["Ö","eu"],["Ü","u"],["ß","èss-tsètt"]];
+  var lroot = document.getElementById("letters");
+  letters.forEach(function (l) {
+    var b = document.createElement("button"); b.type = "button";
+    b.innerHTML = l[0] + "<small>" + l[1] + "</small>";
+    if (/!/.test(l[1])) b.style.borderColor = "#a52a2a";
+    b.addEventListener("click", function () { speak(l[0] === "ß" ? "Eszett" : l[0], 0.8); });
+    lroot.appendChild(b);
+  });
+
+  /* ---------- Nombres ---------- */
+  var units = ["null","eins","zwei","drei","vier","fünf","sechs","sieben","acht","neun","zehn","elf","zwölf","dreizehn","vierzehn","fünfzehn","sechzehn","siebzehn","achtzehn","neunzehn"];
+  var tens = [null,null,"zwanzig","dreißig","vierzig","fünfzig","sechzig","siebzig","achtzig","neunzig"];
+  function word(n) {
+    if (n < 20) return units[n];
+    if (n === 100) return "hundert";
+    var u = n % 10, t = Math.floor(n / 10);
+    if (u === 0) return tens[t];
+    return (u === 1 ? "ein" : units[u]) + "und" + tens[t];
+  }
+  function norm(s) { return s.toLowerCase().replace(/ß/g, "ss").replace(/[^a-zäöü]/g, ""); }
+  function rnd(a, b) { return a + Math.floor(Math.random() * (b - a + 1)); }
+  function pickNumber() { var r = Math.random(); return r < 0.15 ? rnd(0, 12) : r < 0.35 ? rnd(13, 19) : r < 0.5 ? rnd(2, 10) * 10 : rnd(21, 99); }
+
+  // Drill A
+  var aN, aOk = 0, aTot = 0;
+  function aNext() { aN = pickNumber(); document.getElementById("dA-num").textContent = aN; document.getElementById("dA-in").value = ""; document.getElementById("dA-fb").className = "fb"; document.getElementById("dA-in").focus(); }
+  document.getElementById("dA-next").addEventListener("click", aNext);
+  document.getElementById("dA-check").addEventListener("click", function () {
+    var got = norm(document.getElementById("dA-in").value), exp = word(aN), fb = document.getElementById("dA-fb"); aTot++;
+    if (got === norm(exp) || (aN === 100 && got === "einhundert")) { aOk++; fb.className = "fb ok"; fb.textContent = "Juste : " + exp + "."; }
+    else { fb.className = "fb ko"; fb.textContent = "Non. " + aN + " = " + exp + "."; }
+    document.getElementById("dA-score").textContent = "Score : " + aOk + " / " + aTot;
+    if (haveVoice) speak(exp);
+  });
+  document.getElementById("dA-in").addEventListener("keydown", function (e) { if (e.key === "Enter") document.getElementById("dA-check").click(); });
+  aNext();
+
+  // Drill B
+  var bN = null, bOk = 0, bTot = 0;
+  document.getElementById("dB-play").addEventListener("click", function () { bN = pickNumber(); document.getElementById("dB-in").value = ""; document.getElementById("dB-fb").className = "fb"; speak(word(bN)); document.getElementById("dB-in").focus(); });
+  document.getElementById("dB-again").addEventListener("click", function () { if (bN !== null) speak(word(bN), 0.7); });
+  document.getElementById("dB-check").addEventListener("click", function () {
+    if (bN === null) return;
+    var got = parseInt(document.getElementById("dB-in").value, 10), fb = document.getElementById("dB-fb"); bTot++;
+    if (got === bN) { bOk++; fb.className = "fb ok"; fb.textContent = "Juste : " + bN + " = " + word(bN) + "."; }
+    else { fb.className = "fb ko"; fb.textContent = "Non : c'était " + bN + " (" + word(bN) + ")."; }
+    document.getElementById("dB-score").textContent = "Score : " + bOk + " / " + bTot;
+    bN = null;
+  });
+  document.getElementById("dB-in").addEventListener("keydown", function (e) { if (e.key === "Enter") document.getElementById("dB-check").click(); });
+
+  // Drill C : épellation
+  var words = ["Douala","Kamerun","Berlin","Java","Python","Entwickler","Firma","Passwort","Datei","Tene","Borel","Hamburg","Software","Projekt","Version","Zahl"];
+  var cW = null, cOk = 0, cTot = 0;
+  function spellText(w) {
+    var out = [], up = w.toUpperCase();
+    for (var i = 0; i < up.length; i++) {
+      var ch = up[i];
+      if (i > 0 && up[i - 1] === ch) { out.pop(); out.push("Doppel " + ch); continue; }
+      out.push(ch === "ß" ? "Eszett" : ch);
+    }
+    return out.join(", ");
+  }
+  document.getElementById("dC-play").addEventListener("click", function () { cW = words[rnd(0, words.length - 1)]; document.getElementById("dC-in").value = ""; document.getElementById("dC-fb").className = "fb"; speak(spellText(cW), 0.7); document.getElementById("dC-in").focus(); });
+  document.getElementById("dC-again").addEventListener("click", function () { if (cW) speak(spellText(cW), 0.6); });
+  document.getElementById("dC-check").addEventListener("click", function () {
+    if (!cW) return;
+    var got = document.getElementById("dC-in").value.trim().toLowerCase(), fb = document.getElementById("dC-fb"); cTot++;
+    if (got === cW.toLowerCase()) { cOk++; fb.className = "fb ok"; fb.textContent = "Juste : " + cW + "."; }
+    else { fb.className = "fb ko"; fb.textContent = "Non : c'était " + cW + " (" + spellText(cW) + ")."; }
+    document.getElementById("dC-score").textContent = "Score : " + cOk + " / " + cTot;
+    cW = null;
+  });
+  document.getElementById("dC-in").addEventListener("keydown", function (e) { if (e.key === "Enter") document.getElementById("dC-check").click(); });
+
+  /* ---------- Quiz ---------- */
+  var questions = [
+    { stem: "Comment épelle-t-on la lettre E en allemand ?", opts: ["é", "i", "eu"], ans: 0, why: "E se dit « é ». C'est I qui se dit « i »." },
+    { stem: "La lettre W s'épelle :", opts: ["vé", "double-vé", "faou"], ans: 0, why: "W = « vé » ; V = « faou »." },
+    { stem: "47 s'écrit :", opts: ["siebenundvierzig", "vierzigundsieben", "vierundsiebzig"], ans: 0, why: "Unité + und + dizaine : sieben-und-vierzig. « vierundsiebzig » serait 74." },
+    { stem: "Tu entends « dreiundzwanzig ». Tu écris :", opts: ["23", "32", "33"], ans: 0, why: "drei (3) + und + zwanzig (20) = 23. L'unité vient en premier à l'oral." },
+    { stem: "16 s'écrit :", opts: ["sechzehn", "sechszehn", "sechszen"], ans: 0, why: "sechs perd son s devant -zehn et -zig : sechzehn, sechzig." },
+    { stem: "31 s'écrit :", opts: ["einunddreißig", "einsunddreißig", "einunddreizig"], ans: 0, why: "eins perd son s devant und ; 30 = dreißig avec ß." },
+    { stem: "« J'ai 30 ans » se dit :", opts: ["Ich bin dreißig Jahre alt.", "Ich habe dreißig Jahre alt.", "Ich bin dreißig Jahre habe."], ans: 0, why: "L'âge se dit avec sein : ich bin … Jahre alt." },
+    { stem: "Du ___ eine Frage?", opts: ["hast", "habt", "habe"], ans: 0, why: "du → hast (le b disparaît). ihr → habt, ich → habe." },
+    { stem: "Wir ___ aus Kamerun.", opts: ["kommen", "kommst", "kommt"], ans: 0, why: "wir prend toujours la forme de l'infinitif : wir kommen." },
+    { stem: "Quelle phrase est correctement orthographiée ?", opts: ["Ich bin Softwareentwickler.", "Ich bin softwareentwickler.", "ich bin Softwareentwickler."], ans: 0, why: "Majuscule en début de phrase et sur le nom commun Softwareentwickler." },
+    { stem: "Ihr ___ in Douala.", opts: ["wohnt", "wohnen", "wohnst"], ans: 0, why: "ihr → -t : ihr wohnt, ihr habt, ihr kommt." },
+    { stem: "Le point dans une adresse e-mail se dit :", opts: ["Punkt", "Strich", "Komma"], ans: 0, why: "borel Punkt tene at gmail Punkt com. Bindestrich = trait d'union, Unterstrich = tiret bas." }
+  ];
+  function shuffle(q) {
+    var idx = q.opts.map(function (_, i) { return i; });
+    for (var i = idx.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = idx[i]; idx[i] = idx[j]; idx[j] = t; }
+    return { stem: q.stem, why: q.why, opts: idx.map(function (i) { return q.opts[i]; }), ans: idx.indexOf(q.ans) };
+  }
+  var root = document.getElementById("quiz"), answered = 0, correct = 0;
+  questions.map(shuffle).forEach(function (q, n) {
+    var box = document.createElement("div"); box.className = "q";
+    var stem = document.createElement("div"); stem.className = "stem"; stem.textContent = (n + 1) + ". " + q.stem; box.appendChild(stem);
+    var fb = document.createElement("div"); fb.className = "fb";
+    q.opts.forEach(function (o, i) {
+      var lab = document.createElement("label"), inp = document.createElement("input");
+      inp.type = "radio"; inp.name = "q" + n;
+      inp.addEventListener("change", function () {
+        box.querySelectorAll("input").forEach(function (x) { x.disabled = true; });
+        answered++;
+        if (i === q.ans) { correct++; fb.className = "fb ok"; fb.textContent = "Juste. " + q.why; }
+        else { fb.className = "fb ko"; fb.textContent = "Non : la bonne réponse est « " + q.opts[q.ans] + " ». " + q.why; }
+        if (answered === questions.length) {
+          var s = document.getElementById("score"); s.style.display = "block";
+          var msg = correct >= 11 ? "Excellent. Passe à la partie 6." : correct >= 9 ? "Bien. Relis les points ratés dans la fiche, puis continue." : "Reprends les parties 2 à 4 et refais les drills, puis recharge la page pour refaire le quiz.";
+          s.textContent = "Score : " + correct + " / " + questions.length + ". " + msg;
+        }
+      });
+      lab.appendChild(inp); lab.appendChild(document.createTextNode(o)); box.appendChild(lab);
+    });
+    box.appendChild(fb); root.appendChild(box);
+  });
+
+  /* ---------- Présentation v2 ---------- */
+  document.getElementById("checkIntro").addEventListener("click", function () {
+    var t = document.getElementById("intro").value;
+    var low = t.toLowerCase().replace(/ss/g, "ß");
+    var sentences = t.split(/[.!?]+/).map(function (s) { return s.trim(); }).filter(Boolean);
+    var checks = {
+      heisse: /ich heiße\s+\S+/.test(low),
+      alt: /ich bin\s+(\d+|[a-zäöüß]+)\s+jahre alt/.test(low) && !/ich habe\s+\S+\s+jahre/.test(low),
+      komme: /ich komme aus\s+\S+/.test(low),
+      wohne: /ich wohne in\s+\S+/.test(low),
+      beruf: /Ich bin [A-ZÄÖÜ][a-zäöüß]+(entwickler|entwicklerin|ingenieur|programmierer|student|studentin)/.test(t),
+      sprache: /ich spreche\s+\S+/.test(low),
+      tel: /telefonnummer ist\s+[a-zäöüß ]{4,}/.test(low),
+      caps: sentences.length > 0 && sentences.every(function (s) { return /^[A-ZÄÖÜ]/.test(s); })
+    };
+    document.querySelectorAll("#introChecks li").forEach(function (li) { li.className = checks[li.getAttribute("data-k")] ? "ok" : ""; });
+  });
+})();
+</script>
+</body>
+</html>

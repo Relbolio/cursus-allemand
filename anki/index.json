@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "genere": "2026-09-21",
+  "decks": [
+    {
+      "id": "lecon01-general",
+      "titre": "Leçon 01 · se présenter",
+      "deck": "Allemand A1::L01 se présenter",
+      "niveau": "A1",
+      "lecon": 1,
+      "type": "general",
+      "cartes": 15,
+      "fichierTxt": "anki/lecon01-general.txt",
+      "fichierApkg": "anki/lecon01-general.apkg"
+    },
+    {
+      "id": "lecon02-general",
+      "titre": "Leçon 02 · nombres, alphabet, haben",
+      "deck": "Allemand A1::L02 nombres alphabet haben",
+      "niveau": "A1",
+      "lecon": 2,
+      "type": "general",
+      "cartes": 49,
+      "fichierTxt": "anki/lecon02-general.txt",
+      "fichierApkg": "anki/lecon02-general.apkg"
+    },
+    {
+      "id": "lecon02-it",
+      "titre": "Leçon 02 · vocabulaire informatique",
+      "deck": "Allemand IT::L02 premiers mots",
+      "niveau": "A1",
+      "lecon": 2,
+      "type": "it",
+      "cartes": 20,
+      "fichierTxt": "anki/lecon02-it.txt",
+      "fichierApkg": "anki/lecon02-it.apkg"
+    }
+  ],
+  "tout": {
+    "fichierApkg": "anki/allemand-tout.apkg",
+    "cartes": 84,
+    "decks": 3
+  }
+}

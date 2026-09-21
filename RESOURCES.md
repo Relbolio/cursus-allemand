@@ -28,8 +28,8 @@ Vérifiées le 3 septembre 2026. Priorité aux sources primaires : Goethe-Instit
 
 ### Cours structurés gratuits (colonne vertébrale A1 → B1)
 
-- [DW — Nicos Weg A1 / A2 / B1, interface française](https://learngerman.dw.com/fr/nicos-weg/c-36519687)
-  Série vidéo de la Deutsche Welle, ≈ 76 leçons par niveau, exercices, grammaire, vocabulaire, consignes en français. Source primaire de ce cours de A1 à B1. Use for : chaque leçon du workspace renvoie aux épisodes correspondants.
+- [DW — Nicos Weg A1 / A2 / B1, interface française](https://learngerman.dw.com/fr/nicos-weg/c-47994036)
+  Série vidéo de la Deutsche Welle, ≈ 76 leçons par niveau, exercices, grammaire, vocabulaire, consignes en français. Source primaire de ce cours de A1 à B1. Use for : chaque leçon du workspace renvoie aux leçons correspondantes par leur URL de leçon (`/fr/<slug>/l-<id>`). Index des 77 leçons A1 : `reference/nicos-weg-a1.html`.
 - [vhs-Lernportal (A1, A2, B1, A2-B1 Beruf, B2 Beruf, C1 Beruf)](https://www.vhs-lernportal.de/) · [liste des cours](https://www.vhs-lernportal.de/wws/kursangebot.php)
   Manuels numériques gratuits des Volkshochschulen, reconnus par le BAMF ; des tuteurs humains corrigent les productions écrites. Seul cours structuré B2 gratuit trouvé (orienté travail, ce qui convient à la mission). Use for : deuxième colonne vertébrale, et cours principal au B2.
 - [deutsch.info (A1 → B2, interface française)](https://deutsch.info/)

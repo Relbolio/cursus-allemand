@@ -119,6 +119,37 @@ iframe { width:100%; height:calc(100vh - 10rem); min-height:24rem;
 .search { width:100%; box-sizing:border-box; font:inherit; font-size:.95rem;
   padding:.45rem .7rem; border:1px solid var(--rule); border-radius:4px;
   background:#fff; margin:.4rem 0 .8rem }
+/* --- anki --- */
+.deck { background:#fff; border:1px solid var(--rule); padding:.7rem .9rem; margin:.5rem 0;
+  display:flex; flex-wrap:wrap; gap:.5rem .9rem; align-items:center }
+.deck .t { flex:1 1 14rem; min-width:0 }
+.deck .t b { display:block }
+.deck .t small { color:var(--muted) }
+.deck .due { font-size:.78rem; color:var(--muted) }
+.deck .due b { color:var(--accent) }
+.btns { display:flex; gap:.4rem; flex-wrap:wrap }
+.btn { font:inherit; font-size:.85rem; padding:.35rem .75rem; border-radius:4px; cursor:pointer;
+  border:1px solid var(--ink); background:var(--ink); color:#fff; text-decoration:none; white-space:nowrap }
+.btn.ghost { background:transparent; color:var(--ink) }
+.btn.small { font-size:.78rem; padding:.25rem .55rem }
+.rev { background:#fff; border:1px solid var(--rule); padding:1rem 1.1rem 1.2rem; margin:.8rem 0 }
+.rev .top { display:flex; justify-content:space-between; align-items:center; gap:.6rem; flex-wrap:wrap;
+  font-size:.8rem; color:var(--muted) }
+.rev .face { font-size:1.55rem; text-align:center; padding:1.6rem .5rem 1.2rem; min-height:3.5rem; line-height:1.35 }
+.rev .face.ans { border-top:1px solid var(--rule); color:var(--accent); font-size:1.45rem; padding-top:1.2rem }
+.rev .hint { text-align:center; color:var(--muted); font-size:.8rem; font-style:italic }
+.rev .grade { display:grid; grid-template-columns:repeat(4,1fr); gap:.4rem; margin-top:.8rem }
+.rev .grade button { font:inherit; padding:.6rem .2rem; border-radius:4px; border:1px solid var(--rule);
+  background:#fff; cursor:pointer; font-size:.9rem }
+.rev .grade button small { display:block; color:var(--muted); font-size:.7rem }
+.rev .grade .g1 { border-color:var(--ko); color:var(--ko) } .rev .grade .g4 { border-color:var(--ok); color:var(--ok) }
+.rev .showbtn { display:block; width:100%; margin-top:.6rem; font:inherit; padding:.7rem; border-radius:4px;
+  border:1px solid var(--ink); background:var(--ink); color:#fff; cursor:pointer; font-size:1rem }
+.rev .done { text-align:center; padding:1.5rem 0; }
+.rev .done .n { font-size:2rem; font-weight:600 }
+.seg { display:inline-flex; border:1px solid var(--rule); border-radius:999px; overflow:hidden }
+.seg button { font:inherit; font-size:.78rem; padding:.25rem .7rem; border:0; background:transparent; cursor:pointer; color:var(--muted) }
+.seg button.on { background:var(--accent); color:#fff }
 footer { color:var(--muted); font-size:.75rem; padding:1rem 0 2rem; border-top:1px solid var(--rule) }
 @media print { header, .openext { display:none } iframe { display:none } section { display:block !important } }
 </style>
@@ -131,6 +162,7 @@ footer { color:var(--muted); font-size:.75rem; padding:1rem 0 2rem; border-top:1
 <main class="wrap">
 <section id="tableau"></section>
 <section id="lecons"></section>
+<section id="anki"></section>
 <section id="journal"></section>
 <section id="ressources"></section>
 <footer>Source : status.json · mis — <span id="maj">…</span></footer>
@@ -140,6 +172,7 @@ footer { color:var(--muted); font-size:.75rem; padding:1rem 0 2rem; border-top:1
 const TABS = [
   ["tableau", "Tableau"],
   ["lecons", "Leçons"],
+  ["anki", "Anki"],
   ["journal", "Journal"],
   ["ressources", "Ressources"],
 ];
@@ -356,6 +389,169 @@ async function renderRessources() {
   }
 }
 
+/* ===================== Anki : decks, téléchargement, réviseur ===================== */
+const ANKI = { manifest: null, decks: [], cards: {} };   // cards[deckId] = [{r, v, key}]
+const PKEY = "cursus.anki.progress.v1", SKEY = "cursus.anki.settings.v1";
+const today = () => Math.floor(Date.now() / 86400000);
+const loadJSON = (k, d) => { try { return JSON.parse(localStorage.getItem(k)) || d; } catch (e) { return d; } };
+const saveJSON = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} };
+let PROG = loadJSON(PKEY, {});
+let SET = Object.assign({ dir: "fr", voix: true, nouvelles: 20 }, loadJSON(SKEY, {}));
+const hash = s => { let h = 5381; for (let i = 0; i < s.length; i++) h = (h * 33) ^ s.charCodeAt(i); return (h >>> 0).toString(36); };
+
+function parseDeckTxt(txt) {
+  return txt.split(/\r?\n/).map(l => l.trim()).filter(l => l && !l.startsWith("#") && l.includes(";"))
+    .map(l => { const i = l.indexOf(";"); return { r: l.slice(0, i).trim(), v: l.slice(i + 1).trim() }; });
+}
+async function loadAnki() {
+  ANKI.manifest = JSON.parse(await get("../anki/index.json"));
+  ANKI.decks = ANKI.manifest.decks || [];
+  await Promise.all(ANKI.decks.map(async d => {
+    try { ANKI.cards[d.id] = parseDeckTxt(await get("../" + d.fichierTxt)).map(c => ({ ...c, deck: d.id })); }
+    catch (e) { ANKI.cards[d.id] = []; }
+  }));
+}
+const ckey = c => c.deck + "|" + SET.dir + "|" + hash(c.r);
+function stats(deckIds) {
+  let due = 0, neu = 0, tot = 0, t = today();
+  deckIds.forEach(id => (ANKI.cards[id] || []).forEach(c => {
+    tot++; const p = PROG[ckey(c)];
+    if (!p) neu++; else if (p.due <= t) due++;
+  }));
+  return { due, neu, tot };
+}
+
+let voixDE = null;
+function pickVoice() {
+  if (!("speechSynthesis" in window)) return;
+  voixDE = speechSynthesis.getVoices().find(v => /^de/i.test(v.lang)) || null;
+}
+if ("speechSynthesis" in window) { pickVoice(); speechSynthesis.onvoiceschanged = pickVoice; }
+function speakDE(text) {
+  if (!voixDE || !SET.voix) return;
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text.replace(/\(.*?\)/g, "").replace(/\s*[:–—-]\s*/g, ", "));
+  u.voice = voixDE; u.lang = voixDE.lang; u.rate = 0.85; speechSynthesis.speak(u);
+}
+
+function renderAnki() {
+  const el = document.getElementById("anki");
+  if (!ANKI.manifest) { el.innerHTML = `<p class="note">anki/index.json introuvable : lance <code>python build_anki.py</code> à la racine.</p>`; return; }
+  const all = ANKI.decks.map(d => d.id), sAll = stats(all);
+  const deckHTML = d => {
+    const s = stats([d.id]);
+    return `<div class="deck">
+      <div class="t"><b>${esc(d.titre)}</b><small>${esc(d.deck)} · ${d.cartes} cartes${d.type === "it" ? " · <span class='chip accent'>IT</span>" : ""}</small>
+        <div class="due">à revoir <b>${s.due}</b> · nouvelles ${s.neu}</div></div>
+      <div class="btns">
+        <button class="btn" data-rev="${d.id}">Réviser ici</button>
+        <a class="btn ghost" href="../${d.fichierApkg}" download>.apkg</a>
+        <a class="btn ghost small" href="../${d.fichierTxt}" download>.txt</a>
+      </div></div>`;
+  };
+  el.innerHTML = `
+    <h2>Anki : révision espacée</h2>
+    <div class="card">
+      <div class="kv"><span><span class="k">total</span> ${sAll.tot} cartes</span>
+        <span><span class="k">à revoir aujourd'hui</span> <strong>${sAll.due}</strong></span>
+        <span><span class="k">nouvelles</span> ${sAll.neu}</span>
+        <span class="seg" id="dirSeg"><button data-d="fr" class="${SET.dir === "fr" ? "on" : ""}">FR → DE</button><button data-d="de" class="${SET.dir === "de" ? "on" : ""}">DE → FR</button></span>
+      </div>
+      <div class="btns" style="margin-top:.6rem">
+        <button class="btn" data-rev="*">Tout réviser (${sAll.due + Math.min(SET.nouvelles, sAll.neu)})</button>
+        <a class="btn ghost" href="../${ANKI.manifest.tout.fichierApkg}" download>Tout dans Anki (.apkg, ${ANKI.manifest.tout.cartes} cartes)</a>
+      </div>
+      <p class="note" style="margin:.6rem 0 0">Deux façons de réviser : <strong>ici</strong> (sur n'importe quel appareil, progression enregistrée dans ce navigateur) ou dans <strong>l'application Anki</strong> : télécharge le .apkg, ouvre-le, il s'importe seul (AnkiDroid sur Android, Anki sur PC). Réimporter un paquet mis à jour n'ajoute que les nouvelles cartes.</p>
+    </div>
+    <div id="revPanel"></div>
+    <h3>Par leçon</h3>
+    ${ANKI.decks.slice().reverse().map(deckHTML).join("")}
+    <h3>Progression du réviseur intégré</h3>
+    <div class="btns">
+      <button class="btn ghost small" id="expProg">Exporter la progression</button>
+      <label class="btn ghost small" style="cursor:pointer">Importer <input type="file" id="impProg" accept="application/json" hidden></label>
+      <button class="btn ghost small" id="voixBtn">Voix allemande : ${SET.voix ? "activée" : "coupée"}${voixDE ? "" : " (aucune voix installée)"}</button>
+    </div>
+    <p class="note">La progression du réviseur intégré est locale à ce navigateur. Exporte-la pour la reprendre sur un autre appareil. L'application Anki, elle, synchronise via AnkiWeb.</p>`;
+  el.querySelectorAll("[data-rev]").forEach(b => b.onclick = () => startReview(b.dataset.rev === "*" ? all : [b.dataset.rev]));
+  el.querySelectorAll("#dirSeg button").forEach(b => b.onclick = () => { SET.dir = b.dataset.d; saveJSON(SKEY, SET); renderAnki(); });
+  el.querySelector("#voixBtn").onclick = () => { SET.voix = !SET.voix; saveJSON(SKEY, SET); renderAnki(); };
+  el.querySelector("#expProg").onclick = () => {
+    const blob = new Blob([JSON.stringify({ progress: PROG, settings: SET, date: new Date().toISOString() })], { type: "application/json" });
+    const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = "progression-anki.json"; a.click();
+  };
+  el.querySelector("#impProg").onchange = async ev => {
+    const f = ev.target.files[0]; if (!f) return;
+    try { const j = JSON.parse(await f.text()); Object.assign(PROG, j.progress || {}); saveJSON(PKEY, PROG); renderAnki(); }
+    catch (e) { alert("Fichier illisible."); }
+  };
+}
+
+/* --- réviseur : SM-2 simplifié (Encore / Difficile / Bien / Facile) --- */
+let REV = null;
+function grade(c, g) {
+  const k = ckey(c), t = today();
+  const p = PROG[k] || { iv: 0, ef: 2.5, reps: 0, lapses: 0, due: t };
+  if (g === 1) { p.reps = 0; p.lapses++; p.iv = 0; p.ef = Math.max(1.3, p.ef - 0.2); p.due = t; }
+  else {
+    p.reps++;
+    if (g === 2) { p.iv = p.iv < 1 ? 1 : Math.round(p.iv * 1.2); p.ef = Math.max(1.3, p.ef - 0.15); }
+    else if (g === 3) { p.iv = p.iv < 1 ? 1 : (p.reps <= 2 ? 4 : Math.round(p.iv * p.ef)); }
+    else { p.iv = p.iv < 1 ? 3 : Math.round(p.iv * p.ef * 1.3); p.ef += 0.15; }
+    p.due = t + p.iv;
+  }
+  PROG[k] = p; saveJSON(PKEY, PROG);
+}
+function startReview(deckIds) {
+  const t = today(), due = [], neu = [];
+  deckIds.forEach(id => (ANKI.cards[id] || []).forEach(c => { const p = PROG[ckey(c)]; if (!p) neu.push(c); else if (p.due <= t) due.push(c); }));
+  for (let i = due.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [due[i], due[j]] = [due[j], due[i]]; }
+  const queue = due.concat(neu.slice(0, SET.nouvelles));
+  const names = deckIds.length === 1 ? (ANKI.decks.find(d => d.id === deckIds[0]) || {}).titre : "Tous les decks";
+  REV = { queue, total: queue.length, done: 0, again: 0, name: names || "", shown: false };
+  renderReview();
+  document.getElementById("revPanel").scrollIntoView({ behavior: "smooth", block: "start" });
+}
+function renderReview() {
+  const el = document.getElementById("revPanel");
+  if (!REV) { el.innerHTML = ""; return; }
+  if (!REV.queue.length) {
+    el.innerHTML = `<div class="rev"><div class="done"><div class="n">${REV.done}</div>cartes revues · ${REV.again} à retravailler<br><br>
+      <button class="btn" id="revBack">Retour aux decks</button></div></div>`;
+    el.querySelector("#revBack").onclick = () => { REV = null; renderAnki(); };
+    return;
+  }
+  const c = REV.queue[0], q = SET.dir === "fr" ? c.v : c.r, a = SET.dir === "fr" ? c.r : c.v;
+  el.innerHTML = `<div class="rev">
+    <div class="top"><span>${esc(REV.name)}</span><span>${REV.done} / ${REV.total} · reste ${REV.queue.length}</span>
+      <button class="btn ghost small" id="revQuit">Quitter</button></div>
+    <div class="face">${esc(q)}</div>
+    <div class="hint">${SET.dir === "fr" ? "dis-le en allemand, à voix haute" : "traduis en français"}</div>
+    ${REV.shown ? `<div class="face ans">${esc(a)}</div>
+      <div class="grade">
+        <button class="g1" data-g="1">Encore<small>tout de suite</small></button>
+        <button class="g2" data-g="2">Difficile<small>1 jour</small></button>
+        <button class="g3" data-g="3">Bien<small>${(PROG[ckey(c)] || {}).iv >= 1 ? "×" + ((PROG[ckey(c)] || {}).ef || 2.5).toFixed(1) : "1 jour"}</small></button>
+        <button class="g4" data-g="4">Facile<small>${(PROG[ckey(c)] || {}).iv >= 1 ? "×" + (((PROG[ckey(c)] || {}).ef || 2.5) * 1.3).toFixed(1) : "3 jours"}</small></button>
+      </div>` : `<button class="showbtn" id="revShow">Afficher la réponse</button>`}
+    </div>`;
+  el.querySelector("#revQuit").onclick = () => { REV = null; renderAnki(); };
+  if (!REV.shown) {
+    el.querySelector("#revShow").onclick = () => { REV.shown = true; renderReview(); speakDE(c.r); };
+  } else {
+    el.querySelectorAll(".grade button").forEach(b => b.onclick = () => {
+      const g = +b.dataset.g; grade(c, g); REV.queue.shift(); REV.shown = false;
+      if (g === 1) { REV.again++; REV.queue.splice(Math.min(3, REV.queue.length), 0, c); } else REV.done++;
+      renderReview();
+    });
+  }
+}
+document.addEventListener("keydown", e => {
+  if (!REV || !REV.queue.length || currentTab() !== "anki" || /INPUT|TEXTAREA/.test(document.activeElement.tagName)) return;
+  if (e.key === " " || e.key === "Enter") { e.preventDefault(); if (!REV.shown) document.getElementById("revShow")?.click(); }
+  else if (/^[1-4]$/.test(e.key) && REV.shown) document.querySelector(`.grade button[data-g="${e.key}"]`)?.click();
+});
+
 async function boot() {
   try {
     STATUS = JSON.parse(await get("../status.json"));
@@ -363,6 +559,7 @@ async function boot() {
     document.getElementById("tableau").innerHTML =
       `<p class="note">status.json illisible (${esc(e.message)}). Le serveur tourne-t-il depuis la racine du workspace ?</p>`;
   }
+  try { await loadAnki(); STATUS.anki = Object.assign({}, STATUS.anki, { cartes: ANKI.manifest.tout.cartes }); } catch (e) { /* pas de manifeste */ }
   get("../config.json").then(c => {
     const cfg = JSON.parse(c);
     const hint = document.getElementById("phoneHint");
@@ -371,6 +568,7 @@ async function boot() {
   }).catch(() => { /* http.server brut : pas d'affichage téléphone */ });
   renderDashboard(STATUS);
   renderLecons(STATUS);
+  renderAnki();
   renderJournal(STATUS);
   renderRessources();
   show(TABS.some(([id]) => id === currentTab()) ? currentTab() : "tableau");

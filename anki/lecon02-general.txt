@@ -1,0 +1,54 @@
+# titre: Leçon 02 · nombres, alphabet, haben
+# deck: Allemand A1::L02 nombres alphabet haben
+# niveau: A1
+# lecon: 2
+# type: general
+null;zéro
+eins;un
+zwei (au téléphone : zwo);deux
+drei;trois
+vier;quatre
+fünf;cinq
+sechs;six
+sieben;sept
+acht;huit
+neun;neuf
+zehn;dix
+elf;onze
+zwölf;douze
+dreizehn;treize
+vierzehn;quatorze
+fünfzehn;quinze
+sechzehn (pas de -s !);seize
+siebzehn (pas de -en !);dix-sept
+achtzehn;dix-huit
+neunzehn;dix-neuf
+zwanzig;vingt
+einundzwanzig;vingt et un
+zweiunddreißig;trente-deux
+dreißig (avec ß !);trente
+vierzig;quarante
+fünfzig;cinquante
+sechzig (pas de -s !);soixante
+siebzig (pas de -en !);soixante-dix
+achtzig;quatre-vingts
+neunzig;quatre-vingt-dix
+(ein)hundert;cent
+Wie alt sind Sie?;Quel âge avez-vous ?
+Ich bin 30 Jahre alt.;J'ai 30 ans. (littéralement : je suis 30 ans vieux)
+Wie ist Ihre Telefonnummer?;Quel est votre numéro de téléphone ?
+Meine Telefonnummer ist …;Mon numéro de téléphone est …
+Wie schreibt man das?;Comment ça s'écrit ?
+Buchstabieren Sie bitte.;Épelez, s'il vous plaît.
+Können Sie das bitte wiederholen?;Pouvez-vous répéter, s'il vous plaît ?
+Welche Sprachen sprechen Sie?;Quelles langues parlez-vous ?
+Ich spreche Französisch und ein bisschen Englisch.;Je parle français et un peu anglais.
+Ich lerne Deutsch.;J'apprends l'allemand.
+haben : ich habe, du hast, er hat;avoir : j'ai, tu as, il a
+haben : wir haben, ihr habt, sie/Sie haben;avoir : nous avons, vous avez, ils ont / vous avez (politesse)
+sein : wir sind, ihr seid, sie sind;être : nous sommes, vous êtes, ils sont
+Ich habe eine Frage.;J'ai une question.
+Ich habe Zeit.;J'ai le temps.
+Danke schön! – Bitte schön!;Merci beaucoup ! – Je vous en prie !
+Entschuldigung;Pardon / Excusez-moi
+ja / nein;oui / non

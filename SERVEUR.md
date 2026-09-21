@@ -26,7 +26,8 @@ Cela exécute `python serveur.py` (Python 3.10+, bibliothèque standard uniqueme
 
 ## Utiliser
 
-- Onglets : **Tableau** (gates A1→B2, prochaine étape, compteurs), **Leçons** (sidebar leçons + références, lecture intégrée), **Journal** (NOTES.md + learning-records), **Ressources** (RESOURCES.md, recherche filtrante).
+- Onglets : **Tableau** (gates A1→B2, prochaine étape, compteurs), **Leçons** (sidebar leçons + références, lecture intégrée), **Anki** (réviseur intégré + téléchargement des paquets .apkg / .txt par leçon, lit `anki/index.json`), **Journal** (NOTES.md + learning-records), **Ressources** (RESOURCES.md, recherche filtrante).
+- Après l'ajout de cartes dans `anki/*.txt`, régénérer paquets et manifeste : `python build_anki.py` (voir `anki/README.md`).
 - L'onglet actif est mémorisé dans l'URL (`#tableau`, `#lecons`, …).
 
 ## Arrêter

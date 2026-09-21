@@ -1,29 +1,51 @@
 {
   "version": 1,
-  "misAJour": "2026-09-18",
+  "misAJour": "2026-09-21",
   "niveau": "A1",
   "semaine": 3,
-  "positionActuelle": "A1 · semaine 3 — nombres, alphabet, haben (leçon 0002 à venir)",
+  "positionActuelle": "A1 · semaine 3 — leçon 0002 en cours (nombres, alphabet, haben)",
   "gates": {
     "A1": "en-cours",
     "A2": "verrouille",
     "B1": "verrouille",
     "B2": "verrouille"
   },
-  "prochaineEtape": "Leçon 0002 — nombres, alphabet, haben",
+  "prochaineEtape": "Faire la leçon 0002, importer anki/allemand-tout.apkg (ou réviser dans l'onglet Anki), envoyer la présentation version 2",
   "lecons": [
     {
       "numero": 1,
       "titre": "Prononciation et se présenter",
       "fichier": "lessons/0001-prononciation-et-se-presenter.html",
       "etat": "faite",
-      "date": "2026-09-03",
+      "date": "2026-09-21",
+      "niveau": "A1"
+    },
+    {
+      "numero": 2,
+      "titre": "Épeler, compter, dire son âge (nombres, alphabet, haben)",
+      "fichier": "lessons/0002-nombres-alphabet-haben.html",
+      "etat": "a-faire",
+      "date": "2026-09-21",
       "niveau": "A1"
     }
   ],
   "references": [
-    { "titre": "Feuille de route A1 → B2", "fichier": "reference/parcours.html" },
-    { "titre": "Prononciation", "fichier": "reference/prononciation.html" }
+    {
+      "titre": "Feuille de route A1 → B2",
+      "fichier": "reference/parcours.html"
+    },
+    {
+      "titre": "Prononciation",
+      "fichier": "reference/prononciation.html"
+    },
+    {
+      "titre": "Nombres, alphabet, sein et haben",
+      "fichier": "reference/nombres-alphabet.html"
+    },
+    {
+      "titre": "Index Nicos Weg A1 (77 leçons DW)",
+      "fichier": "reference/nicos-weg-a1.html"
+    }
   ],
   "records": [
     {
@@ -31,8 +53,22 @@
       "titre": "Point de départ",
       "fichier": "learning-records/0001-point-de-depart.md",
       "date": "2026-09-03"
+    },
+    {
+      "numero": 2,
+      "titre": "Première production écrite : structure acquise, orthographe à fixer",
+      "fichier": "learning-records/0002-premiere-production-ecrite.md",
+      "date": "2026-09-21"
     }
   ],
-  "anki": { "cartes": 12 },
-  "compteurs": { "leconsFaites": 1, "leconsGenerees": 1 }
+  "anki": {
+    "cartes": 84,
+    "manifeste": "anki/index.json",
+    "tout": "anki/allemand-tout.apkg",
+    "note": "compteur recalculé par le site depuis anki/index.json"
+  },
+  "compteurs": {
+    "leconsFaites": 1,
+    "leconsGenerees": 2
+  }
 }

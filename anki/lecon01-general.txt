@@ -1,0 +1,20 @@
+# titre: Leçon 01 · se présenter
+# deck: Allemand A1::L01 se présenter
+# niveau: A1
+# lecon: 1
+# type: general
+Hallo!;Bonjour ! / Salut !
+Ich heiße …;Je m'appelle …
+Wie heißen Sie?;Comment vous appelez-vous ? (politesse)
+Wie heißt du?;Comment tu t'appelles ?
+Ich komme aus Kamerun.;Je viens du Cameroun.
+Woher kommen Sie?;D'où venez-vous ?
+Ich wohne in Douala.;J'habite à Douala.
+Wo wohnen Sie?;Où habitez-vous ?
+Ich bin Softwareentwickler.;Je suis développeur logiciel.
+Freut mich!;Enchanté(e) !
+und;et
+sein : ich bin, du bist, er ist, Sie sind;être : je suis, tu es, il est, vous êtes
+heißen : ich heiße, du heißt, er heißt, Sie heißen;s'appeler : je m'appelle, tu t'appelles, il s'appelle, vous vous appelez
+kommen : ich komme, du kommst, er kommt, Sie kommen;venir : je viens, tu viens, il vient, vous venez
+wohnen : ich wohne, du wohnst, er wohnt, Sie wohnen;habiter : j'habite, tu habites, il habite, vous habitez

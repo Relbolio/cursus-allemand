@@ -1,0 +1,25 @@
+# titre: Leçon 02 · vocabulaire informatique
+# deck: Allemand IT::L02 premiers mots
+# niveau: A1
+# lecon: 2
+# type: it
+der Computer, der Rechner;l'ordinateur
+die Software;le logiciel
+das Programm, die Programme;le programme, les programmes
+die Datei, die Dateien;le fichier, les fichiers
+der Code;le code (informatique)
+der Fehler, die Fehler;l'erreur, le bug
+die Zahl, die Zahlen;le nombre, les nombres
+die Nummer, die Nummern;le numéro, les numéros
+die Version, die Versionen;la version, les versions
+das Passwort, die Passwörter;le mot de passe, les mots de passe
+die E-Mail-Adresse;l'adresse e-mail
+der Entwickler / die Entwicklerin;le développeur / la développeuse
+der Softwareentwickler;le développeur logiciel
+das Projekt, die Projekte;le projet, les projets
+die Firma, die Firmen;l'entreprise, les entreprises
+das Team, die Teams;l'équipe, les équipes
+Ich arbeite als Softwareentwickler.;Je travaille comme développeur logiciel.
+Ich arbeite bei einer Firma in Douala.;Je travaille dans une entreprise à Douala.
+Meine E-Mail-Adresse ist … Punkt … at …;Mon adresse e-mail est … point … arobase …
+Version zwei Punkt drei;version 2.3
