@@ -21,6 +21,7 @@ Ce dépôt n'est pas une application : c'est un **workspace d'apprentissage** (s
 | Pratique orale réelle | Acceptée à partir de la fin de l'A2 (mars 2027) | MISSION.md, RESOURCES.md | convention projet |
 | Site en ligne | https://relbolio.github.io/cursus-allemand/site/ (Pages, branche `main`, racine, `.nojekyll`) | SERVEUR.md | gelé |
 | Serveur local | `serveur.bat` → `python serveur.py`, port 8080, `/site/` + route `/config.json` (IP LAN) | serveur.py | convention projet |
+| Build | `python build.py` : découvre leçons/fiches/records, régénère Anki, synchronise `status.json` | build.py | convention projet |
 | Dépôt | `origin` = github.com/Relbolio/cursus-allemand, branche `main` | git | gelé |
 | Dépendances | Aucune hors bibliothèque standard Python 3.10+ (site : HTML/JS vanille, aucun CDN) | serveur.py, build_anki.py | gelé |
 
@@ -50,8 +51,8 @@ Ce projet n'utilise pas le cycle spec → plan → tests du guide `~/.claude/com
 3. **Écrire la leçon** `lessons/NNNN-slug.html` : une seule compétence, 20 à 35 min, tirée de la zone proximale, exemples personnalisés (Borel, Kamerun, Douala, Softwareentwickler), quiz à correction immédiate, exercice de production avec vérificateur, source primaire liée, rappel « pose tes questions au professeur », liens vers la leçon précédente et les fiches.
 4. **Écrire ou enrichir la fiche** `reference/*.html` correspondante (l'essence compressée ; c'est ce qui sera relu, pas la leçon).
 5. **Écrire les cartes** `anki/leconNN-general.txt` et `anki/leconNN-it.txt` avec l'en-tête `#` (titre, deck, niveau, lecon, type).
-6. **Générer** : `python build_anki.py` (paquets `.apkg` + `anki/index.json`).
-7. **Mettre à jour `status.json`** : entrée `lecons[]` (état `a-faire`), `references[]`, `records[]`, `positionActuelle`, `prochaineEtape`, `misAJour`, `compteurs`.
+6. **Générer** : `python build.py` (paquets `.apkg` + `anki/index.json`, puis `status.json` : `lecons[]`, `references[]`, `records[]`, `compteurs`, `anki`, `misAJour` découverts depuis les fichiers).
+7. **Compléter à la main dans `status.json`** ce que le build ne déduit pas : `positionActuelle`, `prochaineEtape`, `niveau`, `semaine`, `gates`, et `etat: "faite"` + `faiteLe` quand l'apprenant a rendu sa production.
 8. **Journal** : une ligne datée dans `NOTES.md`, section Journal.
 9. **Vérifier** (porte de leçon, §11), **ouvrir la leçon** dans le navigateur (`cmd //c start "" lessons\NNNN-*.html`), **commit**. Le **push** est fait par l'apprenant ou sur sa demande explicite.
 
@@ -84,6 +85,7 @@ Petites évolutions outillées, sans cycle spec/plan : modifier, `node --check` 
 *Contrôle* : `python build_anki.py` régénère tout ; un `.apkg` modifié à la main est écrasé au prochain build. Vérification : `git diff --stat anki/*.apkg` n'est jamais non vide sans modification d'un `.txt` dans le même commit.
 
 **I5 — Ce que le site affiche vient des fichiers, pas de valeurs saisies.** Statut : posée.
+*Mécanisme* : `build.py` lit `<title>`, le kicker (« Niveau A1 · ≈ 35 minutes ») et « Leçon créée le … » des leçons, `<meta name="niveau">` des fiches, la première ligne `# ` des records ; une leçon sans kicker conforme est classée A1 par défaut, une fiche sans meta est « Transversal ».
 *Raison* : `site/index.html` lit `status.json`, `anki/index.json`, `NOTES.md`, `RESOURCES.md`, les records et les leçons par `fetch` en chemins relatifs `../`. Une valeur codée en dur dans le site diverge à la leçon suivante.
 *Contrôle* : `status.json.anki.cartes` est recalculé au chargement depuis `anki/index.json` ; toute nouvelle donnée affichée passe par un fichier du dépôt.
 
@@ -147,7 +149,8 @@ Petites évolutions outillées, sans cycle spec/plan : modifier, `node --check` 
 
 | Zone | Conséquence si modifiée |
 |---|---|
-| Schéma de `status.json` (`niveau, semaine, positionActuelle, gates{A1..B2}, prochaineEtape, lecons[], references[], records[], anki, compteurs`) | Le site en ligne casse silencieusement (sections vides) ; modifier le schéma **et** `site/index.html` dans le même commit. |
+| Schéma de `status.json` (`niveau, semaine, positionActuelle, gates{A1..B2}, prochaineEtape, lecons[].{numero,titre,fichier,niveau,duree,date,etat,faiteLe}, references[].{titre,fichier,niveau,date}, records[], anki, compteurs`) — généré par `build.py` sauf champs manuels | Le site en ligne casse silencieusement (sections vides) ; modifier le schéma dans `build.py` **et** `site/index.html` dans le même commit. |
+| Marqueurs lus par `build.py` : `<div class="kicker">Leçon N · Niveau XX · ≈ NN minutes</div>`, `<p>Leçon créée le J mois AAAA.</p>`, `<meta name="niveau" content="XX">` dans les fiches | Une leçon sans ces marqueurs est mal classée ou mal datée dans le site. |
 | Schéma de `anki/index.json` (`decks[].{id,titre,deck,niveau,lecon,type,cartes,fichierTxt,fichierApkg}`, `tout.{fichierApkg,cartes,decks}`) | Onglet Anki vide ; même règle. |
 | Noms de decks Anki (`Allemand A1::LNN …`, `Allemand IT::LNN …`) et texte des rectos | Les identifiants sont dérivés de ces noms : renommer duplique les decks/notes chez l'apprenant et perd sa progression. |
 | Chemins `lessons/NNNN-*.html`, `reference/*.html`, `anki/*.txt` déjà publiés | Référencés par `status.json`, par d'autres leçons et par des favoris/phone ; ne pas renommer, ajouter. |
@@ -159,7 +162,8 @@ Petites évolutions outillées, sans cycle spec/plan : modifier, `node --check` 
 ```bash
 # depuis la racine du dépôt
 serveur.bat                       # site local : http://localhost:8080/site/ (+ IP LAN pour le téléphone)
-python build_anki.py              # régénère anki/*.apkg + anki/index.json depuis anki/*.txt
+python build.py                   # découvre leçons/fiches/records, régénère anki/*.apkg + index.json, synchronise status.json
+python build_anki.py              # (appelé par build.py) paquets Anki seuls
 python -m http.server 8765 --bind 127.0.0.1   # smoke test alternatif (pas de /config.json)
 node --check <script extrait>     # syntaxe JS du site (extraire le contenu de <script> dans un .js temporaire)
 cmd //c start "" "lessons\\NNNN-slug.html"     # ouvrir une leçon (Git Bash sous Windows)
@@ -179,8 +183,8 @@ grep -n "nicos-weg/c-" lessons/*.html          # contrôle I3 : doit être vide
 1. Elle s'ouvre depuis le fichier et depuis l'onglet Leçons du site (chemin relatif correct).
 2. Toutes ses URL externes répondent 200 (ou un code de redirection suivi vers 200) au `curl` du jour.
 3. Son quiz corrige immédiatement, mélange les options, et affiche un score final ; ses drills dégradent proprement sans voix allemande.
-4. `python build_anki.py` passe sans erreur et `anki/index.json` compte la nouvelle leçon.
-5. `status.json` référence la leçon, ses fiches et ses records ; `misAJour` est du jour.
+4. `python build.py` passe sans erreur ; `anki/index.json` compte la nouvelle leçon ; `status.json` la liste avec le bon niveau, la durée et la date (sinon le kicker ou le pied de page est mal formé).
+5. Les champs manuels de `status.json` (`prochaineEtape`, `positionActuelle`, états) sont à jour.
 6. `NOTES.md` a sa ligne de journal ; un learning-record existe si une compréhension ou une misconception a été observée.
 7. Commit effectué.
 
@@ -197,7 +201,7 @@ Ce que cette porte **ne mesure pas** : la tenue dans le temps (storage strength)
 ---
 
 ### A DEFINIR (ouverts au 2026-09-21)
-- **Contrôle mécanique de I1** (cohérence des gates) : à poser avant l'examen A1, semaine 12 (23–29 novembre 2026).
+- **Contrôle mécanique de I1** (cohérence des gates) : à ajouter dans `build.py` avant l'examen A1, semaine 12 (23–29 novembre 2026).
 - **Import réel d'un `.apkg`** dans Anki Desktop et AnkiDroid : confirmation par l'apprenant au premier import ; tant qu'elle manque, le réviseur intégré est la voie garantie.
 - **Rythme réel** (h/semaine) : mesuré sur les dates de rendu des leçons 2 à 5 ; si < 5 h, refaire le calendrier de `parcours.html` (pas les portes).
 - **Extraction des URL DW pour A2 et B1** (procédure au piège n° 1) : à faire à la fin de l'A1 et de l'A2.

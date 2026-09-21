@@ -14,61 +14,74 @@
   "lecons": [
     {
       "numero": 1,
-      "titre": "Prononciation et se présenter",
+      "titre": "Les sons de l'allemand et se présenter",
       "fichier": "lessons/0001-prononciation-et-se-presenter.html",
+      "niveau": "A1",
+      "duree": 30,
+      "date": "2026-09-03",
       "etat": "faite",
-      "date": "2026-09-21",
-      "niveau": "A1"
+      "faiteLe": "2026-09-21"
     },
     {
       "numero": 2,
-      "titre": "Épeler, compter, dire son âge (nombres, alphabet, haben)",
+      "titre": "Épeler, compter, dire son âge",
       "fichier": "lessons/0002-nombres-alphabet-haben.html",
-      "etat": "a-faire",
+      "niveau": "A1",
+      "duree": 35,
       "date": "2026-09-21",
-      "niveau": "A1"
+      "etat": "a-faire"
     }
   ],
   "references": [
     {
-      "titre": "Feuille de route A1 → B2",
-      "fichier": "reference/parcours.html"
+      "titre": "Nicos Weg A1 — index des 77 leçons DW",
+      "fichier": "reference/nicos-weg-a1.html",
+      "niveau": "A1",
+      "date": "2026-09-21"
     },
     {
-      "titre": "Prononciation",
-      "fichier": "reference/prononciation.html"
+      "titre": "Nombres, alphabet, sein et haben — aide-mémoire",
+      "fichier": "reference/nombres-alphabet.html",
+      "niveau": "A1",
+      "date": "2026-09-21"
     },
     {
-      "titre": "Nombres, alphabet, sein et haben",
-      "fichier": "reference/nombres-alphabet.html"
+      "titre": "Feuille de route — Allemand de zéro au Goethe B2",
+      "fichier": "reference/parcours.html",
+      "niveau": "Transversal",
+      "date": "2026-09-03"
     },
     {
-      "titre": "Index Nicos Weg A1 (77 leçons DW)",
-      "fichier": "reference/nicos-weg-a1.html"
+      "titre": "Prononciation allemande — aide-mémoire",
+      "fichier": "reference/prononciation.html",
+      "niveau": "A1",
+      "date": "2026-09-03"
     }
   ],
   "records": [
     {
       "numero": 1,
-      "titre": "Point de départ",
+      "titre": "Point de départ : zéro allemand, français natif, anglais basique",
       "fichier": "learning-records/0001-point-de-depart.md",
       "date": "2026-09-03"
     },
     {
       "numero": 2,
-      "titre": "Première production écrite : structure acquise, orthographe à fixer",
+      "titre": "Première production écrite : structure acquise, orthographe allemande à fixer",
       "fichier": "learning-records/0002-premiere-production-ecrite.md",
       "date": "2026-09-21"
     }
   ],
   "anki": {
     "cartes": 84,
+    "decks": 3,
     "manifeste": "anki/index.json",
-    "tout": "anki/allemand-tout.apkg",
-    "note": "compteur recalculé par le site depuis anki/index.json"
+    "tout": "anki/allemand-tout.apkg"
   },
   "compteurs": {
     "leconsFaites": 1,
-    "leconsGenerees": 2
+    "leconsGenerees": 2,
+    "references": 4,
+    "records": 2
   }
 }

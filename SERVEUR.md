@@ -27,7 +27,8 @@ Cela exécute `python serveur.py` (Python 3.10+, bibliothèque standard uniqueme
 ## Utiliser
 
 - Onglets : **Tableau** (gates A1→B2, prochaine étape, compteurs), **Leçons** (sidebar leçons + références, lecture intégrée), **Anki** (réviseur intégré + téléchargement des paquets .apkg / .txt par leçon, lit `anki/index.json`), **Journal** (NOTES.md + learning-records), **Ressources** (RESOURCES.md, recherche filtrante).
-- Après l'ajout de cartes dans `anki/*.txt`, régénérer paquets et manifeste : `python build_anki.py` (voir `anki/README.md`).
+- Après toute leçon, fiche, record ou carte ajoutée : `python build.py` (racine). Il découvre `lessons/`, `reference/`, `learning-records/`, régénère les paquets Anki et met à jour `status.json` (leçons groupées par niveau, compteurs). Seuls `etat`/`faiteLe` des leçons et les champs manuels (niveau, semaine, gates, prochaineEtape) sont à éditer à la main.
+- Onglet Leçons : liste groupée par niveau (A1, A2…), la prochaine leçon à faire est sélectionnée automatiquement ; sur téléphone, la liste et le lecteur s'affichent en deux écrans (bouton « ‹ Liste »). Le site force le rechargement de `status.json` (cache Pages de 10 min contourné).
 - L'onglet actif est mémorisé dans l'URL (`#tableau`, `#lecons`, …).
 
 ## Arrêter

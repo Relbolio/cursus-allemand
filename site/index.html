@@ -80,22 +80,35 @@ p.note { color:var(--muted); font-size:.85rem; font-style:italic }
 .item .num { font-weight:700; color:var(--muted); font-size:.8rem }
 .item .t { flex:1; min-width:60% }
 .item .d { color:var(--muted); font-size:.78rem }
-/* --- leçons : sidebar --- */
-.split { display:flex; gap:1rem; align-items:stretch }
-.side { flex:0 0 12.5rem; min-width:0 }
-.side h4 { margin:.2rem 0 .25rem; font-size:.85rem; color:var(--muted);
-  text-transform:uppercase; letter-spacing:.05em }
+/* --- leçons : liste groupée + lecteur --- */
+.split { display:flex; gap:1.2rem; align-items:flex-start }
+.side { flex:0 0 17rem; min-width:0; position:sticky; top:6.2rem; max-height:calc(100vh - 7rem); overflow:auto }
+.side details { border:1px solid var(--rule); background:#fff; margin:.4rem 0 }
+.side summary { cursor:pointer; padding:.45rem .7rem; font-size:.85rem; display:flex; gap:.5rem; align-items:center;
+  list-style:none; user-select:none }
+.side summary::-webkit-details-marker { display:none }
+.side summary::after { content:"›"; margin-left:auto; color:var(--muted); transition:transform .15s }
+.side details[open] summary::after { transform:rotate(90deg) }
+.side summary .cnt { color:var(--muted); font-size:.75rem }
+.side .grp { padding:0 .35rem .35rem }
+.side .item { margin:.25rem 0; padding:.4rem .55rem; border-radius:3px; border-color:transparent }
+.side .item:hover { background:var(--soft) }
+.side .item.next { border-color:var(--accent); background:#fff }
+.side .item .t { font-size:.9rem; line-height:1.3 }
+.side .item .sub { flex-basis:100%; color:var(--muted); font-size:.74rem; display:flex; gap:.5rem; align-items:center }
+.side .refs .item .num { display:none }
 .viewer { flex:1; min-width:0 }
-iframe { width:100%; height:calc(100vh - 10rem); min-height:24rem;
-  border:1px solid var(--rule); background:#fff }
+.viewer .bar { display:flex; gap:.6rem; align-items:baseline; flex-wrap:wrap; margin:0 0 .4rem }
+.viewer .bar .ttl { font-weight:600; flex:1; min-width:10rem }
+.viewer .back { display:none }
+iframe { width:100%; height:calc(100vh - 11rem); min-height:24rem; border:1px solid var(--rule); background:#fff }
 @media (max-width:900px) {
-  .split { flex-direction:column }
-  .side { flex:0 0 auto; display:flex; gap:.35rem; overflow-x:auto;
-    padding-bottom:.25rem; scrollbar-width:none }
-  .side::-webkit-scrollbar { display:none }
-  .side h4 { flex:0 0 auto; align-self:center; margin:0 }
-  .side .item { flex:0 0 auto }
-  iframe { height:70vh }
+  .split { flex-direction:column; gap:.6rem }
+  .side { flex:0 0 auto; width:100%; position:static; max-height:none }
+  .split.reading .side { display:none }
+  .split:not(.reading) .viewer { display:none }
+  .viewer .back { display:inline-block }
+  iframe { height:calc(100vh - 9rem) }
 }
 .openext { font-size:.8rem; color:var(--accent) }
 /* --- journal / ressources --- */
@@ -177,7 +190,8 @@ const TABS = [
   ["ressources", "Ressources"],
 ];
 const GATE_LABEL = { "verrouille":"verrouillé", "en-cours":"en cours", "reussi":"réussi" };
-const ETAT_LABEL = { "generee":"générée", "faite":"faite" };
+const ETAT_LABEL = { "generee":"générée", "faite":"faite", "a-faire":"à faire", "en-cours":"en cours" };
+const NIVEAUX = ["A1", "A2", "B1", "B2", "C1"];
 let STATUS = {};
 
 const nav = document.getElementById("nav");
@@ -221,7 +235,9 @@ function md(src) {
 }
 
 async function get(url) {
-  const r = await fetch(url);
+  // cache-busting : GitHub Pages sert status.json / index.json avec max-age=600
+  const bust = /\.(json|md|txt)$/.test(url) ? (url.includes("?") ? "&" : "?") + "v=" + Date.now() : "";
+  const r = await fetch(url + bust, { cache: "no-store" });
   if (!r.ok) throw new Error(url + " → " + r.status);
   return r.text();
 }
@@ -251,40 +267,71 @@ function renderDashboard(s) {
 }
 
 function renderLecons(s) {
-  const itemHTML = (it, i, isLesson) => `
-    <div class="item" data-i="${i}" data-t="${isLesson ? "l" : "r"}">
-      ${isLesson ? `<span class="num">${String(it.numero).padStart(4,"0")}</span>` : `<span class="num">réf.</span>`}
+  const lecons = (s.lecons || []).slice().sort((a, b) => a.numero - b.numero);
+  const refs = s.references || [];
+  const next = lecons.find(l => l.etat !== "faite") || null;
+  const niveauCourant = s.niveau || "A1";
+  const byLevel = list => {
+    const m = new Map();
+    list.forEach(it => { const k = it.niveau || "Transversal"; if (!m.has(k)) m.set(k, []); m.get(k).push(it); });
+    const order = [...NIVEAUX, "Transversal", ...[...m.keys()].filter(k => !NIVEAUX.includes(k) && k !== "Transversal")];
+    return order.filter(k => m.has(k)).map(k => [k, m.get(k)]);
+  };
+  const lessonItem = it => `
+    <div class="item ${next && it.numero === next.numero ? "next" : ""}" data-f="${esc(it.fichier)}" data-title="${esc(it.titre)}">
+      <span class="num">${String(it.numero).padStart(2, "0")}</span>
       <span class="t">${esc(it.titre)}</span>
-      ${isLesson ? `<span class="chip ${it.etat === "faite" ? "ok" : ""}">${ETAT_LABEL[it.etat] || esc(it.etat)}</span>` : ""}
-      ${it.date ? `<span class="d">${esc(it.date)}</span>` : ""}
+      <span class="sub">
+        <span class="chip ${it.etat === "faite" ? "ok" : (next && it.numero === next.numero ? "accent" : "")}">${next && it.numero === next.numero && it.etat !== "faite" ? "prochaine" : (ETAT_LABEL[it.etat] || esc(it.etat || ""))}</span>
+        ${it.duree ? `<span>≈ ${it.duree} min</span>` : ""}
+        ${it.faiteLe ? `<span>faite le ${esc(it.faiteLe)}</span>` : (it.date ? `<span>${esc(it.date)}</span>` : "")}
+      </span>
     </div>`;
-  const items = [...(s.lecons||[]), ...(s.references||[])];
+  const refItem = it => `
+    <div class="item" data-f="${esc(it.fichier)}" data-title="${esc(it.titre)}">
+      <span class="t">${esc(it.titre)}</span>
+      ${it.date ? `<span class="sub"><span>${esc(it.date)}</span></span>` : ""}
+    </div>`;
+  const group = (k, items, html, openIf) => {
+    const done = items.filter(i => i.etat === "faite").length;
+    const isLvl = NIVEAUX.includes(k);
+    return `<details ${openIf ? "open" : ""}>
+      <summary>${isLvl ? `<span class="lvl ${k}">${k}</span>` : `<strong>${esc(k)}</strong>`}
+        <span class="cnt">${html === lessonItem ? `${done} / ${items.length} faites` : `${items.length} fiche${items.length > 1 ? "s" : ""}`}</span></summary>
+      <div class="grp">${items.map(html).join("")}</div></details>`;
+  };
   const el = document.getElementById("lecons");
   el.innerHTML = `
-    <div class="split">
+    <div class="split" id="split">
       <div class="side">
         <h4>Leçons</h4>
-        ${(s.lecons||[]).map((it, i) => itemHTML(it, i, true)).join("")}
-        <h4>Références</h4>
-        ${(s.references||[]).map((it, i) => itemHTML(it, i, false)).join("")}
+        ${lecons.length ? byLevel(lecons).map(([k, items]) =>
+            group(k, items, lessonItem, k === niveauCourant || items.some(i => i.etat !== "faite"))).join("")
+          : `<p class="note">Aucune leçon dans status.json.</p>`}
+        <h4>Fiches de référence</h4>
+        <div class="refs">${byLevel(refs).map(([k, items]) => group(k, items, refItem, k === niveauCourant || k === "Transversal")).join("")}</div>
       </div>
       <div class="viewer">
-        <p class="note">Sélectionnez une entrée dans la colonne —
-          <a class="openext" id="ext" href="#" target="_blank" rel="noopener">ouvrir dans un nouvel onglet ›</a></p>
+        <div class="bar">
+          <button class="btn ghost small back" id="back">‹ Liste</button>
+          <span class="ttl" id="ttl">Choisis une leçon ou une fiche dans la liste</span>
+          <a class="openext" id="ext" href="#" target="_blank" rel="noopener">ouvrir dans un nouvel onglet ›</a>
+        </div>
         <iframe id="fr" title="lecteur"></iframe>
       </div>
     </div>`;
-  const fr = el.querySelector("#fr"), ext = el.querySelector("#ext");
-  let cur = null;
-  const pick = btn => {
+  const split = el.querySelector("#split"), fr = el.querySelector("#fr"), ext = el.querySelector("#ext"), ttl = el.querySelector("#ttl");
+  const pick = (btn, scroll) => {
     el.querySelectorAll(".item").forEach(x => x.classList.remove("on"));
     btn.classList.add("on");
-    const t = btn.dataset.t, i = +btn.dataset.i;
-    cur = t === "l" ? (s.lecons||[])[i] : (s.references||[])[i];
-    if (cur) { fr.src = "../" + cur.fichier; ext.href = "../" + cur.fichier; }
+    fr.src = "../" + btn.dataset.f; ext.href = "../" + btn.dataset.f; ttl.textContent = btn.dataset.title;
+    split.classList.add("reading");
+    if (scroll) window.scrollTo({ top: 0, behavior: "smooth" });
   };
-  el.querySelectorAll(".item").forEach(b => b.onclick = () => pick(b));
-  const first = el.querySelector(".item"); if (first) pick(first);
+  el.querySelectorAll(".item").forEach(b => b.onclick = () => pick(b, true));
+  el.querySelector("#back").onclick = () => split.classList.remove("reading");
+  const start = el.querySelector(".item.next") || el.querySelector(".item");
+  if (start && window.innerWidth > 900) pick(start, false);
 }
 
 async function renderJournal(s) {

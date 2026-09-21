@@ -4,7 +4,7 @@ Une source unique par leçon : `leconNN-general.txt` (vocabulaire général et p
 `leconNN-it.txt` (vocabulaire informatique / travail). Format `recto;verso`, UTF-8, avec un en-tête
 de métadonnées en commentaires `#` (titre, deck, niveau, leçon, type). Anki ignore les lignes `#`.
 
-À partir de ces fichiers, `python build_anki.py` (racine du workspace, aucune dépendance) génère :
+À partir de ces fichiers, `python build.py` (racine du workspace, aucune dépendance ; appelle `build_anki.py` puis synchronise `status.json`) génère :
 
 | Fichier | Contenu |
 |---|---|
@@ -34,5 +34,5 @@ de la retourner. Les noms sont donnés avec leur article et leur pluriel : appre
 ## Ajouter une leçon (professeur)
 
 1. Écrire `anki/leconNN-general.txt` et `anki/leconNN-it.txt` avec l'en-tête `#`.
-2. `python build_anki.py`
+2. `python build.py`
 3. Commit + push : le site et les paquets sont à jour en ligne.
