@@ -1,16 +1,16 @@
 {
   "version": 1,
-  "misAJour": "2026-09-21",
+  "misAJour": "2026-09-23",
   "niveau": "A1",
   "semaine": 3,
-  "positionActuelle": "A1 · semaine 3 — leçon 0002 en cours (nombres, alphabet, haben)",
+  "positionActuelle": "A1 · semaine 3 — leçons 2 et 3 disponibles, corrections attendues au retour de l'apprenant",
   "gates": {
     "A1": "en-cours",
     "A2": "verrouille",
     "B1": "verrouille",
     "B2": "verrouille"
   },
-  "prochaineEtape": "Faire la leçon 0002, importer anki/allemand-tout.apkg (ou réviser dans l'onglet Anki), envoyer la présentation version 2",
+  "prochaineEtape": "Faire la leçon 2 puis la leçon 3 ; réviser dans l'onglet Anki ; renvoyer samedi ou dimanche : présentation v2, scores des exercices, les six phrases de la leçon 3",
   "lecons": [
     {
       "numero": 1,
@@ -30,9 +30,24 @@
       "duree": 35,
       "date": "2026-09-21",
       "etat": "a-faire"
+    },
+    {
+      "numero": 3,
+      "titre": "der, die, das : nommer les choses",
+      "fichier": "lessons/0003-genre-pluriel-kein.html",
+      "niveau": "A1",
+      "duree": 35,
+      "date": "2026-09-23",
+      "etat": "a-faire"
     }
   ],
   "references": [
+    {
+      "titre": "Genre, pluriel et négation kein — aide-mémoire",
+      "fichier": "reference/genre-pluriel-kein.html",
+      "niveau": "A1",
+      "date": "2026-09-23"
+    },
     {
       "titre": "Nicos Weg A1 — index des 77 leçons DW",
       "fichier": "reference/nicos-weg-a1.html",
@@ -73,15 +88,15 @@
     }
   ],
   "anki": {
-    "cartes": 84,
-    "decks": 3,
+    "cartes": 159,
+    "decks": 5,
     "manifeste": "anki/index.json",
     "tout": "anki/allemand-tout.apkg"
   },
   "compteurs": {
     "leconsFaites": 1,
-    "leconsGenerees": 2,
-    "references": 4,
+    "leconsGenerees": 3,
+    "references": 5,
     "records": 2
   }
 }

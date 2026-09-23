@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leçon 3 — der, die, das : nommer les choses</title>
+<style>
+  :root { --ink:#111; --muted:#666; --rule:#ddd; --accent:#a52a2a; --paper:#fffff8; --ok:#2e7d32; --ko:#c62828; --soft:#f6f4ea;
+          --m:#35618e; --f:#a5325f; --n:#3f7a52; }
+  html { background:var(--paper); }
+  body { font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif; color:var(--ink); max-width:44rem; margin:0 auto; padding:2.5rem 1.25rem 5rem; line-height:1.6; font-size:1.06rem; }
+  header { margin-bottom:2.5rem; }
+  .kicker { color:var(--muted); font-size:.85rem; text-transform:uppercase; letter-spacing:.12em; }
+  h1 { font-weight:400; font-size:2.2rem; margin:.2rem 0 .4rem; letter-spacing:-.01em; line-height:1.15; }
+  h2 { font-weight:400; font-size:1.45rem; margin:2.6rem 0 .8rem; border-bottom:1px solid var(--rule); padding-bottom:.25rem; }
+  h3 { font-weight:600; font-size:1.05rem; margin:1.6rem 0 .5rem; }
+  .lead { font-size:1.15rem; color:#333; }
+  .meta { color:var(--muted); font-size:.92rem; }
+  .goal { background:var(--soft); border-left:3px solid var(--accent); padding:.8rem 1.1rem; margin:1.4rem 0; }
+  .de { font-weight:600; }
+  .say { color:var(--accent); font-style:italic; }
+  .fr { color:var(--muted); }
+  .der { color:var(--m); font-weight:700; } .die { color:var(--f); font-weight:700; } .das { color:var(--n); font-weight:700; }
+  table { border-collapse:collapse; width:100%; margin:.8rem 0 1.2rem; font-size:1rem; }
+  th, td { text-align:left; padding:.42rem .5rem; border-bottom:1px solid var(--rule); vertical-align:top; }
+  th { font-weight:600; color:var(--muted); font-size:.82rem; text-transform:uppercase; letter-spacing:.06em; }
+  .aside { font-size:.95rem; color:#444; border-top:1px dotted var(--rule); border-bottom:1px dotted var(--rule); padding:.6rem 0; margin:1.2rem 0; }
+  .drill { border:1px solid var(--rule); border-radius:6px; padding:.9rem 1rem; margin:1rem 0; background:#fff; }
+  .drill .prompt { font-size:1.7rem; font-weight:600; margin:.5rem 0 .2rem; text-align:center; }
+  .drill .promptfr { text-align:center; color:var(--muted); font-size:.9rem; margin-bottom:.7rem; }
+  .choices { display:flex; gap:.5rem; flex-wrap:wrap; justify-content:center; }
+  .choices button { flex:1 1 6rem; font:inherit; font-size:1.05rem; padding:.55rem .4rem; border-radius:4px;
+    border:1px solid #bbb; background:#fff; color:var(--ink); cursor:pointer; margin:0; }
+  .choices button:hover { background:var(--soft); }
+  .choices button.mm { border-color:var(--m); color:var(--m); }
+  .choices button.ff { border-color:var(--f); color:var(--f); }
+  .choices button.nn { border-color:var(--n); color:var(--n); }
+  .fb { margin-top:.6rem; font-size:.95rem; display:none; padding:.5rem .7rem; border-radius:4px; }
+  .fb.ok { display:block; background:#e8f5e9; color:var(--ok); }
+  .fb.ko { display:block; background:#ffebee; color:var(--ko); }
+  .q { border:1px solid var(--rule); border-radius:6px; padding:.9rem 1rem; margin:1rem 0; background:#fff; }
+  .q .stem { font-weight:600; margin-bottom:.4rem; }
+  .q label { display:block; padding:.35rem .5rem; border-radius:4px; cursor:pointer; }
+  .q label:hover { background:var(--soft); }
+  .q input { margin-right:.5rem; }
+  .score { font-size:1.1rem; margin:1.2rem 0; padding:.8rem 1rem; background:var(--soft); border-radius:6px; display:none; }
+  .meterbar { height:.4rem; background:var(--rule); border-radius:999px; overflow:hidden; margin:.5rem 0 .2rem; }
+  .meterbar i { display:block; height:100%; background:var(--ok); width:0; transition:width .3s; }
+  textarea { width:100%; min-height:8rem; font:inherit; font-size:1rem; padding:.6rem; border:1px solid #bbb; border-radius:4px; box-sizing:border-box; }
+  button { font:inherit; font-size:.95rem; padding:.45rem 1rem; border:1px solid var(--ink); background:var(--ink); color:var(--paper); border-radius:4px; cursor:pointer; margin-top:.5rem; }
+  button.ghost { background:transparent; color:var(--ink); }
+  ul.checks { list-style:none; padding:0; }
+  ul.checks li { padding:.25rem 0 .25rem 1.6rem; position:relative; }
+  ul.checks li::before { content:"○"; position:absolute; left:.2rem; color:var(--muted); }
+  ul.checks li.ok::before { content:"●"; color:var(--ok); }
+  ul.checks li.ko::before { content:"●"; color:var(--ko); }
+  ul.checks li.ko { color:var(--ko); }
+  code { background:#f3f3ee; padding:.1rem .3rem; border-radius:3px; font-size:.92rem; }
+  a { color:var(--accent); }
+  footer { margin-top:3.5rem; color:var(--muted); font-size:.92rem; border-top:1px solid var(--rule); padding-top:1rem; }
+  .ask { background:#eef3f8; border-left:3px solid #35618e; padding:.8rem 1.1rem; margin:2rem 0; }
+  .novoice { display:none; font-size:.9rem; color:var(--ko); }
+  @media print { button, .drill, .q input { display:none } body { max-width:none; padding:0 } }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="kicker">Leçon 3 · Niveau A1 · ≈ 35 minutes</div>
+  <h1>der, die, das : nommer les choses</h1>
+  <p class="lead">Chaque nom allemand porte un genre, et ce genre commande tout le reste de la phrase. Aujourd'hui tu apprends à le retenir sans le deviner, à former le pluriel, et à dire qu'une chose n'est pas là.</p>
+  <p class="meta">Pré-requis : <a href="0002-nombres-alphabet-haben.html">leçon 2</a>. Fiche à garder ouverte : <a href="../reference/genre-pluriel-kein.html">genre, pluriel et kein</a>.</p>
+</header>
+
+<div class="goal">
+<b>Le gain concret de cette leçon :</b> tu peux décrire ton poste de travail et dire ce qui te manque.<br>
+<span class="de">« Das ist mein Schreibtisch. Das ist ein Computer, das ist eine Tastatur und das ist kein Drucker. Ich habe zwei Bildschirme. »</span>
+</div>
+
+<h2>1. Écoute d'abord (10 min)</h2>
+<ol>
+  <li><a href="https://learngerman.dw.com/fr/was-ist-das/l-49645473" target="_blank" rel="noopener">Nicos Weg, leçon 21 « Was ist das? »</a> : nommer des objets, <span class="de">der / die / das</span>.</li>
+  <li><a href="https://learngerman.dw.com/fr/ich-habe-kein/l-49631010" target="_blank" rel="noopener">Nicos Weg, leçon 23 « Ich habe kein … »</a> : la négation.</li>
+  <li>Bonus travail : <a href="https://learngerman.dw.com/fr/im-b%C3%BCro/l-49948552" target="_blank" rel="noopener">leçon 44 « Im Büro »</a>, le vocabulaire du bureau.</li>
+</ol>
+<p class="aside">Ces leçons portent des numéros élevés dans le parcours DW, qui suit un autre ordre que le nôtre. Ce n'est pas une erreur : nous prenons la grammaire dans l'ordre le plus efficace pour un francophone. Tu peux continuer en parallèle les leçons DW 5 à 12 dans l'ordre, elles ne demandent rien de nouveau.</p>
+
+<h2>2. Le genre : trois cases, aucune logique (7 min)</h2>
+<p>Le français a deux genres, l'allemand en a trois : <span class="der">der</span> (masculin), <span class="die">die</span> (féminin), <span class="das">das</span> (neutre). Et surtout, <b>ils ne correspondent pas au français</b> :</p>
+<table>
+<thead><tr><th>Allemand</th><th>Français</th></tr></thead>
+<tbody>
+<tr><td class="de"><span class="die">die</span> Sonne</td><td>le soleil</td></tr>
+<tr><td class="de"><span class="der">der</span> Mond</td><td>la lune</td></tr>
+<tr><td class="de"><span class="das">das</span> Mädchen</td><td>la fille (neutre, à cause du diminutif -chen)</td></tr>
+<tr><td class="de"><span class="der">der</span> Computer, <span class="die">die</span> Maus, <span class="das">das</span> Handy</td><td>trois objets de ton bureau, trois genres différents</td></tr>
+</tbody>
+</table>
+<div class="goal"><b>La seule méthode qui marche :</b> n'apprends jamais un nom seul. Pas <i>Datei</i>, mais <b><span class="die">die</span> Datei, die Dateien</b>. Toutes les cartes Anki de ce cours sont faites comme ça. Un nom appris sans son article devra être réappris.</div>
+<p>Environ 80 % des noms doivent s'apprendre par cœur, mais ces terminaisons sont fiables :</p>
+<table>
+<thead><tr><th>Genre</th><th>Terminaisons</th><th>Exemples de ton métier</th></tr></thead>
+<tbody>
+<tr><td class="die">die</td><td>-ung, -heit, -keit, -ion, -tät, -ik, -ur</td><td>die Lösung, die Version, die Informatik, die Tastatur, die Sicherheit</td></tr>
+<tr><td class="der">der</td><td>-er (celui qui fait), -ling, -ismus ; jours, mois, saisons</td><td>der Entwickler, der Drucker, der Rechner, der Montag</td></tr>
+<tr><td class="das">das</td><td>-chen, -lein, -ment, -um, -ma ; verbe pris comme nom</td><td>das Dokument, das Datum, das System, das Lernen, das Programmieren</td></tr>
+</tbody>
+</table>
+<p class="aside"><b>Pense « type », pas « devinette ».</b> Tu déclares déjà le type de tes variables sans hésiter. <span class="say">Datei : die</span> est exactement la même chose. Le jour où tu hésites, le DWDS ou le Duden répond en deux secondes, et tu corriges la carte immédiatement.</p>
+
+<h3>Exercice 1 : quel article ?</h3>
+<p>Clique sur l'article. La correction arrive tout de suite, avec la règle quand il y en a une.</p>
+<div class="drill">
+  <div class="prompt" id="d1-word">—</div>
+  <div class="promptfr" id="d1-fr"></div>
+  <div class="choices">
+    <button class="mm" data-a="der">der</button>
+    <button class="ff" data-a="die">die</button>
+    <button class="nn" data-a="das">das</button>
+  </div>
+  <div class="meterbar"><i id="d1-bar"></i></div>
+  <div class="meta" id="d1-score">0 / 0</div>
+  <div class="fb" id="d1-fb"></div>
+</div>
+
+<h2>3. Le pluriel : cinq familles, un seul article (6 min)</h2>
+<p><b>Tous les pluriels prennent <span class="die">die</span></b>, quel que soit le genre du singulier. Le nom, lui, change de cinq façons possibles :</p>
+<table>
+<thead><tr><th>Famille</th><th>Qui</th><th>Exemple</th></tr></thead>
+<tbody>
+<tr><td class="de">+ -(e)n</td><td>presque tous les féminins</td><td>die Datei → <span class="die">die</span> Datei<b>en</b></td></tr>
+<tr><td class="de">+ -e</td><td>beaucoup de masculins et neutres</td><td>das Programm → <span class="die">die</span> Programm<b>e</b> · der Stuhl → die St<b>ü</b>hle</td></tr>
+<tr><td class="de">+ -er</td><td>neutres courts, avec Umlaut</td><td>das Passwort → <span class="die">die</span> Passw<b>ö</b>rt<b>er</b></td></tr>
+<tr><td class="de">+ -s</td><td>mots anglais ou en -o</td><td>das Handy → <span class="die">die</span> Handy<b>s</b> · das Büro → die Büro<b>s</b></td></tr>
+<tr><td class="de">rien</td><td>masculins et neutres en -er, -el, -en</td><td>der Computer → <span class="die">die</span> Computer</td></tr>
+</tbody>
+</table>
+<p class="aside">Quand le nom ne change pas, c'est l'article et le verbe qui portent l'information : <span class="de">Der Computer <u>ist</u> neu</span> (un) contre <span class="de">Die Computer <u>sind</u> neu</span> (plusieurs). Même mot, deux sens : le contexte tranche.</p>
+
+<h3>Exercice 2 : quel pluriel ?</h3>
+<div class="drill">
+  <div class="prompt" id="d2-word">—</div>
+  <div class="promptfr" id="d2-fr"></div>
+  <div class="choices" id="d2-choices"></div>
+  <div class="meterbar"><i id="d2-bar"></i></div>
+  <div class="meta" id="d2-score">0 / 0</div>
+  <div class="fb" id="d2-fb"></div>
+</div>
+
+<h2>4. Dire non : <i>kein</i> ou <i>nicht</i> (6 min)</h2>
+<p>Le motif est le même que pour <span class="de">ein</span>, et il servira ensuite pour <span class="de">mein, dein, Ihr</span> :</p>
+<table>
+<thead><tr><th></th><th>masculin</th><th>féminin</th><th>neutre</th><th>pluriel</th></tr></thead>
+<tbody>
+<tr><td>défini</td><td class="der">der</td><td class="die">die</td><td class="das">das</td><td class="die">die</td></tr>
+<tr><td>indéfini</td><td class="der">ein</td><td class="die">ein<b>e</b></td><td class="das">ein</td><td>—</td></tr>
+<tr><td>négatif</td><td class="der">kein</td><td class="die">kein<b>e</b></td><td class="das">kein</td><td class="die">kein<b>e</b></td></tr>
+<tr><td>possessif</td><td class="der">mein</td><td class="die">mein<b>e</b></td><td class="das">mein</td><td class="die">mein<b>e</b></td></tr>
+</tbody>
+</table>
+<p><b>Féminin et pluriel ajoutent -e. Masculin et neutre ne prennent rien.</b> Une seule règle, quatre mots.</p>
+<table>
+<thead><tr><th>Quand</th><th>Quoi</th><th>Exemple</th></tr></thead>
+<tbody>
+<tr><td>le nom a <i>ein / eine</i>, ou aucun article</td><td class="de">kein / keine</td><td>Das ist <b>kein</b> Drucker. · Ich habe <b>keine</b> Zeit.</td></tr>
+<tr><td>le nom a <i>der / die / das</i> ou un possessif</td><td class="de">nicht</td><td>Das ist <b>nicht</b> mein Computer.</td></tr>
+<tr><td>on nie un verbe ou un adjectif</td><td class="de">nicht</td><td>Ich arbeite heute <b>nicht</b>. · Das ist <b>nicht</b> richtig.</td></tr>
+</tbody>
+</table>
+<p class="goal">Règle courte à retenir : <b><i>kein</i> remplace <i>ein</i>. Partout ailleurs, <i>nicht</i>.</b></p>
+
+<h3>Exercice 3 : <i>kein</i>, <i>keine</i> ou <i>nicht</i> ?</h3>
+<div class="drill">
+  <div class="prompt" id="d3-sent" style="font-size:1.25rem">—</div>
+  <div class="promptfr" id="d3-fr"></div>
+  <div class="choices">
+    <button data-a="kein">kein</button>
+    <button data-a="keine">keine</button>
+    <button data-a="nicht">nicht</button>
+  </div>
+  <div class="meterbar"><i id="d3-bar"></i></div>
+  <div class="meta" id="d3-score">0 / 0</div>
+  <div class="fb" id="d3-fb"></div>
+</div>
+
+<h2>5. Quiz (5 min)</h2>
+<p>Sans regarder plus haut. L'ordre des réponses change à chaque rechargement de la page.</p>
+<div id="quiz"></div>
+<div class="score" id="score"></div>
+
+<h2>6. Décris ton poste de travail</h2>
+<p>Écris <b>six phrases</b> sur le modèle <span class="de">Das ist ein/eine …</span>, dont <b>au moins une négative</b> (<span class="de">Das ist kein/keine …</span>) et <b>au moins une au pluriel</b> (<span class="de">Das sind zwei …</span>). Le vérificateur connaît le genre des mots de la fiche : il te dira exactement où tu t'es trompé.</p>
+<textarea id="prod" placeholder="Das ist mein Schreibtisch.
+Das ist ein Computer.
+Das ist eine Tastatur.
+Das ist kein Drucker.
+Das sind zwei Bildschirme.
+Das ist keine Maus."></textarea>
+<button id="checkProd">Vérifier mes phrases</button>
+<ul class="checks" id="prodOut"></ul>
+
+<h2>7. À voix haute (3 min)</h2>
+<p>Prends dix objets autour de toi et nomme-les avec leur article, puis nie-les : <span class="de">Das ist ein Stuhl. Das ist kein Stuhl.</span> Ce qui compte n'est pas le mot, c'est que l'article sorte <b>en même temps</b> que le mot, sans réfléchir. Si tu hésites plus d'une seconde, la carte Anki n'est pas encore acquise.</p>
+
+<h2>8. Anki : 43 cartes générales + 32 cartes IT</h2>
+<p>Les fichiers <code>lecon03-general.txt</code> et <code>lecon03-it.txt</code> sont dans le dossier <code>anki/</code>, et les paquets se téléchargent en un clic dans l'onglet <b>Anki</b> du site. Chaque nom y figure sous la forme <span class="de">die Datei, die Dateien</span> : article et pluriel font partie du mot.</p>
+<p class="aside">Objectif de la semaine : que <b>l'article vienne avec le mot</b>. Dans Anki, si tu penses « Datei » sans penser « die », compte la carte comme ratée. C'est sévère, et c'est exactement ce qui fera la différence au B2, où un mauvais genre casse toute une déclinaison.</p>
+
+<h2>Ce que tu dois retenir</h2>
+<ul>
+  <li>Trois genres, sans rapport avec le français. On apprend <b>article + nom + pluriel</b>, jamais le nom seul.</li>
+  <li>Terminaisons sûres : <b>-ung, -ion, -tät, -keit, -heit, -ur</b> → <span class="die">die</span> · <b>-er</b> (agent) → <span class="der">der</span> · <b>-chen, -ment, -um</b> → <span class="das">das</span>.</li>
+  <li>Tous les pluriels prennent <span class="die">die</span> ; cinq familles : -(e)n, -e, -er, -s, rien.</li>
+  <li><b>ein / kein / mein</b> : -e au féminin et au pluriel, rien au masculin et au neutre.</li>
+  <li><i>kein</i> remplace <i>ein</i> ; partout ailleurs, <i>nicht</i>.</li>
+</ul>
+
+<div class="ask">
+<b>Pour samedi ou dimanche.</b> Envoie-moi trois choses, pour la leçon 2 et pour celle-ci :
+<ol>
+  <li>Ta présentation version 2 (leçon 2 : nom, âge, pays, ville, métier, langues, numéro).</li>
+  <li>Ton score au drill de dictée de nombres de la leçon 2, et tes scores aux exercices 1, 2 et 3 d'aujourd'hui.</li>
+  <li>Tes six phrases de la partie 6, telles que tu les as écrites.</li>
+</ol>
+Pose aussi toutes tes questions : pourquoi <span class="de">das ist</span> même devant un mot féminin, pourquoi <span class="de">die Mäuse</span> prend un Umlaut, comment savoir si un anglicisme est <i>der</i> ou <i>das</i>. Je corrige tout et la leçon 4 partira de tes erreurs.
+</div>
+
+<footer>
+<p><b>Source primaire :</b> Deutsche Welle, Nicos Weg A1, leçons <a href="https://learngerman.dw.com/fr/was-ist-das/l-49645473" target="_blank" rel="noopener">21</a> et <a href="https://learngerman.dw.com/fr/ich-habe-kein/l-49631010" target="_blank" rel="noopener">23</a>. Pour vérifier un genre ou un pluriel : <a href="https://www.dwds.de/" target="_blank" rel="noopener">DWDS</a> ou <a href="https://www.duden.de/woerterbuch" target="_blank" rel="noopener">Duden</a>.<br>
+<b>Références :</b> <a href="../reference/genre-pluriel-kein.html">genre, pluriel et kein</a> · <a href="../reference/nombres-alphabet.html">nombres et alphabet</a> · <a href="../reference/prononciation.html">prononciation</a> · <a href="../reference/nicos-weg-a1.html">index Nicos Weg A1</a>.<br>
+<b>Prochaine leçon :</b> l'accusatif. <span class="de">Ich habe <u>einen</u> Computer</span> : pourquoi <i>ein</i> devient <i>einen</i>, et comment le verbe décide de la forme du nom. C'est la première vraie marche de la grammaire allemande.</p>
+<p>Leçon créée le 23 septembre 2026.</p>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+
+  /* ---------------- dictionnaire partagé : article, pluriel, français, règle ---------------- */
+  var N = [
+    ["Computer","der","die Computer","l'ordinateur","-er : pas de changement au pluriel"],
+    ["Rechner","der","die Rechner","l'ordinateur",""],
+    ["Bildschirm","der","die Bildschirme","l'écran",""],
+    ["Drucker","der","die Drucker","l'imprimante","-er (celui qui fait l'action) : masculin"],
+    ["Schreibtisch","der","die Schreibtische","le bureau (meuble)",""],
+    ["Stuhl","der","die Stühle","la chaise","pluriel en -e avec Umlaut"],
+    ["Tisch","der","die Tische","la table",""],
+    ["Schlüssel","der","die Schlüssel","la clé","-el : pas de changement au pluriel"],
+    ["Kollege","der","die Kollegen","le collègue","exception : -e mais masculin (personne)"],
+    ["Fehler","der","die Fehler","l'erreur, le bug","-er : masculin, pluriel identique"],
+    ["Ordner","der","die Ordner","le dossier",""],
+    ["Server","der","die Server","le serveur","anglicisme d'appareil : der"],
+    ["Laptop","der","die Laptops","l'ordinateur portable","anglicisme d'appareil : der"],
+    ["Montag","der","die Montage","lundi","jours et mois : masculin"],
+    ["Tastatur","die","die Tastaturen","le clavier","-ur : toujours féminin"],
+    ["Maus","die","die Mäuse","la souris","pluriel en -e avec Umlaut"],
+    ["Datei","die","die Dateien","le fichier","féminin : pluriel en -en"],
+    ["Firma","die","die Firmen","l'entreprise","pluriel irrégulier : Firmen"],
+    ["Lösung","die","die Lösungen","la solution","-ung : toujours féminin"],
+    ["Anwendung","die","die Anwendungen","l'application","-ung : toujours féminin"],
+    ["Sitzung","die","die Sitzungen","la réunion","-ung : toujours féminin"],
+    ["Version","die","die Versionen","la version","-ion : toujours féminin"],
+    ["Sicherheit","die","die Sicherheiten","la sécurité","-heit : toujours féminin"],
+    ["Möglichkeit","die","die Möglichkeiten","la possibilité","-keit : toujours féminin"],
+    ["Universität","die","die Universitäten","l'université","-tät : toujours féminin"],
+    ["Informatik","die","die Informatiken","l'informatique","-ik : féminin"],
+    ["Frage","die","die Fragen","la question","-e : féminin dans la plupart des cas"],
+    ["Software","die","die Software","le logiciel","suit die Ware"],
+    ["Sprache","die","die Sprachen","la langue","-e : féminin"],
+    ["Arbeit","die","die Arbeiten","le travail",""],
+    ["Tür","die","die Türen","la porte",""],
+    ["Lampe","die","die Lampen","la lampe","-e : féminin"],
+    ["Handy","das","die Handys","le téléphone portable","anglicisme d'objet : das, pluriel en -s"],
+    ["Passwort","das","die Passwörter","le mot de passe","neutre court : pluriel en -er avec Umlaut"],
+    ["Programm","das","die Programme","le programme",""],
+    ["Projekt","das","die Projekte","le projet",""],
+    ["Team","das","die Teams","l'équipe","anglicisme collectif : das, pluriel en -s"],
+    ["Büro","das","die Büros","le bureau (pièce)","mot en -o : pluriel en -s"],
+    ["Fenster","das","die Fenster","la fenêtre","-er : pluriel identique"],
+    ["Buch","das","die Bücher","le livre","neutre court : pluriel en -er avec Umlaut"],
+    ["Problem","das","die Probleme","le problème",""],
+    ["Dokument","das","die Dokumente","le document","-ment : toujours neutre"],
+    ["System","das","die Systeme","le système",""],
+    ["Datum","das","die Daten","la date","-um : toujours neutre"],
+    ["Papier","das","die Papiere","le papier",""],
+    ["Mädchen","das","die Mädchen","la fille","-chen : toujours neutre, même pour une personne"]
+  ].map(function (r) { return { w: r[0], a: r[1], pl: r[2], fr: r[3], rule: r[4] }; });
+  var BY = {}, BYPL = {};
+  N.forEach(function (n) {
+    BY[n.w.toLowerCase()] = n;
+    BYPL[n.pl.replace(/^die\s+/, "").toLowerCase()] = n;
+  });
+
+  /* ---------------- voix allemande ---------------- */
+  var voice = null;
+  function pickVoice() {
+    if (!("speechSynthesis" in window)) return;
+    voice = speechSynthesis.getVoices().filter(function (v) { return /^de/i.test(v.lang); })[0] || null;
+  }
+  pickVoice();
+  if ("speechSynthesis" in window) speechSynthesis.onvoiceschanged = pickVoice;
+  function speak(t) {
+    if (!voice) return;
+    speechSynthesis.cancel();
+    var u = new SpeechSynthesisUtterance(t); u.voice = voice; u.lang = voice.lang; u.rate = .85;
+    speechSynthesis.speak(u);
+  }
+
+  var rnd = function (n) { return Math.floor(Math.random() * n); };
+  function shuffleArr(a) { for (var i = a.length - 1; i > 0; i--) { var j = rnd(i + 1); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+  function meter(barId, scoreId, ok, tot) {
+    document.getElementById(barId).style.width = tot ? (100 * ok / tot) + "%" : "0";
+    document.getElementById(scoreId).textContent = ok + " / " + tot + (tot >= 10 ? (ok / tot >= .8 ? " — acquis" : " — à retravailler") : "");
+  }
+
+  /* ---------------- exercice 1 : article ---------------- */
+  var e1 = { ok: 0, tot: 0, cur: null, locked: false };
+  function e1Next() {
+    e1.cur = N[rnd(N.length)]; e1.locked = false;
+    document.getElementById("d1-word").textContent = e1.cur.w;
+    document.getElementById("d1-fr").textContent = e1.cur.fr;
+    document.getElementById("d1-fb").className = "fb";
+  }
+  document.querySelector("#d1-word").parentNode.querySelectorAll(".choices button").forEach(function (b) {
+    b.addEventListener("click", function () {
+      if (e1.locked) return;
+      e1.locked = true; e1.tot++;
+      var fb = document.getElementById("d1-fb"), good = b.dataset.a === e1.cur.a;
+      if (good) { e1.ok++; fb.className = "fb ok"; fb.textContent = "Juste : " + e1.cur.a + " " + e1.cur.w + (e1.cur.rule ? " — " + e1.cur.rule : "") + "."; }
+      else { fb.className = "fb ko"; fb.textContent = "Non : c'est " + e1.cur.a + " " + e1.cur.w + (e1.cur.rule ? " — " + e1.cur.rule : " — à apprendre par cœur") + "."; }
+      speak(e1.cur.a + " " + e1.cur.w);
+      meter("d1-bar", "d1-score", e1.ok, e1.tot);
+      setTimeout(e1Next, good ? 1100 : 2600);
+    });
+  });
+  e1Next();
+
+  /* ---------------- exercice 2 : pluriel ---------------- */
+  var e2 = { ok: 0, tot: 0, cur: null, locked: false };
+  function fakePlurals(n) {
+    var stem = n.w, out = [];
+    var cands = ["die " + stem + "e", "die " + stem + "en", "die " + stem + "s", "die " + stem + "er", "die " + stem];
+    cands.forEach(function (c) { if (c !== n.pl && out.indexOf(c) < 0) out.push(c); });
+    return shuffleArr(out).slice(0, 2);
+  }
+  function e2Next() {
+    e2.cur = N[rnd(N.length)]; e2.locked = false;
+    document.getElementById("d2-word").textContent = e2.cur.a + " " + e2.cur.w;
+    document.getElementById("d2-fr").textContent = e2.cur.fr + " — quel est le pluriel ?";
+    document.getElementById("d2-fb").className = "fb";
+    var opts = shuffleArr([e2.cur.pl].concat(fakePlurals(e2.cur)));
+    var box = document.getElementById("d2-choices"); box.innerHTML = "";
+    opts.forEach(function (o) {
+      var b = document.createElement("button"); b.textContent = o;
+      b.addEventListener("click", function () {
+        if (e2.locked) return;
+        e2.locked = true; e2.tot++;
+        var fb = document.getElementById("d2-fb"), good = o === e2.cur.pl;
+        if (good) { e2.ok++; fb.className = "fb ok"; fb.textContent = "Juste : " + e2.cur.pl + (e2.cur.rule ? " — " + e2.cur.rule : "") + "."; }
+        else { fb.className = "fb ko"; fb.textContent = "Non : " + e2.cur.a + " " + e2.cur.w + " → " + e2.cur.pl + (e2.cur.rule ? " — " + e2.cur.rule : "") + "."; }
+        speak(e2.cur.pl);
+        meter("d2-bar", "d2-score", e2.ok, e2.tot);
+        setTimeout(e2Next, good ? 1100 : 2800);
+      });
+      box.appendChild(b);
+    });
+  }
+  e2Next();
+
+  /* ---------------- exercice 3 : kein / keine / nicht ---------------- */
+  var S3 = [
+    ["Das ist ___ Drucker.", "kein", "Ce n'est pas une imprimante.", "der Drucker : masculin, et ein est présent → kein."],
+    ["Das ist ___ Maus.", "keine", "Ce n'est pas une souris.", "die Maus : féminin → keine."],
+    ["Das ist ___ Handy.", "kein", "Ce n'est pas un portable.", "das Handy : neutre → kein."],
+    ["Das ist ___ mein Computer.", "nicht", "Ce n'est pas mon ordinateur.", "il y a un possessif (mein) → nicht, jamais kein."],
+    ["Ich habe ___ Zeit.", "keine", "Je n'ai pas le temps.", "die Zeit, nom sans article → keine."],
+    ["Ich arbeite heute ___.", "nicht", "Je ne travaille pas aujourd'hui.", "on nie le verbe → nicht, en fin de phrase."],
+    ["Das ist ___ Fehler.", "kein", "Ce n'est pas une erreur.", "der Fehler : masculin → kein."],
+    ["Das sind ___ Dateien.", "keine", "Ce ne sont pas des fichiers.", "pluriel → keine."],
+    ["Der Bildschirm ist ___ neu.", "nicht", "L'écran n'est pas neuf.", "on nie un adjectif → nicht."],
+    ["Das ist ___ Tastatur.", "keine", "Ce n'est pas un clavier.", "die Tastatur : féminin → keine."],
+    ["Ich habe ___ Passwort.", "kein", "Je n'ai pas de mot de passe.", "das Passwort : neutre → kein."],
+    ["Das ist ___ die Lösung.", "nicht", "Ce n'est pas la solution.", "il y a l'article défini die → nicht."]
+  ];
+  var e3 = { ok: 0, tot: 0, cur: null, locked: false, pool: shuffleArr(S3.slice()) };
+  function e3Next() {
+    if (!e3.pool.length) e3.pool = shuffleArr(S3.slice());
+    e3.cur = e3.pool.pop(); e3.locked = false;
+    document.getElementById("d3-sent").textContent = e3.cur[0];
+    document.getElementById("d3-fr").textContent = e3.cur[2];
+    document.getElementById("d3-fb").className = "fb";
+  }
+  document.querySelector("#d3-sent").parentNode.querySelectorAll(".choices button").forEach(function (b) {
+    b.addEventListener("click", function () {
+      if (e3.locked) return;
+      e3.locked = true; e3.tot++;
+      var fb = document.getElementById("d3-fb"), good = b.dataset.a === e3.cur[1];
+      var full = e3.cur[0].replace("___", e3.cur[1]);
+      if (good) { e3.ok++; fb.className = "fb ok"; fb.textContent = "Juste : " + full + " — " + e3.cur[3]; }
+      else { fb.className = "fb ko"; fb.textContent = "Non : " + full + " — " + e3.cur[3]; }
+      speak(full);
+      meter("d3-bar", "d3-score", e3.ok, e3.tot);
+      setTimeout(e3Next, good ? 1200 : 3000);
+    });
+  });
+  e3Next();
+
+  /* ---------------- quiz ---------------- */
+  var questions = [
+    { stem: "Quel article pour « Lösung » (solution) ?", opts: ["die", "der", "das"], ans: 0, why: "Tout nom en -ung est féminin : die Lösung." },
+    { stem: "Quel article pour « Dokument » ?", opts: ["das", "der", "die"], ans: 0, why: "Tout nom en -ment est neutre : das Dokument." },
+    { stem: "Quel article pour « Drucker » (imprimante) ?", opts: ["der", "die", "das"], ans: 0, why: "Nom en -er désignant celui qui agit : masculin, même si « imprimante » est féminin en français." },
+    { stem: "Quel est le pluriel de « die Datei » ?", opts: ["die Dateien", "die Dateis", "die Dateie"], ans: 0, why: "Les féminins font presque tous leur pluriel en -(e)n." },
+    { stem: "Quel est le pluriel de « der Computer » ?", opts: ["die Computer", "die Computern", "die Computers"], ans: 0, why: "Masculin en -er : le nom ne change pas, seul l'article bouge." },
+    { stem: "Quel est le pluriel de « das Passwort » ?", opts: ["die Passwörter", "die Passworte", "die Passworts"], ans: 0, why: "Neutre court : pluriel en -er avec Umlaut." },
+    { stem: "Quel article prend TOUT pluriel allemand ?", opts: ["die", "der", "das"], ans: 0, why: "Tous les pluriels prennent die, quel que soit le genre du singulier." },
+    { stem: "Das ist ___ Tastatur. (ce n'est pas un clavier)", opts: ["keine", "kein", "nicht"], ans: 0, why: "die Tastatur est féminin : keine." },
+    { stem: "Das ist ___ mein Büro. (ce n'est pas mon bureau)", opts: ["nicht", "kein", "keine"], ans: 0, why: "Devant un possessif on emploie nicht ; kein remplace seulement ein." },
+    { stem: "Ich habe ___ Zeit. (je n'ai pas le temps)", opts: ["keine", "kein", "nicht"], ans: 0, why: "die Zeit, employé sans article : keine." },
+    { stem: "Comment apprend-on un nom allemand ?", opts: ["article + nom + pluriel", "le nom seul suffit", "nom + traduction"], ans: 0, why: "Le genre et le pluriel font partie du mot : die Datei, die Dateien." },
+    { stem: "« das Mädchen » est neutre parce que…", opts: ["il finit par -chen", "il désigne un enfant", "c'est une exception isolée"], ans: 0, why: "Le suffixe -chen (diminutif) rend le mot neutre, quel que soit son sens." }
+  ];
+  function shuffleQ(q) {
+    var idx = q.opts.map(function (_, i) { return i; });
+    shuffleArr(idx);
+    return { stem: q.stem, why: q.why, opts: idx.map(function (i) { return q.opts[i]; }), ans: idx.indexOf(q.ans) };
+  }
+  var root = document.getElementById("quiz"), answered = 0, correct = 0;
+  questions.map(shuffleQ).forEach(function (q, n) {
+    var box = document.createElement("div"); box.className = "q";
+    var stem = document.createElement("div"); stem.className = "stem"; stem.textContent = (n + 1) + ". " + q.stem;
+    box.appendChild(stem);
+    var fb = document.createElement("div"); fb.className = "fb";
+    q.opts.forEach(function (o, i) {
+      var lab = document.createElement("label"), inp = document.createElement("input");
+      inp.type = "radio"; inp.name = "q" + n;
+      inp.addEventListener("change", function () {
+        box.querySelectorAll("input").forEach(function (x) { x.disabled = true; });
+        answered++;
+        if (i === q.ans) { correct++; fb.className = "fb ok"; fb.textContent = "Juste. " + q.why; }
+        else { fb.className = "fb ko"; fb.textContent = "Non : la bonne réponse est « " + q.opts[q.ans] + " ». " + q.why; }
+        if (answered === questions.length) {
+          var s = document.getElementById("score"); s.style.display = "block";
+          var msg = correct >= 11 ? "Excellent. Passe à la partie 6." :
+                    correct >= 9 ? "Bien. Relis les points ratés dans la fiche, puis continue." :
+                    "Reprends les parties 2 à 4 et refais les exercices, puis recharge la page.";
+          s.textContent = "Score : " + correct + " / " + questions.length + ". " + msg;
+        }
+      });
+      lab.appendChild(inp); lab.appendChild(document.createTextNode(o)); box.appendChild(lab);
+    });
+    box.appendChild(fb); root.appendChild(box);
+  });
+
+  /* ---------------- production : vérificateur ---------------- */
+  document.getElementById("checkProd").addEventListener("click", function () {
+    var raw = document.getElementById("prod").value;
+    var out = document.getElementById("prodOut");
+    out.innerHTML = "";
+    var add = function (cls, txt) { var li = document.createElement("li"); li.className = cls; li.textContent = txt; out.appendChild(li); };
+    var sentences = raw.split(/[.\n!?]+/).map(function (s) { return s.trim(); }).filter(Boolean);
+    if (!sentences.length) { add("ko", "Écris d'abord tes phrases dans le cadre."); return; }
+
+    var nNeg = 0, nPlur = 0, nGood = 0;
+    sentences.forEach(function (s) {
+      var m = s.match(/^(Das|das)\s+(ist|sind)\s+(ein|eine|kein|keine|mein|meine|zwei|drei|vier|der|die|das)?\s*([A-Za-zÄÖÜäöüß-]+)/);
+      if (!m) { add("ko", "« " + s + " » : je ne reconnais pas le modèle « Das ist … » ou « Das sind … »."); return; }
+      var verb = m[2], det = m[3] || "", word = m[4];
+      var n = BY[word.toLowerCase()], isPlForm = false;
+      if (!n) { n = BYPL[word.toLowerCase()]; isPlForm = !!n; }
+      if (!n) { add("", "« " + s + " » : le mot « " + word + " » n'est pas dans la fiche, je ne peux pas vérifier son genre. Vérifie-le dans le DWDS."); return; }
+      if (word[0] !== word[0].toUpperCase()) { add("ko", "« " + s + " » : « " + word + " » est un nom, il prend une majuscule → " + n.a + " " + n.w + "."); return; }
+      if (/^(kein|keine)$/.test(det)) nNeg++;
+      var wantsPlural = verb === "sind" || /^(zwei|drei|vier)$/.test(det);
+      if (wantsPlural) nPlur++;
+
+      if (wantsPlural) {
+        if (isPlForm) { nGood++; add("ok", "« " + s + " » : juste, pluriel " + n.pl + "."); }
+        else { add("ko", "« " + s + " » : au pluriel, " + n.a + " " + n.w + " devient " + n.pl + "."); }
+        return;
+      }
+      if (isPlForm) { add("ko", "« " + s + " » : « " + word + " » est déjà un pluriel. Avec « ist », écris le singulier : " + n.a + " " + n.w + " ; sinon « Das sind … »."); return; }
+      var fem = n.a === "die", need;
+      if (/^(ein|eine)$/.test(det)) need = fem ? "eine" : "ein";
+      else if (/^(kein|keine)$/.test(det)) need = fem ? "keine" : "kein";
+      else if (/^(mein|meine)$/.test(det)) need = fem ? "meine" : "mein";
+      else if (/^(der|die|das)$/.test(det)) need = n.a;
+      else { add("ko", "« " + s + " » : il manque l'article devant « " + n.w + " » (" + n.a + " " + n.w + ")."); return; }
+      if (det === need) { nGood++; add("ok", "« " + s + " » : juste. " + n.a + " " + n.w + ", " + n.pl + "."); }
+      else { add("ko", "« " + s + " » : " + n.w + " est " + n.a + " (" + (fem ? "féminin" : n.a === "der" ? "masculin" : "neutre") + "), donc « " + need + " " + n.w + " »."); }
+    });
+
+    add(sentences.length >= 6 ? "ok" : "ko", "Nombre de phrases : " + sentences.length + " (il en faut six).");
+    add(nNeg >= 1 ? "ok" : "ko", "Phrases négatives avec kein/keine : " + nNeg + " (il en faut au moins une).");
+    add(nPlur >= 1 ? "ok" : "ko", "Phrases au pluriel : " + nPlur + " (il en faut au moins une).");
+    add(nGood === sentences.length && sentences.length >= 6 ? "ok" : "", "Phrases correctes : " + nGood + " / " + sentences.length + ". Copie-les dans le terminal, je les relis pour de bon.");
+  });
+})();
+</script>
+</body>
+</html>

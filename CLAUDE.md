@@ -58,6 +58,8 @@ Ce projet n'utilise pas le cycle spec → plan → tests du guide `~/.claude/com
 
 Règle d'or : **la leçon N+1 n'est pas générée tant que l'apprenant n'a pas rendu la production de la leçon N** (ou dit explicitement qu'il l'a faite). Sinon les leçons s'empilent sans retour et la zone proximale est perdue.
 
+**Exception d'avance, décidée par l'apprenant le 2026-09-23** : quand il annonce une absence (retour prévu le week-end), **une seule** leçon d'avance peut être publiée pour qu'il ne reste pas bloqué. Limite stricte : jamais deux leçons d'avance, et les productions des deux leçons sont corrigées **ensemble** au retour, avant toute leçon suivante. *Raison* : l'apprenant travaille hors session et le site est son seul support à distance ; le coût d'une leçon d'avance mal calibrée est inférieur au coût de plusieurs jours sans support.
+
 ### 4.2 Cycle de niveau (A1 → A2 → B1 → B2)
 
 Un niveau se clôt par la **porte de passage** (`reference/parcours.html` §3), trois conditions cumulatives : Modellsatz Goethe officiel du niveau ≥ 60 % **par compétence**, test de grammaire maison ≥ 80 %, production orale enregistrée jugée « réussi » avec compte rendu écrit. Résultats consignés dans un learning-record, `status.json.gates[niveau]` passe à `reussi`, le suivant à `en-cours`. Sinon : 1 à 2 semaines de remédiation ciblée, nouvel essai sur un autre jeu d'épreuves.

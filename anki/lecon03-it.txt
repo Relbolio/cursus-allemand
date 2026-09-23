@@ -1,0 +1,37 @@
+# titre: Leçon 03 · bureau et ordinateur
+# deck: Allemand IT::L03 bureau et ordinateur
+# niveau: A1
+# lecon: 3
+# type: it
+der Computer, die Computer;l'ordinateur
+der Rechner, die Rechner;l'ordinateur (mot allemand)
+der Bildschirm, die Bildschirme;l'écran
+der Drucker, die Drucker;l'imprimante
+der Schreibtisch, die Schreibtische;le bureau (le meuble)
+der Ordner, die Ordner;le dossier
+der Server, die Server;le serveur
+der Laptop, die Laptops;l'ordinateur portable
+der Fehler, die Fehler;l'erreur, le bug
+die Tastatur, die Tastaturen;le clavier
+die Maus, die Mäuse;la souris
+die Datei, die Dateien;le fichier
+die Firma, die Firmen;l'entreprise
+die Lösung, die Lösungen;la solution
+die Anwendung, die Anwendungen;l'application
+die Sitzung, die Sitzungen;la réunion
+die Version, die Versionen;la version
+die Software;le logiciel
+die E-Mail, die E-Mails;le courriel
+die Informatik;l'informatique
+das Handy, die Handys;le téléphone portable
+das Passwort, die Passwörter;le mot de passe
+das Programm, die Programme;le programme
+das Projekt, die Projekte;le projet
+das Team, die Teams;l'équipe
+das Büro, die Büros;le bureau (la pièce)
+das Problem, die Probleme;le problème
+das Dokument, die Dokumente;le document
+das System, die Systeme;le système
+das Datum, die Daten;la date (au pluriel : les données)
+Das ist mein Schreibtisch.;C'est mon bureau.
+Ich habe zwei Bildschirme.;J'ai deux écrans.

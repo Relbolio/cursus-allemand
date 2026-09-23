@@ -1,0 +1,48 @@
+# titre: Leçon 03 · genre, pluriel, kein
+# deck: Allemand A1::L03 genre pluriel kein
+# niveau: A1
+# lecon: 3
+# type: general
+der Tisch, die Tische;la table
+der Stuhl, die Stühle;la chaise
+der Schlüssel, die Schlüssel;la clé
+der Kollege, die Kollegen;le collègue
+der Montag, die Montage;lundi
+der Mond;la lune (masculin en allemand !)
+die Sonne;le soleil (féminin en allemand !)
+die Frage, die Fragen;la question
+die Sprache, die Sprachen;la langue
+die Arbeit, die Arbeiten;le travail
+die Tür, die Türen;la porte
+die Lampe, die Lampen;la lampe
+die Zeit;le temps
+die Sicherheit;la sécurité
+die Möglichkeit, die Möglichkeiten;la possibilité
+die Universität, die Universitäten;l'université
+das Fenster, die Fenster;la fenêtre
+das Buch, die Bücher;le livre
+das Papier, die Papiere;le papier
+das Haus, die Häuser;la maison
+das Wasser;l'eau
+das Mädchen, die Mädchen;la fille (neutre, à cause de -chen)
+der / die / das;les trois articles définis : masculin / féminin / neutre
+ein / eine / ein;un, une : masculin / féminin / neutre
+kein / keine / kein;pas de : masculin / féminin / neutre
+mein / meine / mein;mon, ma : masculin / féminin / neutre
+die + nom au pluriel;l'article de TOUS les pluriels, quel que soit le genre
+Was ist das?;Qu'est-ce que c'est ?
+Das ist ein Computer.;C'est un ordinateur.
+Das ist eine Tastatur.;C'est un clavier.
+Das sind zwei Dateien.;Ce sont deux fichiers.
+Das ist kein Drucker.;Ce n'est pas une imprimante.
+Das ist keine Maus.;Ce n'est pas une souris.
+Das ist nicht mein Computer.;Ce n'est pas mon ordinateur.
+Ich habe keine Zeit.;Je n'ai pas le temps.
+Ich arbeite heute nicht.;Je ne travaille pas aujourd'hui.
+Wie heißt das auf Deutsch?;Comment ça se dit en allemand ?
+Ist das eine Tastatur?;Est-ce un clavier ?
+Nein, das ist keine Tastatur.;Non, ce n'est pas un clavier.
+-ung, -ion, -tät, -keit, -heit, -ur;terminaisons toujours féminines : die
+-chen, -lein, -ment, -um;terminaisons toujours neutres : das
+-er (celui qui fait l'action);terminaison masculine : der Entwickler, der Drucker
+kein remplace ein, sinon nicht;la règle de la négation en une ligne
