@@ -132,6 +132,16 @@ iframe { width:100%; height:calc(100vh - 11rem); min-height:24rem; border:1px so
 .search { width:100%; box-sizing:border-box; font:inherit; font-size:.95rem;
   padding:.45rem .7rem; border:1px solid var(--rule); border-radius:4px;
   background:#fff; margin:.4rem 0 .8rem }
+/* --- exercices --- */
+.serie { background:#fff; border:1px solid var(--rule); padding:.7rem .9rem; margin:.5rem 0;
+  display:flex; flex-wrap:wrap; gap:.5rem .9rem; align-items:center }
+.serie .t { flex:1 1 13rem; min-width:0 }
+.serie .t b { display:block }
+.serie .t small { color:var(--muted) }
+.serie .nb { display:flex; gap:.3rem; flex-wrap:wrap; margin-top:.25rem }
+.serie .nb span { font-size:.72rem; padding:.08rem .5rem; border-radius:999px; color:#fff }
+.serie .nb .f { background:#3f7a52 } .serie .nb .i { background:#c9973a } .serie .nb .d { background:#a52a2a }
+
 /* --- anki --- */
 .deck { background:#fff; border:1px solid var(--rule); padding:.7rem .9rem; margin:.5rem 0;
   display:flex; flex-wrap:wrap; gap:.5rem .9rem; align-items:center }
@@ -175,6 +185,7 @@ footer { color:var(--muted); font-size:.75rem; padding:1rem 0 2rem; border-top:1
 <main class="wrap">
 <section id="tableau"></section>
 <section id="lecons"></section>
+<section id="exercices"></section>
 <section id="anki"></section>
 <section id="journal"></section>
 <section id="ressources"></section>
@@ -185,6 +196,7 @@ footer { color:var(--muted); font-size:.75rem; padding:1rem 0 2rem; border-top:1
 const TABS = [
   ["tableau", "Tableau"],
   ["lecons", "Leçons"],
+  ["exercices", "Exercices"],
   ["anki", "Anki"],
   ["journal", "Journal"],
   ["ressources", "Ressources"],
@@ -436,6 +448,52 @@ async function renderRessources() {
   }
 }
 
+function renderExercices(s) {
+  const exos = (s.exercices || []).slice().sort((a, b) => (a.lecon || 0) - (b.lecon || 0));
+  const lecons = new Map((s.lecons || []).map(l => [l.numero, l]));
+  const el = document.getElementById("exercices");
+  if (!exos.length) {
+    el.innerHTML = `<p class="note">Aucune série dans status.json : lance <code>python build.py</code> à la racine.</p>`;
+    return;
+  }
+  const total = exos.reduce((n, e) => n + (e.total || 0), 0);
+  const byLevel = new Map();
+  exos.forEach(e => { const k = e.niveau || "A1"; if (!byLevel.has(k)) byLevel.set(k, []); byLevel.get(k).push(e); });
+  const card = e => {
+    const lec = lecons.get(e.lecon);
+    const it = e.items || {};
+    return `<div class="serie">
+      <div class="t"><b>${e.lecon ? "Leçon " + String(e.lecon).padStart(2, "0") + " — " : ""}${esc((lec && lec.titre) || e.titre)}</b>
+        <small>${e.total || 0} exercices, correction immédiate${e.date ? " · " + esc(e.date) : ""}</small>
+        <div class="nb"><span class="f">facile ${it.facile || 0}</span><span class="i">intermédiaire ${it.intermediaire || 0}</span><span class="d">difficile ${it.difficile || 0}</span></div>
+      </div>
+      <div class="btns">
+        <button class="btn" data-f="${esc(e.fichier)}" data-title="${esc(e.titre)}">S'exercer</button>
+        ${lec ? `<a class="btn ghost small" href="../${esc(lec.fichier)}" target="_blank" rel="noopener">la leçon</a>` : ""}
+      </div></div>`;
+  };
+  el.innerHTML = `
+    <h2>Exercices par leçon</h2>
+    <div class="card">
+      <div class="kv"><span><span class="k">séries</span> ${exos.length}</span>
+        <span><span class="k">exercices</span> ${total}</span>
+        <span><span class="k">niveaux</span> facile, intermédiaire, difficile</span></div>
+      <p class="note" style="margin:.6rem 0 0">Ces séries s'ajoutent aux mini-exercices intégrés aux leçons : elles servent à s'entraîner après coup, jusqu'à l'automatisme. On ne monte de niveau qu'au-dessus de 90 % du précédent. Les scores sont gardés dans le navigateur de l'appareil.</p>
+    </div>
+    <div id="exoViewer"></div>
+    ${[...byLevel.entries()].map(([k, list]) => `
+      <h3><span class="lvl ${k}">${esc(k)}</span></h3>
+      ${list.map(card).join("")}`).join("")}`;
+  const viewer = el.querySelector("#exoViewer");
+  el.querySelectorAll("[data-f]").forEach(b => b.onclick = () => {
+    viewer.innerHTML = `<div class="bar" style="display:flex;gap:.6rem;align-items:baseline;flex-wrap:wrap;background:none;border:0;padding:0;margin:.4rem 0">
+        <span style="font-weight:600;flex:1">${esc(b.dataset.title)}</span>
+        <a class="openext" href="../${b.dataset.f}" target="_blank" rel="noopener">ouvrir dans un nouvel onglet ›</a>
+      </div><iframe title="exercices" src="../${b.dataset.f}"></iframe>`;
+    viewer.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+}
+
 /* ===================== Anki : decks, téléchargement, réviseur ===================== */
 const ANKI = { manifest: null, decks: [], cards: {} };   // cards[deckId] = [{r, v, key}]
 const PKEY = "cursus.anki.progress.v1", SKEY = "cursus.anki.settings.v1";
@@ -615,6 +673,7 @@ async function boot() {
   }).catch(() => { /* http.server brut : pas d'affichage téléphone */ });
   renderDashboard(STATUS);
   renderLecons(STATUS);
+  renderExercices(STATUS);
   renderAnki();
   renderJournal(STATUS);
   renderRessources();

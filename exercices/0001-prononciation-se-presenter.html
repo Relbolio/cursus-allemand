@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="niveau" content="A1">
+<meta name="lecon" content="1">
+<title>Exercices leçon 1 — prononciation et se présenter</title>
+<link rel="stylesheet" href="exercices.css">
+</head>
+<body>
+
+<header>
+  <div class="kicker">Exercices · Leçon 1 · Niveau A1</div>
+  <h1>Les sons de l'allemand et se présenter</h1>
+  <p class="lead">Les habitudes de prononciation prises en semaine 1 durent des années. Ces exercices servent à vérifier qu'aucune n'est fausse.</p>
+  <p class="meta">Série liée à la <a href="../lessons/0001-prononciation-et-se-presenter.html">leçon 1</a> · fiche <a href="../reference/prononciation.html">prononciation</a>.</p>
+  <p class="novoice" id="novoice">Aucune voix allemande n'est installée dans ce navigateur : les dictées du niveau difficile ne pourront pas être lues.</p>
+</header>
+
+<div class="levels" id="exLevels"></div>
+<div class="bar" id="exBar"></div>
+<div id="exList"></div>
+<div class="done" id="exDone"></div>
+
+<div class="ask">
+<b>Ce que j'attends de toi.</b> Tes trois scores. Au niveau difficile, lis chaque phrase à voix haute avant de l'écrire : c'est l'articulation qui est travaillée ici, pas seulement l'orthographe.
+</div>
+
+<footer>
+Série créée le 5 octobre 2026 · Workspace « Allemand » ·
+<a href="../lessons/0001-prononciation-et-se-presenter.html">leçon 1</a> ·
+<a href="../reference/prononciation.html">fiche prononciation</a> ·
+<a href="../reference/parcours.html">feuille de route</a>
+</footer>
+
+<script src="moteur.js"></script>
+<script>
+Exos.demarrer({
+  lecon: 1,
+  titre: "Prononciation et se présenter",
+  fichierLecon: "0001-prononciation-et-se-presenter.html",
+  chrono: 420,
+  series: {
+
+    facile: [
+      { t:"qcm", q:"Comment se prononce le W de « wohnen » ?",
+        opts:["comme un V","comme un W","comme un F"], a:0,
+        why:"W allemand se dit [v] : wohnen se prononce « vo-nen »." },
+      { t:"qcm", q:"Comment se prononce le V de « vier » ?",
+        opts:["comme un F","comme un V","comme un W"], a:0,
+        why:"V allemand se dit [f] : vier se prononce « fir »." },
+      { t:"qcm", q:"Dans « Sie », le groupe IE se prononce :",
+        opts:["un i long","un ié bref","un aï net"], a:0,
+        why:"IE donne un i long : on prononce la deuxième lettre, allongée." },
+      { t:"qcm", q:"Dans « heißen », le groupe EI se prononce :",
+        opts:["aï","é","i"], a:0,
+        why:"EI donne « aï » : heißen se dit « haï-sen »." },
+      { t:"qcm", q:"Le S initial de « sind » se prononce :",
+        opts:["comme un Z","comme un S","comme un CH"], a:0,
+        why:"S devant une voyelle se dit [z] : sind se prononce « zint »." },
+      { t:"qcm", q:"Le Z de « zwei » se prononce :",
+        opts:["ts","z","s"], a:0,
+        why:"Z allemand se dit [ts] : zwei se prononce « tsvaï »." },
+      { t:"qcm", q:"Le groupe EU de « neun » se prononce :",
+        opts:["oï","eu","é"], a:0,
+        why:"EU et ÄU donnent « oï » : neun se dit « noïn », Deutsch se dit « doïtch »." },
+      { t:"qcm", q:"Où tombe l'accent dans « arbeiten » ?",
+        opts:["première syllabe","dernière syllabe","deuxième syllabe"], a:0,
+        why:"L'allemand accentue la première syllabe du radical, le français la dernière." },
+      { t:"qcm", q:"Le groupe ST au début de « Straße » se prononce :",
+        opts:["cht","st","chp"], a:0,
+        why:"ST et SP en début de mot se disent « cht » et « chp »." },
+      { t:"trou", q:"Ich ___ aus Kamerun.", fr:"Je viens du Cameroun.",
+        opts:["komme","kommst","kommen"], a:0,
+        why:"La première personne prend la terminaison -e." },
+      { t:"trou", q:"Woher ___ Sie?", fr:"D'où venez-vous ?",
+        opts:["kommen","kommst","kommt"], a:0,
+        why:"La forme de politesse Sie prend la terminaison de l'infinitif." },
+      { t:"trou", q:"Ich ___ Softwareentwickler.", fr:"Je suis développeur logiciel.",
+        opts:["bin","ist","sind"], a:0,
+        why:"sein est irrégulier : ich bin." },
+      { t:"qcm", q:"Quelle phrase respecte la règle du verbe en deuxième position ?",
+        opts:["Ich wohne in Douala.","Ich in Douala wohne.","In Douala ich wohne."], a:0,
+        why:"Le verbe conjugué occupe toujours la deuxième place dans une déclarative." }
+    ],
+
+    intermediaire: [
+      { t:"saisie", q:"Écris la phrase : « Je m'appelle Borel. »", fr:"Trois mots.",
+        rep:["Ich heiße Borel.","Ich heisse Borel."],
+        why:"heißen : ich heiße. Le ß se tape avec Alt et 0223." },
+      { t:"saisie", q:"Écris la phrase : « Je viens du Cameroun. »", fr:"Quatre mots.",
+        rep:["Ich komme aus Kamerun."],
+        why:"aus pour l'origine, et Kamerun prend une majuscule comme tout nom de pays." },
+      { t:"saisie", q:"Écris la phrase : « J'habite à Douala. »", fr:"Quatre mots.",
+        rep:["Ich wohne in Douala."],
+        why:"in pour la ville où l'on habite." },
+      { t:"saisie", q:"Écris la question de politesse : « Comment vous appelez-vous ? »", fr:"Trois mots.",
+        rep:["Wie heißen Sie?","Wie heissen Sie?"],
+        why:"Sie de politesse prend toujours une majuscule, et le verbe la forme en -en." },
+      { t:"saisie", q:"Écris la question : « D'où venez-vous ? » (politesse)", fr:"Trois mots.",
+        rep:["Woher kommen Sie?"],
+        why:"woher demande l'origine, wo demande le lieu." },
+      { t:"saisie", q:"Écris la question : « Où habitez-vous ? » (politesse)", fr:"Trois mots.",
+        rep:["Wo wohnen Sie?"],
+        why:"wo pour le lieu, sans mouvement." },
+      { t:"trou", q:"Wie ___ du?", fr:"Comment t'appelles-tu ?", opts:["heißt","heiße","heißen"], a:0,
+        why:"du prend -st, mais après un radical en ß on écrit seulement -t : du heißt." },
+      { t:"trou", q:"Er ___ in Berlin.", fr:"Il habite à Berlin.", opts:["wohnt","wohne","wohnen"], a:0,
+        why:"La troisième personne du singulier prend -t." },
+      { t:"saisie", q:"Écris « Enchanté ! » en allemand.", fr:"Deux mots.",
+        rep:["Freut mich!","Freut mich"],
+        why:"Formule figée que l'on emploie après s'être présenté." },
+      { t:"qcm", q:"Pourquoi « Sie » prend-il une majuscule ?",
+        opts:["forme de politesse","début de phrase","pluriel obligatoire"], a:0,
+        why:"La majuscule distingue Sie (vous de politesse) de sie (elle, ils, elles)." },
+      { t:"saisie", q:"Écris les trois formes de sein : ich, du, er.",
+        fr:"Trois mots séparés par des espaces.", rep:["bin bist ist"],
+        why:"sein est le verbe le plus irrégulier et le plus fréquent de la langue." },
+      { t:"qcm", q:"Dans « Entwickler », comment se prononce le R final ?",
+        opts:["presque muet","roulé fort","comme un L"], a:0,
+        why:"En fin de syllabe, le R s'affaiblit en une voyelle brève proche de « a »." }
+    ],
+
+    difficile: [
+      { t:"dictee", say:"Ich heiße Borel Tene.", rep:["Ich heiße Borel Tene.","Ich heisse Borel Tene."],
+        why:"heiße se prononce « haï-se » : le EI donne « aï » et le ß donne [s]." },
+      { t:"dictee", say:"Ich komme aus Kamerun und ich wohne in Douala.",
+        rep:["Ich komme aus Kamerun und ich wohne in Douala."],
+        why:"Deux propositions reliées par und, chacune avec son verbe en deuxième position." },
+      { t:"dictee", say:"Ich bin Softwareentwickler.", rep:["Ich bin Softwareentwickler."],
+        why:"Software et Entwickler se soudent, donc deux e consécutifs, et pas d'article devant le métier." },
+      { t:"dictee", say:"Wie heißen Sie und woher kommen Sie?",
+        rep:["Wie heißen Sie und woher kommen Sie?","Wie heissen Sie und woher kommen Sie?"],
+        why:"Deux questions avec mot interrogatif : le verbe reste en deuxième position." },
+      { t:"trad", q:"Bonjour, je m'appelle Borel Tene.",
+        rep:["Hallo, ich heiße Borel Tene.","Hallo! Ich heiße Borel Tene.","Hallo, ich heisse Borel Tene."],
+        why:"Hallo suivi d'une virgule ou d'un point d'exclamation, les deux se rencontrent." },
+      { t:"trad", q:"Je suis développeur logiciel et je travaille à Douala.",
+        rep:["Ich bin Softwareentwickler und ich arbeite in Douala.","Ich bin Softwareentwickler und arbeite in Douala."],
+        why:"Pas d'article devant le métier, contrairement au français qui dit « un développeur »." },
+      { t:"trad", q:"Et vous, où habitez-vous ?",
+        rep:["Und Sie, wo wohnen Sie?","Und wo wohnen Sie?"],
+        why:"On peut reprendre Sie en tête pour rendre la politesse à son interlocuteur." },
+      { t:"saisie", q:"Corrige la faute : « ich heibe Borel. »", fr:"Réécris la phrase correcte.",
+        rep:["Ich heiße Borel.","Ich heisse Borel."],
+        why:"Le ß n'est pas un b : c'est l'Eszett, qui se prononce [s]. Et la phrase commence par une majuscule." },
+      { t:"saisie", q:"Corrige la faute : « Ich bin softwareentwickler. »", fr:"Réécris la phrase correcte.",
+        rep:["Ich bin Softwareentwickler."],
+        why:"Tout nom commun prend une majuscule en allemand." },
+      { t:"saisie", q:"Corrige la faute : « Ich wohne Douala. »", fr:"Réécris la phrase correcte.",
+        rep:["Ich wohne in Douala."],
+        why:"wohnen exige la préposition in devant la ville." },
+      { t:"saisie", q:"Écris la transcription du mot « wie » telle qu'un francophone l'entend.",
+        fr:"Deux lettres.", rep:["vi"],
+        why:"W se dit [v] et IE donne un i long : « vi »." },
+      { t:"saisie", q:"Écris la transcription du mot « zwei » telle qu'un francophone l'entend.",
+        fr:"Cinq lettres.", rep:["tsvaï","tsvai"],
+        why:"Z donne [ts], W donne [v], EI donne « aï »." }
+    ]
+  }
+});
+</script>
+</body>
+</html>

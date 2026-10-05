@@ -1,0 +1,89 @@
+/* Feuille de style commune aux séries d'exercices du cursus allemand.
+   Même palette et même typographie que les leçons et le site (CLAUDE.md §6). */
+:root {
+  --ink:#111; --muted:#666; --rule:#ddd; --accent:#a52a2a; --paper:#fffff8; --soft:#f6f4ea;
+  --ok:#2e7d32; --ko:#c62828; --m:#35618e; --f:#a5325f; --n:#3f7a52;
+  --facile:#3f7a52; --inter:#c9973a; --difficile:#a52a2a;
+}
+html { background:var(--paper) }
+body { font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif; color:var(--ink);
+  max-width:44rem; margin:0 auto; padding:2.2rem 1.25rem 5rem; line-height:1.6; font-size:1.05rem }
+header { margin-bottom:1.6rem }
+.kicker { color:var(--muted); font-size:.85rem; text-transform:uppercase; letter-spacing:.12em }
+h1 { font-weight:400; font-size:2rem; margin:.2rem 0 .4rem; letter-spacing:-.01em; line-height:1.18 }
+h2 { font-weight:400; font-size:1.3rem; margin:2.2rem 0 .6rem; border-bottom:1px solid var(--rule); padding-bottom:.2rem }
+.lead { font-size:1.1rem; color:#333 }
+.meta { color:var(--muted); font-size:.92rem }
+.de { font-weight:600 } .say { color:var(--accent); font-style:italic } .fr { color:var(--muted) }
+.der { color:var(--m); font-weight:700 } .die { color:var(--f); font-weight:700 } .das { color:var(--n); font-weight:700 }
+a { color:var(--accent) }
+
+/* sélecteur de niveau */
+.levels { display:flex; gap:.5rem; flex-wrap:wrap; margin:1.1rem 0 .4rem }
+.levels button { flex:1 1 9rem; font:inherit; font-size:1rem; padding:.6rem .5rem; border-radius:5px;
+  border:1px solid var(--rule); background:#fff; color:var(--ink); cursor:pointer; text-align:left; margin:0 }
+.levels button b { display:block; font-size:.95rem }
+.levels button small { color:var(--muted); font-size:.76rem }
+.levels button.on { color:#fff; border-color:transparent }
+.levels button.on small { color:rgba(255,255,255,.85) }
+.levels button[data-l=facile].on { background:var(--facile) }
+.levels button[data-l=intermediaire].on { background:var(--inter) }
+.levels button[data-l=difficile].on { background:var(--difficile) }
+.badge { display:inline-block; font-size:.72rem; padding:.08rem .5rem; border-radius:999px; color:#fff; vertical-align:middle }
+.badge.facile { background:var(--facile) } .badge.intermediaire { background:var(--inter) } .badge.difficile { background:var(--difficile) }
+
+/* barre d'état */
+.bar { display:flex; gap:.9rem; flex-wrap:wrap; align-items:center; background:var(--soft);
+  border-left:3px solid var(--accent); padding:.6rem .9rem; margin:.8rem 0 1.4rem; font-size:.92rem }
+.bar .k { color:var(--muted); font-size:.75rem; text-transform:uppercase; letter-spacing:.06em }
+.bar .grow { flex:1 }
+.meterbar { height:.4rem; background:var(--rule); border-radius:999px; overflow:hidden; margin:.45rem 0 0; width:100% }
+.meterbar i { display:block; height:100%; background:var(--ok); width:0; transition:width .3s }
+
+/* un exercice */
+.ex { border:1px solid var(--rule); border-radius:6px; padding:.9rem 1rem; margin:.9rem 0; background:#fff }
+.ex .num { color:var(--muted); font-size:.78rem; text-transform:uppercase; letter-spacing:.06em }
+.ex .stem { font-weight:600; margin:.25rem 0 .5rem; line-height:1.45 }
+.ex .stem .gap { color:var(--accent); font-weight:700 }
+.ex .hint { color:var(--muted); font-size:.88rem; font-style:italic; margin:-.2rem 0 .5rem }
+.ex .opts { display:flex; gap:.45rem; flex-wrap:wrap }
+.ex .opts.col { flex-direction:column }
+.ex .opts button { flex:1 1 6rem; font:inherit; font-size:1rem; padding:.5rem .6rem; border-radius:4px;
+  border:1px solid #bbb; background:#fff; color:var(--ink); cursor:pointer; margin:0; text-align:left }
+.ex .opts button:hover:not(:disabled) { background:var(--soft) }
+.ex .opts button:disabled { cursor:default; opacity:.75 }
+.ex .opts button.good { border-color:var(--ok); background:#e8f5e9; color:var(--ok); opacity:1 }
+.ex .opts button.bad { border-color:var(--ko); background:#ffebee; color:var(--ko); opacity:1 }
+.ex .row { display:flex; gap:.45rem; flex-wrap:wrap; align-items:center }
+.ex input[type=text] { font:inherit; font-size:1.02rem; padding:.45rem .6rem; border:1px solid #bbb;
+  border-radius:4px; flex:1 1 14rem; min-width:0 }
+.ex input[type=text]:disabled { background:#f7f7f2 }
+.ex button.act { font:inherit; font-size:.92rem; padding:.45rem .9rem; border:1px solid var(--ink);
+  background:var(--ink); color:var(--paper); border-radius:4px; cursor:pointer; margin:0 }
+.ex button.act.ghost { background:transparent; color:var(--ink) }
+.fb { margin-top:.6rem; font-size:.95rem; display:none; padding:.5rem .7rem; border-radius:4px; line-height:1.5 }
+.fb.ok { display:block; background:#e8f5e9; color:var(--ok) }
+.fb.ko { display:block; background:#ffebee; color:var(--ko) }
+.fb.half { display:block; background:#fff8e1; color:#8a6100 }
+.fb b { font-weight:700 }
+
+/* fin de série */
+.done { display:none; border:2px solid var(--accent); border-radius:6px; padding:1rem 1.1rem; margin:1.4rem 0; background:#fff }
+.done .big { font-size:1.6rem; font-weight:600 }
+.done ul { margin:.5rem 0 .6rem; padding-left:1.3rem }
+.done .acts { display:flex; gap:.5rem; flex-wrap:wrap; margin-top:.5rem }
+.done .acts button { font:inherit; font-size:.92rem; padding:.45rem .9rem; border-radius:4px;
+  border:1px solid var(--ink); background:var(--ink); color:var(--paper); cursor:pointer; margin:0 }
+.done .acts button.ghost { background:transparent; color:var(--ink) }
+
+.note { background:var(--soft); border-left:3px solid var(--accent); padding:.7rem 1rem; margin:1rem 0; font-size:.96rem }
+.ask { background:#eef3f8; border-left:3px solid var(--m); padding:.8rem 1.1rem; margin:2rem 0 }
+footer { margin-top:3rem; color:var(--muted); font-size:.9rem; border-top:1px solid var(--rule); padding-top:1rem }
+.novoice { display:none; color:var(--ko); font-size:.9rem }
+
+@media print {
+  .levels, .bar, .ex .opts button, .ex button, .done, .meterbar { display:none }
+  body { max-width:none; padding:0; font-size:10.5pt }
+  .ex { break-inside:avoid }
+  a { color:inherit; text-decoration:none }
+}

@@ -12,6 +12,7 @@ Ce qui est PRÉSERVÉ (édité à la main par le professeur) :
 Métadonnées lues dans les fichiers :
     lessons/NNNN-slug.html  : <title>, kicker « Leçon N · Niveau A1 · ≈ 35 minutes », « Leçon créée le 21 septembre 2026 »
     reference/*.html        : <title>, <meta name="niveau" content="A1"> (sinon « Transversal »), première date française
+    exercices/NNNN-slug.html: <title>, <meta name="niveau">, <meta name="lecon">, et le nombre d'items par niveau
     learning-records/*.md   : première ligne « # titre »
 Aucune dépendance hors bibliothèque standard.
 """
@@ -78,6 +79,30 @@ def scan_references() -> list[dict]:
     return out
 
 
+def scan_exercices() -> list[dict]:
+    """Séries d'exercices : une par leçon, trois niveaux de difficulté."""
+    out = []
+    d = ROOT / "exercices"
+    if not d.exists():
+        return out
+    for p in sorted(d.glob("[0-9][0-9][0-9][0-9]-*.html")):
+        html = p.read_text(encoding="utf-8")
+        meta = lambda n: (re.search(r'<meta\s+name="' + n + r'"\s+content="([^"]+)"', html) or [None, ""])[1]
+        counts = {}
+        for niv in ("facile", "intermediaire", "difficile"):
+            bloc = re.search(niv + r"\s*:\s*\[(.*?)\n\s*\]", html, re.S)
+            counts[niv] = len(re.findall(r"\{\s*t\s*:", bloc.group(1))) if bloc else 0
+        footer = re.search(r"<footer>(.*?)</footer>", html, re.S)
+        lecon = meta("lecon")
+        out.append({
+            "titre": title_of(html, p.stem), "fichier": f"exercices/{p.name}",
+            "niveau": meta("niveau") or "A1", "lecon": int(lecon) if lecon.isdigit() else None,
+            "items": counts, "total": sum(counts.values()),
+            "date": date_fr(footer.group(1) if footer else "", p),
+        })
+    return out
+
+
 def scan_records() -> list[dict]:
     out = []
     for p in sorted((ROOT / "learning-records").glob("[0-9][0-9][0-9][0-9]-*.md")):
@@ -108,17 +133,24 @@ def main() -> None:
 
     status["lecons"] = lecons
     status["references"] = scan_references()
+    status["exercices"] = scan_exercices()
     status["records"] = scan_records()
     status["anki"] = {"cartes": manifest["tout"]["cartes"], "decks": manifest["tout"]["decks"],
                       "manifeste": "anki/index.json", "tout": manifest["tout"]["fichierApkg"]}
     status["compteurs"] = {"leconsFaites": sum(1 for l in lecons if l["etat"] == "faite"),
                            "leconsGenerees": len(lecons), "references": len(status["references"]),
-                           "records": len(status["records"])}
+                           "records": len(status["records"]), "series": len(status["exercices"]),
+                           "exercices": sum(e["total"] for e in status["exercices"])}
     status["misAJour"] = time.strftime("%Y-%m-%d")
     sp.write_text(json.dumps(status, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
     print(f"status.json : {len(lecons)} leçons ({status['compteurs']['leconsFaites']} faites), "
-          f"{len(status['references'])} fiches, {len(status['records'])} records, {status['anki']['cartes']} cartes")
+          f"{len(status['references'])} fiches, {len(status['exercices'])} séries d'exercices "
+          f"({status['compteurs']['exercices']} items), {len(status['records'])} records, "
+          f"{status['anki']['cartes']} cartes")
+    for e in status["exercices"]:
+        print(f"  exos L{e['lecon']:02d} [{e['niveau']}] {e['total']:3d} items "
+              f"(facile {e['items']['facile']}, inter {e['items']['intermediaire']}, difficile {e['items']['difficile']})")
     for l in lecons:
         print(f"  {l['numero']:04d} [{l['niveau']}] {l['titre']}  ({l['etat']}, créée {l['date']}"
               + (f", faite {l['faiteLe']}" if l.get("faiteLe") else "") + ")")

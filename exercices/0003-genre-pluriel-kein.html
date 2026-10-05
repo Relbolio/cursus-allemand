@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="niveau" content="A1">
+<meta name="lecon" content="3">
+<title>Exercices leçon 3 — genre, pluriel, kein</title>
+<link rel="stylesheet" href="exercices.css">
+</head>
+<body>
+
+<header>
+  <div class="kicker">Exercices · Leçon 3 · Niveau A1</div>
+  <h1>Genre, pluriel et négation <i>kein</i></h1>
+  <p class="lead">Le genre est le prérequis de toute la grammaire allemande. Ces exercices servent à le rendre automatique, pas seulement compris.</p>
+  <p class="meta">Série liée à la <a href="../lessons/0003-genre-pluriel-kein.html">leçon 3</a> · fiche <a href="../reference/genre-pluriel-kein.html">genre, pluriel et kein</a>.</p>
+  <p class="novoice" id="novoice">Aucune voix allemande n'est installée dans ce navigateur : les dictées du niveau difficile ne pourront pas être lues.</p>
+</header>
+
+<div class="levels" id="exLevels"></div>
+<div class="bar" id="exBar"></div>
+<div id="exList"></div>
+<div class="done" id="exDone"></div>
+
+<div class="ask">
+<b>Ce que j'attends de toi.</b> Tes trois scores. Si le niveau facile reste sous 90 %, ne monte pas : reprends d'abord les cartes Anki de la leçon 3, où chaque nom est donné avec son article et son pluriel.
+</div>
+
+<footer>
+Série créée le 5 octobre 2026 · Workspace « Allemand » ·
+<a href="../lessons/0003-genre-pluriel-kein.html">leçon 3</a> ·
+<a href="../reference/genre-pluriel-kein.html">fiche genre et pluriel</a> ·
+<a href="../reference/parcours.html">feuille de route</a>
+</footer>
+
+<script src="moteur.js"></script>
+<script>
+Exos.demarrer({
+  lecon: 3,
+  titre: "Genre, pluriel et kein",
+  fichierLecon: "0003-genre-pluriel-kein.html",
+  chrono: 540,
+  series: {
+
+    facile: [
+      { t:"qcm", q:"Quel article pour « Lösung » ?", opts:["die","der","das"], a:0,
+        why:"Tout nom en -ung est féminin." },
+      { t:"qcm", q:"Quel article pour « Dokument » ?", opts:["das","der","die"], a:0,
+        why:"Tout nom en -ment est neutre." },
+      { t:"qcm", q:"Quel article pour « Drucker » ?", opts:["der","die","das"], a:0,
+        why:"Nom en -er désignant celui qui agit : masculin, même si « imprimante » est féminin en français." },
+      { t:"qcm", q:"Quel article pour « Tastatur » ?", opts:["die","der","das"], a:0,
+        why:"Les noms en -ur sont féminins." },
+      { t:"qcm", q:"Quel article pour « Handy » ?", opts:["das","der","die"], a:0,
+        why:"Anglicisme désignant un objet : neutre, comme das Gerät." },
+      { t:"qcm", q:"Quel article pour « Universität » ?", opts:["die","der","das"], a:0,
+        why:"Les noms en -tät sont féminins." },
+      { t:"qcm", q:"Quel article prend tout pluriel allemand ?", opts:["die","der","das"], a:0,
+        why:"Au pluriel, les trois genres se confondent sous die." },
+      { t:"trou", q:"Das ist ___ Tastatur.", fr:"Ce n'est pas un clavier.",
+        opts:["keine","kein","nicht"], a:0,
+        why:"die Tastatur est féminin, donc keine." },
+      { t:"trou", q:"Das ist ___ mein Büro.", fr:"Ce n'est pas mon bureau.",
+        opts:["nicht","kein","keine"], a:0,
+        why:"Devant un possessif, la négation est nicht." },
+      { t:"trou", q:"Ich habe ___ Zeit.", fr:"Je n'ai pas le temps.",
+        opts:["keine","kein","nicht"], a:0,
+        why:"die Zeit, employé sans article : keine." },
+      { t:"qcm", q:"Quel est le pluriel de « die Datei » ?",
+        opts:["die Dateien","die Dateis","die Dateie"], a:0,
+        why:"Les féminins font presque tous leur pluriel en -(e)n." },
+      { t:"qcm", q:"Quel est le pluriel de « der Computer » ?",
+        opts:["die Computer","die Computern","die Computers"], a:0,
+        why:"Masculin en -er : le nom ne change pas, seul l'article bouge." }
+    ],
+
+    intermediaire: [
+      { t:"saisie", q:"Donne l'article et le nom : le fichier.", fr:"Deux mots.", rep:["die Datei"],
+        why:"On apprend toujours l'article avec le nom." },
+      { t:"saisie", q:"Donne l'article et le nom : l'écran.", fr:"Deux mots.", rep:["der Bildschirm"],
+        why:"Masculin." },
+      { t:"saisie", q:"Donne l'article et le nom : le mot de passe.", fr:"Deux mots.", rep:["das Passwort"],
+        why:"Neutre." },
+      { t:"saisie", q:"Quel est le pluriel de « das Buch » ?", fr:"Article et nom.", rep:["die Bücher"],
+        why:"Neutre court : pluriel en -er avec Umlaut." },
+      { t:"saisie", q:"Quel est le pluriel de « die Maus » ?", fr:"Article et nom.", rep:["die Mäuse"],
+        why:"Pluriel en -e avec Umlaut." },
+      { t:"saisie", q:"Quel est le pluriel de « das Handy » ?", fr:"Article et nom.", rep:["die Handys"],
+        why:"Mot d'origine anglaise : pluriel en -s, sans Umlaut." },
+      { t:"saisie", q:"Quel est le pluriel de « die Firma » ?", fr:"Article et nom.", rep:["die Firmen"],
+        why:"Pluriel irrégulier : Firmen." },
+      { t:"saisie", q:"Mets au pluriel : « Das ist ein Projekt. »", fr:"Toute la phrase, avec sind.",
+        rep:["Das sind zwei Projekte.","Das sind Projekte."],
+        why:"Au pluriel l'article indéfini disparaît, et le verbe devient sind." },
+      { t:"saisie", q:"Mets à la forme négative : « Das ist ein Drucker. »", fr:"Toute la phrase.",
+        rep:["Das ist kein Drucker."],
+        why:"kein remplace ein ; masculin, donc sans terminaison ici." },
+      { t:"saisie", q:"Mets à la forme négative : « Das sind meine Dateien. »", fr:"Toute la phrase.",
+        rep:["Das sind nicht meine Dateien."],
+        why:"Possessif présent : nicht, pas kein." },
+      { t:"trou", q:"___ Sonne ist heiß.", fr:"Le soleil est chaud.", opts:["Die","Der","Das"], a:0,
+        why:"die Sonne est féminin en allemand, alors que « soleil » est masculin en français." },
+      { t:"trou", q:"___ Mond ist hell.", fr:"La lune est claire.", opts:["Der","Die","Das"], a:0,
+        why:"der Mond est masculin, à l'inverse du français." },
+      { t:"saisie", q:"Donne l'article et le nom : la fille.", fr:"Attention au suffixe.", rep:["das Mädchen"],
+        why:"Le diminutif -chen rend le mot neutre, quel que soit son sens." }
+    ],
+
+    difficile: [
+      { t:"trad", q:"C'est un ordinateur, et ce n'est pas une imprimante.",
+        rep:["Das ist ein Computer, und das ist kein Drucker.","Das ist ein Computer und das ist kein Drucker."],
+        why:"Deux genres différents dans la même phrase : der Computer, der Drucker, donc ein et kein." },
+      { t:"trad", q:"Ce sont deux fichiers.", rep:["Das sind zwei Dateien."],
+        why:"Pluriel : sind, et le pluriel de die Datei est die Dateien." },
+      { t:"trad", q:"Je n'ai pas le temps.", rep:["Ich habe keine Zeit."],
+        why:"die Zeit sans article : keine." },
+      { t:"trad", q:"Ce n'est pas mon ordinateur.", rep:["Das ist nicht mein Computer."],
+        why:"Possessif : nicht." },
+      { t:"trad", q:"L'écran est neuf, mais le clavier est vieux.",
+        rep:["Der Bildschirm ist neu, aber die Tastatur ist alt."],
+        why:"Deux genres à tenir dans une seule phrase, avec aber qui ne change pas l'ordre des mots." },
+      { t:"saisie", q:"Écris les trois formes : article défini masculin, féminin, neutre.",
+        fr:"Séparés par des espaces.", rep:["der die das"],
+        why:"C'est la base de tous les tableaux qui suivront jusqu'au B2." },
+      { t:"saisie", q:"Écris les quatre formes de « kein » : masculin, féminin, neutre, pluriel.",
+        fr:"Séparées par des espaces, au nominatif.", rep:["kein keine kein keine"],
+        why:"Féminin et pluriel ajoutent -e ; masculin et neutre ne prennent rien." },
+      { t:"saisie", q:"Quelle terminaison garantit le genre féminin ? Donnes-en une.",
+        fr:"Écris-la avec son tiret, par exemple -xyz.", rep:["-ung","-ion","-heit","-keit","-tät","-ur","-ik"],
+        why:"-ung, -ion, -tät, -keit, -heit, -ur et -ik sont toujours féminines." },
+      { t:"dictee", say:"Das ist keine Maus, das ist eine Tastatur.",
+        rep:["Das ist keine Maus, das ist eine Tastatur."],
+        why:"Deux féminins : keine et eine." },
+      { t:"dictee", say:"Die Passwörter sind sicher.",
+        rep:["Die Passwörter sind sicher."],
+        why:"Pluriel en -er avec Umlaut, et le verbe au pluriel : sind." },
+      { t:"dictee", say:"Ich habe kein Handy und keinen Drucker.",
+        rep:["Ich habe kein Handy und keinen Drucker."],
+        why:"Neutre kein, puis masculin à l'accusatif keinen : c'est le pont vers la leçon 4." },
+      { t:"saisie", q:"Corrige la faute : « Das ist eine Drucker. »", fr:"Réécris la phrase.",
+        rep:["Das ist ein Drucker."],
+        why:"der Drucker est masculin : ein, et non eine." },
+      { t:"saisie", q:"Corrige la faute : « Die Dateis sind groß. »", fr:"Réécris la phrase.",
+        rep:["Die Dateien sind groß."],
+        why:"Le pluriel des féminins se fait en -(e)n, jamais en -s." }
+    ]
+  }
+});
+</script>
+</body>
+</html>

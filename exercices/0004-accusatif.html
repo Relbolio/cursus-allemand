@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="niveau" content="A1">
+<meta name="lecon" content="4">
+<title>Exercices leçon 4 — l'accusatif</title>
+<link rel="stylesheet" href="exercices.css">
+</head>
+<body>
+
+<header>
+  <div class="kicker">Exercices · Leçon 4 · Niveau A1</div>
+  <h1>L'accusatif : <i>einen</i>, <i>den</i>, <i>keinen</i></h1>
+  <p class="lead">Trois niveaux, correction immédiate après chaque réponse. Fais-les dans l'ordre : on ne monte de niveau qu'au-dessus de 90 % du précédent.</p>
+  <p class="meta">Série liée à la <a href="../lessons/0004-accusatif.html">leçon 4</a> · fiche <a href="../reference/accusatif.html">l'accusatif</a> · ces exercices complètent les mini-exercices de la leçon, ils ne les remplacent pas.</p>
+  <p class="novoice" id="novoice">Aucune voix allemande n'est installée dans ce navigateur : les dictées du niveau difficile ne pourront pas être lues. Sur Windows, ajoute le pack « Deutsch » dans Paramètres, Heure et langue, Langue.</p>
+</header>
+
+<div class="levels" id="exLevels"></div>
+<div class="bar" id="exBar"></div>
+<div id="exList"></div>
+<div class="done" id="exDone"></div>
+
+<div class="ask">
+<b>Ce que j'attends de toi.</b> Note ton score à chacun des trois niveaux et envoie-les moi. Si un exercice te paraît injuste ou si une explication n'est pas claire, copie-la dans le terminal : je la reprends. Le niveau difficile est chronométré à dix minutes, comme un vrai module d'examen, mais le minuteur n'arrête rien : il te montre seulement ton rythme.
+</div>
+
+<footer>
+Série créée le 5 octobre 2026 · Workspace « Allemand » ·
+<a href="../lessons/0004-accusatif.html">leçon 4</a> ·
+<a href="../reference/accusatif.html">fiche accusatif</a> ·
+<a href="../reference/genre-pluriel-kein.html">fiche genre et pluriel</a> ·
+<a href="../reference/parcours.html">feuille de route</a>
+</footer>
+
+<script src="moteur.js"></script>
+<script>
+Exos.demarrer({
+  lecon: 4,
+  titre: "L'accusatif",
+  fichierLecon: "0004-accusatif.html",
+  chrono: 600,
+  series: {
+
+    facile: [
+      { t:"qcm", q:"À l'accusatif, l'article indéfini masculin « ein » devient :",
+        opts:["einen","eine","einem"], a:0,
+        why:"Le masculin accusatif prend la terminaison -en : einen." },
+      { t:"trou", q:"Ich habe ___ Laptop.", fr:"der Laptop · J'ai un ordinateur portable.",
+        opts:["einen","eine","ein"], a:0,
+        why:"Masculin, objet direct de haben : einen." },
+      { t:"trou", q:"Ich brauche ___ Maus.", fr:"die Maus · J'ai besoin d'une souris.",
+        opts:["eine","einen","ein"], a:0,
+        why:"Au féminin, la forme de l'accusatif est identique au nominatif : eine." },
+      { t:"trou", q:"Ich habe ___ Handy.", fr:"das Handy · J'ai un portable.",
+        opts:["ein","einen","eine"], a:0,
+        why:"Au neutre, rien ne change : ein." },
+      { t:"trou", q:"Das ist ___ Drucker.", fr:"der Drucker · C'est une imprimante.",
+        opts:["ein","einen","eine"], a:0,
+        why:"Après sein il n'y a pas d'objet : on reste au nominatif, donc ein." },
+      { t:"qcm", q:"Quel verbe n'est jamais suivi d'un objet à l'accusatif ?",
+        opts:["sein","haben","suchen"], a:0,
+        why:"sein, werden et bleiben sont suivis du nominatif." },
+      { t:"trou", q:"Es gibt ___ Fehler.", fr:"der Fehler · Il y a une erreur.",
+        opts:["einen","ein","eine"], a:0,
+        why:"es gibt impose toujours l'accusatif, et Fehler est masculin." },
+      { t:"trou", q:"Ich suche ___ Schlüssel.", fr:"der Schlüssel · Je cherche la clé.",
+        opts:["den","dem","der"], a:0,
+        why:"Article défini masculin à l'accusatif : den. (dem serait le datif.)" },
+      { t:"trou", q:"Ich öffne ___ Datei.", fr:"die Datei · J'ouvre le fichier.",
+        opts:["die","den","das"], a:0,
+        why:"Féminin : die au nominatif comme à l'accusatif." },
+      { t:"qcm", q:"Combien de genres changent de forme à l'accusatif ?",
+        opts:["un genre","deux genres","trois genres"], a:0,
+        why:"Seul le masculin change. Féminin, neutre et pluriel sont identiques au nominatif." },
+      { t:"trou", q:"Ich habe ___ Drucker.", fr:"der Drucker · Je n'ai pas d'imprimante.",
+        opts:["keinen","keine","kein"], a:0,
+        why:"kein se décline comme ein : au masculin accusatif, keinen." },
+      { t:"trou", q:"Ich speichere ___ Dokument.", fr:"das Dokument · J'enregistre le document.",
+        opts:["das","den","dem"], a:0,
+        why:"Neutre : das reste das à l'accusatif." }
+    ],
+
+    intermediaire: [
+      { t:"saisie", q:"Complète : Ich brauche ___ . (der Bildschirm, « un »)",
+        fr:"Écris le groupe complet, article et nom.", rep:["einen Bildschirm"],
+        why:"Masculin + objet direct : einen Bildschirm." },
+      { t:"saisie", q:"Complète : Ich habe ___ . (die Tastatur, « une »)",
+        fr:"Écris le groupe complet.", rep:["eine Tastatur"],
+        why:"Féminin : eine, inchangé à l'accusatif." },
+      { t:"saisie", q:"Complète : Ich suche ___ . (der Fehler, « l' »)",
+        fr:"Article défini.", rep:["den Fehler"],
+        why:"der devient den à l'accusatif." },
+      { t:"saisie", q:"Complète : Ich teste ___ . (die Anwendung, « l' »)",
+        fr:"Article défini.", rep:["die Anwendung"],
+        why:"Féminin : die ne change pas." },
+      { t:"saisie", q:"Mets à la forme négative : « Ich habe einen Drucker. »",
+        fr:"Toute la phrase.", rep:["Ich habe keinen Drucker."],
+        why:"kein remplace ein, en gardant la terminaison du cas : keinen." },
+      { t:"saisie", q:"Mets à la forme négative : « Ich habe ein Handy. »",
+        fr:"Toute la phrase.", rep:["Ich habe kein Handy."],
+        why:"Neutre : kein, sans terminaison." },
+      { t:"saisie", q:"Mets à la forme négative : « Das ist meine Lösung. »",
+        fr:"Attention : un possessif est présent.", rep:["Das ist nicht meine Lösung."],
+        why:"Devant un possessif ou un article défini, la négation est nicht, jamais kein." },
+      { t:"trou", q:"Mein Kollege ___ den Code.", fr:"lesen · Mon collègue lit le code.",
+        opts:["liest","lest","lese"], a:0,
+        why:"lesen change de voyelle à la troisième personne : er liest." },
+      { t:"trou", q:"Du ___ das Problem.", fr:"sehen · Tu vois le problème.",
+        opts:["siehst","sehst","sieht"], a:0,
+        why:"sehen change de voyelle aux formes du et er : du siehst." },
+      { t:"trou", q:"Er ___ den Schlüssel.", fr:"nehmen · Il prend la clé.",
+        opts:["nimmt","nehmt","nehme"], a:0,
+        why:"nehmen fait er nimmt, avec redoublement du m." },
+      { t:"saisie", q:"Complète avec « mon » : Ich suche ___ Laptop.",
+        fr:"der Laptop.", rep:["meinen Laptop"],
+        why:"mein se décline comme ein : meinen au masculin accusatif." },
+      { t:"saisie", q:"Complète avec « mon, ma » : Ich schreibe ___ E-Mail.",
+        fr:"die E-Mail.", rep:["meine E-Mail"],
+        why:"Féminin : meine, inchangé." },
+      { t:"saisie", q:"Transforme en question avec « was » : « Ich brauche einen Bildschirm. »",
+        fr:"Question adressée à une personne qu'on tutoie.", rep:["Was brauchst du?","Was brauchen Sie?"],
+        why:"Le mot interrogatif occupe la première place, le verbe reste en deuxième." },
+      { t:"saisie", q:"Complète : Es gibt ___ . (das Problem, « un »)",
+        fr:"es gibt impose l'accusatif.", rep:["ein Problem"],
+        why:"Accusatif, mais le neutre ne change pas : ein Problem." }
+    ],
+
+    difficile: [
+      { t:"trad", q:"J'ai un ordinateur portable et deux écrans.",
+        rep:["Ich habe einen Laptop und zwei Bildschirme."],
+        why:"einen pour le masculin objet ; Bildschirme est le pluriel de der Bildschirm." },
+      { t:"trad", q:"Je cherche l'erreur.",
+        rep:["Ich suche den Fehler."],
+        why:"Article défini masculin à l'accusatif : den." },
+      { t:"trad", q:"Il y a un problème, mais je n'ai pas d'imprimante.",
+        rep:["Es gibt ein Problem, aber ich habe keinen Drucker."],
+        why:"es gibt + accusatif ; aber est une conjonction de coordination, elle ne change pas l'ordre des mots." },
+      { t:"trad", q:"Mon collègue teste l'application.",
+        rep:["Mein Kollege testet die Anwendung."],
+        why:"Le collègue est sujet, donc nominatif mein ; die Anwendung est objet mais féminin, donc inchangé." },
+      { t:"trad", q:"Je n'ai pas de mot de passe.",
+        rep:["Ich habe kein Passwort."],
+        why:"das Passwort est neutre : kein sans terminaison." },
+      { t:"trad", q:"Ce n'est pas une souris, c'est un clavier.",
+        rep:["Das ist keine Maus, das ist eine Tastatur."],
+        why:"Après sein on reste au nominatif ; keine et eine au féminin." },
+      { t:"trad", q:"J'ai vingt-huit ans.",
+        rep:["Ich bin achtundzwanzig Jahre alt."],
+        why:"Révision de la leçon 2 : l'âge se dit avec sein, le nombre s'écrit en un mot, et Jahre prend une majuscule." },
+      { t:"saisie", q:"Quel est le pluriel de « das Passwort » ?",
+        fr:"Donne l'article et le nom.", rep:["die Passwörter"],
+        why:"Révision de la leçon 3 : neutre court, pluriel en -er avec Umlaut, et tout pluriel prend die." },
+      { t:"saisie", q:"Corrige la faute : « Das ist einen Drucker. »",
+        fr:"Réécris la phrase correcte.", rep:["Das ist ein Drucker."],
+        why:"sein n'a pas d'objet : nominatif ein." },
+      { t:"saisie", q:"Corrige la faute : « Ich habe ein Bildschirm. »",
+        fr:"Réécris la phrase correcte.", rep:["Ich habe einen Bildschirm."],
+        why:"Masculin objet direct : einen." },
+      { t:"saisie", q:"Corrige la faute : « Ich suche dem Fehler. »",
+        fr:"Réécris la phrase correcte.", rep:["Ich suche den Fehler."],
+        why:"dem est le datif ; l'objet direct demande l'accusatif den." },
+      { t:"saisie", q:"Corrige la faute : « Ich benutze keine Editor. »",
+        fr:"der Editor.", rep:["Ich benutze keinen Editor."],
+        why:"Masculin accusatif : keinen." },
+      { t:"dictee", say:"Ich brauche einen Bildschirm.",
+        rep:["Ich brauche einen Bildschirm."],
+        why:"Écoute bien la finale -en de einen : c'est elle qui marque le masculin objet." },
+      { t:"dictee", say:"Mein Kollege schreibt eine E-Mail.",
+        rep:["Mein Kollege schreibt eine E-Mail."],
+        why:"Sujet au nominatif, objet féminin inchangé." },
+      { t:"dictee", say:"Es gibt keinen Fehler im Programm.",
+        rep:["Es gibt keinen Fehler im Programm."],
+        why:"keinen pour le masculin objet. « im Programm » est du datif, que tu verras à l'A2 : retiens la forme telle quelle." }
+    ]
+  }
+});
+</script>
+</body>
+</html>

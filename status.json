@@ -3,14 +3,14 @@
   "misAJour": "2026-10-05",
   "niveau": "A1",
   "semaine": 5,
-  "positionActuelle": "A1 · semaine 5 — leçons 1 à 3 faites, leçon 4 (accusatif) disponible",
+  "positionActuelle": "A1 · semaine 5 — leçons 1 à 3 faites, leçon 4 (accusatif) disponible, 155 exercices en ligne",
   "gates": {
     "A1": "en-cours",
     "A2": "verrouille",
     "B1": "verrouille",
     "B2": "verrouille"
   },
-  "prochaineEtape": "Faire la leçon 4 (accusatif) ; réviser les 234 cartes dans l'onglet Anki ; renvoyer les six phrases de la partie 8 et les scores des trois exercices",
+  "prochaineEtape": "Faire la leçon 4, puis les séries d'exercices des leçons 1 à 4 (facile, puis intermédiaire, puis difficile) ; renvoyer les six phrases de la leçon 4 et les scores par niveau",
   "lecons": [
     {
       "numero": 1,
@@ -120,6 +120,62 @@
     "leconsFaites": 3,
     "leconsGenerees": 4,
     "references": 6,
-    "records": 3
-  }
+    "records": 3,
+    "series": 4,
+    "exercices": 155
+  },
+  "exercices": [
+    {
+      "titre": "Exercices leçon 1 — prononciation et se présenter",
+      "fichier": "exercices/0001-prononciation-se-presenter.html",
+      "niveau": "A1",
+      "lecon": 1,
+      "items": {
+        "facile": 13,
+        "intermediaire": 12,
+        "difficile": 12
+      },
+      "total": 37,
+      "date": "2026-10-05"
+    },
+    {
+      "titre": "Exercices leçon 2 — nombres, alphabet, haben",
+      "fichier": "exercices/0002-nombres-alphabet.html",
+      "niveau": "A1",
+      "lecon": 2,
+      "items": {
+        "facile": 13,
+        "intermediaire": 13,
+        "difficile": 13
+      },
+      "total": 39,
+      "date": "2026-10-05"
+    },
+    {
+      "titre": "Exercices leçon 3 — genre, pluriel, kein",
+      "fichier": "exercices/0003-genre-pluriel-kein.html",
+      "niveau": "A1",
+      "lecon": 3,
+      "items": {
+        "facile": 12,
+        "intermediaire": 13,
+        "difficile": 13
+      },
+      "total": 38,
+      "date": "2026-10-05"
+    },
+    {
+      "titre": "Exercices leçon 4 — l'accusatif",
+      "fichier": "exercices/0004-accusatif.html",
+      "niveau": "A1",
+      "lecon": 4,
+      "items": {
+        "facile": 12,
+        "intermediaire": 14,
+        "difficile": 15
+      },
+      "total": 41,
+      "date": "2026-10-05"
+    }
+  ]
 }

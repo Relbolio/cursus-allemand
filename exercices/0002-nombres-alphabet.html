@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="niveau" content="A1">
+<meta name="lecon" content="2">
+<title>Exercices leçon 2 — nombres, alphabet, haben</title>
+<link rel="stylesheet" href="exercices.css">
+</head>
+<body>
+
+<header>
+  <div class="kicker">Exercices · Leçon 2 · Niveau A1</div>
+  <h1>Épeler, compter, dire son âge</h1>
+  <p class="lead">Les nombres et l'alphabet sont les deux premières choses que l'examinateur du Goethe demande à l'oral. Ils doivent sortir sans réfléchir.</p>
+  <p class="meta">Série liée à la <a href="../lessons/0002-nombres-alphabet-haben.html">leçon 2</a> · fiche <a href="../reference/nombres-alphabet.html">nombres, alphabet, sein et haben</a>.</p>
+  <p class="novoice" id="novoice">Aucune voix allemande n'est installée dans ce navigateur : les dictées du niveau difficile ne pourront pas être lues.</p>
+</header>
+
+<div class="levels" id="exLevels"></div>
+<div class="bar" id="exBar"></div>
+<div id="exList"></div>
+<div class="done" id="exDone"></div>
+
+<div class="ask">
+<b>Ce que j'attends de toi.</b> Tes trois scores. Pour les dictées de nombres, tu peux répondre en chiffres ou en lettres, les deux sont acceptés.
+</div>
+
+<footer>
+Série créée le 5 octobre 2026 · Workspace « Allemand » ·
+<a href="../lessons/0002-nombres-alphabet-haben.html">leçon 2</a> ·
+<a href="../reference/nombres-alphabet.html">fiche nombres et alphabet</a> ·
+<a href="../reference/parcours.html">feuille de route</a>
+</footer>
+
+<script src="moteur.js"></script>
+<script>
+Exos.demarrer({
+  lecon: 2,
+  titre: "Nombres, alphabet, haben",
+  fichierLecon: "0002-nombres-alphabet-haben.html",
+  chrono: 480,
+  series: {
+
+    facile: [
+      { t:"qcm", q:"Comment s'épelle la lettre E en allemand ?", opts:["é","i","eu"], a:0,
+        why:"E se dit « é ». C'est I qui se dit « i »." },
+      { t:"qcm", q:"Comment s'épelle la lettre W ?", opts:["vé","double-vé","faou"], a:0,
+        why:"W s'épelle « vé » ; V s'épelle « faou »." },
+      { t:"qcm", q:"Comment s'épelle la lettre J ?", opts:["yott","ji","jé"], a:0,
+        why:"J s'épelle « yott » et se prononce comme un y." },
+      { t:"qcm", q:"Comment s'épelle la lettre Z ?", opts:["tsètt","zèd","zé"], a:0,
+        why:"Z s'épelle « tsètt » et se prononce [ts]." },
+      { t:"qcm", q:"Comment appelle-t-on la lettre ß ?", opts:["èss-tsètt","bé long","èss long"], a:0,
+        why:"ß s'appelle Eszett, ou scharfes S. Elle se prononce [s]." },
+      { t:"qcm", q:"Que vaut « sechzehn » ?", opts:["16","6","60"], a:0,
+        why:"sechs perd son s devant -zehn : sechzehn, 16." },
+      { t:"qcm", q:"Que vaut « dreiundzwanzig » ?", opts:["23","32","33"], a:0,
+        why:"Unité d'abord : drei (3) et zwanzig (20) donnent 23." },
+      { t:"qcm", q:"Que vaut « siebzig » ?", opts:["70","17","7"], a:0,
+        why:"sieben perd -en devant -zig : siebzig, 70." },
+      { t:"trou", q:"Ich ___ achtundzwanzig Jahre alt.", fr:"J'ai vingt-huit ans.",
+        opts:["bin","habe","ist"], a:0,
+        why:"L'âge se dit avec sein : ich bin … Jahre alt." },
+      { t:"trou", q:"Du ___ eine Frage.", fr:"Tu as une question.", opts:["hast","habst","habt"], a:0,
+        why:"du hast : le b de haben disparaît." },
+      { t:"trou", q:"Wir ___ aus Kamerun.", fr:"Nous venons du Cameroun.",
+        opts:["kommen","kommt","kommst"], a:0,
+        why:"wir prend toujours la forme de l'infinitif." },
+      { t:"trou", q:"Ihr ___ in Douala.", fr:"Vous habitez à Douala (groupe tutoyé).",
+        opts:["wohnt","wohnen","wohnst"], a:0,
+        why:"ihr prend la terminaison -t." },
+      { t:"qcm", q:"Comment dit-on « point » dans une adresse e-mail ?", opts:["Punkt","Strich","Komma"], a:0,
+        why:"Punkt pour le point, Bindestrich pour le trait d'union, Unterstrich pour le tiret bas." }
+    ],
+
+    intermediaire: [
+      { t:"saisie", q:"Écris 24 en lettres.", fr:"Un seul mot.", rep:["vierundzwanzig"],
+        why:"Unité + und + dizaine, en un seul mot." },
+      { t:"saisie", q:"Écris 31 en lettres.", fr:"Un seul mot.", rep:["einunddreißig","einunddreissig"],
+        why:"eins perd son s devant und, et 30 s'écrit dreißig." },
+      { t:"saisie", q:"Écris 47 en lettres.", fr:"Un seul mot.", rep:["siebenundvierzig"],
+        why:"sieben garde son -en devant und : siebenundvierzig." },
+      { t:"saisie", q:"Écris 68 en lettres.", fr:"Un seul mot.", rep:["achtundsechzig"],
+        why:"60 est sechzig, sans le s de sechs." },
+      { t:"saisie", q:"Écris 99 en lettres.", fr:"Un seul mot.", rep:["neunundneunzig"],
+        why:"neun et neunzig : le même mot deux fois, de part et d'autre de und." },
+      { t:"saisie", q:"Écris 16 en lettres.", fr:"Un seul mot.", rep:["sechzehn"],
+        why:"sechs perd son s : sechzehn." },
+      { t:"saisie", q:"Comment demande-t-on son âge à quelqu'un, avec la forme de politesse ?",
+        fr:"Trois mots et un point d'interrogation.", rep:["Wie alt sind Sie?"],
+        why:"Mot interrogatif, puis verbe en deuxième position, puis sujet." },
+      { t:"saisie", q:"Comment demande-t-on d'épeler, avec la forme de politesse ?",
+        fr:"Trois mots.", rep:["Buchstabieren Sie bitte.","Buchstabieren Sie bitte"],
+        why:"Impératif de politesse : verbe en tête, puis Sie." },
+      { t:"saisie", q:"Comment demande-t-on de répéter plus lentement ?",
+        fr:"Deux mots suffisent.", rep:["Langsamer, bitte.","Langsamer bitte","Können Sie das bitte wiederholen?"],
+        why:"Langsamer, bitte est la formule la plus courte et la plus naturelle." },
+      { t:"trou", q:"Sie ___ zwei Kinder.", fr:"Elle a deux enfants.", opts:["hat","habt","haben"], a:0,
+        why:"Ici sie est la troisième personne du singulier : sie hat." },
+      { t:"trou", q:"___ Sie Deutsch?", fr:"Parlez-vous allemand ?", opts:["Sprechen","Sprecht","Sprichst"], a:0,
+        why:"Forme de politesse : verbe en tête pour une question fermée, forme en -en." },
+      { t:"saisie", q:"Écris la conjugaison de sein pour ich, du, er.",
+        fr:"Trois formes séparées par des espaces.", rep:["bin bist ist"],
+        why:"sein est irrégulier et doit être su par cœur." },
+      { t:"saisie", q:"Écris la conjugaison de haben pour ich, du, er.",
+        fr:"Trois formes séparées par des espaces.", rep:["habe hast hat"],
+        why:"Seules les formes du et er perdent le b." }
+    ],
+
+    difficile: [
+      { t:"dictee", say:"vierundfünfzig", rep:["54","vierundfünfzig","vierundfuenfzig"],
+        why:"vier (4) et fünfzig (50) : l'unité se dit en premier mais s'écrit en second." },
+      { t:"dictee", say:"siebzehn", rep:["17","siebzehn"],
+        why:"Ne pas confondre siebzehn (17) et siebzig (70)." },
+      { t:"dictee", say:"einundachtzig", rep:["81","einundachtzig"],
+        why:"eins devient ein devant und." },
+      { t:"dictee", say:"sechsundsechzig", rep:["66","sechsundsechzig"],
+        why:"sechs garde son s comme unité, le perd comme dizaine : sechsundsechzig." },
+      { t:"dictee", say:"Meine Telefonnummer ist null sechs neun drei.",
+        rep:["Meine Telefonnummer ist null sechs neun drei."],
+        why:"Les numéros se dictent chiffre par chiffre." },
+      { t:"dictee", say:"Ich bin dreiundvierzig Jahre alt.",
+        rep:["Ich bin dreiundvierzig Jahre alt."],
+        why:"43 ans. Jahre prend une majuscule : c'est un nom." },
+      { t:"trad", q:"Je m'appelle Borel et j'ai vingt-huit ans.",
+        rep:["Ich heiße Borel und ich bin achtundzwanzig Jahre alt.","Ich heiße Borel und bin achtundzwanzig Jahre alt."],
+        why:"L'âge se dit avec sein, et le nombre s'écrit en un seul mot." },
+      { t:"trad", q:"Quel est votre numéro de téléphone ?",
+        rep:["Wie ist Ihre Telefonnummer?"],
+        why:"Ihre avec majuscule, comme toutes les formes de politesse." },
+      { t:"trad", q:"Comment ça s'écrit ?", rep:["Wie schreibt man das?"],
+        why:"man est le pronom impersonnel, l'équivalent de « on »." },
+      { t:"trad", q:"Je parle français et un peu anglais.",
+        rep:["Ich spreche Französisch und ein bisschen Englisch."],
+        why:"Les langues prennent une majuscule et finissent par -isch, sauf Deutsch." },
+      { t:"saisie", q:"Corrige la faute : « Ich habe achtundzwanzig Jahre. »",
+        fr:"Réécris la phrase correcte.", rep:["Ich bin achtundzwanzig Jahre alt."],
+        why:"Calque du français à éviter : l'âge se construit avec sein et se termine par alt." },
+      { t:"saisie", q:"Corrige la faute : « Ich spreche Französich. »",
+        fr:"Réécris la phrase correcte.", rep:["Ich spreche Französisch."],
+        why:"Les noms de langues se terminent par -isch : Französisch." },
+      { t:"saisie", q:"Épelle ton prénom en allemand : écris les lettres de « BOREL » telles qu'on les prononce.",
+        fr:"Cinq syllabes séparées par des espaces.", rep:["bé o èr é èl","be o er e el"],
+        why:"B « bé », O « o », R « èr », E « é », L « èl ». Le piège est le E, qui se dit « é » et non « eu »." }
+    ]
+  }
+});
+</script>
+</body>
+</html>

@@ -26,7 +26,7 @@ Cela exécute `python serveur.py` (Python 3.10+, bibliothèque standard uniqueme
 
 ## Utiliser
 
-- Onglets : **Tableau** (gates A1→B2, prochaine étape, compteurs), **Leçons** (sidebar leçons + références, lecture intégrée), **Anki** (réviseur intégré + téléchargement des paquets .apkg / .txt par leçon, lit `anki/index.json`), **Journal** (NOTES.md + learning-records), **Ressources** (RESOURCES.md, recherche filtrante).
+- Onglets : **Tableau** (gates A1→B2, prochaine étape, compteurs), **Leçons** (liste groupée par niveau + références, lecture intégrée), **Exercices** (une série par leçon, trois niveaux de difficulté, lecture intégrée, lit `status.json.exercices`), **Anki** (réviseur intégré + téléchargement des paquets .apkg / .txt par leçon, lit `anki/index.json`), **Journal** (NOTES.md + learning-records), **Ressources** (RESOURCES.md, recherche filtrante).
 - Après toute leçon, fiche, record ou carte ajoutée : `python build.py` (racine). Il découvre `lessons/`, `reference/`, `learning-records/`, régénère les paquets Anki et met à jour `status.json` (leçons groupées par niveau, compteurs). Seuls `etat`/`faiteLe` des leçons et les champs manuels (niveau, semaine, gates, prochaineEtape) sont à éditer à la main.
 - Onglet Leçons : liste groupée par niveau (A1, A2…), la prochaine leçon à faire est sélectionnée automatiquement ; sur téléphone, la liste et le lecteur s'affichent en deux écrans (bouton « ‹ Liste »). Le site force le rechargement de `status.json` (cache Pages de 10 min contourné).
 - L'onglet actif est mémorisé dans l'URL (`#tableau`, `#lecons`, …).
@@ -40,3 +40,11 @@ Cela exécute `python serveur.py` (Python 3.10+, bibliothèque standard uniqueme
 - `python` absent → essayez `py serveur.py`.
 - Lien téléphone absent (icône 📱 vide) → le serveur lancé est `http.server` brut ; relancez via `serveur.bat`.
 - Le port 8080 est occupé → fermez l'autre serveur python, ou changez `PORT` dans `serveur.py`.
+
+## Exercices
+
+`exercices/NNNN-slug.html` : une série par leçon, trois niveaux (facile, intermédiaire, difficile).
+Chaque fichier ne contient que ses données et appelle `Exos.demarrer({...})` ; toute la mécanique est dans
+`exercices/moteur.js` (QCM, phrases à trou, saisie libre, traduction, dictée par synthèse vocale, correction
+immédiate, scores en localStorage, minuteur du niveau difficile) et le style dans `exercices/exercices.css`.
+Ces séries **complètent** les mini-exercices intégrés aux leçons, elles ne les remplacent pas.

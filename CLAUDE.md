@@ -51,6 +51,7 @@ Ce projet n'utilise pas le cycle spec → plan → tests du guide `~/.claude/com
 3. **Écrire la leçon** `lessons/NNNN-slug.html` : une seule compétence, 20 à 35 min, tirée de la zone proximale, exemples personnalisés (Borel, Kamerun, Douala, Softwareentwickler), quiz à correction immédiate, exercice de production avec vérificateur, source primaire liée, rappel « pose tes questions au professeur », liens vers la leçon précédente et les fiches.
 4. **Écrire ou enrichir la fiche** `reference/*.html` correspondante (l'essence compressée ; c'est ce qui sera relu, pas la leçon).
 5. **Écrire les cartes** `anki/leconNN-general.txt` et `anki/leconNN-it.txt` avec l'en-tête `#` (titre, deck, niveau, lecon, type).
+5 bis. **Écrire la série d'exercices** `exercices/NNNN-slug.html` (trois niveaux, voir §6).
 6. **Générer** : `python build.py` (paquets `.apkg` + `anki/index.json`, puis `status.json` : `lecons[]`, `references[]`, `records[]`, `compteurs`, `anki`, `misAJour` découverts depuis les fichiers).
 7. **Compléter à la main dans `status.json`** ce que le build ne déduit pas : `positionActuelle`, `prochaineEtape`, `niveau`, `semaine`, `gates`, et `etat: "faite"` + `faiteLe` quand l'apprenant a rendu sa production.
 8. **Journal** : une ligne datée dans `NOTES.md`, section Journal.
@@ -116,6 +117,19 @@ Petites évolutions outillées, sans cycle spec/plan : modifier, `node --check` 
 - Les drills audio utilisent `speechSynthesis` avec une voix `de-*` et **dégradent proprement** (message + renvoi Forvo) si aucune voix n'est installée.
 - Les vérificateurs de production ne jugent que la structure et les majuscules, jamais les noms propres.
 
+### Exercices (`exercices/*.html`)
+- **Une série par leçon**, nommée `NNNN-slug.html` avec le même numéro que la leçon, et trois niveaux obligatoires :
+  `facile` (reconnaître, QCM), `intermediaire` (compléter, transformer, saisie), `difficile` (traduire français → allemand,
+  dictée, correction de fautes, avec interleaving des leçons précédentes). Visé : 12 à 15 items par niveau.
+- **Exception documentée à la règle d'auto-contenance** : le moteur `exercices/moteur.js` et le style `exercices/exercices.css`
+  sont partagés par toutes les séries et chargés en chemin relatif (donc aussi en `file://`). Aucun CDN, aucune dépendance externe.
+  Un fichier de série ne contient que ses données et l'appel `Exos.demarrer({ lecon, titre, fichierLecon, chrono, series })`.
+  *Raison* : dupliquer le moteur dans chaque série rendrait toute correction de la mécanique ingérable.
+- Métadonnées obligatoires lues par `build.py` : `<meta name="niveau">` et `<meta name="lecon">`, et le squelette
+  `#exLevels`, `#exBar`, `#exList`, `#exDone`, `#novoice`.
+- Correction : juste au mot près ; une erreur de casse ou un Umlaut manquant compte juste mais affiche un avertissement
+  (`fb half`) et est compté à part dans le bilan de fin. Jamais de pénalité sur la ponctuation finale ni sur ß écrit ss.
+
 ### Fiches (`reference/*.html`)
 - Imprimables (`@media print`), tableaux compacts, pièges « pour francophone » explicites, pied de page daté et lié aux autres fiches.
 
@@ -154,6 +168,7 @@ Petites évolutions outillées, sans cycle spec/plan : modifier, `node --check` 
 |---|---|
 | Schéma de `status.json` (`niveau, semaine, positionActuelle, gates{A1..B2}, prochaineEtape, lecons[].{numero,titre,fichier,niveau,duree,date,etat,faiteLe}, references[].{titre,fichier,niveau,date}, records[], anki, compteurs`) — généré par `build.py` sauf champs manuels | Le site en ligne casse silencieusement (sections vides) ; modifier le schéma dans `build.py` **et** `site/index.html` dans le même commit. |
 | Marqueurs lus par `build.py` : `<div class="kicker">Leçon N · Niveau XX · ≈ NN minutes</div>`, `<p>Leçon créée le J mois AAAA.</p>`, `<meta name="niveau" content="XX">` dans les fiches | Une leçon sans ces marqueurs est mal classée ou mal datée dans le site. |
+| Schéma de `status.json.exercices[]` (`titre, fichier, niveau, lecon, items{facile,intermediaire,difficile}, total, date`) et le squelette d'une série (`#exLevels`, `#exBar`, `#exList`, `#exDone`) | L'onglet Exercices se vide ou le moteur plante au démarrage ; changer `build.py`, `exercices/moteur.js` et `site/index.html` dans le même commit. |
 | Schéma de `anki/index.json` (`decks[].{id,titre,deck,niveau,lecon,type,cartes,fichierTxt,fichierApkg}`, `tout.{fichierApkg,cartes,decks}`) | Onglet Anki vide ; même règle. |
 | Noms de decks Anki (`Allemand A1::LNN …`, `Allemand IT::LNN …`) et texte des rectos | Les identifiants sont dérivés de ces noms : renommer duplique les decks/notes chez l'apprenant et perd sa progression. |
 | Chemins `lessons/NNNN-*.html`, `reference/*.html`, `anki/*.txt` déjà publiés | Référencés par `status.json`, par d'autres leçons et par des favoris/phone ; ne pas renommer, ajouter. |
