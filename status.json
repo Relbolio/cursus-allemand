@@ -1,16 +1,16 @@
 {
   "version": 1,
-  "misAJour": "2026-09-23",
+  "misAJour": "2026-10-05",
   "niveau": "A1",
-  "semaine": 3,
-  "positionActuelle": "A1 · semaine 3 — leçons 2 et 3 disponibles, corrections attendues au retour de l'apprenant",
+  "semaine": 5,
+  "positionActuelle": "A1 · semaine 5 — leçons 1 à 3 faites, leçon 4 (accusatif) disponible",
   "gates": {
     "A1": "en-cours",
     "A2": "verrouille",
     "B1": "verrouille",
     "B2": "verrouille"
   },
-  "prochaineEtape": "Faire la leçon 2 puis la leçon 3 ; réviser dans l'onglet Anki ; renvoyer samedi ou dimanche : présentation v2, scores des exercices, les six phrases de la leçon 3",
+  "prochaineEtape": "Faire la leçon 4 (accusatif) ; réviser les 234 cartes dans l'onglet Anki ; renvoyer les six phrases de la partie 8 et les scores des trois exercices",
   "lecons": [
     {
       "numero": 1,
@@ -29,7 +29,8 @@
       "niveau": "A1",
       "duree": 35,
       "date": "2026-09-21",
-      "etat": "a-faire"
+      "etat": "faite",
+      "faiteLe": "2026-10-05"
     },
     {
       "numero": 3,
@@ -38,10 +39,26 @@
       "niveau": "A1",
       "duree": 35,
       "date": "2026-09-23",
+      "etat": "faite",
+      "faiteLe": "2026-10-05"
+    },
+    {
+      "numero": 4,
+      "titre": "l'accusatif : einen, den, keinen",
+      "fichier": "lessons/0004-accusatif.html",
+      "niveau": "A1",
+      "duree": 40,
+      "date": "2026-10-05",
       "etat": "a-faire"
     }
   ],
   "references": [
+    {
+      "titre": "L'accusatif — aide-mémoire",
+      "fichier": "reference/accusatif.html",
+      "niveau": "A1",
+      "date": "2026-10-05"
+    },
     {
       "titre": "Genre, pluriel et négation kein — aide-mémoire",
       "fichier": "reference/genre-pluriel-kein.html",
@@ -85,18 +102,24 @@
       "titre": "Première production écrite : structure acquise, orthographe allemande à fixer",
       "fichier": "learning-records/0002-premiere-production-ecrite.md",
       "date": "2026-09-21"
+    },
+    {
+      "numero": 3,
+      "titre": "Présentation v2 : les corrections de la leçon 2 ont pris, la majuscule des noms résiste",
+      "fichier": "learning-records/0003-presentation-v2-progres-et-fautes-persistantes.md",
+      "date": "2026-10-05"
     }
   ],
   "anki": {
-    "cartes": 159,
-    "decks": 5,
+    "cartes": 234,
+    "decks": 7,
     "manifeste": "anki/index.json",
     "tout": "anki/allemand-tout.apkg"
   },
   "compteurs": {
-    "leconsFaites": 1,
-    "leconsGenerees": 3,
-    "references": 5,
-    "records": 2
+    "leconsFaites": 3,
+    "leconsGenerees": 4,
+    "references": 6,
+    "records": 3
   }
 }

@@ -1,0 +1,52 @@
+# titre: Leçon 04 · l'accusatif
+# deck: Allemand A1::L04 accusatif
+# niveau: A1
+# lecon: 4
+# type: general
+den (masculin accusatif);l'article défini masculin quand le nom est objet : der → den
+einen (masculin accusatif);un, quand le nom masculin est objet : ein → einen
+keinen (masculin accusatif);pas de, masculin objet : kein → keinen
+meinen (masculin accusatif);mon, masculin objet : mein → meinen
+die / die (féminin);féminin : même forme au nominatif et à l'accusatif
+das / das (neutre);neutre : même forme au nominatif et à l'accusatif
+Nominatif;le cas du sujet et de l'attribut (après sein, werden, bleiben)
+Akkusativ;l'accusatif : le cas de l'objet direct du verbe
+wer? / wen?;qui ? (sujet) / qui ? (objet) — les questions qui révèlent le cas
+Ich habe einen Laptop.;J'ai un ordinateur portable.
+Ich brauche einen Bildschirm.;J'ai besoin d'un écran.
+Ich suche den Fehler.;Je cherche l'erreur.
+Ich finde die Datei nicht.;Je ne trouve pas le fichier.
+Ich benutze einen Editor.;J'utilise un éditeur.
+Ich schreibe eine E-Mail.;J'écris un courriel.
+Ich lese den Code.;Je lis le code.
+Ich verstehe die Frage nicht.;Je ne comprends pas la question.
+Ich speichere das Dokument.;J'enregistre le document.
+Ich habe keinen Drucker.;Je n'ai pas d'imprimante.
+Es gibt einen Fehler.;Il y a une erreur.
+Es gibt kein Problem.;Il n'y a pas de problème.
+Das ist ein Drucker.;C'est une imprimante. (après sein : nominatif, jamais einen)
+brauchen;avoir besoin de (+ accusatif)
+suchen;chercher (+ accusatif)
+finden;trouver (+ accusatif)
+benutzen;utiliser (+ accusatif)
+kaufen;acheter (+ accusatif)
+öffnen / schließen;ouvrir / fermer (+ accusatif)
+es gibt;il y a (+ accusatif, forme invariable)
+lesen : ich lese, du liest, er liest;lire (changement de voyelle aux formes du et er)
+sehen : ich sehe, du siehst, er sieht;voir (changement de voyelle)
+nehmen : ich nehme, du nimmst, er nimmt;prendre (changement de voyelle)
+sprechen : ich spreche, du sprichst, er spricht;parler (changement de voyelle)
+der Kollege, den Kollegen;le collègue (déclinaison faible : -n hors du nominatif)
+der Kunde, den Kunden;le client (déclinaison faible)
+der Experte, den Experten;l'expert (déclinaison faible)
+der Name, den Namen;le nom (déclinaison faible)
+das Jahr, die Jahre;l'année, l'an
+Ich bin achtundzwanzig Jahre alt.;J'ai vingt-huit ans. (Jahre avec majuscule)
+Französisch;le français (la langue)
+Englisch;l'anglais
+Deutsch;l'allemand (seule langue sans -isch)
+Spanisch;l'espagnol
+Softwareentwickler;développeur logiciel (Software + Entwickler : deux e)
+für, ohne, gegen, um, durch;les cinq prépositions toujours suivies de l'accusatif
+Das ist für den Kollegen.;C'est pour le collègue.
+Ohne einen Computer kann ich nicht arbeiten.;Sans ordinateur, je ne peux pas travailler.

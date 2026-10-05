@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leçon 4 — l'accusatif : einen, den, keinen</title>
+<style>
+  :root { --ink:#111; --muted:#666; --rule:#ddd; --accent:#a52a2a; --paper:#fffff8; --ok:#2e7d32; --ko:#c62828; --soft:#f6f4ea;
+          --m:#35618e; --f:#a5325f; --n:#3f7a52; }
+  html { background:var(--paper); }
+  body { font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif; color:var(--ink); max-width:44rem; margin:0 auto; padding:2.5rem 1.25rem 5rem; line-height:1.6; font-size:1.06rem; }
+  header { margin-bottom:2.5rem; }
+  .kicker { color:var(--muted); font-size:.85rem; text-transform:uppercase; letter-spacing:.12em; }
+  h1 { font-weight:400; font-size:2.2rem; margin:.2rem 0 .4rem; letter-spacing:-.01em; line-height:1.15; }
+  h2 { font-weight:400; font-size:1.45rem; margin:2.6rem 0 .8rem; border-bottom:1px solid var(--rule); padding-bottom:.25rem; }
+  h3 { font-weight:600; font-size:1.05rem; margin:1.6rem 0 .5rem; }
+  .lead { font-size:1.15rem; color:#333; }
+  .meta { color:var(--muted); font-size:.92rem; }
+  .goal { background:var(--soft); border-left:3px solid var(--accent); padding:.8rem 1.1rem; margin:1.4rem 0; }
+  .de { font-weight:600; }
+  .say { color:var(--accent); font-style:italic; }
+  .fr { color:var(--muted); }
+  .der { color:var(--m); font-weight:700; } .die { color:var(--f); font-weight:700; } .das { color:var(--n); font-weight:700; }
+  table { border-collapse:collapse; width:100%; margin:.8rem 0 1.2rem; font-size:1rem; }
+  th, td { text-align:left; padding:.42rem .5rem; border-bottom:1px solid var(--rule); vertical-align:top; }
+  th { font-weight:600; color:var(--muted); font-size:.82rem; text-transform:uppercase; letter-spacing:.06em; }
+  tr.chg td { background:#fdf3f3; font-weight:700; }
+  .aside { font-size:.95rem; color:#444; border-top:1px dotted var(--rule); border-bottom:1px dotted var(--rule); padding:.6rem 0; margin:1.2rem 0; }
+  .corr { border:1px solid var(--rule); border-radius:6px; padding:.9rem 1.1rem; background:#fff; margin:1rem 0; }
+  .corr .bad { color:var(--ko); text-decoration:line-through; }
+  .corr .good { color:var(--ok); font-weight:600; }
+  .deep { border-left:3px solid var(--m); background:#eef3f8; padding:.1rem 1.1rem; margin:1.1rem 0; }
+  .deep h3 { margin:.9rem 0 .35rem; color:#24456b; }
+  .deep p { margin:.35rem 0 .9rem; font-size:.99rem; }
+  .drill { border:1px solid var(--rule); border-radius:6px; padding:.9rem 1rem; margin:1rem 0; background:#fff; }
+  .drill .prompt { font-size:1.35rem; font-weight:600; margin:.5rem 0 .2rem; text-align:center; line-height:1.4; }
+  .drill .promptfr { text-align:center; color:var(--muted); font-size:.9rem; margin-bottom:.7rem; }
+  .choices { display:flex; gap:.5rem; flex-wrap:wrap; justify-content:center; }
+  .choices button { flex:1 1 7rem; font:inherit; font-size:1.02rem; padding:.55rem .4rem; border-radius:4px;
+    border:1px solid #bbb; background:#fff; color:var(--ink); cursor:pointer; margin:0; }
+  .choices button:hover { background:var(--soft); }
+  .fb { margin-top:.6rem; font-size:.95rem; display:none; padding:.5rem .7rem; border-radius:4px; }
+  .fb.ok { display:block; background:#e8f5e9; color:var(--ok); }
+  .fb.ko { display:block; background:#ffebee; color:var(--ko); }
+  .q { border:1px solid var(--rule); border-radius:6px; padding:.9rem 1rem; margin:1rem 0; background:#fff; }
+  .q .stem { font-weight:600; margin-bottom:.4rem; }
+  .q label { display:block; padding:.35rem .5rem; border-radius:4px; cursor:pointer; }
+  .q label:hover { background:var(--soft); }
+  .q input { margin-right:.5rem; }
+  .score { font-size:1.1rem; margin:1.2rem 0; padding:.8rem 1rem; background:var(--soft); border-radius:6px; display:none; }
+  .meterbar { height:.4rem; background:var(--rule); border-radius:999px; overflow:hidden; margin:.5rem 0 .2rem; }
+  .meterbar i { display:block; height:100%; background:var(--ok); width:0; transition:width .3s; }
+  textarea { width:100%; min-height:8.5rem; font:inherit; font-size:1rem; padding:.6rem; border:1px solid #bbb; border-radius:4px; box-sizing:border-box; }
+  button { font:inherit; font-size:.95rem; padding:.45rem 1rem; border:1px solid var(--ink); background:var(--ink); color:var(--paper); border-radius:4px; cursor:pointer; margin-top:.5rem; }
+  button.ghost { background:transparent; color:var(--ink); }
+  ul.checks { list-style:none; padding:0; }
+  ul.checks li { padding:.25rem 0 .25rem 1.6rem; position:relative; }
+  ul.checks li::before { content:"○"; position:absolute; left:.2rem; color:var(--muted); }
+  ul.checks li.ok::before { content:"●"; color:var(--ok); }
+  ul.checks li.ko::before { content:"●"; color:var(--ko); }
+  ul.checks li.ko { color:var(--ko); }
+  code { background:#f3f3ee; padding:.1rem .3rem; border-radius:3px; font-size:.92rem; }
+  a { color:var(--accent); }
+  footer { margin-top:3.5rem; color:var(--muted); font-size:.92rem; border-top:1px solid var(--rule); padding-top:1rem; }
+  .ask { background:#eef3f8; border-left:3px solid #35618e; padding:.8rem 1.1rem; margin:2rem 0; }
+  @media print { button, .drill, .q input { display:none } body { max-width:none; padding:0 } }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="kicker">Leçon 4 · Niveau A1 · ≈ 40 minutes</div>
+  <h1>L'accusatif : <i>einen</i>, <i>den</i>, <i>keinen</i></h1>
+  <p class="lead">Jusqu'ici tu disais ce que les choses <b>sont</b>. Aujourd'hui tu dis ce que tu <b>fais</b> avec elles : j'ai, je cherche, j'ai besoin de, j'utilise. C'est la première marche de la grammaire des cas, et la bonne nouvelle est qu'une seule forme change.</p>
+  <p class="meta">Pré-requis : <a href="0003-genre-pluriel-kein.html">leçon 3</a> (le genre des noms). Fiches à garder ouvertes : <a href="../reference/accusatif.html">l'accusatif</a> et <a href="../reference/genre-pluriel-kein.html">genre, pluriel et kein</a>.</p>
+</header>
+
+<h2>0. Correction de ta présentation version 2</h2>
+<p>Tu as écrit : <i>« Hallo. Ich heisse Borel Tene. Ich komme aus Kamerun. Ich wohne in Douala. Ich bin achtundzwanzig jahre alt. Ich spreche Französich. Meine Telefonnummer ist sechs neun drei sechs vier eins null sieben zwei. Ich bin Softwarrentwickler. »</i></p>
+<p><b>Ce qui est acquis</b>, et c'est beaucoup : le ß n'est plus un b, <span class="de">achtundzwanzig</span> est juste du premier coup (unité + und + dizaine), l'âge se dit bien avec <span class="de">bin</span> et non <i>habe</i>, le verbe est en deuxième position dans les huit phrases, et le numéro est dicté chiffre par chiffre sans faute. Trois corrections :</p>
+<div class="corr">
+<p><span class="bad">jahre</span> → <span class="good">Jahre</span>. <span class="de">das Jahr, die Jahre</span> est un nom : majuscule obligatoire, même dans une expression figée comme <span class="de">… Jahre alt</span>. Tu as mis la majuscule à <i>Telefonnummer</i>, donc la règle est comprise ; c'est l'automatisme qui manque encore.</p>
+<p><span class="bad">Französich</span> → <span class="good">Französisch</span>. Les langues se terminent par <b>-isch</b> : <span class="de">Franz<b>ösisch</b>, Engl<b>isch</b>, Span<b>isch</b>, Italien<b>isch</b></span> — sauf <span class="de">Deutsch</span>, qui est l'exception.</p>
+<p><span class="bad">Softwarrentwickler</span> → <span class="good">Softwareentwickler</span>. Un mot composé allemand se soude <b>sans rien perdre</b> : <span class="de">Software</span> + <span class="de">Entwickler</span>, donc deux e qui se suivent. En français cette suite n'existe pas et la main veut la réparer. En allemand elle est normale : <span class="de">Kaffee<b>ee</b>…</span> non, mais <span class="de">See<b>ufer</b></span>, <span class="de">Tee<b>ernte</b></span>, <span class="de">Schnee<b>eule</b></span> existent bel et bien.</p>
+<p><b>Version finale :</b> <span class="de">Hallo! Ich heiße Borel Tene. Ich komme aus Kamerun. Ich wohne in Douala. Ich bin achtundzwanzig Jahre alt. Ich spreche Französisch. Meine Telefonnummer ist sechs neun drei sechs vier eins null sieben zwei. Ich bin Softwareentwickler.</span></p>
+</div>
+
+<div class="goal">
+<b>Le gain concret de cette leçon :</b> parler de ton matériel et de ton travail, pas seulement le nommer.<br>
+<span class="de">« Ich habe <u>einen</u> Laptop und <u>zwei</u> Bildschirme. Ich brauche <u>eine</u> neue Tastatur. Ich suche <u>den</u> Fehler. Es gibt <u>ein</u> Problem, aber ich habe <u>keinen</u> Drucker. »</span>
+</div>
+
+<h2>1. Écoute d'abord (10 min)</h2>
+<ol>
+  <li><a href="https://learngerman.dw.com/fr/was-trinkst-du/l-49619679" target="_blank" rel="noopener">Nicos Weg, leçon 14 « Was trinkst du? »</a> : l'accusatif apparaît naturellement avec <span class="de">trinken</span> et <span class="de">möchten</span>.</li>
+  <li><a href="https://learngerman.dw.com/fr/eine-pizza-bitte/l-49620771" target="_blank" rel="noopener">Nicos Weg, leçon 15 « Eine Pizza, bitte! »</a> : commander, donc employer l'accusatif en situation réelle.</li>
+  <li><a href="https://learngerman.dw.com/fr/ich-habe-kein/l-49631010" target="_blank" rel="noopener">Nicos Weg, leçon 23 « Ich habe kein … »</a> : si tu l'as déjà vue en leçon 3, réécoute-la en te concentrant cette fois sur la forme <span class="de">keinen</span>.</li>
+</ol>
+
+<h2>2. Ce qu'est un cas, et pourquoi l'allemand en a besoin (5 min)</h2>
+<p>En français, la fonction d'un mot se lit dans sa <b>place</b> : « le développeur cherche l'erreur » et « l'erreur cherche le développeur » n'ont pas le même sens, et seul l'ordre les distingue. L'allemand, lui, marque la fonction <b>sur l'article</b>. Du coup l'ordre peut bouger sans que le sens change :</p>
+<table>
+<tbody>
+<tr><td class="de">D<b>er</b> Entwickler sucht d<b>en</b> Fehler.</td><td class="fr">Le développeur cherche l'erreur.</td></tr>
+<tr><td class="de">D<b>en</b> Fehler sucht d<b>er</b> Entwickler.</td><td class="fr">Même sens. L'erreur est mise en avant, mais <i>den</i> dit toujours qu'elle est l'objet.</td></tr>
+<tr><td class="de">D<b>en</b> Entwickler sucht d<b>er</b> Fehler.</td><td class="fr">Là le sens s'inverse : c'est l'erreur qui cherche le développeur. L'article a changé, pas l'ordre.</td></tr>
+</tbody>
+</table>
+<p>Tu connais déjà ce mécanisme sans le savoir : en français il ne survit que sur les pronoms. « <b>il</b> le voit » contre « <b>le</b> voit-il » : <i>il</i> est sujet, <i>le</i> est objet, et c'est la forme du mot qui le dit, pas sa place. L'allemand applique ce principe à tous les noms.</p>
+<p class="aside">Deux cas au programme aujourd'hui : le <b>nominatif</b>, que tu utilises depuis la leçon 1 (sujet et attribut), et l'<b>accusatif</b>, l'objet direct. Il en existe deux autres, le datif et le génitif, que tu verras à l'A2 et au B1. Le système complet fait quatre cas pour quatre colonnes, soit seize cases, dont tu connaîtras déjà huit à la fin de cette leçon.</p>
+
+<h2>3. Le tableau, et la seule chose qui change (7 min)</h2>
+<table>
+<thead><tr><th></th><th>masculin</th><th>féminin</th><th>neutre</th><th>pluriel</th></tr></thead>
+<tbody>
+<tr><td>nominatif (sujet)</td><td class="der">der · ein · kein · mein</td><td class="die">die · eine · keine · meine</td><td class="das">das · ein · kein · mein</td><td class="die">die · keine · meine</td></tr>
+<tr class="chg"><td>accusatif (objet)</td><td class="der">den · einen · keinen · meinen</td><td class="die">die · eine · keine · meine</td><td class="das">das · ein · kein · mein</td><td class="die">die · keine · meine</td></tr>
+</tbody>
+</table>
+<div class="goal"><b>Une seule règle à retenir :</b> à l'accusatif, le <b>masculin</b> prend <b>-en</b>. Féminin, neutre et pluriel sont identiques au nominatif.<br>
+<span class="der">der → den</span> · <span class="der">ein → einen</span> · <span class="der">kein → keinen</span> · <span class="der">mein → meinen</span></div>
+<table>
+<thead><tr><th>Nominatif</th><th>Accusatif</th><th></th></tr></thead>
+<tbody>
+<tr><td class="de">Das ist <span class="der">ein</span> Computer.</td><td class="de">Ich habe <span class="der">einen</span> Computer.</td><td class="fr">masculin : la forme change</td></tr>
+<tr><td class="de">Das ist <span class="die">eine</span> Tastatur.</td><td class="de">Ich habe <span class="die">eine</span> Tastatur.</td><td class="fr">féminin : rien ne change</td></tr>
+<tr><td class="de">Das ist <span class="das">ein</span> Handy.</td><td class="de">Ich habe <span class="das">ein</span> Handy.</td><td class="fr">neutre : rien ne change</td></tr>
+<tr><td class="de">Das sind <span class="die">die</span> Dateien.</td><td class="de">Ich öffne <span class="die">die</span> Dateien.</td><td class="fr">pluriel : rien ne change</td></tr>
+</tbody>
+</table>
+<p class="aside"><b>Conséquence pratique :</b> trois fois sur quatre, l'accusatif ne te demande aucun effort. Tout le travail porte sur les noms masculins, donc sur le genre. C'est pour cela que la leçon 3 était le prérequis : si tu ne sais pas que <span class="de">Bildschirm</span> est masculin, aucune règle d'accusatif ne peut t'aider.</p>
+
+<h2>4. Les verbes qui commandent l'accusatif (5 min)</h2>
+<p>La grande majorité des verbes allemands prennent un objet à l'accusatif. Ceux dont tu as besoin tout de suite :</p>
+<table>
+<thead><tr><th>Verbe</th><th>Exemple</th></tr></thead>
+<tbody>
+<tr><td class="de">haben</td><td class="de">Ich habe <b>einen</b> Laptop.</td></tr>
+<tr><td class="de">brauchen (avoir besoin de)</td><td class="de">Ich brauche <b>einen</b> Bildschirm.</td></tr>
+<tr><td class="de">suchen (chercher)</td><td class="de">Ich suche <b>den</b> Fehler.</td></tr>
+<tr><td class="de">finden (trouver)</td><td class="de">Ich finde <b>die</b> Datei nicht.</td></tr>
+<tr><td class="de">benutzen (utiliser)</td><td class="de">Ich benutze <b>einen</b> Editor.</td></tr>
+<tr><td class="de">schreiben (écrire)</td><td class="de">Ich schreibe <b>eine</b> E-Mail.</td></tr>
+<tr><td class="de">lesen (lire)</td><td class="de">Ich lese <b>den</b> Code.</td></tr>
+<tr><td class="de">verstehen (comprendre)</td><td class="de">Ich verstehe <b>die</b> Frage nicht.</td></tr>
+<tr><td class="de">speichern (enregistrer)</td><td class="de">Ich speichere <b>das</b> Dokument.</td></tr>
+<tr><td class="de">installieren / testen</td><td class="de">Ich installiere <b>ein</b> Programm. Ich teste <b>die</b> Anwendung.</td></tr>
+<tr><td class="de">es gibt (il y a)</td><td class="de">Es gibt <b>einen</b> Fehler. · Es gibt <b>kein</b> Problem.</td></tr>
+</tbody>
+</table>
+<p><b>L'exception qui compte :</b> <span class="de">sein</span> (être) n'a jamais d'objet. Ce qui le suit reste au <b>nominatif</b>. On dit <span class="de">Das ist <b>ein</b> Drucker</span>, jamais <span class="say">das ist einen Drucker</span>. Même règle pour <span class="de">werden</span> (devenir) et <span class="de">bleiben</span> (rester).</p>
+<h3>Quatre verbes irréguliers utiles</h3>
+<p>Certains verbes changent de voyelle, mais seulement aux formes <b>du</b> et <b>er/sie/es</b> :</p>
+<table>
+<thead><tr><th></th><th class="de">lesen</th><th class="de">sehen</th><th class="de">nehmen</th><th class="de">sprechen</th></tr></thead>
+<tbody>
+<tr><td class="de">ich</td><td>lese</td><td>sehe</td><td>nehme</td><td>spreche</td></tr>
+<tr><td class="de">du</td><td>l<b>ie</b>st</td><td>s<b>ie</b>hst</td><td>n<b>imm</b>st</td><td>spr<b>i</b>chst</td></tr>
+<tr><td class="de">er / sie / es</td><td>l<b>ie</b>st</td><td>s<b>ie</b>ht</td><td>n<b>imm</b>t</td><td>spr<b>i</b>cht</td></tr>
+<tr><td class="de">wir / sie / Sie</td><td>lesen</td><td>sehen</td><td>nehmen</td><td>sprechen</td></tr>
+</tbody>
+</table>
+
+<h2>5. Pratique (10 min)</h2>
+
+<h3>Exercice 1 : quelle forme ?</h3>
+<p>Les phrases sont tirées au hasard. La correction explique le cas <b>et</b> le genre.</p>
+<div class="drill">
+  <div class="prompt" id="d1-s">—</div>
+  <div class="promptfr" id="d1-fr"></div>
+  <div class="choices" id="d1-c"></div>
+  <div class="meterbar"><i id="d1-bar"></i></div>
+  <div class="meta" id="d1-score">0 / 0</div>
+  <div class="fb" id="d1-fb"></div>
+</div>
+
+<h3>Exercice 2 : nominatif ou accusatif ?</h3>
+<p>Le groupe en gras est-il sujet (nominatif) ou objet (accusatif) ? C'est l'analyse qui compte ici, pas la forme.</p>
+<div class="drill">
+  <div class="prompt" id="d2-s">—</div>
+  <div class="promptfr" id="d2-fr"></div>
+  <div class="choices">
+    <button data-a="nom">nominatif</button>
+    <button data-a="akk">accusatif</button>
+  </div>
+  <div class="meterbar"><i id="d2-bar"></i></div>
+  <div class="meta" id="d2-score">0 / 0</div>
+  <div class="fb" id="d2-fb"></div>
+</div>
+
+<h3>Exercice 3 : repère la faute</h3>
+<p>Une des trois phrases est correcte. C'est exactement le type d'exercice de l'épreuve écrite du Goethe.</p>
+<div class="drill">
+  <div class="promptfr" id="d3-fr" style="margin-bottom:.4rem"></div>
+  <div class="choices" id="d3-c" style="flex-direction:column"></div>
+  <div class="meterbar"><i id="d3-bar"></i></div>
+  <div class="meta" id="d3-score">0 / 0</div>
+  <div class="fb" id="d3-fb"></div>
+</div>
+
+<h2>6. Quiz (5 min)</h2>
+<div id="quiz"></div>
+<div class="score" id="score"></div>
+
+<h2>7. Pour aller plus loin : les questions que tu allais poser</h2>
+<p>Au lieu de te laisser ces questions pour la fin, voici les réponses. Elles vont au-delà du strict A1 : lis-les une fois, elles préparent le terrain des leçons suivantes.</p>
+
+<div class="deep">
+<h3>Pourquoi dit-on « <i>das</i> ist eine Tastatur » et pas « <i>die</i> ist eine Tastatur » ?</h3>
+<p>Parce que ce <span class="de">das</span> n'est pas l'article de <i>Tastatur</i> : c'est un pronom démonstratif neutre qui veut dire « ceci, cela ». Il désigne une chose qu'on montre, sans encore la nommer, donc il reste neutre quel que soit le genre du mot qui suit. Même chose au pluriel : <span class="de">Das sind zwei Dateien</span> et non <i>die sind</i>. Si en revanche tu reprends un mot déjà nommé, tu emploies le pronom de son genre : <span class="de">Die Tastatur? <b>Sie</b> ist neu.</span> (elle), <span class="de">Der Drucker? <b>Er</b> ist alt.</span> (il).</p>
+
+<h3>Pourquoi « die Maus → die Mäuse » prend un Umlaut ?</h3>
+<p>C'est un fossile de l'histoire de la langue. En vieux germanique, la terminaison du pluriel contenait un <i>i</i> qui a coloré la voyelle du radical avant de disparaître : <i>mūs / mūsi</i> est devenu <i>Maus / Mäuse</i>. Le même phénomène, appelé Umlaut, explique <span class="de">das Buch → die Bücher</span>, <span class="de">der Stuhl → die Stühle</span>, <span class="de">die Stadt → die Städte</span>. Tu ne peux pas le prédire, mais tu peux le reconnaître : quand un pluriel ajoute <b>-e</b> ou <b>-er</b> à un mot contenant a, o, u ou au, l'Umlaut est très probable. Les mots étrangers, eux, n'en prennent jamais : <span class="de">die Handys</span>, <span class="de">die Laptops</span>, <span class="de">die Teams</span>.</p>
+
+<h3>Comment savoir si un anglicisme est <i>der</i> ou <i>das</i> ?</h3>
+<p>L'allemand attribue un genre par analogie avec le mot allemand le plus proche. <span class="de">der Computer</span> suit <i>der Rechner</i> ; <span class="de">der Server</span> et <span class="de">der Laptop</span> suivent les noms d'appareils en -er ; <span class="de">die Software</span> suit <i>die Ware</i> (la marchandise) ; <span class="de">die E-Mail</span> suit <i>die Post</i> ; <span class="de">das Team</span> suit <i>das Kollektiv</i> ; <span class="de">das Handy</span> et <span class="de">das Tablet</span> suivent <i>das Gerät</i> (l'appareil). Deux tendances utiles : les noms d'<b>agents</b> et d'appareils en -er sont masculins, les mots en <b>-ing</b> sont neutres (<span class="de">das Marketing, das Training, das Meeting</span>). Pour le reste, vérifie dans le <a href="https://www.dwds.de/" target="_blank" rel="noopener">DWDS</a> : c'est deux secondes, et cela évite d'ancrer une erreur.</p>
+
+<h3>Pourquoi seul le masculin change à l'accusatif ? N'est-ce pas arbitraire ?</h3>
+<p>Historiquement, les quatre cas avaient des formes distinctes dans les trois genres. L'allemand moderne a conservé les distinctions là où elles portaient le plus d'information et les a laissées s'éroder ailleurs. Le résultat est un système économique : le masculin porte la marque, les autres genres s'appuient sur le verbe et le contexte. Tu verras la même logique au datif, où ce sont le masculin et le neutre qui changent (<span class="de">dem</span>) tandis que le féminin prend <span class="de">der</span>. Autrement dit : chaque cas ne marque que ce qui est nécessaire pour éviter l'ambiguïté.</p>
+
+<h3>Quelle différence entre « Ich habe <i>keinen</i> Drucker » et « Ich habe <i>nicht den</i> Drucker » ?</h3>
+<p>La première nie l'existence : je n'ai pas d'imprimante du tout. La seconde nie une identité précise : ce n'est pas <b>cette</b> imprimante que j'ai, c'en est une autre. En pratique, à l'A1, tu emploieras presque toujours <span class="de">kein-</span>. Retiens la règle de décision : si tu pourrais dire <i>ein</i> ou rien du tout, c'est <span class="de">kein-</span> ; si l'article défini ou un possessif est là, c'est <span class="de">nicht</span>.</p>
+
+<h3>Et « der Kollege » ? Pourquoi « für den Kollege<u>n</u> » avec un n ?</h3>
+<p>Bonne question, et c'est un piège réel. Une petite famille de noms masculins, appelée déclinaison faible, ajoute <b>-n</b> ou <b>-en</b> à tous les cas sauf au nominatif singulier. Elle contient surtout des noms de personnes : <span class="de">der Kollege → den Kollegen</span>, <span class="de">der Kunde → den Kunden</span> (le client), <span class="de">der Experte → den Experten</span>, <span class="de">der Student → den Studenten</span>, <span class="de">der Name → den Namen</span>, <span class="de">der Junge → den Jungen</span>. Repère-les à leur finale en <b>-e</b> ou aux suffixes <b>-ent, -ant, -ist, -oge</b> (<span class="de">der Praktikant, der Journalist, der Psychologe</span>). Pour l'instant, retiens la liste ci-dessus ; la règle complète arrivera au B1.</p>
+
+<h3>Comment entendre l'accusatif à l'oral, si <i>-en</i> est à peine audible ?</h3>
+<p>Tu as raison, <span class="de">einen</span> prononcé vite sonne comme <span class="say">« ein-n »</span>, voire <span class="say">« ein »</span> dans la langue familière. Deux conséquences. À la <b>compréhension</b>, ne compte pas sur la terminaison : identifie le verbe, et déduis les fonctions. À la <b>production</b>, prononce le <b>-en</b> nettement : c'est l'un des points que les examinateurs du Goethe écoutent, parce que c'est précisément là que se trahit un apprenant qui récite sans comprendre. Articuler <span class="say">« ei-nen »</span> te coûte un dixième de seconde et change la note.</p>
+
+<h3>Un mot sur le datif, pour que tu voies où l'on va</h3>
+<p>Le datif est le cas du complément d'attribution, c'est-à-dire du destinataire : <span class="de">Ich gebe <b>dem</b> Kollegen die Datei</span> (je donne le fichier au collègue). Formes : <span class="de">dem</span> au masculin et au neutre, <span class="de">der</span> au féminin, <span class="de">den</span> + <b>-n</b> sur le nom au pluriel. Tu n'as rien à apprendre aujourd'hui, mais sache que trois prépositions très fréquentes l'imposent déjà dans des phrases que tu connais : <span class="de">mit</span>, <span class="de">von</span>, <span class="de">zu</span>. Quand tu dis <span class="de">Ich komme aus Kamerun</span> ou <span class="de">Ich arbeite mit dem Team</span>, tu emploies déjà le datif sans l'avoir étudié. Ce sera le cœur de l'A2.</p>
+</div>
+
+<h2>8. Production : décris ton travail</h2>
+<p>Écris <b>six phrases</b> sur ton matériel et ton travail. Contraintes : au moins <b>trois verbes différents</b>, au moins une phrase <b>négative</b> avec <span class="de">kein-</span>, et au moins une phrase avec <span class="de">es gibt</span>. Le vérificateur connaît le genre de 46 mots et contrôle la forme du cas.</p>
+<textarea id="prod" placeholder="Ich habe einen Laptop.
+Ich brauche einen Bildschirm.
+Ich suche den Fehler.
+Ich schreibe eine E-Mail.
+Es gibt ein Problem.
+Ich habe keinen Drucker."></textarea>
+<button id="checkProd">Vérifier mes phrases</button>
+<ul class="checks" id="prodOut"></ul>
+
+<h2>9. À voix haute (3 min)</h2>
+<p>Prends dix objets autour de toi. Pour chacun, dis deux phrases : <span class="de">Das ist ein …</span> (nominatif) puis <span class="de">Ich brauche einen …</span> (accusatif). L'exercice force le contraste, qui est exactement ce que ton cerveau doit automatiser. Insiste sur le <b>-en</b> des masculins.</p>
+
+<h2>10. Anki</h2>
+<p>Les fichiers <code>lecon04-general.txt</code> et <code>lecon04-it.txt</code> sont dans le dossier <code>anki/</code>, et les paquets se téléchargent en un clic dans l'onglet <b>Anki</b> du site. Ils contiennent les formes du tableau, les verbes transitifs, les quatre verbes irréguliers, les noms de la déclinaison faible, et les trois corrections de ta présentation (<span class="de">das Jahr</span>, <span class="de">Französisch</span>, <span class="de">Softwareentwickler</span>).</p>
+
+<h2>Ce que tu dois retenir</h2>
+<ul>
+  <li>Le cas dit la <b>fonction</b> du nom, pas sa place : sujet et attribut au nominatif, objet direct à l'accusatif.</li>
+  <li>À l'accusatif, <b>seul le masculin change</b> et prend <b>-en</b> : <span class="de">den, einen, keinen, meinen</span>.</li>
+  <li><span class="de">sein, werden, bleiben</span> n'ont pas d'objet : après eux, nominatif.</li>
+  <li><span class="de">es gibt</span> est toujours suivi de l'accusatif.</li>
+  <li>Sans le genre, pas d'accusatif. Les cartes Anki de la leçon 3 restent la base de tout.</li>
+</ul>
+
+<div class="ask">
+<b>Ce que j'attends de toi avant la leçon 5</b>
+<ol>
+  <li>Tes six phrases de la partie 8, telles que tu les as écrites, fautes comprises.</li>
+  <li>Tes scores aux exercices 1, 2 et 3, et au quiz.</li>
+  <li>Si tu les as encore, les six phrases de la leçon 3 (celles sur ton poste de travail).</li>
+</ol>
+Et si l'une des réponses de la partie 7 n'est pas claire, dis-moi laquelle : je la reprends autrement. La leçon 5 portera sur les pronoms à l'accusatif (<span class="de">mich, dich, ihn, sie, es</span>) et les cinq prépositions qui imposent ce cas (<span class="de">für, ohne, gegen, um, durch</span>) : de quoi dire <span class="de">Ich verstehe dich nicht</span> et <span class="de">Das ist für dich</span>.
+</div>
+
+<footer>
+<p><b>Source primaire :</b> Deutsche Welle, Nicos Weg A1, leçons <a href="https://learngerman.dw.com/fr/was-trinkst-du/l-49619679" target="_blank" rel="noopener">14</a>, <a href="https://learngerman.dw.com/fr/eine-pizza-bitte/l-49620771" target="_blank" rel="noopener">15</a> et <a href="https://learngerman.dw.com/fr/ich-habe-kein/l-49631010" target="_blank" rel="noopener">23</a>. Explications en français sur les déclinaisons : <a href="https://deutsch.lingolia.com/fr/grammaire/les-declinaisons" target="_blank" rel="noopener">Lingolia</a>. Genres et pluriels : <a href="https://www.dwds.de/" target="_blank" rel="noopener">DWDS</a>.<br>
+<b>Références :</b> <a href="../reference/accusatif.html">l'accusatif</a> · <a href="../reference/genre-pluriel-kein.html">genre, pluriel et kein</a> · <a href="../reference/nombres-alphabet.html">nombres et alphabet</a> · <a href="../reference/prononciation.html">prononciation</a> · <a href="../reference/nicos-weg-a1.html">index Nicos Weg A1</a> · <a href="../reference/parcours.html">feuille de route</a>.<br>
+<b>Prochaine leçon :</b> les pronoms à l'accusatif et les prépositions <span class="de">für, ohne, gegen, um, durch</span>.</p>
+<p>Leçon créée le 5 octobre 2026.</p>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+
+  /* ---------- dictionnaire : mot, genre, pluriel, français ---------- */
+  var N = [
+    ["Computer","der","die Computer","l'ordinateur"],["Rechner","der","die Rechner","l'ordinateur"],
+    ["Bildschirm","der","die Bildschirme","l'écran"],["Drucker","der","die Drucker","l'imprimante"],
+    ["Schreibtisch","der","die Schreibtische","le bureau (meuble)"],["Stuhl","der","die Stühle","la chaise"],
+    ["Tisch","der","die Tische","la table"],["Schlüssel","der","die Schlüssel","la clé"],
+    ["Fehler","der","die Fehler","l'erreur"],["Ordner","der","die Ordner","le dossier"],
+    ["Server","der","die Server","le serveur"],["Laptop","der","die Laptops","l'ordinateur portable"],
+    ["Code","der","die Codes","le code"],["Editor","der","die Editoren","l'éditeur"],
+    ["Tastatur","die","die Tastaturen","le clavier"],["Maus","die","die Mäuse","la souris"],
+    ["Datei","die","die Dateien","le fichier"],["Firma","die","die Firmen","l'entreprise"],
+    ["Lösung","die","die Lösungen","la solution"],["Anwendung","die","die Anwendungen","l'application"],
+    ["Sitzung","die","die Sitzungen","la réunion"],["Version","die","die Versionen","la version"],
+    ["Frage","die","die Fragen","la question"],["Software","die","die Software","le logiciel"],
+    ["E-Mail","die","die E-Mails","le courriel"],["Arbeit","die","die Arbeiten","le travail"],
+    ["Zeit","die","die Zeiten","le temps"],["Tür","die","die Türen","la porte"],
+    ["Handy","das","die Handys","le téléphone portable"],["Passwort","das","die Passwörter","le mot de passe"],
+    ["Programm","das","die Programme","le programme"],["Projekt","das","die Projekte","le projet"],
+    ["Team","das","die Teams","l'équipe"],["Büro","das","die Büros","le bureau (pièce)"],
+    ["Fenster","das","die Fenster","la fenêtre"],["Buch","das","die Bücher","le livre"],
+    ["Problem","das","die Probleme","le problème"],["Dokument","das","die Dokumente","le document"],
+    ["System","das","die Systeme","le système"],["Papier","das","die Papiere","le papier"],
+    ["Update","das","die Updates","la mise à jour"],["Konto","das","die Konten","le compte"],
+    ["Telefon","das","die Telefone","le téléphone"],["Ticket","das","die Tickets","le ticket"],
+    ["Netzwerk","das","die Netzwerke","le réseau"],["Gerät","das","die Geräte","l'appareil"]
+  ].map(function (r) { return { w: r[0], a: r[1], pl: r[2], fr: r[3] }; });
+  var BY = {}, BYPL = {};
+  N.forEach(function (n) { BY[n.w.toLowerCase()] = n; BYPL[n.pl.replace(/^die\s+/, "").toLowerCase()] = n; });
+
+  var AKK = { der: "einen", die: "eine", das: "ein" };
+  var NOM = { der: "ein", die: "eine", das: "ein" };
+  var AKKDEF = { der: "den", die: "die", das: "das" };
+
+  /* ---------- voix ---------- */
+  var voice = null;
+  function pickVoice() {
+    if (!("speechSynthesis" in window)) return;
+    voice = speechSynthesis.getVoices().filter(function (v) { return /^de/i.test(v.lang); })[0] || null;
+  }
+  pickVoice();
+  if ("speechSynthesis" in window) speechSynthesis.onvoiceschanged = pickVoice;
+  function speak(t) {
+    if (!voice) return;
+    speechSynthesis.cancel();
+    var u = new SpeechSynthesisUtterance(t); u.voice = voice; u.lang = voice.lang; u.rate = .85;
+    speechSynthesis.speak(u);
+  }
+
+  var rnd = function (n) { return Math.floor(Math.random() * n); };
+  function shuffleArr(a) { for (var i = a.length - 1; i > 0; i--) { var j = rnd(i + 1); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+  function meter(bar, sc, ok, tot) {
+    document.getElementById(bar).style.width = tot ? (100 * ok / tot) + "%" : "0";
+    document.getElementById(sc).textContent = ok + " / " + tot + (tot >= 10 ? (ok / tot >= .8 ? " — acquis" : " — à retravailler") : "");
+  }
+  var GENRE = { der: "masculin", die: "féminin", das: "neutre" };
+
+  /* ---------- exercice 1 : quelle forme ---------- */
+  var VERBS_AKK = [
+    ["Ich habe ___ ", "J'ai …"], ["Ich brauche ___ ", "J'ai besoin de …"],
+    ["Ich suche ___ ", "Je cherche …"], ["Ich benutze ___ ", "J'utilise …"],
+    ["Es gibt ___ ", "Il y a …"], ["Ich kaufe ___ ", "J'achète …"]
+  ];
+  var VERBS_NOM = [["Das ist ___ ", "C'est …"], ["Hier ist ___ ", "Voici …"]];
+  var e1 = { ok: 0, tot: 0, cur: null, locked: false };
+  function e1Next() {
+    var n = N[rnd(N.length)], akk = Math.random() < .65;
+    var frame = akk ? VERBS_AKK[rnd(VERBS_AKK.length)] : VERBS_NOM[rnd(VERBS_NOM.length)];
+    var good = akk ? AKK[n.a] : NOM[n.a];
+    e1.cur = { n: n, akk: akk, frame: frame, good: good }; e1.locked = false;
+    document.getElementById("d1-s").innerHTML = frame[0].replace("___", "<u>___</u>") + n.w + ".";
+    document.getElementById("d1-fr").textContent = frame[1].replace("…", n.fr);
+    document.getElementById("d1-fb").className = "fb";
+    var opts = shuffleArr(["ein", "eine", "einen"]);
+    var box = document.getElementById("d1-c"); box.innerHTML = "";
+    opts.forEach(function (o) {
+      var b = document.createElement("button"); b.textContent = o;
+      b.addEventListener("click", function () {
+        if (e1.locked) return;
+        e1.locked = true; e1.tot++;
+        var fb = document.getElementById("d1-fb"), ok = o === good;
+        var why = n.a + " " + n.w + " : " + GENRE[n.a] + ", donc " +
+          (e1.cur.akk ? ("accusatif → " + good + (n.a === "der" ? " (le masculin prend -en)" : " (inchangé)"))
+                      : ("après " + (frame[0].indexOf("Das ist") === 0 ? "sein" : "ist") + " on reste au nominatif → " + good));
+        fb.className = ok ? "fb ok" : "fb ko";
+        fb.textContent = (ok ? "Juste. " : "Non, c'était « " + good + " ». ") + why + ".";
+        speak(frame[0].replace("___", good) + n.w);
+        meter("d1-bar", "d1-score", e1.ok += ok ? 1 : 0, e1.tot);
+        setTimeout(e1Next, ok ? 1200 : 3000);
+      });
+      box.appendChild(b);
+    });
+  }
+  e1Next();
+
+  /* ---------- exercice 2 : nominatif ou accusatif ---------- */
+  var S2 = [
+    ["<b>Der Bildschirm</b> ist neu.", "nom", "L'écran est neuf.", "sujet du verbe sein → nominatif."],
+    ["Ich brauche <b>einen Bildschirm</b>.", "akk", "J'ai besoin d'un écran.", "objet direct de brauchen → accusatif."],
+    ["Das ist <b>ein Drucker</b>.", "nom", "C'est une imprimante.", "attribut après sein → nominatif, jamais einen."],
+    ["Ich suche <b>den Fehler</b>.", "akk", "Je cherche l'erreur.", "objet direct de suchen → accusatif (der → den)."],
+    ["<b>Die Datei</b> ist groß.", "nom", "Le fichier est gros.", "sujet → nominatif."],
+    ["Ich öffne <b>die Datei</b>.", "akk", "J'ouvre le fichier.", "objet direct ; au féminin la forme ne change pas."],
+    ["Es gibt <b>einen Fehler</b>.", "akk", "Il y a une erreur.", "es gibt est toujours suivi de l'accusatif."],
+    ["<b>Mein Kollege</b> schreibt eine E-Mail.", "nom", "Mon collègue écrit un courriel.", "celui qui agit → nominatif."],
+    ["Ich verstehe <b>die Frage</b> nicht.", "akk", "Je ne comprends pas la question.", "objet direct de verstehen → accusatif."],
+    ["<b>Das Programm</b> funktioniert.", "nom", "Le programme fonctionne.", "sujet → nominatif."],
+    ["Ich habe <b>kein Handy</b>.", "akk", "Je n'ai pas de portable.", "objet direct ; au neutre, kein ne change pas."],
+    ["<b>Der Code</b> ist lang, aber ich lese <b>den Code</b>.", "nom", "Le code est long, mais je le lis.", "le PREMIER groupe en gras est sujet → nominatif ; le second est objet."]
+  ];
+  var e2 = { ok: 0, tot: 0, cur: null, locked: false, pool: shuffleArr(S2.slice()) };
+  function e2Next() {
+    if (!e2.pool.length) e2.pool = shuffleArr(S2.slice());
+    e2.cur = e2.pool.pop(); e2.locked = false;
+    document.getElementById("d2-s").innerHTML = e2.cur[0];
+    document.getElementById("d2-fr").textContent = e2.cur[2];
+    document.getElementById("d2-fb").className = "fb";
+  }
+  document.querySelector("#d2-s").parentNode.querySelectorAll(".choices button").forEach(function (b) {
+    b.addEventListener("click", function () {
+      if (e2.locked) return;
+      e2.locked = true; e2.tot++;
+      var fb = document.getElementById("d2-fb"), ok = b.dataset.a === e2.cur[1];
+      fb.className = ok ? "fb ok" : "fb ko";
+      fb.textContent = (ok ? "Juste. " : "Non, c'était " + (e2.cur[1] === "nom" ? "le nominatif" : "l'accusatif") + ". ") + e2.cur[3];
+      meter("d2-bar", "d2-score", e2.ok += ok ? 1 : 0, e2.tot);
+      setTimeout(e2Next, ok ? 1200 : 2800);
+    });
+  });
+  e2Next();
+
+  /* ---------- exercice 3 : repère la faute ---------- */
+  var S3 = [
+    [["Ich habe einen Computer.", "Ich habe ein Computer.", "Ich habe eine Computer."], 0,
+     "der Computer est masculin : à l'accusatif, ein devient einen."],
+    [["Das ist ein Drucker.", "Das ist einen Drucker.", "Das ist eine Drucker."], 0,
+     "après sein on reste au nominatif : ein Drucker, jamais einen."],
+    [["Ich brauche eine Tastatur.", "Ich brauche einen Tastatur.", "Ich brauche ein Tastatur."], 0,
+     "die Tastatur est féminin : eine, inchangé à l'accusatif."],
+    [["Es gibt einen Fehler.", "Es gibt ein Fehler.", "Es gibt eine Fehler."], 0,
+     "es gibt impose l'accusatif, et der Fehler est masculin : einen."],
+    [["Ich habe kein Handy.", "Ich habe keinen Handy.", "Ich habe keine Handy."], 0,
+     "das Handy est neutre : kein ne change pas à l'accusatif."],
+    [["Ich suche den Schlüssel.", "Ich suche dem Schlüssel.", "Ich suche der Schlüssel."], 0,
+     "der Schlüssel, objet direct → den. (dem serait le datif, pas encore au programme.)"],
+    [["Ich lese das Dokument.", "Ich lese den Dokument.", "Ich lese dem Dokument."], 0,
+     "das Dokument est neutre : das reste das à l'accusatif."],
+    [["Ich habe keinen Drucker.", "Ich habe kein Drucker.", "Ich habe keine Drucker."], 0,
+     "der Drucker est masculin : kein devient keinen à l'accusatif."],
+    [["Mein Kollege schreibt eine E-Mail.", "Meinen Kollege schreibt eine E-Mail.", "Mein Kollege schreibt einen E-Mail."], 0,
+     "le collègue est sujet (nominatif : mein) et die E-Mail est féminin (eine)."],
+    [["Ich benutze einen Editor.", "Ich benutze ein Editor.", "Ich benutze eine Editor."], 0,
+     "der Editor est masculin : einen à l'accusatif."]
+  ];
+  var e3 = { ok: 0, tot: 0, cur: null, locked: false, pool: shuffleArr(S3.slice()) };
+  function e3Next() {
+    if (!e3.pool.length) e3.pool = shuffleArr(S3.slice());
+    e3.cur = e3.pool.pop(); e3.locked = false;
+    document.getElementById("d3-fr").textContent = "Quelle phrase est correcte ?";
+    document.getElementById("d3-fb").className = "fb";
+    var good = e3.cur[0][e3.cur[1]];
+    var opts = shuffleArr(e3.cur[0].slice());
+    var box = document.getElementById("d3-c"); box.innerHTML = "";
+    opts.forEach(function (o) {
+      var b = document.createElement("button"); b.textContent = o; b.style.flex = "1 1 auto";
+      b.addEventListener("click", function () {
+        if (e3.locked) return;
+        e3.locked = true; e3.tot++;
+        var fb = document.getElementById("d3-fb"), ok = o === good;
+        fb.className = ok ? "fb ok" : "fb ko";
+        fb.textContent = (ok ? "Juste. " : "Non. La bonne phrase est « " + good + " ». ") + e3.cur[2];
+        speak(good);
+        meter("d3-bar", "d3-score", e3.ok += ok ? 1 : 0, e3.tot);
+        setTimeout(e3Next, ok ? 1400 : 3200);
+      });
+      box.appendChild(b);
+    });
+  }
+  e3Next();
+
+  /* ---------- quiz ---------- */
+  var questions = [
+    { stem: "À l'accusatif, quelle forme prend « ein » au masculin ?", opts: ["einen", "eine", "einem"], ans: 0, why: "Le masculin accusatif prend -en : einen." },
+    { stem: "Ich habe ___ Bildschirm. (der Bildschirm)", opts: ["einen", "eine", "ein"], ans: 0, why: "Masculin + objet direct de haben : einen." },
+    { stem: "Ich brauche ___ Tastatur. (die Tastatur)", opts: ["eine", "einen", "ein"], ans: 0, why: "Au féminin, la forme est identique au nominatif : eine." },
+    { stem: "Das ist ___ Drucker. (der Drucker)", opts: ["ein", "einen", "eine"], ans: 0, why: "Après sein on reste au nominatif : ein Drucker." },
+    { stem: "Es gibt ___ Problem. (das Problem)", opts: ["ein", "einen", "eine"], ans: 0, why: "es gibt impose l'accusatif, mais le neutre ne change pas : ein." },
+    { stem: "Ich suche ___ Fehler. (der Fehler)", opts: ["den", "dem", "der"], ans: 0, why: "Article défini masculin à l'accusatif : den." },
+    { stem: "Ich habe ___ Drucker. (négation, der Drucker)", opts: ["keinen", "keine", "kein"], ans: 0, why: "kein suit ein : au masculin accusatif, keinen." },
+    { stem: "Quel verbe ne prend JAMAIS d'objet à l'accusatif ?", opts: ["sein", "haben", "suchen"], ans: 0, why: "sein, werden et bleiben sont suivis du nominatif." },
+    { stem: "Dans « Den Fehler sucht der Entwickler », qui cherche ?", opts: ["der Entwickler", "der Fehler", "les deux"], ans: 0, why: "C'est l'article qui marque la fonction : der = sujet, den = objet, quelle que soit la place." },
+    { stem: "Combien de genres changent de forme à l'accusatif ?", opts: ["un genre", "deux genres", "trois genres"], ans: 0, why: "Seul le masculin change ; féminin, neutre et pluriel restent identiques." },
+    { stem: "Quelle forme est correcte : der Kollege, à l'accusatif ?", opts: ["den Kollegen", "den Kollege", "dem Kollegen"], ans: 0, why: "Déclinaison faible : ces masculins ajoutent -n hors du nominatif singulier." },
+    { stem: "Dans « du liest », pourquoi « liest » et non « lesest » ?", opts: ["verbe irrégulier", "simple faute", "forme polie"], ans: 0, why: "lesen change de voyelle aux formes du et er/sie/es : du liest, er liest." }
+  ];
+  function shuffleQ(q) {
+    var idx = q.opts.map(function (_, i) { return i; });
+    shuffleArr(idx);
+    return { stem: q.stem, why: q.why, opts: idx.map(function (i) { return q.opts[i]; }), ans: idx.indexOf(q.ans) };
+  }
+  var root = document.getElementById("quiz"), answered = 0, correct = 0;
+  questions.map(shuffleQ).forEach(function (q, n) {
+    var box = document.createElement("div"); box.className = "q";
+    var stem = document.createElement("div"); stem.className = "stem"; stem.textContent = (n + 1) + ". " + q.stem;
+    box.appendChild(stem);
+    var fb = document.createElement("div"); fb.className = "fb";
+    q.opts.forEach(function (o, i) {
+      var lab = document.createElement("label"), inp = document.createElement("input");
+      inp.type = "radio"; inp.name = "q" + n;
+      inp.addEventListener("change", function () {
+        box.querySelectorAll("input").forEach(function (x) { x.disabled = true; });
+        answered++;
+        if (i === q.ans) { correct++; fb.className = "fb ok"; fb.textContent = "Juste. " + q.why; }
+        else { fb.className = "fb ko"; fb.textContent = "Non : la bonne réponse est « " + q.opts[q.ans] + " ». " + q.why; }
+        if (answered === questions.length) {
+          var s = document.getElementById("score"); s.style.display = "block";
+          var msg = correct >= 11 ? "Excellent. Passe à la partie 8." :
+                    correct >= 9 ? "Bien. Relis les points ratés dans la fiche, puis continue." :
+                    "Reprends les parties 3 et 4, refais les exercices, puis recharge la page.";
+          s.textContent = "Score : " + correct + " / " + questions.length + ". " + msg;
+        }
+      });
+      lab.appendChild(inp); lab.appendChild(document.createTextNode(o)); box.appendChild(lab);
+    });
+    box.appendChild(fb); root.appendChild(box);
+  });
+
+  /* ---------- production ---------- */
+  var AKK_VERBS = "habe|brauche|suche|finde|benutze|schreibe|lese|verstehe|speichere|installiere|teste|kaufe|mache|öffne|schließe|nehme|sehe";
+  var NOM_VERBS = "ist|sind|bleibt|wird";
+  document.getElementById("checkProd").addEventListener("click", function () {
+    var raw = document.getElementById("prod").value;
+    var out = document.getElementById("prodOut"); out.innerHTML = "";
+    var add = function (cls, txt) { var li = document.createElement("li"); li.className = cls; li.textContent = txt; out.appendChild(li); };
+    var sentences = raw.split(/[.\n!?]+/).map(function (s) { return s.trim(); }).filter(Boolean);
+    if (!sentences.length) { add("ko", "Écris d'abord tes phrases dans le cadre."); return; }
+
+    var verbsUsed = {}, nNeg = 0, nGibt = 0, nGood = 0, nChecked = 0;
+    sentences.forEach(function (s) {
+      // minuscule sur un nom connu ?
+      var low = s.match(/\b(ein|eine|einen|kein|keine|keinen|mein|meine|meinen|der|die|das|den)\s+([a-zäöüß][\wäöüß-]*)/);
+      if (low && BY[low[2].toLowerCase()]) {
+        var nn = BY[low[2].toLowerCase()];
+        add("ko", "« " + s + " » : « " + low[2] + " » est un nom, il prend une majuscule → " + nn.a + " " + nn.w + ".");
+        nChecked++; return;
+      }
+      var akkFrame = /^Es gibt\b/.test(s) || new RegExp("\\b(" + AKK_VERBS + ")\\b").test(s);
+      var nomFrame = new RegExp("\\b(" + NOM_VERBS + ")\\b").test(s) && !akkFrame;
+      if (/^Es gibt\b/.test(s)) nGibt++;
+      var vm = s.match(new RegExp("\\b(" + AKK_VERBS + ")\\b"));
+      if (vm) verbsUsed[vm[1]] = 1;
+      if (/^Es gibt\b/.test(s)) verbsUsed["es gibt"] = 1;
+
+      var g = s.match(/\b(ein|eine|einen|kein|keine|keinen|mein|meine|meinen|der|die|das|den)\s+([A-ZÄÖÜ][\wäöüß-]*)/);
+      if (!g) {
+        if (!akkFrame && !nomFrame) add("", "« " + s + " » : je ne reconnais pas la structure, je ne peux pas vérifier le cas.");
+        else add("", "« " + s + " » : pas de groupe « article + nom » à vérifier.");
+        return;
+      }
+      var det = g[1], word = g[2];
+      var n = BY[word.toLowerCase()], isPl = false;
+      if (!n) { n = BYPL[word.toLowerCase()]; isPl = !!n; }
+      if (!n) { add("", "« " + s + " » : « " + word + " » n'est pas dans ma liste, vérifie son genre dans le DWDS."); return; }
+      nChecked++;
+      if (/^(kein|keine|keinen)$/.test(det)) nNeg++;
+      if (isPl) {
+        if (/^(die|keine|meine)$/.test(det)) { nGood++; add("ok", "« " + s + " » : juste, pluriel " + n.pl + " (identique au nominatif)."); }
+        else add("ko", "« " + s + " » : au pluriel on attend « die " + word + " », « keine " + word + " » ou « meine " + word + " ».");
+        return;
+      }
+      var fam = /^(ein|eine|einen)$/.test(det) ? "ein" : /^(kein|keine|keinen)$/.test(det) ? "kein" : /^(mein|meine|meinen)$/.test(det) ? "mein" : "def";
+      var need;
+      if (fam === "def") need = akkFrame ? AKKDEF[n.a] : n.a;
+      else {
+        var base = fam === "ein" ? "ein" : fam;
+        need = n.a === "die" ? base + "e" : (akkFrame && n.a === "der") ? base + "en" : base;
+      }
+      if (det === need) { nGood++; add("ok", "« " + s + " » : juste. " + n.a + " " + n.w + ", " + GENRE[n.a] + ", " + (akkFrame ? "accusatif" : "nominatif") + "."); }
+      else {
+        add("ko", "« " + s + " » : " + n.w + " est " + GENRE[n.a] + " (" + n.a + ") et se trouve " +
+          (akkFrame ? "à l'accusatif" : "au nominatif" + (nomFrame ? " (après sein, pas d'objet)" : "")) +
+          ", donc « " + need + " " + word + " ».");
+      }
+    });
+
+    var nv = Object.keys(verbsUsed).length;
+    add(sentences.length >= 6 ? "ok" : "ko", "Nombre de phrases : " + sentences.length + " (il en faut six).");
+    add(nv >= 3 ? "ok" : "ko", "Verbes différents employés : " + nv + " (il en faut au moins trois).");
+    add(nNeg >= 1 ? "ok" : "ko", "Phrases négatives avec kein- : " + nNeg + " (il en faut au moins une).");
+    add(nGibt >= 1 ? "ok" : "ko", "Phrases avec « Es gibt » : " + nGibt + " (il en faut au moins une).");
+    add(nChecked && nGood === nChecked ? "ok" : "", "Groupes article + nom corrects : " + nGood + " / " + nChecked +
+      ". Copie tes phrases dans le terminal, je les relis pour de bon.");
+  });
+})();
+</script>
+</body>
+</html>

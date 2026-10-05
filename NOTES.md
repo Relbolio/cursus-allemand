@@ -26,6 +26,13 @@
   Fin de séance : commit ; le push est fait par l'apprenant (ou sur sa demande).
 - Exemples personnalisés : Borel, Kamerun, Douala, Softwareentwickler.
 
+## Consigne ajoutée le 2026-10-05
+- **Approfondir DANS la leçon.** Ne plus lister des questions à poser au professeur : y répondre directement
+  dans une section « Pour aller plus loin : les questions que tu allais poser », placée après le quiz.
+  L'apprenant veut le maximum de connaissances disponibles dans une seule leçon, sans dépendre d'un aller-retour.
+  L'encart final ne garde que ce que le professeur attend de lui, plus une invitation à signaler une réponse peu claire.
+- Format des leçons inchangé par ailleurs : même structure, même palette, pas de mécanisme de déverrouillage.
+
 ## Décisions pédagogiques
 - S'appuyer sur le français comme levier : genres, cas et conjugaison sont des concepts déjà connus
   (le français a des genres et des conjugaisons ; les cas s'expliquent par les pronoms le/lui).
@@ -41,4 +48,4 @@
 - 2026-09-21 (suite) : intégration Anki au site : `build_anki.py` (apkg sans dépendance, ids stables), onglet Anki avec réviseur intégré (SM-2, localStorage, export/import), manifeste `anki/index.json`. Import .apkg réel non testé sur cette machine : à confirmer par l'apprenant au premier import.
 - 2026-09-21 (soir) : l'apprenant ne trouvait pas la leçon 2 dans le site (liste plate, bandeau mobile). Créé `build.py` (découverte automatique leçons/fiches/records → status.json) ; onglet Leçons groupé par niveau, prochaine leçon présélectionnée, mode liste/lecteur sur mobile, cache Pages contourné. Désormais : `python build.py` à chaque fin de séance, plus jamais d'édition manuelle des listes de status.json.
 - 2026-09-23 : leçon 3 publiée en avance (genre der/die/das, pluriel, kein/nicht, vocabulaire bureau et ordinateur) à la demande de l'apprenant, absent jusqu'au week-end. Corrections des leçons 2 ET 3 attendues ensemble à son retour (présentation v2, scores des drills, six phrases). Exception d'avance consignée dans CLAUDE.md §4.1. Fiche `reference/genre-pluriel-kein.html` + 75 cartes Anki (43 générales, 32 IT).
-
+- 2026-10-05 : retour de l'apprenant après 12 jours. Présentation v2 corrigée (3 fautes : jahre, Französich, Softwarrentwickler ; ß et nombres composés acquis) → LR-0003. Leçons 2 et 3 marquées faites (exercices au score complet ; les six phrases de la leçon 3 n'ont pas été rendues). Leçon 4 publiée : accusatif, avec section d'approfondissement intégrée (8 questions traitées d'avance). 234 cartes Anki. Rythme réel : 3 leçons en 5 semaines, très en dessous des 7 h/semaine présumées — à surveiller avant de refaire le calendrier.

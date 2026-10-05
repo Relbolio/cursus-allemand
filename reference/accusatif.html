@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="niveau" content="A1">
+<title>L'accusatif — aide-mémoire</title>
+<style>
+  :root { --ink:#111; --muted:#666; --rule:#ddd; --accent:#a52a2a; --paper:#fffff8; --soft:#f6f4ea;
+          --m:#35618e; --f:#a5325f; --n:#3f7a52; --ok:#2e7d32; }
+  html { background:var(--paper); }
+  body { font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif; color:var(--ink); max-width:47rem; margin:0 auto; padding:2.5rem 1.25rem 4rem; line-height:1.5; font-size:1.03rem; }
+  h1 { font-weight:400; font-size:2.1rem; margin:0 0 .25rem; }
+  h2 { font-weight:400; font-size:1.35rem; margin:2.2rem 0 .6rem; border-bottom:1px solid var(--rule); padding-bottom:.2rem; }
+  h3 { font-weight:600; font-size:1.02rem; margin:1.4rem 0 .35rem; }
+  .sub { color:var(--muted); font-style:italic; margin-bottom:1.6rem; }
+  table { border-collapse:collapse; width:100%; font-size:.95rem; margin-bottom:1rem; }
+  th, td { text-align:left; padding:.38rem .5rem; border-bottom:1px solid var(--rule); vertical-align:top; }
+  th { font-weight:600; color:var(--muted); font-size:.78rem; text-transform:uppercase; letter-spacing:.06em; }
+  td.de { font-weight:600; }
+  .der { color:var(--m); font-weight:700; } .die { color:var(--f); font-weight:700; } .das { color:var(--n); font-weight:700; }
+  .say { color:var(--accent); font-style:italic; }
+  .chg { background:#fdf3f3; }
+  .chg td { font-weight:700; }
+  .note { background:var(--soft); border-left:3px solid var(--accent); padding:.7rem 1rem; margin:1rem 0; font-size:.96rem; }
+  .big td, .big th { padding:.5rem .6rem; font-size:1.05rem; }
+  .big td:first-child { color:var(--muted); font-size:.85rem; text-transform:uppercase; letter-spacing:.05em; font-weight:400; }
+  a { color:var(--accent); }
+  footer { margin-top:3rem; color:var(--muted); font-size:.9rem; border-top:1px solid var(--rule); padding-top:1rem; }
+  @media print { body { max-width:none; padding:0; font-size:10pt; } table, .note { break-inside:avoid; } a { color:inherit; text-decoration:none; } }
+</style>
+</head>
+<body>
+<h1>L'accusatif</h1>
+<p class="sub">Aide-mémoire A1 · leçon 4 · le cas de l'objet direct, et pourquoi seul le masculin bouge</p>
+
+<div class="note"><b>Toute la leçon en une phrase :</b> quand le nom subit l'action du verbe, il passe à l'accusatif, et <b>seul le masculin change</b> : <span class="der">der → den</span>, <span class="der">ein → einen</span>, <span class="der">kein → keinen</span>, <span class="der">mein → meinen</span>. Féminin, neutre et pluriel ne changent pas.</div>
+
+<h2>Le tableau complet</h2>
+<table class="big">
+<thead><tr><th></th><th>masculin</th><th>féminin</th><th>neutre</th><th>pluriel</th></tr></thead>
+<tbody>
+<tr><td>nominatif (sujet)</td><td class="der">der / ein</td><td class="die">die / eine</td><td class="das">das / ein</td><td class="die">die / —</td></tr>
+<tr class="chg"><td>accusatif (objet)</td><td class="der">den / einen</td><td class="die">die / eine</td><td class="das">das / ein</td><td class="die">die / —</td></tr>
+</tbody>
+</table>
+<p>Avec les mots de la même famille : <span class="de">keinen, meinen, deinen, Ihren, unseren</span> au masculin accusatif ; <span class="de">keine, meine, Ihre</span> inchangés au féminin et au pluriel.</p>
+<table>
+<thead><tr><th>Famille</th><th>Masculin nominatif</th><th>Masculin accusatif</th></tr></thead>
+<tbody>
+<tr><td>article défini</td><td class="de">der Computer</td><td class="de">d<b>en</b> Computer</td></tr>
+<tr><td>article indéfini</td><td class="de">ein Computer</td><td class="de">ein<b>en</b> Computer</td></tr>
+<tr><td>négation</td><td class="de">kein Computer</td><td class="de">kein<b>en</b> Computer</td></tr>
+<tr><td>possessif</td><td class="de">mein Computer</td><td class="de">mein<b>en</b> Computer</td></tr>
+</tbody>
+</table>
+<p class="note"><b>Pour un développeur :</b> l'accusatif est une seule règle de transformation, <code>masculin + -en</code>, appliquée à cinq mots. Les trois autres genres sont l'identité. Si tu connais le genre, tu connais l'accusatif. Si tu ne connais pas le genre, aucune règle ne te sauvera : c'est pourquoi la <a href="genre-pluriel-kein.html">fiche sur le genre</a> est le prérequis absolu de celle-ci.</p>
+
+<h2>Comment savoir quel cas employer</h2>
+<table>
+<thead><tr><th>Le nom est…</th><th>Cas</th><th>Question test</th><th>Exemple</th></tr></thead>
+<tbody>
+<tr><td>sujet du verbe</td><td>nominatif</td><td class="de">wer? was?</td><td><span class="de"><u>Der Computer</u> ist neu.</span> Qui est neuf ? L'ordinateur.</td></tr>
+<tr><td>attribut après <i>sein, werden, bleiben</i></td><td>nominatif</td><td class="de">wer? was?</td><td><span class="de">Das ist <u>ein</u> Computer.</span> · <span class="de">Das bleibt <u>ein</u> Problem.</span></td></tr>
+<tr><td>objet direct du verbe</td><td>accusatif</td><td class="de">wen? was?</td><td><span class="de">Ich habe <u>einen</u> Computer.</span> J'ai quoi ? Un ordinateur.</td></tr>
+</tbody>
+</table>
+<p><b>Le piège à connaître :</b> <span class="de">sein</span> (être) n'a <b>jamais</b> d'objet. Après <i>sein</i>, on reste au nominatif. <span class="de">Das ist <b>ein</b> Drucker</span> et non <span class="say">das ist einen Drucker</span>. C'est la faute la plus fréquente quand on vient d'apprendre l'accusatif.</p>
+
+<h2>Les verbes qui commandent l'accusatif</h2>
+<p>La grande majorité des verbes. Ceux dont tu auras besoin tout de suite :</p>
+<table>
+<thead><tr><th>Verbe</th><th>Sens</th><th>Exemple</th></tr></thead>
+<tbody>
+<tr><td class="de">haben</td><td>avoir</td><td>Ich habe <b>einen</b> Laptop.</td></tr>
+<tr><td class="de">brauchen</td><td>avoir besoin de</td><td>Ich brauche <b>einen</b> Bildschirm.</td></tr>
+<tr><td class="de">suchen</td><td>chercher</td><td>Ich suche <b>den</b> Fehler.</td></tr>
+<tr><td class="de">finden</td><td>trouver</td><td>Ich finde <b>die</b> Datei nicht.</td></tr>
+<tr><td class="de">machen</td><td>faire</td><td>Ich mache <b>einen</b> Test.</td></tr>
+<tr><td class="de">kaufen</td><td>acheter</td><td>Ich kaufe <b>einen</b> Computer.</td></tr>
+<tr><td class="de">lesen</td><td>lire</td><td>Ich lese <b>den</b> Code.</td></tr>
+<tr><td class="de">schreiben</td><td>écrire</td><td>Ich schreibe <b>eine</b> E-Mail.</td></tr>
+<tr><td class="de">sehen</td><td>voir</td><td>Ich sehe <b>das</b> Problem.</td></tr>
+<tr><td class="de">verstehen</td><td>comprendre</td><td>Ich verstehe <b>die</b> Frage nicht.</td></tr>
+<tr><td class="de">benutzen</td><td>utiliser</td><td>Ich benutze <b>einen</b> Editor.</td></tr>
+<tr><td class="de">öffnen / schließen</td><td>ouvrir / fermer</td><td>Ich öffne <b>die</b> Datei.</td></tr>
+<tr><td class="de">speichern</td><td>enregistrer</td><td>Ich speichere <b>das</b> Dokument.</td></tr>
+<tr><td class="de">installieren</td><td>installer</td><td>Ich installiere <b>ein</b> Programm.</td></tr>
+<tr><td class="de">testen</td><td>tester</td><td>Ich teste <b>die</b> Anwendung.</td></tr>
+<tr><td class="de">es gibt</td><td>il y a</td><td>Es gibt <b>einen</b> Fehler. · Es gibt <b>kein</b> Problem.</td></tr>
+</tbody>
+</table>
+<p class="note"><span class="de">es gibt</span> est toujours suivi de l'accusatif et ne change jamais de forme : <span class="de">Es gibt einen Drucker, es gibt eine Lösung, es gibt zwei Server.</span> C'est l'équivalent exact de « il y a ».</p>
+
+<h2>Quatre verbes irréguliers dont tu as besoin</h2>
+<p>Certains verbes changent leur voyelle aux formes <i>du</i> et <i>er/sie/es</i>. Les quatre les plus utiles ici :</p>
+<table>
+<thead><tr><th></th><th class="de">lesen (lire)</th><th class="de">sehen (voir)</th><th class="de">nehmen (prendre)</th><th class="de">sprechen (parler)</th></tr></thead>
+<tbody>
+<tr><td class="de">ich</td><td>lese</td><td>sehe</td><td>nehme</td><td>spreche</td></tr>
+<tr><td class="de">du</td><td>l<b>ie</b>st</td><td>s<b>ie</b>hst</td><td>n<b>imm</b>st</td><td>spr<b>i</b>chst</td></tr>
+<tr><td class="de">er / sie / es</td><td>l<b>ie</b>st</td><td>s<b>ie</b>ht</td><td>n<b>imm</b>t</td><td>spr<b>i</b>cht</td></tr>
+<tr><td class="de">wir / sie / Sie</td><td>lesen</td><td>sehen</td><td>nehmen</td><td>sprechen</td></tr>
+<tr><td class="de">ihr</td><td>lest</td><td>seht</td><td>nehmt</td><td>sprecht</td></tr>
+</tbody>
+</table>
+<p>Le changement ne touche que <i>du</i> et <i>er/sie/es</i>. Toutes les autres personnes restent régulières.</p>
+
+<h2>Ordre des mots : rien ne change</h2>
+<p>Le verbe reste en <b>deuxième position</b>. L'objet se place après. On peut mettre l'objet en tête pour le mettre en valeur, et alors le sujet passe après le verbe :</p>
+<table>
+<tbody>
+<tr><td class="de">Ich brauche heute einen Bildschirm.</td><td>Ordre neutre : sujet, verbe, temps, objet.</td></tr>
+<tr><td class="de">Heute brauche ich einen Bildschirm.</td><td>Le temps en tête : le verbe reste 2<sup>e</sup>, le sujet le suit.</td></tr>
+<tr><td class="de">Einen Bildschirm brauche ich nicht.</td><td>L'objet en tête : même mécanique. <i>einen</i> reste à l'accusatif, sa place ne change rien.</td></tr>
+</tbody>
+</table>
+<p class="note">Le cas ne dépend <b>pas</b> de la position dans la phrase, mais de la <b>fonction</b> : qui fait l'action, qui la subit. C'est toute la différence avec le français, qui s'appuie sur l'ordre des mots. En allemand, la terminaison porte l'information, donc l'ordre peut bouger.</p>
+
+<h2>Aperçu : les prépositions à accusatif</h2>
+<p>Cinq prépositions imposent toujours l'accusatif, quel que soit le sens. À reconnaître dès maintenant, à travailler à la leçon suivante :</p>
+<table>
+<tbody>
+<tr><td class="de">für</td><td>pour</td><td>Das ist für <b>den</b> Kollegen.</td></tr>
+<tr><td class="de">ohne</td><td>sans</td><td>Ohne <b>einen</b> Computer kann ich nicht arbeiten.</td></tr>
+<tr><td class="de">gegen</td><td>contre</td><td>Ich habe nichts gegen <b>den</b> Plan.</td></tr>
+<tr><td class="de">um</td><td>autour de ; à (heure)</td><td>Wir sitzen um <b>den</b> Tisch. · Die Sitzung ist um acht Uhr (le cas ne se voit pas ici).</td></tr>
+<tr><td class="de">durch</td><td>à travers, par</td><td>Der Fehler kommt durch <b>das</b> Update.</td></tr>
+</tbody>
+</table>
+<p>Moyen mnémotechnique : <b>F</b>ür, <b>O</b>hne, <b>G</b>egen, <b>U</b>m, <b>D</b>urch.</p>
+
+<footer>Aide-mémoire du 5 octobre 2026 · Workspace « Allemand » · Voir aussi <a href="genre-pluriel-kein.html">genre, pluriel et kein</a> (prérequis), <a href="nombres-alphabet.html">nombres et alphabet</a>, <a href="prononciation.html">prononciation</a>, <a href="parcours.html">feuille de route</a>.</footer>
+</body>
+</html>

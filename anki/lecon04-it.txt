@@ -1,0 +1,33 @@
+# titre: Leçon 04 · verbes du métier à l'accusatif
+# deck: Allemand IT::L04 verbes du métier
+# niveau: A1
+# lecon: 4
+# type: it
+der Code, die Codes;le code
+der Editor, die Editoren;l'éditeur de code
+das Update, die Updates;la mise à jour
+das Konto, die Konten;le compte
+das Netzwerk, die Netzwerke;le réseau
+das Gerät, die Geräte;l'appareil
+das Ticket, die Tickets;le ticket
+das Telefon, die Telefone;le téléphone
+installieren;installer
+speichern;enregistrer, sauvegarder
+testen;tester
+öffnen;ouvrir
+schließen;fermer
+benutzen;utiliser
+Ich installiere ein Programm.;J'installe un programme.
+Ich teste die Anwendung.;Je teste l'application.
+Ich öffne die Datei.;J'ouvre le fichier.
+Ich speichere den Code.;J'enregistre le code.
+Ich brauche ein Passwort.;J'ai besoin d'un mot de passe.
+Ich suche eine Lösung.;Je cherche une solution.
+Ich habe einen Laptop und zwei Bildschirme.;J'ai un portable et deux écrans.
+Ich schreibe eine E-Mail an das Team.;J'écris un courriel à l'équipe.
+Es gibt ein Update.;Il y a une mise à jour.
+Es gibt einen Fehler im Code.;Il y a une erreur dans le code.
+Ich verstehe das Problem.;Je comprends le problème.
+Ich mache einen Test.;Je fais un test.
+Ich lese die Dokumentation.;Je lis la documentation.
+Mein Kollege testet das System.;Mon collègue teste le système.

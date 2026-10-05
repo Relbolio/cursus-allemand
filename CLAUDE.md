@@ -111,7 +111,8 @@ Petites évolutions outillées, sans cycle spec/plan : modifier, `node --check` 
 
 ### Leçons (`lessons/*.html`)
 - Auto-contenues (CSS et JS inline, aucune dépendance externe, aucun CDN) ; palette et typographie identiques à celles de `site/index.html` (`--paper #fffff8`, `--accent #a52a2a`, Palatino/Georgia).
-- Structure : kicker (numéro, niveau, durée) → objectif concret (`.goal`) → écoute (lien DW de leçon) → savoir minimal → pratique à boucle de rétroaction immédiate → production vérifiée → auto-enregistrement → Anki → « ce que tu dois retenir » → encart « ton professeur est disponible » → pied de page (source primaire, références, prochaine leçon, date).
+- Structure : kicker (numéro, niveau, durée) → correction de la production précédente → objectif concret (`.goal`) → écoute (lien DW de leçon) → savoir minimal → pratique à boucle de rétroaction immédiate → **approfondissement intégré** → production vérifiée → auto-enregistrement → Anki → « ce que tu dois retenir » → encart « ce que j'attends de toi » → pied de page (source primaire, références, prochaine leçon, date).
+- **Approfondissement intégré (consigne de l'apprenant du 2026-10-05)** : la section « Pour aller plus loin : les questions que tu allais poser » répond d'avance, dans la leçon, aux questions que la leçon soulève (bloc `.deep`). Ne jamais renvoyer une question au professeur en la laissant sans réponse ; l'encart final ne demande que les productions et les scores. *Raison* : l'apprenant travaille hors session, souvent plusieurs jours sans échange ; une question non traitée est une connaissance perdue, pas un devoir.
 - Les drills audio utilisent `speechSynthesis` avec une voix `de-*` et **dégradent proprement** (message + renvoi Forvo) si aucune voix n'est installée.
 - Les vérificateurs de production ne jugent que la structure et les majuscules, jamais les noms propres.
 
