@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leçon 5 — mich, dich, ihn et les cinq prépositions</title>
+<style>
+  :root { --ink:#111; --muted:#666; --rule:#ddd; --accent:#a52a2a; --paper:#fffff8; --ok:#2e7d32; --ko:#c62828; --soft:#f6f4ea;
+          --m:#35618e; --f:#a5325f; --n:#3f7a52; }
+  html { background:var(--paper); }
+  body { font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif; color:var(--ink); max-width:44rem; margin:0 auto; padding:2.5rem 1.25rem 5rem; line-height:1.6; font-size:1.06rem; }
+  header { margin-bottom:2.5rem; }
+  .kicker { color:var(--muted); font-size:.85rem; text-transform:uppercase; letter-spacing:.12em; }
+  h1 { font-weight:400; font-size:2.2rem; margin:.2rem 0 .4rem; letter-spacing:-.01em; line-height:1.15; }
+  h2 { font-weight:400; font-size:1.45rem; margin:2.6rem 0 .8rem; border-bottom:1px solid var(--rule); padding-bottom:.25rem; }
+  h3 { font-weight:600; font-size:1.05rem; margin:1.6rem 0 .5rem; }
+  .lead { font-size:1.15rem; color:#333; }
+  .meta { color:var(--muted); font-size:.92rem; }
+  .goal { background:var(--soft); border-left:3px solid var(--accent); padding:.8rem 1.1rem; margin:1.4rem 0; }
+  .de { font-weight:600; }
+  .say { color:var(--accent); font-style:italic; }
+  .fr { color:var(--muted); }
+  .der { color:var(--m); font-weight:700; } .die { color:var(--f); font-weight:700; } .das { color:var(--n); font-weight:700; }
+  table { border-collapse:collapse; width:100%; margin:.8rem 0 1.2rem; font-size:1rem; }
+  th, td { text-align:left; padding:.42rem .5rem; border-bottom:1px solid var(--rule); vertical-align:top; }
+  th { font-weight:600; color:var(--muted); font-size:.82rem; text-transform:uppercase; letter-spacing:.06em; }
+  tr.chg td { background:#fdf3f3; font-weight:700; }
+  .aside { font-size:.95rem; color:#444; border-top:1px dotted var(--rule); border-bottom:1px dotted var(--rule); padding:.6rem 0; margin:1.2rem 0; }
+  .deep { border-left:3px solid var(--m); background:#eef3f8; padding:.1rem 1.1rem; margin:1.1rem 0; }
+  .deep h3 { margin:.9rem 0 .35rem; color:#24456b; }
+  .deep p { margin:.35rem 0 .9rem; font-size:.99rem; }
+  .drill { border:1px solid var(--rule); border-radius:6px; padding:.9rem 1rem; margin:1rem 0; background:#fff; }
+  .drill .prompt { font-size:1.3rem; font-weight:600; margin:.5rem 0 .2rem; text-align:center; line-height:1.4; }
+  .drill .promptfr { text-align:center; color:var(--muted); font-size:.9rem; margin-bottom:.7rem; }
+  .choices { display:flex; gap:.5rem; flex-wrap:wrap; justify-content:center; }
+  .choices button { flex:1 1 7rem; font:inherit; font-size:1.02rem; padding:.55rem .4rem; border-radius:4px;
+    border:1px solid #bbb; background:#fff; color:var(--ink); cursor:pointer; margin:0; }
+  .choices button:hover { background:var(--soft); }
+  .fb { margin-top:.6rem; font-size:.95rem; display:none; padding:.5rem .7rem; border-radius:4px; }
+  .fb.ok { display:block; background:#e8f5e9; color:var(--ok); }
+  .fb.ko { display:block; background:#ffebee; color:var(--ko); }
+  .q { border:1px solid var(--rule); border-radius:6px; padding:.9rem 1rem; margin:1rem 0; background:#fff; }
+  .q .stem { font-weight:600; margin-bottom:.4rem; }
+  .q label { display:block; padding:.35rem .5rem; border-radius:4px; cursor:pointer; }
+  .q label:hover { background:var(--soft); }
+  .q input { margin-right:.5rem; }
+  .score { font-size:1.1rem; margin:1.2rem 0; padding:.8rem 1rem; background:var(--soft); border-radius:6px; display:none; }
+  .meterbar { height:.4rem; background:var(--rule); border-radius:999px; overflow:hidden; margin:.5rem 0 .2rem; }
+  .meterbar i { display:block; height:100%; background:var(--ok); width:0; transition:width .3s; }
+  textarea { width:100%; min-height:8rem; font:inherit; font-size:1rem; padding:.6rem; border:1px solid #bbb; border-radius:4px; box-sizing:border-box; }
+  button { font:inherit; font-size:.95rem; padding:.45rem 1rem; border:1px solid var(--ink); background:var(--ink); color:var(--paper); border-radius:4px; cursor:pointer; margin-top:.5rem; }
+  ul.checks { list-style:none; padding:0; }
+  ul.checks li { padding:.25rem 0 .25rem 1.6rem; position:relative; }
+  ul.checks li::before { content:"○"; position:absolute; left:.2rem; color:var(--muted); }
+  ul.checks li.ok::before { content:"●"; color:var(--ok); }
+  ul.checks li.ko::before { content:"●"; color:var(--ko); }
+  ul.checks li.ko { color:var(--ko); }
+  code { background:#f3f3ee; padding:.1rem .3rem; border-radius:3px; font-size:.92rem; }
+  a { color:var(--accent); }
+  footer { margin-top:3.5rem; color:var(--muted); font-size:.92rem; border-top:1px solid var(--rule); padding-top:1rem; }
+  .ask { background:#eef3f8; border-left:3px solid #35618e; padding:.8rem 1.1rem; margin:2rem 0; }
+  @media print { button, .drill, .q input { display:none } body { max-width:none; padding:0 } }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="kicker">Leçon 5 · Niveau A1 · ≈ 35 minutes</div>
+  <h1><i>mich, dich, ihn</i> et les cinq prépositions</h1>
+  <p class="lead">Tu sais dire « je cherche l'erreur ». Aujourd'hui tu apprends à dire « je la cherche », « je ne te comprends pas », « c'est pour toi ». Ce sont les phrases qu'on emploie cent fois par jour dans une équipe.</p>
+  <p class="meta">Pré-requis : <a href="0004-accusatif.html">leçon 4</a> (l'accusatif). Fiches : <a href="../reference/accusatif.html">l'accusatif</a> et <a href="../reference/pronoms-prepositions.html">pronoms et prépositions</a>.</p>
+</header>
+
+<h2>0. Ta note moyenne à la leçon 3, et ce que j'en fais</h2>
+<p>Tu as eu une note moyenne sur le genre des noms et tu l'expliques par un vocabulaire encore faible et par des règles de terminaison mal retenues. Les deux sont exacts, mais la cause principale est ailleurs : <b>je t'ai donné des listes de mots avec leur article, ce qui est la façon la moins efficace d'apprendre un genre</b>. J'ai mesuré mes propres règles sur la liste de vocabulaire officielle du Goethe A1 et j'ai trouvé deux choses.</p>
+<p>D'abord, une de mes règles était fausse. J'avais présenté la terminaison <b>-er</b> comme un indice de masculin. Sur les 24 noms en -er de la liste officielle, 10 seulement sont masculins. <span class="das">das Fenster, das Wasser, das Zimmer, das Papier</span> et <span class="die">die Butter, die Nummer, die Schwester</span> prouvent le contraire. La règle ne vaut que pour les mots dérivés d'un verbe, comme <span class="der">der Fahrer</span> ou <span class="der">der Drucker</span>. La fiche est corrigée.</p>
+<p>Ensuite, seulement <b>43 %</b> des noms de la liste ont un genre prévisible par leur terminaison. Il était donc impossible de réussir en apprenant des règles : plus d'un nom sur deux doit s'ancrer autrement. Deux nouveautés t'attendent pour ça :</p>
+<ul>
+  <li><a href="../reference/genre-methode.html"><b>La méthode pour retenir les genres</b></a> : la règle du mot composé, qui est la plus rentable de toutes et que je ne t'avais pas enseignée, les terminaisons réellement fiables, et quatre techniques d'encodage dont l'article collé au mot.</li>
+  <li><a href="../exercices/genre-intensif.html"><b>L'entraîneur de genre</b></a> : huit minutes par jour, trois niveaux, avec des mots tirés de la liste officielle.</li>
+</ul>
+<p class="aside"><b>Et surtout, on continue.</b> Le genre ne s'apprend pas en bloc avant de passer à la suite : il s'acquiert par exposition répétée sur des mois. Chaque leçon à venir te fera réemployer les mêmes noms dans des phrases nouvelles, et c'est cette répétition en contexte qui le fixera. S'arrêter deux semaines sur des listes serait le plus sûr moyen de ne pas progresser.</p>
+
+<div class="goal">
+<b>Le gain concret de cette leçon :</b> parler des gens et des choses sans les renommer à chaque phrase.<br>
+<span class="de">« Ich verstehe <u>dich</u> nicht. Kannst du <u>es</u> wiederholen? Das Ticket ist für <u>mich</u>, der Rest ist für <u>ihn</u>. Ohne <u>dich</u> schaffe ich das nicht. »</span>
+</div>
+
+<h2>1. Écoute d'abord (8 min)</h2>
+<ol>
+  <li><a href="https://learngerman.dw.com/fr/ich-mag-nicht/l-49963249" target="_blank" rel="noopener">Nicos Weg, leçon 46 « Ich mag (nicht)! »</a> : <span class="de">mögen</span> avec un objet, et les pronoms qui le remplacent.</li>
+  <li><a href="https://learngerman.dw.com/fr/eine-pizza-bitte/l-49620771" target="_blank" rel="noopener">Nicos Weg, leçon 15 « Eine Pizza, bitte! »</a> : réécoute-la en repérant cette fois <span class="de">für mich</span>, <span class="de">für dich</span>.</li>
+</ol>
+
+<h2>2. Les pronoms à l'accusatif (7 min)</h2>
+<p>Un pronom remplace un groupe nominal déjà connu. Comme il occupe la même fonction, il prend le même cas : sujet au nominatif, objet à l'accusatif.</p>
+<table>
+<thead><tr><th>Français</th><th>Nominatif (sujet)</th><th>Accusatif (objet)</th></tr></thead>
+<tbody>
+<tr><td>je / me</td><td class="de">ich</td><td class="de">mich</td></tr>
+<tr><td>tu / te</td><td class="de">du</td><td class="de">dich</td></tr>
+<tr><td>il / le (masculin)</td><td class="de der">er</td><td class="de der">ihn</td></tr>
+<tr><td>elle / la (féminin)</td><td class="de die">sie</td><td class="de die">sie</td></tr>
+<tr><td>neutre</td><td class="de das">es</td><td class="de das">es</td></tr>
+<tr><td>nous</td><td class="de">wir</td><td class="de">uns</td></tr>
+<tr><td>vous (groupe tutoyé)</td><td class="de">ihr</td><td class="de">euch</td></tr>
+<tr><td>ils / elles / les</td><td class="de">sie</td><td class="de">sie</td></tr>
+<tr><td>vous (politesse)</td><td class="de">Sie</td><td class="de">Sie</td></tr>
+</tbody>
+</table>
+<div class="goal">Encore une fois, <b>le masculin est le seul à vraiment changer</b> : <span class="der">er → ihn</span>. Et deux formes à retenir par cœur parce qu'elles ne ressemblent à rien : <span class="de">mich</span> et <span class="de">dich</span>.</div>
+<p><b>Le point qui compte pour toi :</b> le pronom reprend le <b>genre du nom</b> qu'il remplace, pas le genre du mot français.</p>
+<table>
+<tbody>
+<tr><td class="de">Wo ist <span class="der">der Drucker</span>? — Ich sehe <span class="der">ihn</span> nicht.</td><td class="fr">L'imprimante ? Je ne <b>la</b> vois pas. En allemand, <i>ihn</i>, parce que Drucker est masculin.</td></tr>
+<tr><td class="de">Wo ist <span class="die">die Datei</span>? — Ich öffne <span class="die">sie</span> jetzt.</td><td class="fr">Le fichier ? Je <b>l'</b>ouvre maintenant. <i>sie</i>, parce que Datei est féminin.</td></tr>
+<tr><td class="de">Wo ist <span class="das">das Passwort</span>? — Ich habe <span class="das">es</span> vergessen.</td><td class="fr">Le mot de passe ? Je <b>l'</b>ai oublié. <i>es</i>, parce que Passwort est neutre.</td></tr>
+</tbody>
+</table>
+<p class="aside">C'est la deuxième raison pour laquelle le genre est si important : il ne sert pas qu'à choisir un article, il commande aussi tous les pronoms. Un mauvais genre et toute la phrase suivante est fausse. Bonne nouvelle : ces trois exemples sont aussi un excellent exercice de genre, parce qu'ils t'obligent à produire le genre pour pouvoir continuer à parler.</p>
+
+<h2>3. Les cinq prépositions à accusatif (6 min)</h2>
+<p>Après ces cinq prépositions, le groupe qui suit est <b>toujours</b> à l'accusatif, quel que soit le sens de la phrase. Il n'y a rien à comprendre, seulement à savoir.</p>
+<table>
+<thead><tr><th>Préposition</th><th>Sens</th><th>Exemple</th></tr></thead>
+<tbody>
+<tr><td class="de">für</td><td>pour</td><td class="de">Das Ticket ist für <b>mich</b>. · Das ist für <b>den</b> Kollegen.</td></tr>
+<tr><td class="de">ohne</td><td>sans</td><td class="de">Ohne <b>dich</b> schaffe ich das nicht. · Ohne <b>einen</b> Laptop geht nichts.</td></tr>
+<tr><td class="de">gegen</td><td>contre</td><td class="de">Ich habe nichts gegen <b>ihn</b>. · Wir spielen gegen <b>das</b> andere Team.</td></tr>
+<tr><td class="de">um</td><td>autour de ; à (heure)</td><td class="de">Wir sitzen um <b>den</b> Tisch. · Die Sitzung ist um acht Uhr.</td></tr>
+<tr><td class="de">durch</td><td>à travers, par</td><td class="de">Der Fehler kommt durch <b>das</b> Update.</td></tr>
+</tbody>
+</table>
+<p>Moyen mnémotechnique : <b>F</b>ür, <b>O</b>hne, <b>G</b>egen, <b>U</b>m, <b>D</b>urch. Beaucoup d'apprenants les retiennent dans cet ordre, <span class="say">« fogoud »</span>, comme un mot unique.</p>
+<p class="aside">Après <span class="de">ohne</span>, l'allemand supprime souvent l'article quand le nom est indéterminé : <span class="de">ohne Auto</span>, <span class="de">ohne Geld</span>, <span class="de">ohne Problem</span>. Les deux formes sont correctes ; la version sans article est plus idiomatique.</p>
+
+<h2>4. Pratique (10 min)</h2>
+
+<h3>Exercice 1 : quel pronom ?</h3>
+<div class="drill">
+  <div class="prompt" id="d1-s">—</div>
+  <div class="promptfr" id="d1-fr"></div>
+  <div class="choices" id="d1-c"></div>
+  <div class="meterbar"><i id="d1-bar"></i></div>
+  <div class="meta" id="d1-score">0 / 0</div>
+  <div class="fb" id="d1-fb"></div>
+</div>
+
+<h3>Exercice 2 : nominatif ou accusatif ?</h3>
+<div class="drill">
+  <div class="prompt" id="d2-s">—</div>
+  <div class="promptfr" id="d2-fr"></div>
+  <div class="choices" id="d2-c"></div>
+  <div class="meterbar"><i id="d2-bar"></i></div>
+  <div class="meta" id="d2-score">0 / 0</div>
+  <div class="fb" id="d2-fb"></div>
+</div>
+
+<h3>Exercice 3 : après la préposition</h3>
+<div class="drill">
+  <div class="prompt" id="d3-s">—</div>
+  <div class="promptfr" id="d3-fr"></div>
+  <div class="choices" id="d3-c"></div>
+  <div class="meterbar"><i id="d3-bar"></i></div>
+  <div class="meta" id="d3-score">0 / 0</div>
+  <div class="fb" id="d3-fb"></div>
+</div>
+
+<h2>5. Quiz (5 min)</h2>
+<div id="quiz"></div>
+<div class="score" id="score"></div>
+
+<h2>6. Pour aller plus loin : les questions que tu allais poser</h2>
+<div class="deep">
+<h3>Pourquoi <i>sie</i> veut-il dire à la fois « elle », « elles », « ils » et « vous » ?</h3>
+<p>Parce que l'allemand a économisé des formes et compte sur le verbe pour lever l'ambiguïté. <span class="de">Sie ist da</span> avec un verbe au singulier veut dire « elle est là » ; <span class="de">Sie sind da</span> avec un verbe au pluriel veut dire « ils sont là » ou « vous êtes là », et seule la majuscule à l'écrit distingue la politesse. À l'oral, c'est le contexte qui tranche, et dans le doute on redemande : <span class="de">Meinen Sie mich?</span></p>
+
+<h3>Où se place le pronom dans la phrase ?</h3>
+<p>Juste après le verbe conjugué, avant tout le reste. C'est une différence nette avec le nom, qui se place plutôt à la fin. Compare : <span class="de">Ich habe <u>den Fehler</u> gestern gefunden</span> mais <span class="de">Ich habe <u>ihn</u> gestern gefunden</span>. Règle courte : <b>les pronoms remontent, les noms descendent</b>. Quand il y a deux pronoms, l'accusatif passe devant : <span class="de">Ich gebe <u>es</u> <u>dir</u></span>, et non <i>ich gebe dir es</i>.</p>
+
+<h3><i>es</i> peut-il remplacer autre chose qu'un nom neutre ?</h3>
+<p>Oui, et c'est très courant. <span class="de">es</span> reprend aussi une situation entière ou une proposition : <span class="de">Ich habe es nicht verstanden</span> (je n'ai pas compris cela, l'ensemble de ce qui vient d'être dit). Il sert aussi de sujet vide, comme le « il » de « il pleut » : <span class="de">Es regnet</span>, <span class="de">Es ist kalt</span>, <span class="de">Es gibt ein Problem</span>. Dans ces emplois il ne remplace rien du tout.</p>
+
+<h3>Comment dit-on « moi aussi », « pas moi » ?</h3>
+<p>Avec les formes du nominatif, pas de l'accusatif, parce qu'on reprend un sujet : <span class="de">Ich auch</span> (moi aussi), <span class="de">Ich nicht</span> (pas moi), <span class="de">Du auch?</span> En revanche, quand le pronom est objet, l'accusatif reste de rigueur : <span class="de">Und dich? Fragt er dich auch?</span></p>
+
+<h3>Pourquoi « für den Kollegen » et pas « für den Kollege » ?</h3>
+<p>C'est le même piège qu'à la leçon 4 : <span class="de">der Kollege</span> appartient à la déclinaison faible, une petite famille de masculins qui ajoutent <b>-n</b> partout sauf au nominatif singulier. Les plus fréquents dans la vie professionnelle : <span class="de">der Kollege → den Kollegen</span>, <span class="de">der Kunde → den Kunden</span>, <span class="de">der Experte → den Experten</span>, <span class="de">der Praktikant → den Praktikanten</span>, <span class="de">der Student → den Studenten</span>, <span class="de">der Name → den Namen</span>.</p>
+
+<h3>Et le datif, alors, puisque <i>mir</i> et <i>dir</i> existent aussi ?</h3>
+<p>Tu as déjà croisé ces formes, par exemple dans <span class="de">Wie geht es dir?</span> (comment vas-tu). Le datif est le cas du destinataire, et ses pronoms sont <span class="de">mir, dir, ihm, ihr, ihm, uns, euch, ihnen, Ihnen</span>. Tu n'as rien à apprendre aujourd'hui, mais retiens le couple : <span class="de">mich / mir</span>, <span class="de">dich / dir</span>. Les verbes <span class="de">helfen</span> (aider), <span class="de">danken</span> (remercier), <span class="de">gefallen</span> (plaire) prennent le datif là où le français met un objet direct, ce qui en fait un piège classique : <span class="de">Ich helfe <b>dir</b></span>, et non <i>ich helfe dich</i>. Ce sera le cœur de l'A2.</p>
+
+<h3>Une préposition peut-elle changer de cas selon le sens ?</h3>
+<p>Oui, neuf d'entre elles, appelées prépositions mixtes : <span class="de">in, an, auf, über, unter, vor, hinter, neben, zwischen</span>. Avec un déplacement, elles prennent l'accusatif ; sans déplacement, le datif. <span class="de">Ich gehe in <b>das</b> Büro</span> (j'entre dans le bureau, mouvement, accusatif) contre <span class="de">Ich arbeite in <b>dem</b> Büro</span> (je travaille dans le bureau, position, datif). Les cinq de cette leçon, elles, ne changent jamais : c'est pour cela qu'on les apprend d'abord.</p>
+</div>
+
+<h2>7. Production : un échange au bureau</h2>
+<p>Écris <b>six phrases</b> contenant chacune un <b>pronom à l'accusatif</b> ou une des <b>cinq prépositions</b>. Contraintes : au moins trois pronoms différents, au moins deux prépositions différentes, et au moins une phrase négative.</p>
+<textarea id="prod" placeholder="Ich verstehe dich nicht.
+Kannst du es wiederholen?
+Das Ticket ist für mich.
+Ohne dich schaffe ich das nicht.
+Ich habe nichts gegen ihn.
+Der Fehler kommt durch das Update."></textarea>
+<button id="checkProd">Vérifier mes phrases</button>
+<ul class="checks" id="prodOut"></ul>
+
+<h2>8. À voix haute (3 min)</h2>
+<p>Reprends les dix objets de ton bureau. Pour chacun, deux phrases : <span class="de">Das ist der Drucker. Ich brauche ihn.</span> Tu dois produire le genre pour choisir le pronom, donc cet exercice travaille les deux choses à la fois. C'est le meilleur entraînement au genre que je puisse te donner.</p>
+
+<h2>9. Anki et entraînement du genre</h2>
+<p>Les fichiers <code>lecon05-general.txt</code> et <code>lecon05-it.txt</code> sont dans <code>anki/</code>. Je n'ai <b>pas</b> ajouté de paquet de genres séparé, volontairement : tu as déjà plus de deux cents cartes et le problème n'est pas le nombre de mots, c'est la façon de les encoder. À la place, dix minutes par jour sur <a href="../exercices/genre-intensif.html">l'entraîneur de genre</a>, en disant l'article collé au mot à voix haute.</p>
+
+<h2>Ce que tu dois retenir</h2>
+<ul>
+  <li>Pronoms accusatif : <span class="de">mich, dich, <span class="der">ihn</span>, <span class="die">sie</span>, <span class="das">es</span>, uns, euch, sie, Sie</span>. Seul le masculin change vraiment.</li>
+  <li>Le pronom prend le <b>genre allemand</b> du nom remplacé, pas celui du mot français.</li>
+  <li>Cinq prépositions toujours suivies de l'accusatif : <span class="de">für, ohne, gegen, um, durch</span>.</li>
+  <li>Les pronoms se placent tôt dans la phrase, juste après le verbe conjugué.</li>
+</ul>
+
+<div class="ask">
+<b>Ce que j'attends de toi avant la leçon 6</b>
+<ol>
+  <li>Tes six phrases de la partie 7, telles que tu les écris.</li>
+  <li>Tes scores aux trois exercices ci-dessus et au quiz.</li>
+  <li>Ton score au niveau <b>difficile</b> de <a href="../exercices/genre-intensif.html">l'entraîneur de genre</a>, après quelques jours de pratique. C'est lui qui me dira si la nouvelle méthode fonctionne.</li>
+</ol>
+La leçon 6 portera sur les verbes de modalité (<span class="de">können, müssen, wollen, möchten</span>) et la parenthèse verbale : de quoi dire <span class="de">Ich muss den Code heute testen</span> et <span class="de">Können Sie mir bitte helfen?</span>
+</div>
+
+<footer>
+<p><b>Source primaire :</b> Deutsche Welle, Nicos Weg A1, leçons <a href="https://learngerman.dw.com/fr/ich-mag-nicht/l-49963249" target="_blank" rel="noopener">46</a> et <a href="https://learngerman.dw.com/fr/eine-pizza-bitte/l-49620771" target="_blank" rel="noopener">15</a>. Explications en français : <a href="https://deutsch.lingolia.com/fr/grammaire/les-pronoms" target="_blank" rel="noopener">Lingolia, les pronoms</a> et <a href="https://deutsch.lingolia.com/fr/grammaire/les-prepositions" target="_blank" rel="noopener">les prépositions</a>.<br>
+<b>Références :</b> <a href="../reference/pronoms-prepositions.html">pronoms et prépositions</a> · <a href="../reference/accusatif.html">l'accusatif</a> · <a href="../reference/genre-methode.html">retenir les genres</a> · <a href="../reference/genre-pluriel-kein.html">genre, pluriel et kein</a> · <a href="../reference/parcours.html">feuille de route</a>.<br>
+<b>Exercices :</b> <a href="../exercices/0005-pronoms-accusatif-prepositions.html">série de la leçon 5</a> · <a href="../exercices/genre-intensif.html">entraîneur de genre</a>.</p>
+<p>Leçon créée le 9 octobre 2026.</p>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+
+  var NOMS = [
+    ["Drucker","der","l'imprimante"],["Bildschirm","der","l'écran"],["Laptop","der","l'ordinateur portable"],
+    ["Code","der","le code"],["Fehler","der","l'erreur"],["Schlüssel","der","la clé"],["Server","der","le serveur"],
+    ["Datei","die","le fichier"],["Tastatur","die","le clavier"],["Maus","die","la souris"],
+    ["Lösung","die","la solution"],["E-Mail","die","le courriel"],["Anwendung","die","l'application"],
+    ["Passwort","das","le mot de passe"],["Handy","das","le téléphone portable"],["Programm","das","le programme"],
+    ["Dokument","das","le document"],["Update","das","la mise à jour"],["Fenster","das","la fenêtre"]
+  ].map(function (r) { return { w: r[0], a: r[1], fr: r[2] }; });
+  var PRON = { der: "ihn", die: "sie", das: "es" };
+  var GEN = { der: "masculin", die: "féminin", das: "neutre" };
+
+  var voice = null;
+  function pickVoice() {
+    if (!("speechSynthesis" in window)) return;
+    voice = speechSynthesis.getVoices().filter(function (v) { return /^de/i.test(v.lang); })[0] || null;
+  }
+  pickVoice();
+  if ("speechSynthesis" in window) speechSynthesis.onvoiceschanged = pickVoice;
+  function speak(t) {
+    if (!voice) return;
+    speechSynthesis.cancel();
+    var u = new SpeechSynthesisUtterance(t); u.voice = voice; u.lang = voice.lang; u.rate = .85;
+    speechSynthesis.speak(u);
+  }
+  var rnd = function (n) { return Math.floor(Math.random() * n); };
+  function shuffleArr(a) { for (var i = a.length - 1; i > 0; i--) { var j = rnd(i + 1); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+  function meter(bar, sc, ok, tot) {
+    document.getElementById(bar).style.width = tot ? (100 * ok / tot) + "%" : "0";
+    document.getElementById(sc).textContent = ok + " / " + tot + (tot >= 10 ? (ok / tot >= .8 ? " — acquis" : " — à retravailler") : "");
+  }
+  function drill(id, next) {
+    var st = { ok: 0, tot: 0, locked: false };
+    function go() {
+      st.locked = false;
+      var data = next();
+      document.getElementById(id + "-s").innerHTML = data.phrase;
+      document.getElementById(id + "-fr").textContent = data.fr;
+      document.getElementById(id + "-fb").className = "fb";
+      var box = document.getElementById(id + "-c"); box.innerHTML = "";
+      shuffleArr(data.opts.slice()).forEach(function (o) {
+        var b = document.createElement("button"); b.type = "button"; b.textContent = o;
+        b.onclick = function () {
+          if (st.locked) return;
+          st.locked = true; st.tot++;
+          var ok = o === data.bon, fb = document.getElementById(id + "-fb");
+          fb.className = ok ? "fb ok" : "fb ko";
+          fb.textContent = (ok ? "Juste. " : "Non, c'était « " + data.bon + " ». ") + data.why;
+          if (data.dire) speak(data.dire);
+          if (ok) st.ok++;
+          meter(id + "-bar", id + "-score", st.ok, st.tot);
+          setTimeout(go, ok ? 1200 : 3000);
+        };
+        box.appendChild(b);
+      });
+    }
+    go();
+  }
+
+  /* exercice 1 : quel pronom */
+  drill("d1", function () {
+    var n = NOMS[rnd(NOMS.length)];
+    var verbes = [["sehe","vois"],["brauche","ai besoin de"],["suche","cherche"],["benutze","utilise"],["öffne","ouvre"]];
+    var v = verbes[rnd(verbes.length)];
+    return {
+      phrase: "Wo ist " + n.a + " " + n.w + "? — Ich " + v[0] + " <u>___</u>.",
+      fr: n.fr + " — « je " + (v[1] === "ai besoin de" ? "en ai besoin" : "le ou la " + v[1]) + " »",
+      opts: ["ihn", "sie", "es"], bon: PRON[n.a],
+      dire: "Ich " + v[0] + " " + PRON[n.a],
+      why: n.a + " " + n.w + " est " + GEN[n.a] + ", donc le pronom est " + PRON[n.a] + "."
+    };
+  });
+
+  /* exercice 2 : nominatif ou accusatif */
+  var S2 = [
+    ["<u>___</u> verstehe dich nicht.", "ich", ["ich", "mich"], "Je ne te comprends pas.", "C'est le sujet du verbe : nominatif ich."],
+    ["Verstehst du <u>___</u>?", "mich", ["ich", "mich"], "Est-ce que tu me comprends ?", "C'est l'objet de verstehen : accusatif mich."],
+    ["<u>___</u> ist mein Kollege.", "er", ["er", "ihn"], "C'est mon collègue.", "Attribut après sein : nominatif er."],
+    ["Ich kenne <u>___</u> gut.", "ihn", ["er", "ihn"], "Je le connais bien.", "Objet de kennen : accusatif ihn."],
+    ["Er fragt <u>___</u> auch.", "uns", ["wir", "uns"], "Il nous demande aussi.", "Objet de fragen : accusatif uns."],
+    ["<u>___</u> arbeiten zusammen.", "wir", ["wir", "uns"], "Nous travaillons ensemble.", "Sujet : nominatif wir."],
+    ["Das Update hat <u>___</u> überrascht.", "uns", ["wir", "uns"], "La mise à jour nous a surpris.", "Objet de überraschen : accusatif uns."],
+    ["Fragt er <u>___</u> auch?", "euch", ["ihr", "euch"], "Vous demande-t-il aussi ?", "Objet : accusatif euch."],
+    ["<u>___</u> seid im Büro.", "ihr", ["ihr", "euch"], "Vous êtes au bureau.", "Sujet : nominatif ihr."]
+  ];
+  var p2 = shuffleArr(S2.slice());
+  drill("d2", function () {
+    if (!p2.length) p2 = shuffleArr(S2.slice());
+    var s = p2.pop();
+    return { phrase: s[0], fr: s[3], opts: s[2], bon: s[1], dire: null, why: s[4] };
+  });
+
+  /* exercice 3 : après la préposition */
+  var PREPS = [["für", "pour"], ["ohne", "sans"], ["gegen", "contre"], ["durch", "par"], ["um", "autour de"]];
+  drill("d3", function () {
+    var p = PREPS[rnd(PREPS.length)];
+    if (Math.random() < .5) {
+      var n = NOMS[rnd(NOMS.length)];
+      var bon = n.a === "der" ? "einen" : n.a === "die" ? "eine" : "ein";
+      return {
+        phrase: p[0] + " <u>___</u> " + n.w,
+        fr: p[1] + " un ou une " + n.fr.replace(/^l'|^le |^la /, ""),
+        opts: ["einen", "eine", "ein"], bon: bon, dire: p[0] + " " + bon + " " + n.w,
+        why: p[0] + " impose l'accusatif, et " + n.w + " est " + GEN[n.a] + " : " + bon + "."
+      };
+    }
+    var pers = [["moi", "mich"], ["toi", "dich"], ["lui", "ihn"], ["nous", "uns"]];
+    var q = pers[rnd(pers.length)];
+    return {
+      phrase: p[0] + " <u>___</u>",
+      fr: p[1] + " " + q[0],
+      opts: ["mich", "dich", "ihn", "uns"], bon: q[1], dire: p[0] + " " + q[1],
+      why: "Après " + p[0] + " le pronom est à l'accusatif : " + q[1] + " pour « " + q[0] + " »."
+    };
+  });
+
+  /* quiz */
+  var questions = [
+    { stem: "Quelle est la forme accusative de « er » ?", opts: ["ihn", "ihm", "sein"], ans: 0, why: "er devient ihn à l'accusatif. ihm serait le datif." },
+    { stem: "Quelle est la forme accusative de « ich » ?", opts: ["mich", "mir", "mein"], ans: 0, why: "ich devient mich. mir est le datif." },
+    { stem: "Wo ist die Datei? — Ich öffne ___ .", opts: ["sie", "ihn", "es"], ans: 0, why: "die Datei est féminin : le pronom est sie." },
+    { stem: "Wo ist das Passwort? — Ich habe ___ vergessen.", opts: ["es", "ihn", "sie"], ans: 0, why: "das Passwort est neutre : le pronom est es." },
+    { stem: "Wo ist der Drucker? — Ich sehe ___ nicht.", opts: ["ihn", "sie", "es"], ans: 0, why: "der Drucker est masculin : le pronom est ihn, même si « imprimante » est féminin en français." },
+    { stem: "Das Ticket ist ___ mich.", opts: ["für", "ohne", "durch"], ans: 0, why: "für signifie « pour » et impose l'accusatif." },
+    { stem: "___ dich schaffe ich das nicht.", opts: ["Ohne", "Gegen", "Um"], ans: 0, why: "ohne signifie « sans »." },
+    { stem: "Combien de prépositions imposent toujours l'accusatif ?", opts: ["cinq", "trois", "neuf"], ans: 0, why: "für, ohne, gegen, um, durch. Les neuf autres sont les prépositions mixtes, qui changent de cas." },
+    { stem: "Où se place un pronom objet dans la phrase ?", opts: ["après le verbe", "en fin de phrase", "avant le sujet"], ans: 0, why: "Les pronoms remontent juste après le verbe conjugué, les noms descendent vers la fin." },
+    { stem: "Quelle forme est correcte : für + der Kollege ?", opts: ["für den Kollegen", "für den Kollege", "für dem Kollegen"], ans: 0, why: "Accusatif den, et déclinaison faible, donc le nom prend un -n." },
+    { stem: "Dans « Es regnet », que remplace « es » ?", opts: ["rien du tout", "un nom neutre", "une personne"], ans: 0, why: "C'est un sujet vide, comme le « il » de « il pleut »." },
+    { stem: "Comment dit-on « moi aussi » ?", opts: ["ich auch", "mich auch", "mir auch"], ans: 0, why: "On reprend un sujet, donc le nominatif : ich auch." }
+  ];
+  function shuffleQ(q) {
+    var idx = q.opts.map(function (_, i) { return i; });
+    shuffleArr(idx);
+    return { stem: q.stem, why: q.why, opts: idx.map(function (i) { return q.opts[i]; }), ans: idx.indexOf(q.ans) };
+  }
+  var root = document.getElementById("quiz"), answered = 0, correct = 0;
+  questions.map(shuffleQ).forEach(function (q, n) {
+    var box = document.createElement("div"); box.className = "q";
+    var stem = document.createElement("div"); stem.className = "stem"; stem.textContent = (n + 1) + ". " + q.stem;
+    box.appendChild(stem);
+    var fb = document.createElement("div"); fb.className = "fb";
+    q.opts.forEach(function (o, i) {
+      var lab = document.createElement("label"), inp = document.createElement("input");
+      inp.type = "radio"; inp.name = "q" + n;
+      inp.addEventListener("change", function () {
+        box.querySelectorAll("input").forEach(function (x) { x.disabled = true; });
+        answered++;
+        if (i === q.ans) { correct++; fb.className = "fb ok"; fb.textContent = "Juste. " + q.why; }
+        else { fb.className = "fb ko"; fb.textContent = "Non : la bonne réponse est « " + q.opts[q.ans] + " ». " + q.why; }
+        if (answered === questions.length) {
+          var s = document.getElementById("score"); s.style.display = "block";
+          s.textContent = "Score : " + correct + " / " + questions.length + ". " +
+            (correct >= 11 ? "Excellent. Passe à la partie 7." : correct >= 9 ? "Bien. Relis les points ratés." : "Reprends les parties 2 et 3, puis recharge la page.");
+        }
+      });
+      lab.appendChild(inp); lab.appendChild(document.createTextNode(o)); box.appendChild(lab);
+    });
+    box.appendChild(fb); root.appendChild(box);
+  });
+
+  /* production */
+  var PRONS_AKK = ["mich", "dich", "ihn", "sie", "es", "uns", "euch", "Sie"];
+  var PREPS_AKK = ["für", "ohne", "gegen", "um", "durch"];
+  document.getElementById("checkProd").addEventListener("click", function () {
+    var raw = document.getElementById("prod").value;
+    var out = document.getElementById("prodOut"); out.innerHTML = "";
+    var add = function (cls, txt) { var li = document.createElement("li"); li.className = cls; li.textContent = txt; out.appendChild(li); };
+    var phrases = raw.split(/[.\n!?]+/).map(function (s) { return s.trim(); }).filter(Boolean);
+    if (!phrases.length) { add("ko", "Écris d'abord tes phrases dans le cadre."); return; }
+    var pUsed = {}, prUsed = {}, neg = 0, avecCible = 0;
+    phrases.forEach(function (s) {
+      var trouve = [], faute = false;
+      PRONS_AKK.forEach(function (p) { if (new RegExp("\\b" + p + "\\b").test(s)) { pUsed[p] = 1; trouve.push(p); } });
+      PREPS_AKK.forEach(function (p) {
+        if (new RegExp("\\b" + p + "\\b", "i").test(s)) {
+          prUsed[p] = 1; trouve.push(p);
+          var m = s.match(new RegExp("\\b" + p + "\\s+(\\w+)", "i"));
+          if (m && /^(ich|du|er|wir|ihr)$/i.test(m[1])) {
+            faute = true;
+            add("ko", "« " + s + " » : après " + p + " il faut l'accusatif, donc pas « " + m[1] + " ».");
+          }
+          if (m && /^(dem|der)$/i.test(m[1]) && p !== "um") {
+            faute = true;
+            add("ko", "« " + s + " » : après " + p + " on attend den, einen, keinen… et non « " + m[1] + " » qui est du datif.");
+          }
+        }
+      });
+      if (/\b(nicht|kein|keine|keinen|nichts)\b/.test(s)) neg++;
+      if (faute) return;
+      if (trouve.length) { avecCible++; add("ok", "« " + s + " » : contient " + trouve.join(", ") + "."); }
+      else add("ko", "« " + s + " » : ni pronom à l'accusatif ni préposition de la liste.");
+    });
+    add(phrases.length >= 6 ? "ok" : "ko", "Nombre de phrases : " + phrases.length + " (il en faut six).");
+    add(Object.keys(pUsed).length >= 3 ? "ok" : "ko", "Pronoms différents : " + Object.keys(pUsed).length + " (il en faut trois).");
+    add(Object.keys(prUsed).length >= 2 ? "ok" : "ko", "Prépositions différentes : " + Object.keys(prUsed).length + " (il en faut deux).");
+    add(neg >= 1 ? "ok" : "ko", "Phrases négatives : " + neg + " (il en faut une).");
+    add("", "Phrases contenant une forme cible : " + avecCible + " / " + phrases.length + ". Copie-les dans le terminal, je les relis pour de bon.");
+  });
+})();
+</script>
+</body>
+</html>

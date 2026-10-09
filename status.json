@@ -1,16 +1,16 @@
 {
   "version": 1,
-  "misAJour": "2026-10-05",
+  "misAJour": "2026-10-09",
   "niveau": "A1",
   "semaine": 5,
-  "positionActuelle": "A1 · semaine 5 — leçons 1 à 3 faites, leçon 4 (accusatif) disponible, 155 exercices en ligne",
+  "positionActuelle": "A1 · semaine 5 — leçons 1 à 3 faites, leçons 4 et 5 disponibles, entraîneur de genre en place",
   "gates": {
     "A1": "en-cours",
     "A2": "verrouille",
     "B1": "verrouille",
     "B2": "verrouille"
   },
-  "prochaineEtape": "Faire la leçon 4, puis les séries d'exercices des leçons 1 à 4 (facile, puis intermédiaire, puis difficile) ; renvoyer les six phrases de la leçon 4 et les scores par niveau",
+  "prochaineEtape": "Faire la leçon 4 puis la leçon 5 ; 8 min par jour sur l'entraîneur de genre ; renvoyer les six phrases de chaque leçon et le score du niveau difficile de l'entraîneur",
   "lecons": [
     {
       "numero": 1,
@@ -50,6 +50,15 @@
       "duree": 40,
       "date": "2026-10-05",
       "etat": "a-faire"
+    },
+    {
+      "numero": 5,
+      "titre": "mich, dich, ihn et les cinq prépositions",
+      "fichier": "lessons/0005-pronoms-accusatif-prepositions.html",
+      "niveau": "A1",
+      "duree": 35,
+      "date": "2026-10-09",
+      "etat": "a-faire"
     }
   ],
   "references": [
@@ -58,6 +67,12 @@
       "fichier": "reference/accusatif.html",
       "niveau": "A1",
       "date": "2026-10-05"
+    },
+    {
+      "titre": "Retenir les genres — la méthode",
+      "fichier": "reference/genre-methode.html",
+      "niveau": "A1",
+      "date": "2026-10-09"
     },
     {
       "titre": "Genre, pluriel et négation kein — aide-mémoire",
@@ -84,6 +99,12 @@
       "date": "2026-09-03"
     },
     {
+      "titre": "Pronoms et prépositions à l'accusatif — aide-mémoire",
+      "fichier": "reference/pronoms-prepositions.html",
+      "niveau": "A1",
+      "date": "2026-10-09"
+    },
+    {
       "titre": "Prononciation allemande — aide-mémoire",
       "fichier": "reference/prononciation.html",
       "niveau": "A1",
@@ -108,21 +129,27 @@
       "titre": "Présentation v2 : les corrections de la leçon 2 ont pris, la majuscule des noms résiste",
       "fichier": "learning-records/0003-presentation-v2-progres-et-fautes-persistantes.md",
       "date": "2026-10-05"
+    },
+    {
+      "numero": 4,
+      "titre": "Le genre résiste : ma méthode était en cause, et une de mes règles était fausse",
+      "fichier": "learning-records/0004-genre-methode-corrigee.md",
+      "date": "2026-10-09"
     }
   ],
   "anki": {
-    "cartes": 234,
-    "decks": 7,
+    "cartes": 298,
+    "decks": 9,
     "manifeste": "anki/index.json",
     "tout": "anki/allemand-tout.apkg"
   },
   "compteurs": {
     "leconsFaites": 3,
-    "leconsGenerees": 4,
-    "references": 6,
-    "records": 3,
-    "series": 4,
-    "exercices": 155
+    "leconsGenerees": 5,
+    "references": 8,
+    "records": 4,
+    "series": 6,
+    "exercices": 254
   },
   "exercices": [
     {
@@ -130,6 +157,7 @@
       "fichier": "exercices/0001-prononciation-se-presenter.html",
       "niveau": "A1",
       "lecon": 1,
+      "intensif": false,
       "items": {
         "facile": 13,
         "intermediaire": 12,
@@ -143,6 +171,7 @@
       "fichier": "exercices/0002-nombres-alphabet.html",
       "niveau": "A1",
       "lecon": 2,
+      "intensif": false,
       "items": {
         "facile": 13,
         "intermediaire": 13,
@@ -156,6 +185,7 @@
       "fichier": "exercices/0003-genre-pluriel-kein.html",
       "niveau": "A1",
       "lecon": 3,
+      "intensif": false,
       "items": {
         "facile": 12,
         "intermediaire": 13,
@@ -165,10 +195,25 @@
       "date": "2026-10-05"
     },
     {
+      "titre": "Entraîneur de genre — der, die, das",
+      "fichier": "exercices/genre-intensif.html",
+      "niveau": "A1",
+      "lecon": 3,
+      "intensif": true,
+      "items": {
+        "facile": 15,
+        "intermediaire": 19,
+        "difficile": 22
+      },
+      "total": 56,
+      "date": "2026-10-09"
+    },
+    {
       "titre": "Exercices leçon 4 — l'accusatif",
       "fichier": "exercices/0004-accusatif.html",
       "niveau": "A1",
       "lecon": 4,
+      "intensif": false,
       "items": {
         "facile": 12,
         "intermediaire": 14,
@@ -176,6 +221,20 @@
       },
       "total": 41,
       "date": "2026-10-05"
+    },
+    {
+      "titre": "Exercices leçon 5 — pronoms et prépositions",
+      "fichier": "exercices/0005-pronoms-accusatif-prepositions.html",
+      "niveau": "A1",
+      "lecon": 5,
+      "intensif": false,
+      "items": {
+        "facile": 13,
+        "intermediaire": 14,
+        "difficile": 16
+      },
+      "total": 43,
+      "date": "2026-10-09"
     }
   ]
 }

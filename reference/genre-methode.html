@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="niveau" content="A1">
+<title>Retenir les genres — la méthode</title>
+<style>
+  :root { --ink:#111; --muted:#666; --rule:#ddd; --accent:#a52a2a; --paper:#fffff8; --soft:#f6f4ea;
+          --m:#35618e; --f:#a5325f; --n:#3f7a52; --ok:#2e7d32; --ko:#c62828; }
+  html { background:var(--paper); }
+  body { font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif; color:var(--ink); max-width:47rem; margin:0 auto; padding:2.5rem 1.25rem 4rem; line-height:1.55; font-size:1.03rem; }
+  h1 { font-weight:400; font-size:2.1rem; margin:0 0 .25rem; }
+  h2 { font-weight:400; font-size:1.35rem; margin:2.2rem 0 .6rem; border-bottom:1px solid var(--rule); padding-bottom:.2rem; }
+  h3 { font-weight:600; font-size:1.02rem; margin:1.4rem 0 .35rem; }
+  .sub { color:var(--muted); font-style:italic; margin-bottom:1.6rem; }
+  table { border-collapse:collapse; width:100%; font-size:.95rem; margin-bottom:1rem; }
+  th, td { text-align:left; padding:.38rem .5rem; border-bottom:1px solid var(--rule); vertical-align:top; }
+  th { font-weight:600; color:var(--muted); font-size:.78rem; text-transform:uppercase; letter-spacing:.06em; }
+  td.de { font-weight:600; }
+  .der { color:var(--m); font-weight:700; } .die { color:var(--f); font-weight:700; } .das { color:var(--n); font-weight:700; }
+  .fr { color:var(--muted); }
+  .say { color:var(--accent); font-style:italic; }
+  .note { background:var(--soft); border-left:3px solid var(--accent); padding:.7rem 1rem; margin:1rem 0; font-size:.96rem; }
+  .good { border-left-color:var(--ok); background:#eef6ef; }
+  .bad { border-left-color:var(--ko); background:#fdf0f0; }
+  .pct { font-weight:700; }
+  .step { counter-increment:s; position:relative; padding-left:2.3rem; margin:1.1rem 0; }
+  .step::before { content: counter(s); position:absolute; left:0; top:.1rem; width:1.55rem; height:1.55rem; border-radius:50%; background:var(--ink); color:var(--paper); font-size:.85rem; display:flex; align-items:center; justify-content:center; }
+  .cols { display:grid; grid-template-columns:1fr 1fr 1fr; gap:1rem; }
+  @media (max-width:640px) { .cols { grid-template-columns:1fr; } }
+  .cols h4 { margin:.2rem 0 .3rem; font-size:.95rem; }
+  .cols ul { margin:.2rem 0; padding-left:1.1rem; font-size:.93rem; }
+  a { color:var(--accent); }
+  footer { margin-top:3rem; color:var(--muted); font-size:.9rem; border-top:1px solid var(--rule); padding-top:1rem; }
+  @media print { body { max-width:none; padding:0; font-size:10pt; } table, .note { break-inside:avoid; } a { color:inherit; text-decoration:none; } }
+</style>
+</head>
+<body>
+<h1>Retenir les genres : la méthode</h1>
+<p class="sub">Fiche écrite le 9 octobre 2026, après une note moyenne à la leçon 3 · chiffres mesurés sur la liste de vocabulaire officielle du Goethe A1</p>
+
+<div class="note"><b>Le problème n'était pas ta mémoire, c'était ma méthode.</b> Je t'ai donné des listes de noms avec leur article, ce qui est la façon la moins efficace d'apprendre un genre. Cette fiche remplace ce conseil par quatre règles rentables et quatre techniques d'encodage. Elle corrige aussi une erreur de ma part, signalée plus bas.</div>
+
+<h2>1. Ce que disent les chiffres</h2>
+<p>J'ai extrait les 297 noms de la <a href="https://www.goethe.de/pro/relaunch/prf/de/A1_SD1_Wortliste_02.pdf" target="_blank" rel="noopener">liste de vocabulaire officielle du Goethe A1</a> et testé mes propres règles dessus. Résultat :</p>
+<table>
+<tbody>
+<tr><td>Noms dont le genre est prévisible par une terminaison</td><td class="pct">43 %</td></tr>
+<tr><td>Noms qu'aucune terminaison ne prédit, donc à encoder autrement</td><td class="pct">57 %</td></tr>
+<tr><td>Part des masculins dans la liste</td><td class="pct">41 %</td></tr>
+<tr><td>Part des féminins</td><td class="pct">35 %</td></tr>
+<tr><td>Part des neutres</td><td class="pct">25 %</td></tr>
+</tbody>
+</table>
+<p>Deux conclusions. D'abord, <b>les règles de terminaison ne peuvent pas suffire</b> : plus d'un nom sur deux doit s'ancrer autrement, et c'est normal que tu n'y arrives pas en les apprenant comme des étiquettes. Ensuite, <b>en cas de doute total, parie sur <span class="der">der</span></b> : c'est le genre le plus fréquent. Un pari n'est pas une méthode, mais à l'oral il vaut mieux qu'un silence.</p>
+
+<div class="note bad"><b>Ma propre erreur, corrigée.</b> La fiche de la leçon 3 présentait la terminaison <b>-er</b> comme un indice de masculin. Sur les 24 noms en -er de la liste officielle, <b>10 seulement</b> sont masculins. Les autres sont neutres ou féminins : <span class="das">das Fenster, das Wasser, das Wetter, das Zimmer, das Papier, das Bier, das Feuer, das Alter, das Fieber, das Meer</span> et <span class="die">die Butter, die Nummer, die Schwester, die Mutter</span>. La règle ne vaut <b>que</b> pour les noms dérivés d'un verbe, qui désignent qui ou quoi fait l'action : <span class="der">fahren → der Fahrer</span>, <span class="der">drucken → der Drucker</span>, <span class="der">entwickeln → der Entwickler</span>. Si tu ne peux pas retrouver le verbe derrière le mot, la terminaison -er ne t'apprend rien.</div>
+
+<h2>2. Les quatre règles qui valent la peine</h2>
+
+<h3>Règle 1 — Le mot composé : le dernier élément décide</h3>
+<p>C'est la plus rentable des quatre, et elle n'a pas d'exception. Vérifiée sur la liste officielle : <b>21 fois juste sur 21</b> composés testables.</p>
+<table>
+<tbody>
+<tr><td class="de">die Arbeit + <span class="der">der Platz</span></td><td class="de"><span class="der">der</span> Arbeitsplatz</td></tr>
+<tr><td class="de">das Haus + <span class="die">die Tür</span></td><td class="de"><span class="die">die</span> Haustür</td></tr>
+<tr><td class="de">die Geburt + <span class="der">der Tag</span></td><td class="de"><span class="der">der</span> Geburtstag</td></tr>
+<tr><td class="de">doppel + <span class="das">das Zimmer</span></td><td class="de"><span class="das">das</span> Doppelzimmer</td></tr>
+<tr><td class="de">die Software + <span class="der">der Entwickler</span></td><td class="de"><span class="der">der</span> Softwareentwickler</td></tr>
+<tr><td class="de">schreiben + <span class="der">der Tisch</span></td><td class="de"><span class="der">der</span> Schreibtisch</td></tr>
+<tr><td class="de">das Netz + <span class="das">das Werk</span></td><td class="de"><span class="das">das</span> Netzwerk</td></tr>
+</tbody>
+</table>
+<p class="note good"><b>Pourquoi c'est décisif pour toi :</b> l'allemand technique est presque entièrement composé. <span class="de">der Bildschirm</span> (Bild + Schirm), <span class="de">das Passwort</span> (Pass + Wort), <span class="de">das Netzwerk</span> (Netz + Werk), <span class="de">der Datenschutz</span> (Daten + Schutz), <span class="de">die Benutzeroberfläche</span> (Benutzer + Oberfläche). Apprends le genre des <b>30 mots de base</b> et tu déduis celui de centaines de mots composés.</p>
+<p>Les mots de base les plus productifs, à connaître absolument :</p>
+<div class="cols">
+<div><h4><span class="der">der</span></h4><ul>
+<li>der Tag, der Platz, der Tisch, der Raum</li><li>der Punkt, der Teil, der Weg, der Ort</li><li>der Schirm, der Schutz, der Dienst, der Plan</li><li>der Name, der Preis, der Brief, der Schein</li></ul></div>
+<div><h4><span class="die">die</span></h4><ul>
+<li>die Tür, die Karte, die Zeit, die Stadt</li><li>die Frau, die Hand, die Zahl, die Straße</li><li>die Nummer, die Sprache, die Arbeit, die Stelle</li><li>die Fläche, die Seite, die Datei</li></ul></div>
+<div><h4><span class="das">das</span></h4><ul>
+<li>das Haus, das Zimmer, das Wort, das Jahr</li><li>das Buch, das Werk, das Netz, das Blatt</li><li>das Geld, das Land, das Amt, das Ziel</li><li>das Gerät, das System, das Programm</li></ul></div>
+</div>
+
+<h3>Règle 2 — Les terminaisons sans exception</h3>
+<table>
+<thead><tr><th>Genre</th><th>Terminaisons</th><th>Exemples</th></tr></thead>
+<tbody>
+<tr><td class="die">die</td><td>-ung, -heit, -keit, -schaft, -ion, -tät, -ei, -ur, -ik</td><td>die Wohnung, die Gesundheit, die Möglichkeit, die Mannschaft, die Version, die Universität, die Bäckerei, die Tastatur, die Informatik</td></tr>
+<tr><td class="das">das</td><td>-chen, -lein (diminutifs), -um, -ment (sauf <i>der Moment</i>)</td><td>das Mädchen, das Fräulein, das Datum, das Dokument</td></tr>
+<tr><td class="der">der</td><td>-ling, -ismus, -ant, -ent, -ist, -or</td><td>der Lehrling, der Kapitalismus, der Praktikant, der Student, der Journalist, der Editor</td></tr>
+</tbody>
+</table>
+<p>Mesuré sur la liste officielle : <b>-ung donne 11 fois sur 11</b> le féminin, <b>-ion 3 sur 3</b>, <b>-um 3 sur 3</b>. Ces règles tiennent.</p>
+
+<h3>Règle 3 — Les catégories de sens</h3>
+<table>
+<tbody>
+<tr><td class="der">der</td><td>jours, mois, saisons, points cardinaux, météo, boissons alcoolisées, marques de voiture</td><td class="fr">der Montag, der Januar, der Sommer, der Norden, der Regen, der Wein, der BMW</td></tr>
+<tr><td class="das">das</td><td>verbes employés comme noms, lettres, nombres, langues, métaux, diminutifs</td><td class="fr">das Lernen, das Programmieren, das A, das Deutsch, das Gold, das Mädchen</td></tr>
+<tr><td class="die">die</td><td>la plupart des arbres, fleurs et fruits, les nombres employés comme noms</td><td class="fr">die Rose, die Banane, die Eiche, die Eins</td></tr>
+</tbody>
+</table>
+<p class="note">Exception célèbre : <span class="das">das Bier</span> et <span class="das">das Wasser</span> sont neutres, alors que <span class="der">der Wein</span> est masculin. La règle ne vaut que pour l'alcool, ce qui est arbitraire, donc à retenir comme un cas isolé.</p>
+
+<h3>Règle 4 — La tendance du -e final</h3>
+<p>Les noms terminés par <b>-e</b> sont féminins dans environ <b>trois cas sur quatre</b> (mesuré : 51 féminins sur 67 dans la liste A1). Apprends plutôt les <b>exceptions fréquentes</b>, elles sont peu nombreuses :</p>
+<p><span class="der">der Name, der Käse, der Junge, der Kollege, der Kunde, der Buchstabe, der Monat</span> · <span class="das">das Auge, das Ende, das Beispiel</span>.</p>
+
+<h2>3. Les quatre techniques pour que ça rentre</h2>
+<p>Les règles classent, elles ne mémorisent pas. Voici ce qui mémorise, dans l'ordre d'efficacité.</p>
+
+<p class="step"><b>L'article collé au mot.</b> Ne prononce jamais un nom allemand nu. Le mot n'est pas <i>Fenster</i>, le mot est <span class="say">« dasfenster »</span>, en un seul souffle, comme si l'article était la première syllabe. Dans ta tête comme à voix haute. C'est la technique que les professeurs de langue utilisent depuis toujours, et c'est la seule qui transforme le genre en réflexe plutôt qu'en calcul. Quand tu révises Anki, si le mot te vient sans son article, compte la carte comme ratée.</p>
+
+<p class="step"><b>La phrase courte plutôt que le mot.</b> Apprends <span class="de">Ich öffne das Fenster</span> au lieu de <span class="de">das Fenster</span>. Le genre s'ancre dans un schéma de phrase, qui est ce que ton cerveau retient le mieux. C'est pour cela que les cartes Anki de ce cours contiennent de plus en plus de phrases complètes et de moins en moins de mots isolés.</p>
+
+<p class="step"><b>La couleur.</b> Ce cours emploie toujours les mêmes trois couleurs : <span class="der">der en bleu</span>, <span class="die">die en rouge</span>, <span class="das">das en vert</span>. Quand tu écris du vocabulaire à la main, surligne ou souligne de la couleur du genre. La mémoire visuelle fait ensuite une partie du travail à ta place.</p>
+
+<p class="step"><b>Le lieu mental.</b> Choisis trois endroits que tu connais par cœur, par exemple ton bureau, ta cuisine et la rue devant chez toi. Range mentalement les masculins dans le premier, les féminins dans le deuxième, les neutres dans le troisième. Pour retrouver un genre, demande-toi où le mot est rangé. Cette technique paraît enfantine ; elle est très efficace sur les mots qu'aucune règle ne couvre.</p>
+
+<h2>4. Ton plan sur les deux prochaines semaines</h2>
+<table>
+<thead><tr><th>Quand</th><th>Quoi</th><th>Combien</th></tr></thead>
+<tbody>
+<tr><td>Chaque jour</td><td><a href="../exercices/genre-intensif.html">Entraîneur de genre</a>, niveau facile puis intermédiaire</td><td>8 min</td></tr>
+<tr><td>Chaque jour</td><td>Anki, en disant l'article <b>à voix haute</b> avant de retourner la carte</td><td>10 min</td></tr>
+<tr><td>Trois fois par semaine</td><td>Dix objets autour de toi, nommés avec l'article collé</td><td>2 min</td></tr>
+<tr><td>Une fois par semaine</td><td>Entraîneur de genre, niveau difficile, pour mesurer</td><td>10 min</td></tr>
+</tbody>
+</table>
+<div class="note good"><b>Ce qu'il ne faut surtout pas faire :</b> arrêter de progresser en attendant de maîtriser les genres. Le genre ne s'apprend pas en bloc, il s'acquiert par exposition répétée sur des mois. Les leçons suivantes continuent, et chacune te fera réemployer les mêmes noms dans des phrases nouvelles. C'est cette répétition en contexte qui fixera les genres, pas deux semaines de listes.</div>
+
+<h2>5. Les vingt noms à savoir sans hésiter</h2>
+<p>Aucune règle ne les couvre, et ils reviennent sans arrêt. Ce sont ceux à encoder par l'article collé.</p>
+<div class="cols">
+<div><h4><span class="der">der</span></h4><ul>
+<li>der Mann, der Tag, der Name</li><li>der Tisch, der Stuhl, der Platz</li><li>der Brief, der Zug, der Weg</li></ul></div>
+<div><h4><span class="die">die</span></h4><ul>
+<li>die Frau, die Zeit, die Stadt</li><li>die Tür, die Hand, die Nacht</li><li>die Nummer, die Antwort</li></ul></div>
+<div><h4><span class="das">das</span></h4><ul>
+<li>das Haus, das Buch, das Jahr</li><li>das Fenster, das Zimmer, das Wasser</li><li>das Kind, das Geld, das Auto</li></ul></div>
+</div>
+<p class="note">Remarque utile : <span class="das">das Kind</span> et <span class="das">das Mädchen</span> sont neutres alors qu'ils désignent des personnes. En allemand, le genre grammatical n'a pas de rapport avec le sexe. Ne cherche pas de logique là où il n'y en a pas : encode, n'explique pas.</p>
+
+<footer>Fiche du 9 octobre 2026 · Workspace « Allemand » · Chiffres mesurés sur la <a href="https://www.goethe.de/pro/relaunch/prf/de/A1_SD1_Wortliste_02.pdf" target="_blank" rel="noopener">Wortliste Goethe A1</a>, données brutes dans <code>reference/data/goethe-a1-noms.json</code> · Voir aussi <a href="genre-pluriel-kein.html">genre, pluriel et kein</a>, <a href="accusatif.html">l'accusatif</a>, <a href="../exercices/genre-intensif.html">l'entraîneur de genre</a>.</footer>
+</body>
+</html>

@@ -463,8 +463,8 @@ function renderExercices(s) {
     const lec = lecons.get(e.lecon);
     const it = e.items || {};
     return `<div class="serie">
-      <div class="t"><b>${e.lecon ? "Leçon " + String(e.lecon).padStart(2, "0") + " — " : ""}${esc((lec && lec.titre) || e.titre)}</b>
-        <small>${e.total || 0} exercices, correction immédiate${e.date ? " · " + esc(e.date) : ""}</small>
+      <div class="t"><b>${e.intensif ? esc(e.titre.replace(/\s*—.*$/, "")) + (e.lecon ? " (leçon " + e.lecon + ")" : "") : (e.lecon ? "Leçon " + String(e.lecon).padStart(2, "0") + " — " : "") + esc((lec && lec.titre) || e.titre)}</b>
+        <small>${e.intensif ? "entraînement intensif · " : ""}${e.total || 0} exercices, correction immédiate${e.date ? " · " + esc(e.date) : ""}</small>
         <div class="nb"><span class="f">facile ${it.facile || 0}</span><span class="i">intermédiaire ${it.intermediaire || 0}</span><span class="d">difficile ${it.difficile || 0}</span></div>
       </div>
       <div class="btns">

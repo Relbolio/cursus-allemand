@@ -85,7 +85,7 @@ def scan_exercices() -> list[dict]:
     d = ROOT / "exercices"
     if not d.exists():
         return out
-    for p in sorted(d.glob("[0-9][0-9][0-9][0-9]-*.html")):
+    for p in sorted(d.glob("*.html")):
         html = p.read_text(encoding="utf-8")
         meta = lambda n: (re.search(r'<meta\s+name="' + n + r'"\s+content="([^"]+)"', html) or [None, ""])[1]
         counts = {}
@@ -97,9 +97,11 @@ def scan_exercices() -> list[dict]:
         out.append({
             "titre": title_of(html, p.stem), "fichier": f"exercices/{p.name}",
             "niveau": meta("niveau") or "A1", "lecon": int(lecon) if lecon.isdigit() else None,
+            "intensif": meta("serie") == "intensif",
             "items": counts, "total": sum(counts.values()),
             "date": date_fr(footer.group(1) if footer else "", p),
         })
+    out.sort(key=lambda e: (e["lecon"] or 99, e["intensif"], e["fichier"]))
     return out
 
 
@@ -149,7 +151,7 @@ def main() -> None:
           f"({status['compteurs']['exercices']} items), {len(status['records'])} records, "
           f"{status['anki']['cartes']} cartes")
     for e in status["exercices"]:
-        print(f"  exos L{e['lecon']:02d} [{e['niveau']}] {e['total']:3d} items "
+        print(f"  exos L{(e['lecon'] or 0):02d}{'+' if e['intensif'] else ' '} [{e['niveau']}] {e['total']:3d} items "
               f"(facile {e['items']['facile']}, inter {e['items']['intermediaire']}, difficile {e['items']['difficile']})")
     for l in lecons:
         print(f"  {l['numero']:04d} [{l['niveau']}] {l['titre']}  ({l['etat']}, créée {l['date']}"

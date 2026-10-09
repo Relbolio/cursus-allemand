@@ -1,0 +1,49 @@
+# titre: Leçon 05 · pronoms et prépositions
+# deck: Allemand A1::L05 pronoms et prépositions
+# niveau: A1
+# lecon: 5
+# type: general
+mich;me, moi (accusatif de ich)
+dich;te, toi (accusatif de du)
+ihn;le, lui (accusatif de er — masculin)
+sie (accusatif);la, elle (féminin, forme inchangée)
+es (accusatif);le, cela (neutre, forme inchangée)
+uns;nous (accusatif de wir)
+euch;vous (accusatif de ihr, groupe tutoyé)
+Sie (accusatif);vous (politesse, forme inchangée)
+er → ihn;le seul pronom qui change vraiment à l'accusatif
+für, ohne, gegen, um, durch;les cinq prépositions toujours suivies de l'accusatif
+für;pour (+ accusatif)
+ohne;sans (+ accusatif)
+gegen;contre (+ accusatif)
+um;autour de ; à (heure) (+ accusatif)
+durch;à travers, par (+ accusatif)
+Ich verstehe dich nicht.;Je ne te comprends pas.
+Ich verstehe Sie nicht.;Je ne vous comprends pas. (politesse)
+Kannst du es wiederholen?;Peux-tu le répéter ?
+Können Sie das bitte wiederholen?;Pouvez-vous répéter, s'il vous plaît ?
+Das ist für dich.;C'est pour toi.
+Das ist für mich, nicht für ihn.;C'est pour moi, pas pour lui.
+Ohne dich schaffe ich das nicht.;Sans toi je n'y arrive pas.
+Ich habe nichts gegen ihn.;Je n'ai rien contre lui.
+Ruf mich bitte an.;Appelle-moi, s'il te plaît.
+Ich mag es nicht.;Je n'aime pas ça.
+Ich auch.;Moi aussi.
+Ich nicht.;Pas moi.
+Es regnet.;Il pleut. (es = sujet vide)
+Es ist kalt.;Il fait froid.
+Wie geht es dir?;Comment vas-tu ? (es + datif dir)
+der Kollege, den Kollegen;le collègue (déclinaison faible : -n hors du nominatif)
+der Kunde, den Kunden;le client (déclinaison faible)
+der Experte, den Experten;l'expert (déclinaison faible)
+der Praktikant, den Praktikanten;le stagiaire (déclinaison faible)
+der Student, den Studenten;l'étudiant (déclinaison faible)
+der Name, den Namen;le nom (déclinaison faible)
+der Mensch, den Menschen;l'être humain (déclinaison faible)
+Das ist für den Kollegen.;C'est pour le collègue.
+Les pronoms remontent, les noms descendent.;le pronom objet se place juste après le verbe conjugué
+Ich habe ihn gestern gefunden.;Je l'ai trouvé hier. (pronom tôt dans la phrase)
+Ich gebe es dir.;Je te le donne. (accusatif avant datif)
+mich / mir;accusatif / datif de ich — à ne pas confondre
+dich / dir;accusatif / datif de du
+Ich helfe dir.;Je t'aide. (helfen demande le datif, pas l'accusatif)

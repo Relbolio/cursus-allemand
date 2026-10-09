@@ -1,0 +1,25 @@
+# titre: Leçon 05 · pronoms au bureau
+# deck: Allemand IT::L05 pronoms au bureau
+# niveau: A1
+# lecon: 5
+# type: it
+Wo ist der Drucker? Ich sehe ihn nicht.;Où est l'imprimante ? Je ne la vois pas. (ihn : Drucker est masculin)
+Wo ist die Datei? Ich öffne sie jetzt.;Où est le fichier ? Je l'ouvre maintenant. (sie : Datei est féminin)
+Wo ist das Passwort? Ich habe es vergessen.;Où est le mot de passe ? Je l'ai oublié. (es : Passwort est neutre)
+Ich brauche ihn heute.;J'en ai besoin aujourd'hui. (objet masculin)
+Ich teste sie morgen.;Je la teste demain. (objet féminin)
+Ich installiere es jetzt.;Je l'installe maintenant. (objet neutre)
+Der Fehler kommt durch das Update.;L'erreur vient de la mise à jour.
+Das Ticket ist für den Kollegen.;Le ticket est pour le collègue.
+Ohne einen Laptop kann ich nicht arbeiten.;Sans ordinateur portable, je ne peux pas travailler.
+Ich arbeite gegen die Zeit.;Je travaille contre le temps.
+Wir sitzen um den Tisch.;Nous sommes assis autour de la table.
+Die Sitzung ist um acht Uhr.;La réunion est à huit heures.
+Kannst du mich anrufen?;Peux-tu m'appeler ?
+Ich schicke es dir.;Je te l'envoie.
+Ich verstehe den Code nicht.;Je ne comprends pas le code.
+Ich verstehe ihn nicht.;Je ne le comprends pas.
+die Benutzeroberfläche;l'interface utilisateur (Benutzer + Oberfläche : die)
+der Datenschutz;la protection des données (Daten + Schutz : der)
+das Netzwerk;le réseau (Netz + Werk : das)
+der Arbeitsplatz;le poste de travail (Arbeit + Platz : der)

@@ -187,7 +187,8 @@ def write_apkg(out: Path, decks: list[dict]) -> int:
 
 
 def main() -> None:
-    txts = sorted(ANKI_DIR.glob("lecon*.txt"))
+    txts = [p for p in sorted(ANKI_DIR.glob("*.txt"))
+            if p.read_text(encoding="utf-8").lstrip().startswith("# titre")]
     if not txts:
         raise SystemExit("aucun fichier anki/lecon*.txt")
     decks = [parse_txt(p) for p in txts]

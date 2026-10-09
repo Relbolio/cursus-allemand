@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="niveau" content="A1">
+<meta name="lecon" content="3">
+<meta name="serie" content="intensif">
+<title>Entraîneur de genre — der, die, das</title>
+<link rel="stylesheet" href="exercices.css">
+</head>
+<body>
+
+<header>
+  <div class="kicker">Entraînement intensif · Genre des noms · Niveau A1</div>
+  <h1>Entraîneur de genre : <span class="der">der</span>, <span class="die">die</span>, <span class="das">das</span></h1>
+  <p class="lead">Huit minutes par jour sur cette page valent mieux qu'une heure de listes le dimanche. Les mots viennent tous de la liste de vocabulaire officielle du Goethe A1, et leur article est celui de cette liste.</p>
+  <p class="meta">À lire avant : <a href="../reference/genre-methode.html">la méthode pour retenir les genres</a> · fiche <a href="../reference/genre-pluriel-kein.html">genre, pluriel et kein</a> · leçon <a href="../lessons/0003-genre-pluriel-kein.html">3</a>.</p>
+</header>
+
+<div class="note">
+<b>Comment travailler ici.</b> Avant de cliquer, dis l'article <b>à voix haute</b>, collé au mot, comme une seule syllabe de plus : <span class="say">« dasfenster »</span>, <span class="say">« dieantwort »</span>. Si l'article ne vient pas tout seul, clique au hasard et lis l'explication : c'est le mot qui n'est pas encore encodé, pas toi qui es lent.
+<br><br>
+<b>Les trois niveaux ne testent pas la même chose.</b> Facile : appliquer une terminaison sûre. Intermédiaire : reconnaître un mot composé et prendre le genre du dernier élément. Difficile : les mots qu'aucune règle ne couvre, y compris les faux amis en -er.
+</div>
+
+<div class="levels" id="exLevels"></div>
+<div class="bar" id="exBar"></div>
+<div id="exList"></div>
+<div class="done" id="exDone"></div>
+<p class="novoice" id="novoice"></p>
+
+<div class="ask">
+<b>Ce que j'attends de toi.</b> Les trois scores, et surtout celui du niveau difficile une fois par semaine : c'est lui qui mesure le vrai progrès. Si un mot revient toujours faux, écris-le moi : j'en ferai une carte avec une phrase, ce qui marche mieux qu'une carte avec un mot seul.
+</div>
+
+<footer>
+Entraîneur créé le 9 octobre 2026 · articles issus de la <a href="https://www.goethe.de/pro/relaunch/prf/de/A1_SD1_Wortliste_02.pdf" target="_blank" rel="noopener">Wortliste Goethe A1</a> (données : <code>reference/data/goethe-a1-noms.json</code>) ·
+<a href="../reference/genre-methode.html">la méthode</a> ·
+<a href="0003-genre-pluriel-kein.html">exercices de la leçon 3</a> ·
+<a href="../reference/parcours.html">feuille de route</a>
+</footer>
+
+<script src="moteur.js"></script>
+<script>
+Exos.demarrer({
+  lecon: 3,
+  titre: "Entraîneur de genre",
+  lien: "../reference/genre-methode.html",
+  chrono: 420,
+  series: {
+
+    facile: [
+      { t:"qcm", q:"Quel article pour « Anmeldung » ?", fr:"Terminaison -ung.",
+        opts:["der","die","das"], a:1,
+        why:"Tout nom en -ung est féminin : die Anmeldung." },
+      { t:"qcm", q:"Quel article pour « Halbpension » ?", fr:"Terminaison -ion.",
+        opts:["der","die","das"], a:1,
+        why:"Tout nom en -ion est féminin : die Halbpension." },
+      { t:"qcm", q:"Quel article pour « Sehenswürdigkeit » ?", fr:"Terminaison -keit.",
+        opts:["der","die","das"], a:1,
+        why:"Tout nom en -keit est féminin : die Sehenswürdigkeit." },
+      { t:"qcm", q:"Quel article pour « Reparatur » ?", fr:"Terminaison -ur.",
+        opts:["der","die","das"], a:1,
+        why:"Tout nom en -ur est féminin : die Reparatur." },
+      { t:"qcm", q:"Quel article pour « Bäckerei » ?", fr:"Terminaison -ei.",
+        opts:["der","die","das"], a:1,
+        why:"Tout nom en -ei est féminin : die Bäckerei." },
+      { t:"qcm", q:"Quel article pour « Datum » ?", fr:"Terminaison -um.",
+        opts:["der","die","das"], a:2,
+        why:"Tout nom en -um est neutre : das Datum." },
+      { t:"qcm", q:"Quel article pour « Hähnchen » ?", fr:"Terminaison -chen.",
+        opts:["der","die","das"], a:2,
+        why:"Tout nom en -chen est neutre : das Hähnchen." },
+      { t:"qcm", q:"Quel article pour « Moment » ?", fr:"Terminaison -ent.",
+        opts:["der","die","das"], a:0,
+        why:"Tout nom en -ent est masculin : der Moment." },
+      { t:"qcm", q:"Quel article pour « Doktor » ?", fr:"Terminaison -or.",
+        opts:["der","die","das"], a:0,
+        why:"Tout nom en -or est masculin : der Doktor." },
+      { t:"qcm", q:"Quel article pour « Montag » ?", fr:"Jour, mois ou saison.",
+        opts:["der","die","das"], a:0,
+        why:"Jours, mois, saisons et points cardinaux sont masculins : der Montag." },
+      { t:"qcm", q:"Quel article pour « Dienstag » ?", fr:"Jour, mois ou saison.",
+        opts:["der","die","das"], a:0,
+        why:"Jours, mois, saisons et points cardinaux sont masculins : der Dienstag." },
+      { t:"qcm", q:"Quel article pour « Mittwoch » ?", fr:"Jour, mois ou saison.",
+        opts:["der","die","das"], a:0,
+        why:"Jours, mois, saisons et points cardinaux sont masculins : der Mittwoch." },
+      { t:"qcm", q:"Quel article pour « Januar » ?", fr:"Jour, mois ou saison.",
+        opts:["der","die","das"], a:0,
+        why:"Jours, mois, saisons et points cardinaux sont masculins : der Januar." },
+      { t:"qcm", q:"Quel article pour « Februar » ?", fr:"Jour, mois ou saison.",
+        opts:["der","die","das"], a:0,
+        why:"Jours, mois, saisons et points cardinaux sont masculins : der Februar." },
+      { t:"qcm", q:"Quel article pour « Sommer » ?", fr:"Jour, mois ou saison.",
+        opts:["der","die","das"], a:0,
+        why:"Jours, mois, saisons et points cardinaux sont masculins : der Sommer." },
+    ],
+
+    intermediaire: [
+      { t:"qcm", q:"Quel article pour « Donnerstag » ?", fr:"Mot composé : Donners + Tag.",
+        opts:["der","die","das"], a:0,
+        why:"Le genre d'un composé est celui du dernier élément : der Tag donne der Donnerstag." },
+      { t:"qcm", q:"Quel article pour « Fahrkarte » ?", fr:"Mot composé : Fahr + Karte.",
+        opts:["der","die","das"], a:1,
+        why:"Le genre d'un composé est celui du dernier élément : die Karte donne die Fahrkarte." },
+      { t:"qcm", q:"Quel article pour « Familienname » ?", fr:"Mot composé : Familien + Name.",
+        opts:["der","die","das"], a:0,
+        why:"Le genre d'un composé est celui du dernier élément : der Name donne der Familienname." },
+      { t:"qcm", q:"Quel article pour « Freitag » ?", fr:"Mot composé : Frei + Tag.",
+        opts:["der","die","das"], a:0,
+        why:"Le genre d'un composé est celui du dernier élément : der Tag donne der Freitag." },
+      { t:"qcm", q:"Quel article pour « Freizeit » ?", fr:"Mot composé : Frei + Zeit.",
+        opts:["der","die","das"], a:1,
+        why:"Le genre d'un composé est celui du dernier élément : die Zeit donne die Freizeit." },
+      { t:"qcm", q:"Quel article pour « Geburtsort » ?", fr:"Mot composé : Geburts + Ort.",
+        opts:["der","die","das"], a:0,
+        why:"Le genre d'un composé est celui du dernier élément : der Ort donne der Geburtsort." },
+      { t:"qcm", q:"Quel article pour « Geburtstag » ?", fr:"Mot composé : Geburts + Tag.",
+        opts:["der","die","das"], a:0,
+        why:"Le genre d'un composé est celui du dernier élément : der Tag donne der Geburtstag." },
+      { t:"qcm", q:"Quel article pour « Haltestelle » ?", fr:"Mot composé : Halte + Stelle.",
+        opts:["der","die","das"], a:1,
+        why:"Le genre d'un composé est celui du dernier élément : die Stelle donne die Haltestelle." },
+      { t:"qcm", q:"Quel article pour « Hausaufgabe » ?", fr:"Mot composé : Haus + Aufgabe.",
+        opts:["der","die","das"], a:1,
+        why:"Le genre d'un composé est celui du dernier élément : die Aufgabe donne die Hausaufgabe." },
+      { t:"qcm", q:"Quel article pour « Hochzeit » ?", fr:"Mot composé : Hoch + Zeit.",
+        opts:["der","die","das"], a:1,
+        why:"Le genre d'un composé est celui du dernier élément : die Zeit donne die Hochzeit." },
+      { t:"qcm", q:"Quel article pour « Kindergarten » ?", fr:"Mot composé : Kinder + Garten.",
+        opts:["der","die","das"], a:0,
+        why:"Le genre d'un composé est celui du dernier élément : der Garten donne der Kindergarten." },
+      { t:"qcm", q:"Quel article pour « Mittag » ?", fr:"Mot composé : Mit + Tag.",
+        opts:["der","die","das"], a:0,
+        why:"Le genre d'un composé est celui du dernier élément : der Tag donne der Mittag." },
+      { t:"qcm", q:"Quel article pour « Samstag » ?", fr:"Mot composé : Sams + Tag.",
+        opts:["der","die","das"], a:0,
+        why:"Le genre d'un composé est celui du dernier élément : der Tag donne der Samstag." },
+      { t:"qcm", q:"Quel article pour « Sonntag » ?", fr:"Mot composé : Sonn + Tag.",
+        opts:["der","die","das"], a:0,
+        why:"Le genre d'un composé est celui du dernier élément : der Tag donne der Sonntag." },
+      { t:"qcm", q:"Quel article pour « Speisekarte » ?", fr:"Mot composé : Speise + Karte.",
+        opts:["der","die","das"], a:1,
+        why:"Le genre d'un composé est celui du dernier élément : die Karte donne die Speisekarte." },
+      { t:"qcm", q:"Quel article pour « Straßenbahn » ?", fr:"Mot composé : Straßen + Bahn.",
+        opts:["der","die","das"], a:1,
+        why:"Le genre d'un composé est celui du dernier élément : die Bahn donne die Straßenbahn." },
+      { t:"qcm", q:"Quel article pour « Vormittag » ?", fr:"Mot composé : Vor + Mittag.",
+        opts:["der","die","das"], a:0,
+        why:"Le genre d'un composé est celui du dernier élément : der Mittag donne der Vormittag." },
+      { t:"qcm", q:"Quel article pour « Vorname » ?", fr:"Mot composé : Vor + Name.",
+        opts:["der","die","das"], a:0,
+        why:"Le genre d'un composé est celui du dernier élément : der Name donne der Vorname." },
+      { t:"qcm", q:"Quel article pour « Wochentag » ?", fr:"Mot composé : Wochen + Tag.",
+        opts:["der","die","das"], a:0,
+        why:"Le genre d'un composé est celui du dernier élément : der Tag donne der Wochentag." },
+    ],
+
+    difficile: [
+      { t:"qcm", q:"Quel article pour « Wasser » ?", fr:"Terminaison -er : attention, elle ne prédit rien.",
+        opts:["der","die","das"], a:2,
+        why:"das Wasser est neutre. La terminaison -er n'indique le masculin que pour les noms dérivés d'un verbe, comme der Fahrer ou der Drucker." },
+      { t:"qcm", q:"Quel article pour « Wetter » ?", fr:"Terminaison -er : attention, elle ne prédit rien.",
+        opts:["der","die","das"], a:2,
+        why:"das Wetter est neutre. La terminaison -er n'indique le masculin que pour les noms dérivés d'un verbe, comme der Fahrer ou der Drucker." },
+      { t:"qcm", q:"Quel article pour « Papier » ?", fr:"Terminaison -er : attention, elle ne prédit rien.",
+        opts:["der","die","das"], a:2,
+        why:"das Papier est neutre. La terminaison -er n'indique le masculin que pour les noms dérivés d'un verbe, comme der Fahrer ou der Drucker." },
+      { t:"qcm", q:"Quel article pour « Bier » ?", fr:"Terminaison -er : attention, elle ne prédit rien.",
+        opts:["der","die","das"], a:2,
+        why:"das Bier est neutre. La terminaison -er n'indique le masculin que pour les noms dérivés d'un verbe, comme der Fahrer ou der Drucker." },
+      { t:"qcm", q:"Quel article pour « Feuer » ?", fr:"Terminaison -er : attention, elle ne prédit rien.",
+        opts:["der","die","das"], a:2,
+        why:"das Feuer est neutre. La terminaison -er n'indique le masculin que pour les noms dérivés d'un verbe, comme der Fahrer ou der Drucker." },
+      { t:"qcm", q:"Quel article pour « Alter » ?", fr:"Terminaison -er : attention, elle ne prédit rien.",
+        opts:["der","die","das"], a:2,
+        why:"das Alter est neutre. La terminaison -er n'indique le masculin que pour les noms dérivés d'un verbe, comme der Fahrer ou der Drucker." },
+      { t:"qcm", q:"Quel article pour « Butter » ?", fr:"Terminaison -er : attention, elle ne prédit rien.",
+        opts:["der","die","das"], a:1,
+        why:"die Butter est féminin. La terminaison -er n'indique le masculin que pour les noms dérivés d'un verbe, comme der Fahrer ou der Drucker." },
+      { t:"qcm", q:"Quel article pour « Nummer » ?", fr:"Terminaison -er : attention, elle ne prédit rien.",
+        opts:["der","die","das"], a:1,
+        why:"die Nummer est féminin. La terminaison -er n'indique le masculin que pour les noms dérivés d'un verbe, comme der Fahrer ou der Drucker." },
+      { t:"qcm", q:"Quel article pour « Schwester » ?", fr:"Terminaison -er : attention, elle ne prédit rien.",
+        opts:["der","die","das"], a:1,
+        why:"die Schwester est féminin. La terminaison -er n'indique le masculin que pour les noms dérivés d'un verbe, comme der Fahrer ou der Drucker." },
+      { t:"qcm", q:"Quel article pour « Meer » ?", fr:"Terminaison -er : attention, elle ne prédit rien.",
+        opts:["der","die","das"], a:2,
+        why:"das Meer est neutre. La terminaison -er n'indique le masculin que pour les noms dérivés d'un verbe, comme der Fahrer ou der Drucker." },
+      { t:"qcm", q:"Quel article pour « Herr » ?", fr:"Aucune règle ne couvre ce mot : il s'apprend avec son article.",
+        opts:["der","die","das"], a:0,
+        why:"der Herr. Encode-le en prononçant « derherr » d'un seul souffle." },
+      { t:"qcm", q:"Quel article pour « Brot » ?", fr:"Aucune règle ne couvre ce mot : il s'apprend avec son article.",
+        opts:["der","die","das"], a:2,
+        why:"das Brot. Encode-le en prononçant « dasbrot » d'un seul souffle." },
+      { t:"qcm", q:"Quel article pour « Lokal » ?", fr:"Aucune règle ne couvre ce mot : il s'apprend avec son article.",
+        opts:["der","die","das"], a:2,
+        why:"das Lokal. Encode-le en prononçant « daslokal » d'un seul souffle." },
+      { t:"qcm", q:"Quel article pour « Arbeit » ?", fr:"Aucune règle ne couvre ce mot : il s'apprend avec son article.",
+        opts:["der","die","das"], a:1,
+        why:"die Arbeit. Encode-le en prononçant « diearbeit » d'un seul souffle." },
+      { t:"qcm", q:"Quel article pour « Ausweis » ?", fr:"Aucune règle ne couvre ce mot : il s'apprend avec son article.",
+        opts:["der","die","das"], a:0,
+        why:"der Ausweis. Encode-le en prononçant « derausweis » d'un seul souffle." },
+      { t:"qcm", q:"Quel article pour « Text » ?", fr:"Aucune règle ne couvre ce mot : il s'apprend avec son article.",
+        opts:["der","die","das"], a:0,
+        why:"der Text. Encode-le en prononçant « dertext » d'un seul souffle." },
+      { t:"qcm", q:"Quel article pour « Bahnhof » ?", fr:"Aucune règle ne couvre ce mot : il s'apprend avec son article.",
+        opts:["der","die","das"], a:0,
+        why:"der Bahnhof. Encode-le en prononçant « derbahnhof » d'un seul souffle." },
+      { t:"qcm", q:"Quel article pour « Konto » ?", fr:"Aucune règle ne couvre ce mot : il s'apprend avec son article.",
+        opts:["der","die","das"], a:2,
+        why:"das Konto. Encode-le en prononçant « daskonto » d'un seul souffle." },
+      { t:"qcm", q:"Quel article pour « Welt » ?", fr:"Aucune règle ne couvre ce mot : il s'apprend avec son article.",
+        opts:["der","die","das"], a:1,
+        why:"die Welt. Encode-le en prononçant « diewelt » d'un seul souffle." },
+      { t:"qcm", q:"Quel article pour « Ausflug » ?", fr:"Aucune règle ne couvre ce mot : il s'apprend avec son article.",
+        opts:["der","die","das"], a:0,
+        why:"der Ausflug. Encode-le en prononçant « derausflug » d'un seul souffle." },
+      { t:"qcm", q:"Quel article pour « Sport » ?", fr:"Aucune règle ne couvre ce mot : il s'apprend avec son article.",
+        opts:["der","die","das"], a:0,
+        why:"der Sport. Encode-le en prononçant « dersport » d'un seul souffle." },
+      { t:"qcm", q:"Quel article pour « Firma » ?", fr:"Aucune règle ne couvre ce mot : il s'apprend avec son article.",
+        opts:["der","die","das"], a:1,
+        why:"die Firma. Encode-le en prononçant « diefirma » d'un seul souffle." },
+    ]
+  }
+});
+</script>
+</body>
+</html>

@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "genere": "2026-10-05",
+  "genere": "2026-10-09",
   "decks": [
     {
       "id": "lecon01-general",
@@ -78,11 +78,33 @@
       "cartes": 28,
       "fichierTxt": "anki/lecon04-it.txt",
       "fichierApkg": "anki/lecon04-it.apkg"
+    },
+    {
+      "id": "lecon05-general",
+      "titre": "Leçon 05 · pronoms et prépositions",
+      "deck": "Allemand A1::L05 pronoms et prépositions",
+      "niveau": "A1",
+      "lecon": 5,
+      "type": "general",
+      "cartes": 44,
+      "fichierTxt": "anki/lecon05-general.txt",
+      "fichierApkg": "anki/lecon05-general.apkg"
+    },
+    {
+      "id": "lecon05-it",
+      "titre": "Leçon 05 · pronoms au bureau",
+      "deck": "Allemand IT::L05 pronoms au bureau",
+      "niveau": "A1",
+      "lecon": 5,
+      "type": "it",
+      "cartes": 20,
+      "fichierTxt": "anki/lecon05-it.txt",
+      "fichierApkg": "anki/lecon05-it.apkg"
     }
   ],
   "tout": {
     "fichierApkg": "anki/allemand-tout.apkg",
-    "cartes": 234,
-    "decks": 7
+    "cartes": 298,
+    "decks": 9
   }
 }

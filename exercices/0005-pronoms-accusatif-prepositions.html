@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="niveau" content="A1">
+<meta name="lecon" content="5">
+<title>Exercices leçon 5 — pronoms et prépositions</title>
+<link rel="stylesheet" href="exercices.css">
+</head>
+<body>
+
+<header>
+  <div class="kicker">Exercices · Leçon 5 · Niveau A1</div>
+  <h1><i>mich, dich, ihn</i> et les cinq prépositions</h1>
+  <p class="lead">Ces exercices font produire le genre pour choisir le pronom : ils travaillent donc les pronoms et les genres en même temps.</p>
+  <p class="meta">Série liée à la <a href="../lessons/0005-pronoms-accusatif-prepositions.html">leçon 5</a> · fiches <a href="../reference/pronoms-prepositions.html">pronoms et prépositions</a> et <a href="../reference/genre-methode.html">retenir les genres</a>.</p>
+  <p class="novoice" id="novoice">Aucune voix allemande n'est installée dans ce navigateur : les dictées du niveau difficile ne pourront pas être lues.</p>
+</header>
+
+<div class="levels" id="exLevels"></div>
+<div class="bar" id="exBar"></div>
+<div id="exList"></div>
+<div class="done" id="exDone"></div>
+
+<div class="ask">
+<b>Ce que j'attends de toi.</b> Tes trois scores. Le niveau difficile mélange les pronoms, les prépositions et les genres des leçons précédentes : c'est normal qu'il soit plus dur, c'est là que la mémoire longue se construit.
+</div>
+
+<footer>
+Série créée le 9 octobre 2026 · Workspace « Allemand » ·
+<a href="../lessons/0005-pronoms-accusatif-prepositions.html">leçon 5</a> ·
+<a href="../reference/pronoms-prepositions.html">fiche pronoms et prépositions</a> ·
+<a href="genre-intensif.html">entraîneur de genre</a> ·
+<a href="../reference/parcours.html">feuille de route</a>
+</footer>
+
+<script src="moteur.js"></script>
+<script>
+Exos.demarrer({
+  lecon: 5,
+  titre: "Pronoms et prépositions",
+  fichierLecon: "0005-pronoms-accusatif-prepositions.html",
+  chrono: 600,
+  series: {
+
+    facile: [
+      { t:"qcm", q:"Quelle est la forme accusative de « ich » ?", opts:["mich","mir","mein"], a:0,
+        why:"ich devient mich. mir est le datif, mein est le possessif." },
+      { t:"qcm", q:"Quelle est la forme accusative de « du » ?", opts:["dich","dir","dein"], a:0,
+        why:"du devient dich." },
+      { t:"qcm", q:"Quelle est la forme accusative de « er » ?", opts:["ihn","ihm","sein"], a:0,
+        why:"er devient ihn : c'est le seul pronom qui change vraiment." },
+      { t:"qcm", q:"Quelle est la forme accusative de « sie » (elle) ?", opts:["sie","ihr","ihn"], a:0,
+        why:"Au féminin, la forme ne change pas : sie." },
+      { t:"qcm", q:"Quelle est la forme accusative de « wir » ?", opts:["uns","wir","euch"], a:0,
+        why:"wir devient uns, au datif comme à l'accusatif." },
+      { t:"trou", q:"Ich verstehe ___ nicht.", fr:"Je ne te comprends pas.", opts:["dich","du","dir"], a:0,
+        why:"Objet du verbe verstehen : accusatif dich." },
+      { t:"trou", q:"___ verstehe dich nicht.", fr:"Je ne te comprends pas.", opts:["Ich","Mich","Mir"], a:0,
+        why:"Sujet du verbe : nominatif ich." },
+      { t:"trou", q:"Das Ticket ist ___ mich.", fr:"Le ticket est pour moi.", opts:["für","ohne","durch"], a:0,
+        why:"für signifie pour." },
+      { t:"trou", q:"___ dich schaffe ich das nicht.", fr:"Sans toi je n'y arrive pas.", opts:["Ohne","Gegen","Um"], a:0,
+        why:"ohne signifie sans." },
+      { t:"qcm", q:"Combien de prépositions imposent toujours l'accusatif ?", opts:["cinq","trois","neuf"], a:0,
+        why:"für, ohne, gegen, um, durch." },
+      { t:"trou", q:"Wo ist der Drucker? Ich sehe ___ nicht.", fr:"der Drucker · Je ne la vois pas.",
+        opts:["ihn","sie","es"], a:0,
+        why:"der Drucker est masculin, donc ihn, même si « imprimante » est féminin en français." },
+      { t:"trou", q:"Wo ist die Datei? Ich öffne ___ jetzt.", fr:"die Datei · Je l'ouvre maintenant.",
+        opts:["sie","ihn","es"], a:0,
+        why:"die Datei est féminin, donc sie." },
+      { t:"trou", q:"Wo ist das Passwort? Ich habe ___ vergessen.", fr:"das Passwort · Je l'ai oublié.",
+        opts:["es","ihn","sie"], a:0,
+        why:"das Passwort est neutre, donc es." }
+    ],
+
+    intermediaire: [
+      { t:"saisie", q:"Remplace le nom par un pronom : « Ich brauche den Bildschirm. »",
+        fr:"Toute la phrase.", rep:["Ich brauche ihn."],
+        why:"der Bildschirm est masculin : ihn." },
+      { t:"saisie", q:"Remplace le nom par un pronom : « Ich öffne die Anwendung. »",
+        fr:"Toute la phrase.", rep:["Ich öffne sie."],
+        why:"die Anwendung est féminin : sie." },
+      { t:"saisie", q:"Remplace le nom par un pronom : « Ich installiere das Programm. »",
+        fr:"Toute la phrase.", rep:["Ich installiere es."],
+        why:"das Programm est neutre : es." },
+      { t:"saisie", q:"Remplace le nom par un pronom : « Ich suche den Schlüssel. »",
+        fr:"Toute la phrase.", rep:["Ich suche ihn."],
+        why:"der Schlüssel est masculin : ihn." },
+      { t:"saisie", q:"Remplace le nom par un pronom : « Ich teste die Software. »",
+        fr:"Toute la phrase.", rep:["Ich teste sie."],
+        why:"die Software est féminin : sie." },
+      { t:"saisie", q:"Complète : Das ist für ___ . (le collègue)",
+        fr:"Attention à la déclinaison faible.", rep:["den Kollegen"],
+        why:"für impose l'accusatif, et Kollege ajoute un -n hors du nominatif : den Kollegen." },
+      { t:"saisie", q:"Complète : Ohne ___ geht nichts. (un ordinateur portable)",
+        fr:"der Laptop.", rep:["einen Laptop"],
+        why:"ohne impose l'accusatif, Laptop est masculin : einen Laptop." },
+      { t:"saisie", q:"Complète : Der Fehler kommt durch ___ . (la mise à jour)",
+        fr:"das Update.", rep:["das Update"],
+        why:"durch impose l'accusatif, mais le neutre ne change pas : das Update." },
+      { t:"trou", q:"Er fragt ___ auch.", fr:"Il nous demande aussi.", opts:["uns","wir","unser"], a:0,
+        why:"Objet de fragen : accusatif uns." },
+      { t:"trou", q:"Fragt er ___ auch?", fr:"Vous demande-t-il aussi ? (groupe tutoyé)",
+        opts:["euch","ihr","eure"], a:0,
+        why:"Objet : accusatif euch. ihr serait le sujet." },
+      { t:"trou", q:"Ich habe nichts ___ ihn.", fr:"Je n'ai rien contre lui.", opts:["gegen","ohne","für"], a:0,
+        why:"gegen signifie contre." },
+      { t:"saisie", q:"Comment dit-on « moi aussi » ?", fr:"Deux mots.", rep:["ich auch","Ich auch"],
+        why:"On reprend un sujet, donc le nominatif : ich auch." },
+      { t:"saisie", q:"Comment demande-t-on « peux-tu le répéter ? »", fr:"Quatre mots.",
+        rep:["Kannst du es wiederholen?"],
+        why:"es reprend ce qui vient d'être dit ; le pronom se place juste après le sujet." },
+      { t:"saisie", q:"Écris les cinq prépositions qui imposent toujours l'accusatif.",
+        fr:"Séparées par des espaces, dans l'ordre mnémotechnique.",
+        rep:["für ohne gegen um durch"],
+        why:"Für, Ohne, Gegen, Um, Durch." }
+    ],
+
+    difficile: [
+      { t:"trad", q:"Je ne te comprends pas, peux-tu répéter ?",
+        rep:["Ich verstehe dich nicht, kannst du wiederholen?","Ich verstehe dich nicht. Kannst du es wiederholen?"],
+        why:"dich à l'accusatif ; la deuxième version avec es est la plus naturelle." },
+      { t:"trad", q:"C'est pour toi, pas pour moi.",
+        rep:["Das ist für dich, nicht für mich."],
+        why:"für impose l'accusatif deux fois." },
+      { t:"trad", q:"Sans toi je n'y arrive pas.",
+        rep:["Ohne dich schaffe ich das nicht."],
+        why:"Le complément en tête, donc le verbe en deuxième position et le sujet après : schaffe ich." },
+      { t:"trad", q:"Je cherche l'imprimante, je ne la vois pas.",
+        rep:["Ich suche den Drucker, ich sehe ihn nicht."],
+        why:"der Drucker, donc den à l'accusatif et ihn comme pronom, malgré le féminin français." },
+      { t:"trad", q:"Le fichier ? Je l'ouvre maintenant.",
+        rep:["Die Datei? Ich öffne sie jetzt."],
+        why:"die Datei est féminin : sie." },
+      { t:"trad", q:"Je n'ai rien contre lui.",
+        rep:["Ich habe nichts gegen ihn."],
+        why:"gegen + accusatif ihn." },
+      { t:"trad", q:"Mon collègue teste l'application, et moi je lis le code.",
+        rep:["Mein Kollege testet die Anwendung, und ich lese den Code."],
+        why:"Révision : nominatif pour le sujet, accusatif den Code pour l'objet masculin." },
+      { t:"trad", q:"L'erreur vient de la mise à jour.",
+        rep:["Der Fehler kommt durch das Update."],
+        why:"durch + accusatif ; Update est neutre, donc das reste das." },
+      { t:"saisie", q:"Corrige la faute : « Ich verstehe du nicht. »", fr:"Réécris la phrase.",
+        rep:["Ich verstehe dich nicht."],
+        why:"du est un sujet ; l'objet demande dich." },
+      { t:"saisie", q:"Corrige la faute : « Das ist für ich. »", fr:"Réécris la phrase.",
+        rep:["Das ist für mich."],
+        why:"für impose l'accusatif : mich." },
+      { t:"saisie", q:"Corrige la faute : « Ich sehe sie nicht. » (il s'agit du Drucker)",
+        fr:"Réécris la phrase.", rep:["Ich sehe ihn nicht."],
+        why:"der Drucker est masculin : le pronom est ihn." },
+      { t:"saisie", q:"Corrige la faute : « Das ist für den Kollege. »", fr:"Réécris la phrase.",
+        rep:["Das ist für den Kollegen."],
+        why:"Déclinaison faible : Kollege prend un -n hors du nominatif singulier." },
+      { t:"saisie", q:"Quel article pour « Fenster » ?", fr:"Révision de genre : attention au piège du -er.",
+        rep:["das"],
+        why:"das Fenster. La terminaison -er n'indique le masculin que pour les noms dérivés d'un verbe." },
+      { t:"dictee", say:"Ich verstehe dich nicht.", rep:["Ich verstehe dich nicht."],
+        why:"Écoute la finale de dich, qui marque l'objet." },
+      { t:"dictee", say:"Das Ticket ist für ihn, nicht für mich.",
+        rep:["Das Ticket ist für ihn, nicht für mich."],
+        why:"Deux groupes à l'accusatif après für." },
+      { t:"dictee", say:"Ohne einen Laptop kann ich nicht arbeiten.",
+        rep:["Ohne einen Laptop kann ich nicht arbeiten."],
+        why:"ohne + einen pour un masculin ; le verbe reste en deuxième position après le complément en tête." }
+    ]
+  }
+});
+</script>
+</body>
+</html>

@@ -38,6 +38,17 @@
   Trois niveaux : facile, intermédiaire, difficile. Correction immédiate, comme dans les leçons.
   À produire désormais à chaque nouvelle leçon (étape 5 bis du cycle, CLAUDE.md §4.1).
 
+## Diagnostic du 2026-10-09 : le genre
+- L'apprenant a eu une note moyenne sur le genre. Cause réelle : **ma méthode** (listes de mots avec article),
+  pas sa mémoire. Mesuré sur la Wortliste Goethe A1 : seulement 43 % des noms ont un genre prévisible par terminaison.
+- **Ma règle « -er donne der » était fausse** (10 masculins sur 24 dans la liste) : restreinte aux noms dérivés d'un verbe.
+- **La règle du mot composé** (le dernier élément décide, 21 sur 21) est la plus rentable et manquait : ajoutée.
+- Désormais : toute règle de grammaire ou de lexique que je crois connaître est **mesurée sur la source officielle**
+  avant d'être enseignée, quand les données le permettent (`reference/data/goethe-a1-noms.json`).
+- **Pas de nouveau paquet Anki de vocabulaire** tant que l'encodage n'est pas réglé : l'apprenant a environ 300 cartes
+  et le problème est la méthode d'encodage, pas le nombre de mots. L'entraîneur de genre remplace les listes.
+- Indicateur de suivi : score au niveau difficile de `exercices/genre-intensif.html`, une fois par semaine.
+
 ## Décisions pédagogiques
 - S'appuyer sur le français comme levier : genres, cas et conjugaison sont des concepts déjà connus
   (le français a des genres et des conjugaisons ; les cas s'expliquent par les pronoms le/lui).
@@ -55,3 +66,4 @@
 - 2026-09-23 : leçon 3 publiée en avance (genre der/die/das, pluriel, kein/nicht, vocabulaire bureau et ordinateur) à la demande de l'apprenant, absent jusqu'au week-end. Corrections des leçons 2 ET 3 attendues ensemble à son retour (présentation v2, scores des drills, six phrases). Exception d'avance consignée dans CLAUDE.md §4.1. Fiche `reference/genre-pluriel-kein.html` + 75 cartes Anki (43 générales, 32 IT).
 - 2026-10-05 : retour de l'apprenant après 12 jours. Présentation v2 corrigée (3 fautes : jahre, Französich, Softwarrentwickler ; ß et nombres composés acquis) → LR-0003. Leçons 2 et 3 marquées faites (exercices au score complet ; les six phrases de la leçon 3 n'ont pas été rendues). Leçon 4 publiée : accusatif, avec section d'approfondissement intégrée (8 questions traitées d'avance). 234 cartes Anki. Rythme réel : 3 leçons en 5 semaines, très en dessous des 7 h/semaine présumées — à surveiller avant de refaire le calendrier.
 - 2026-10-05 (soir) : création de la plateforme d'exercices. Moteur commun `exercices/moteur.js` (QCM, trous, saisie, traduction, dictée vocale, scores localStorage, minuteur), 4 séries (leçons 1 à 4), 155 exercices au total. Onglet Exercices dans le site, découverte automatique par `build.py`. Vérifié au navigateur avec Playwright : QCM, saisie, dictée, bilan de fin, mémorisation des scores, et logique de correction testée en 13 cas.
+- 2026-10-09 : diagnostic du genre (LR-0004). Fiche `genre-methode.html`, entraîneur `genre-intensif.html` (56 items generes depuis la Wortliste officielle), fiche genre corrigee. Lecon 5 publiee (pronoms a l'accusatif et les cinq prepositions) avec sa serie d'exercices et ses cartes. Verifie au navigateur.

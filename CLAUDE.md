@@ -76,6 +76,10 @@ Petites évolutions outillées, sans cycle spec/plan : modifier, `node --check` 
 *Contrôle* : `status.json.gates` — un niveau ne passe à `en-cours` que si le précédent est `reussi` **et** qu'un learning-record cite les trois scores. Aucun script ne le vérifie aujourd'hui : **A DEFINIR** — ajouter à `build_anki.py` (ou un `check.py`) une vérification de cohérence des gates avant le premier examen A1 (semaine 12).
 
 **I2 — Aucun fait sur les examens, la grammaire ou le vocabulaire sans source dans `RESOURCES.md`.** Statut : posée.
+*Extension du 2026-10-09* : cela vaut aussi pour les **règles que je crois connaître**. Avant d'enseigner une règle de
+genre, de pluriel ou de fréquence, la mesurer sur la source officielle quand les données le permettent (`reference/data/`).
+Le 2026-10-09, la règle « -er donne der » enseignée en leçon 3 s'est révélée fausse une fois testée sur les 297 noms de
+la Wortliste Goethe A1 : 10 masculins sur 24. Une règle plausible non vérifiée est un fait inventé (voir LR-0004).
 *Raison* : la connaissance paramétrique se trompe sur les détails (durées d'épreuves, seuils, URL) et l'apprenant prépare un examen réel. La structure B2 et les estimations d'heures ont été vérifiées sur les PDF officiels le 2026-09-03.
 *Contrôle* : relecture — toute leçon cite une source primaire dans son pied de page ; une URL nouvelle est testée (`curl -sL -o /dev/null -w "%{http_code}"`) avant d'être écrite. Le 2026-09-21, un lien Lingolia inventé a renvoyé 404 et a été corrigé : c'est exactement le cas que cet invariant interdit.
 
